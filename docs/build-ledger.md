@@ -7,3 +7,30 @@ Ruling: Work directly in the new project directory and initialize a local reposi
 Ruling: Cloud integration stays deferred as requested during tooling setup. Local operation, tests, and truthful AI fallback precede account-dependent deployment. Cost if wrong: integration defects discovered later; preserve adapter boundaries.
 
 Preflight: project contains only approved design/plan documents. No baseline source/tests existed. Event clocks, revisions and evidence IDs are the shared contracts. Tasks execute natively with per-milestone verification.
+
+## Local vertical slice
+
+- Tasks 1–3: generator, independent analytics fixtures, SQLite revision store, season percentiles, player moments implemented. Initial 17 tests passed; later regression cases cover plausible demo shot volume, same-time sequence ordering, and temporal turnover moments.
+- Task 4: React/Vite local workspace and FastAPI routes implemented. Browser reached the application after running local servers outside the sandbox. Player markers, lineup, profile bars and template questions were inspected.
+- Early Task 5/6 UI affordances are explicitly deterministic templates, not AI or durable publication. Task 4 is not a claim of completing the entire plan.
+- Reviewed initial local slice with a fresh read-only reviewer. Fixed stale snapshots on seek, late recap responses, player-panel remounting, and shot attribution. Added regression tests observed failing before fixes.
+- Ruling: Add practical template questions/recaps before cloud agents to make the local interaction reviewable. Cost if wrong: replace API internals; retain response provenance and explicit generation mode.
+- Ruling: Use period-relative time with 45-minute half offsets for the current generator; do not claim stoppage-time-calibrated playing time. Cost if wrong: extend metadata for real feeds later.
+- Ruling: Keep cloud account setup external to source implementation. User confirmed no Azure/Foundry account setup yet. No paid resources created.
+- Minor (deferred): the installed Starlette TestClient emits an httpx deprecation warning; requests and tests pass. Review dependency compatibility before CI freeze.
+- Minor (deferred): full Spanish UI terminology/bilingual review, pitch sequence animation, production auth, keyboard tablist arrow navigation, and public deployment are not complete.
+
+- Task 5 partial: provider-independent bounded specialist workflow and opt-in Foundry adapter implemented. Scripted tests cover tool selection, revisions, rejection, timeout and factual fallback. No live model evaluation or Agent Framework SDK use claimed.
+- Ruling: Producer currently selects canonical fact sentences rather than freely rewriting facts. Cost if wrong: language flexibility is reduced; a richer claim parser and evaluation are required before relaxing validation.
+- Local browser validation: player moments changed the pitch to a supporting sequence; player questions returned event counts; English/Spanish recap respected selected clock; mobile and desktop layouts inspected. Saved screenshot at artifacts/matchlens-local.png (ignored by Git).
+- Remaining external prerequisite: user confirmed Azure/Foundry not set up. No deployment, public repository, demo video, or competition submission has occurred.
+
+## Verified local milestone (October 20, 2026)
+
+- Backend: 28 passing tests. One upstream Starlette/httpx deprecation warning remains, recorded above.
+- Frontend: 9 passing tests; TypeScript and Vite production build passed.
+- Ruff lint and format checks passed; Git diff whitespace check passed.
+- Follow-up review found Spanish moment-label and model/template disclosure defects. Added failing regression tests, fixed both, and reran frontend tests/build.
+- New workflow provider and API integration are covered by scripted tests only. Actual Foundry behavior, latency and quality remain unverified.
+- Local preview: http://127.0.0.1:5173. No paid or public resources created.
+- Next milestones: cloud account/project setup and SDK smoke test; richer agent evaluation; persistent approval/publication and synchronized overlay; complete localization and accessibility; deployment and submission.

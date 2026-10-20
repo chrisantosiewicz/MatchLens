@@ -29,8 +29,19 @@ class Event(BaseModel):
     team_id: str
     player_id: str | None = None
     recipient_id: str | None = None
-    event_type: Literal["pass", "carry", "shot", "recovery", "tackle", "turnover", "substitution", "stoppage"]
-    outcome: Literal["complete", "incomplete", "goal", "saved", "wide", "recorded"] = "recorded"
+    event_type: Literal[
+        "pass",
+        "carry",
+        "shot",
+        "recovery",
+        "tackle",
+        "turnover",
+        "substitution",
+        "stoppage",
+    ]
+    outcome: Literal["complete", "incomplete", "goal", "saved", "wide", "recorded"] = (
+        "recorded"
+    )
     start: Point | None = None
     end: Point | None = None
     possession_id: str
@@ -66,4 +77,8 @@ class Clock(BaseModel):
 
 
 def visible(events: list[Event], clock: Clock) -> list[Event]:
-    return [e for e in events if (e.period, e.elapsed_ms) <= (clock.period, clock.elapsed_ms)]
+    return [
+        e
+        for e in events
+        if (e.period, e.elapsed_ms) <= (clock.period, clock.elapsed_ms)
+    ]
