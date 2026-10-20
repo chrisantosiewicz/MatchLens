@@ -37,6 +37,8 @@ On macOS/Linux, use `backend/.venv/bin/python` instead of the Windows interprete
 6. Switch explanation depth and English/Spanish, seek back, or build a clock-limited recap.
 7. Use the expand icon for a presentation preview. This is not yet a published/synchronized OBS output.
 
+Use **Watch / Explore** to inspect the companion layout: Watch puts an illustrative synthetic scene above a compact two-team action map; Explore retains the analysis workspace and a small scene preview. This is **not actual encoded video or computer-vision recognition**. Milestone cards are computed from synthetic events, and numbered markers use roster IDs. See `docs/watch-companion.md` for boundaries and remaining video work.
+
 ## Verification
 
 ```powershell

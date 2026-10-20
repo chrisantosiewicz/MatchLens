@@ -7,11 +7,13 @@ from typing import Literal
 from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel, Field
 
+from .alerts import progressive_alerts
 from .analytics import compare_windows, player_stats
 from .models import Clock, visible
 from .moments import key_moments
 from .profiles import profile
 from .providers import configured_provider
+from .summaries import build_recap
 from .synthetic import generate_match, generate_seasons
 from .workflow import run_workflow
 
@@ -102,6 +104,7 @@ def state(
         "events": events,
         "score": score_at(events),
         "synthetic": True,
+        "alerts": progressive_alerts(events, match.players, clock),
         "moments": [
             e
             for e in events
@@ -336,19 +339,6 @@ def recap(
     player_id: str = "north-6",
 ):
     match = match_or_404(match_id)
-    player = player_or_404(match, player_id)
+    player_or_404(match, player_id)
     clock = Clock(period=period, elapsed_ms=elapsed_ms)
-    events = visible(match.events, clock)
-    score = score_at(events)
-    stats = player_stats(events, player_id, clock)
-    text = (
-        f"Hasta este momento: Northbridge {score['north']}–{score['harbor']} Harbor. {player.name} completó {stats['completed_passes']} pases y registró {stats['shots']} tiros. Resumen limitado a tu reloj del partido."
-        if language == "es"
-        else f"At your match clock: Northbridge {score['north']}–{score['harbor']} Harbor. {player.name} completed {stats['completed_passes']} passes and recorded {stats['shots']} shots. This recap includes only events available at your clock."
-    )
-    return {
-        "text": text,
-        "score": score,
-        "evidence_ids": stats["evidence_ids"],
-        "generation_mode": "template",
-    }
+    return build_recap(match, player_id, clock, language)

@@ -18,3 +18,16 @@ it('labels model-selected answers accurately',async()=>{
   expect(await screen.findByText(/Model-selected verified facts/)).toBeTruthy();
   expect(screen.queryByText(/Foundry not connected yet/)).toBeNull();
 });
+
+it('keeps a timestamped answer during forward playback and clears it on rewind',async()=>{
+  vi.stubGlobal('fetch',vi.fn().mockResolvedValue({ok:true,json:async()=>({text:'One completed pass.',evidence_ids:['e1'],generation_mode:'template'})}));
+  const props={detail,matchId:'demo',language:'en',depth:'casual',anchor:0,onMoment:()=>{}};
+  const view=render(<PlayerPanel {...props} clock={{period:1,elapsed_ms:3000}}/>);
+  fireEvent.click(screen.getByRole('button',{name:'How involved has he been?'}));
+  await screen.findByText('One completed pass.');
+  view.rerender(<PlayerPanel {...props} clock={{period:1,elapsed_ms:4000}}/>);
+  expect(screen.getByText('One completed pass.')).toBeTruthy();
+  expect(screen.getByText(/Answer at 0:03/)).toBeTruthy();
+  view.rerender(<PlayerPanel {...props} clock={{period:1,elapsed_ms:1000}}/>);
+  expect(screen.queryByText('One completed pass.')).toBeNull();
+});

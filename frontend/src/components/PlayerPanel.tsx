@@ -12,15 +12,23 @@ export default function PlayerPanel({detail, clock, matchId, language, depth, an
   const [answer,setAnswer] = useState<Answer|null>(null);
   const [busy,setBusy] = useState(false);
   const [error,setError] = useState('');
+  const [answerAt,setAnswerAt] = useState('');
   const active = useRef(0);
-  useEffect(()=>{active.current++;setAnswer(null);setBusy(false);return ()=>{active.current++;};},[clock.period,clock.elapsed_ms,anchor,language,depth]);
+  const previousClock=useRef(clock);
+  useEffect(()=>{
+    const previous=previousClock.current;
+    if(clock.period!==previous.period||clock.elapsed_ms<previous.elapsed_ms){active.current++;setAnswer(null);setBusy(false);}
+    previousClock.current=clock;
+  },[clock.period,clock.elapsed_ms]);
+  useEffect(()=>{active.current++;setAnswer(null);setBusy(false);},[anchor,language,depth]);
+  useEffect(()=>()=>{active.current++;},[]);
   const es = language==='es';
   async function ask(text=question) {
     if(!text.trim()||busy||!detail)return;
     onInteract?.();
     const request=++active.current;
     setBusy(true);setError('');setAnswer(null);
-    try {const result=await api<Answer>(`/matches/${matchId}/questions`,{...clock,player_id:detail.player.id,question:text,language,depth,anchor_ms:anchor});if(request===active.current)setAnswer(result);}
+    try {const result=await api<Answer>(`/matches/${matchId}/questions`,{...clock,player_id:detail.player.id,question:text,language,depth,anchor_ms:anchor});if(request===active.current){setAnswer(result);setAnswerAt(formatClock(clock));}}
     catch(e){if(request===active.current)setError((e as Error).message);}finally{if(request===active.current)setBusy(false);}
   }
   if(!detail)return <aside className="panel loading-panel" aria-busy="true">{es?'Cargando perfil…':'Loading player profile…'}</aside>;
@@ -40,7 +48,7 @@ export default function PlayerPanel({detail, clock, matchId, language, depth, an
       <form onSubmit={e=>{e.preventDefault();void ask();}}><input aria-label="Ask about selected player" value={question} onChange={e=>setQuestion(e.target.value)} placeholder={es?'Participación, pases, cambios…':'Involvement, passing, changes…'} maxLength={500}/><button aria-label="Send player question" disabled={busy||!question.trim()}><CornerDownLeft size={17}/></button></form>
       {busy&&<p className="tiny muted" role="status">{es?'Consultando eventos…':'Checking match events…'}</p>}
       {error&&<p role="alert" className="error-text">{error}</p>}
-      {answer&&<div className="answer" aria-live="polite"><p>{answer.text}</p><span>{answer.evidence_ids.length} {answer.generation_mode==='model'?(es?'eventos · Hechos verificados seleccionados por el modelo':'events · Model-selected verified facts'):(es?'eventos · Explicación por plantilla':'events · Template explanation')}</span></div>}
+      {answer&&<div className="answer" aria-live="polite"><span>{es?'Respuesta a las':'Answer at'} {answerAt}</span><p>{answer.text}</p><span>{answer.evidence_ids.length} {answer.generation_mode==='model'?(es?'eventos · Hechos verificados seleccionados por el modelo':'events · Model-selected verified facts'):(es?'eventos · Explicación por plantilla':'events · Template explanation')}</span></div>}
       <p className="mode-note">{answer?.generation_mode==='model'?(es?'Foundry · Selección de frases verificadas':'Foundry · Verified sentence selection'):(es?'Modo local · Foundry aún no conectado':'Local mode · Foundry not connected yet')}</p>
     </section>
   </aside>;

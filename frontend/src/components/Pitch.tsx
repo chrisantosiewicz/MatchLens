@@ -33,6 +33,5 @@ export default function Pitch({events, players, selectedPlayer, onPlayer, onEven
       <text x="1" y="-2.5" fill="#83a998" fontSize="1.8" letterSpacing=".4">RECORDED ACTIONS · EVENT LOCATIONS</text>
       <text x="104" y="73" fill="#83a998" fontSize="1.8" textAnchor="end">SCHEMATIC VIEW / NO TRACKING</text>
     </svg>
-    {!actions.length && <span className="pitch-empty">No recorded actions in this selection</span>}
   </div>;
 }

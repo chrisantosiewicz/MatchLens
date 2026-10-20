@@ -34,3 +34,14 @@ Preflight: project contains only approved design/plan documents. No baseline sou
 - New workflow provider and API integration are covered by scripted tests only. Actual Foundry behavior, latency and quality remain unverified.
 - Local preview: http://127.0.0.1:5173. No paid or public resources created.
 - Next milestones: cloud account/project setup and SDK smoke test; richer agent evaluation; persistent approval/publication and synchronized overlay; complete localization and accessibility; deployment and submission.
+
+## Seamless companion refinement
+
+- User reported flashing at every replay tick. Reproduced with a delayed-response regression: strict snapshot-key gating removed all visible data between forward updates. Retain confirmed snapshots only when their clock is not ahead of requested time; rewind guard remains intact.
+- Both-team action map defaults to trailing two minutes, max12 actions. Removed central empty-state text; empty pitch remains quiet. Older actions leave visualization only, not analytics storage.
+- Added exact-time recap with latest goal attribution, recorded goal-sequence involvement, and uncapped qualifying moment count. Timestamped recap and player answers remain readable during forward playback; rewind hides future answers/recaps.
+- Added Watch/Explore preview, synthetic numbered roster markers, substitution-aware active entities, milestone cards and player deep links. Explicitly an illustrative synthetic SVG scene, not video recognition or an encoded video.
+- Ruling: Initial action cap12 and milestone thresholds4/8/12… are provisional interaction policies, not football significance claims. Cost if wrong: adjust density/cooldown after real viewer tests.
+- Follow-up read-only review identified disappearing recaps during play; added failing test and fixed clock-safe retention.
+- Verification: 31 backend tests, 15 frontend tests, production build. Backend TestClient deprecation warning remains. Source guidance: docs/watch-companion.md. Paid/cloud/video-recognition work remains unimplemented.
+- Browser verification: Watch layout rendered; forward playback retained the player panel; a generated recap at70:00 named the last goal at54:52 and recorded non-involvement; advancing the clock through71:07.5 produced Mateo Silva's actual 32nd progressive-pass alert. Screenshot: artifacts/matchlens-watch-layout.png.

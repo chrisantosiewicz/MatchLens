@@ -40,3 +40,32 @@ it('discards a recap response from a later clock after rewind', async()=>{
   await act(async()=>{resolveRecap({ok:true,json:async()=>({text:'Future winning goal',evidence_ids:[],generation_mode:'template'})} as Response);});
   expect(screen.queryByText('Future winning goal')).toBeNull();
 });
+
+it('keeps the confirmed player panel mounted during a forward replay update', async()=>{
+  vi.stubGlobal('fetch',vi.fn((url:string)=>url.includes('elapsed_ms=1510000')?new Promise(()=>{}):localFetch(url)));
+  render(<App/>);
+  const heading = await screen.findByRole('heading',{name:'Mateo Silva'});
+  vi.useFakeTimers();
+  try {
+    fireEvent.click(screen.getByRole('button',{name:'Play replay'}));
+    await act(async()=>{await vi.advanceTimersByTimeAsync(1000);});
+    expect(screen.getByRole('heading',{name:'Mateo Silva'})).toBe(heading);
+    expect(screen.queryByText('Loading player profile…')).toBeNull();
+  } finally {vi.useRealTimers();}
+});
+
+it('accepts a clock-stamped recap during forward playback and keeps it readable',async()=>{
+  let resolveRecap!: (value:Response)=>void;
+  vi.stubGlobal('fetch',vi.fn((url:string)=>url.includes('/recap?')?new Promise<Response>(r=>{resolveRecap=r;}):localFetch(url)));
+  render(<App/>);
+  await screen.findByRole('heading',{name:'Mateo Silva'});
+  vi.useFakeTimers();
+  try{
+    fireEvent.click(screen.getByRole('button',{name:'Build my recap'}));
+    fireEvent.click(screen.getByRole('button',{name:'Play replay'}));
+    await act(async()=>{await vi.advanceTimersByTimeAsync(1000);resolveRecap({ok:true,json:async()=>({text:'At your selected time: 70:00. Recap stays readable.',evidence_ids:[],generation_mode:'template'})} as Response);});
+    expect(screen.getByText('At your selected time: 70:00. Recap stays readable.')).toBeTruthy();
+    await act(async()=>{await vi.advanceTimersByTimeAsync(1000);});
+    expect(screen.getByText('At your selected time: 70:00. Recap stays readable.')).toBeTruthy();
+  }finally{vi.useRealTimers();}
+});

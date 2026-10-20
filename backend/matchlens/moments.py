@@ -2,7 +2,7 @@ from .models import Clock, Event, visible
 
 
 def key_moments(
-    events: list[Event], player_id: str, viewer_clock: Clock, limit: int = 5
+    events: list[Event], player_id: str, viewer_clock: Clock, limit: int | None = 5
 ) -> list[dict]:
     allowed = visible(events, viewer_clock)
     possessions: dict[tuple, list[Event]] = {}
@@ -91,6 +91,9 @@ def key_moments(
                     }
                 )
                 break
-    return sorted(
+    ordered_moments = sorted(
         candidates, key=lambda m: (m["rank"], -m["period"], -m["elapsed_ms"])
-    )[: max(0, min(limit, 5))]
+    )
+    return (
+        ordered_moments if limit is None else ordered_moments[: max(0, min(limit, 5))]
+    )
