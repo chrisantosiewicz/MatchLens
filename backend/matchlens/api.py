@@ -1,18 +1,22 @@
 """Local event-backed API. AI integration is deliberately explicit and deferred."""
 
+import os
+import secrets
 from collections import Counter
 from functools import lru_cache
 from typing import Literal
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, Header, HTTPException, Query
 from pydantic import BaseModel, Field
 
 from .alerts import progressive_alerts
 from .analytics import compare_windows, player_stats
-from .models import Clock, visible
+from .explainer import context_packet, explain
+from .models import Clock, Event, visible
 from .moments import key_moments
 from .profiles import profile
 from .providers import configured_provider
+from .store import EventStore
 from .summaries import build_recap
 from .synthetic import generate_match, generate_seasons
 from .workflow import run_workflow
@@ -32,10 +36,44 @@ def seasons():
     return generate_seasons(7)
 
 
+@lru_cache
+def event_store():
+    store = EventStore(os.getenv("MATCHLENS_EVENT_DB", ":memory:"))
+    for match in fixtures().values():
+        for event in match.events:
+            store.upsert(event)
+    return store
+
+
 def match_or_404(match_id):
     if match_id not in fixtures():
         raise HTTPException(404, "Unknown match")
-    return fixtures()[match_id]
+    return fixtures()[match_id].model_copy(
+        update={"events": event_store().events_at(2, 3600000, match_id)}
+    )
+
+
+@app.post("/api/matches/{match_id}/events")
+def ingest_event(
+    match_id: str, event: Event, x_matchlens_token: str | None = Header(None)
+):
+    expected = os.getenv("MATCHLENS_INGEST_TOKEN", "")
+    if (
+        not expected
+        or not x_matchlens_token
+        or not secrets.compare_digest(expected, x_matchlens_token)
+    ):
+        raise HTTPException(401, "Ingestion requires an administrator token")
+    match = match_or_404(match_id)
+    if event.match_id != match_id or event.team_id not in match.teams:
+        raise HTTPException(422, "Event match/team mismatch")
+    roster = {p.id: p for p in match.players}
+    for player_id in (event.player_id, event.recipient_id):
+        if player_id and (
+            player_id not in roster or roster[player_id].team_id != event.team_id
+        ):
+            raise HTTPException(422, "Unknown player or team mismatch")
+    return event_store().upsert(event)
 
 
 def player_or_404(match, player_id):
@@ -69,11 +107,21 @@ def minutes_played(match, player_id, clock):
 
 @app.get("/api/health")
 def health():
+    mode = os.getenv("MATCHLENS_AI_MODE", "template")
+    configured = bool(
+        os.getenv("AZURE_AI_PROJECT_ENDPOINT")
+        and os.getenv("AZURE_AI_MODEL_DEPLOYMENT_NAME")
+    )
     return {
         "status": "ok",
         "data_mode": "synthetic",
-        "ai_mode": "template",
-        "cloud_connected": False,
+        "ai_mode": mode,
+        "integration_status": (
+            "configured_unverified" if configured else "missing_configuration"
+        )
+        if mode == "foundry"
+        else "disabled",
+        "cloud_connected": None if mode == "foundry" and configured else False,
     }
 
 
@@ -163,8 +211,8 @@ class Question(BaseModel):
     anchor_ms: int = Field(default=900_000, ge=0, le=2_700_000)
 
 
-def template_question(match_id: str, request: Question):
-    match = match_or_404(match_id)
+def template_question(match_id: str, request: Question, match=None):
+    match = match if match is not None else match_or_404(match_id)
     player = player_or_404(match, request.player_id)
     clock = Clock(period=request.period, elapsed_ms=request.elapsed_ms)
     stats = player_stats(match.events, player.id, clock)
@@ -190,6 +238,20 @@ def template_question(match_id: str, request: Question):
             else "This event feed cannot establish speed or off-ball movement; tracking data is required."
         )
         evidence = []
+    elif any(word in q for word in ["cause", "caused", "causar", "causaron", "provoc"]):
+        text = (
+            "Estos eventos no demuestran causalidad; una secuencia anterior al gol no prueba que lo causara."
+            if spanish
+            else "These events do not establish causation; an action preceding a goal does not prove it caused the goal."
+        )
+        evidence = []
+    elif any(word in q for word in ["shot", "shoot", "tiro", "disparo"]):
+        intent = "shooting"
+        text = (
+            f"{player.name}: {stats['shots']} tiros y {stats['goals']} goles hasta el tiempo seleccionado."
+            if spanish
+            else f"{player.name} has {stats['shots']} shots and {stats['goals']} goals at the selected time."
+        )
     elif any(
         word in q
         for word in ["usual", "season", "baseline", "normal", "temporada", "habitual"]
@@ -281,13 +343,27 @@ def template_question(match_id: str, request: Question):
         "evidence_ids": evidence,
         "generation_mode": "template",
         "language": request.language,
-        "notice": "Deterministic explanation · Foundry not connected",
+        "notice": "Deterministic event-backed answer",
     }
+
+
+def interpretation_requested(request, requested):
+    return requested["intent"] == "change" or any(
+        word in request.question.lower()
+        for word in ("why", "por qué", "por que", "importa")
+    )
 
 
 @app.post("/api/matches/{match_id}/questions")
 def question(match_id: str, request: Question):
     requested = template_question(match_id, request)
+    interpretive = interpretation_requested(request, requested)
+    if os.getenv("MATCHLENS_AI_POLICY", "single") == "single" and not interpretive:
+        return {
+            **requested,
+            "status": "abstain" if requested["intent"] == "unsupported" else "template",
+            "notice": "Deterministic event-backed answer",
+        }
 
     def fact(answer, key):
         return [
@@ -320,7 +396,34 @@ def question(match_id: str, request: Question):
         )
     except RuntimeError:
         provider = None
-    result = run_workflow(request.model_dump(), tools, provider)
+    if (
+        os.getenv("MATCHLENS_AI_POLICY", "single") == "single"
+        and requested["intent"] != "unsupported"
+    ):
+        match = match_or_404(match_id)
+        packet = context_packet(
+            match,
+            request.player_id,
+            Clock(period=request.period, elapsed_ms=request.elapsed_ms),
+            request.anchor_ms,
+        )
+        try:
+            result = explain(request.model_dump(), packet, provider, requested["text"])
+        finally:
+            if hasattr(provider, "close"):
+                provider.close()
+        return {
+            **requested,
+            **result,
+            "notice": "Experimental model interpretation; inspect supporting events"
+            if result["generation_mode"] == "model"
+            else "Deterministic answer; model unavailable or disabled",
+        }
+    try:
+        result = run_workflow(request.model_dump(), tools, provider)
+    finally:
+        if hasattr(provider, "close"):
+            provider.close()
     return {
         **requested,
         **result,
@@ -342,3 +445,9 @@ def recap(
     player_or_404(match, player_id)
     clock = Clock(period=period, elapsed_ms=elapsed_ms)
     return build_recap(match, player_id, clock, language)
+
+
+if os.getenv("MATCHLENS_FRONTEND_DIR"):
+    from .serving import mount_frontend
+
+    mount_frontend(app, os.environ["MATCHLENS_FRONTEND_DIR"])

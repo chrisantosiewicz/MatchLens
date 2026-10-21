@@ -15,7 +15,7 @@ it('labels model-selected answers accurately',async()=>{
   vi.stubGlobal('fetch',vi.fn().mockResolvedValue({ok:true,json:async()=>({text:'One completed pass.',evidence_ids:['e1'],generation_mode:'model'})}));
   render(<PlayerPanel detail={detail} clock={{period:1,elapsed_ms:3000}} matchId="demo" language="en" depth="casual" anchor={0} onMoment={()=>{}}/>);
   fireEvent.click(screen.getByRole('button',{name:'How involved has he been?'}));
-  expect(await screen.findByText(/Model-selected verified facts/)).toBeTruthy();
+  expect(await screen.findByText(/Model output; inspect evidence/)).toBeTruthy();
   expect(screen.queryByText(/Foundry not connected yet/)).toBeNull();
 });
 

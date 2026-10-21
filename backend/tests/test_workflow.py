@@ -82,3 +82,18 @@ def test_unavailable_tool_is_rejected_without_execution():
     result = run_workflow({}, {"player_stats": tool}, Malicious())
     assert result["generation_mode"] == "template"
     assert result["status"] == "fallback"
+
+
+def test_wrong_tool_then_timeout_returns_requested_answer():
+    class WrongThenTimeout:
+        def complete(self, role, state):
+            if role == "analyst":
+                return {"tool": "season"}
+            raise TimeoutError()
+
+    wrong = lambda: [{"id": "season", "text": "Season baseline.", "evidence_ids": []}]
+    answer = run_workflow(
+        {}, {"requested_answer": tool, "season": wrong}, WrongThenTimeout()
+    )
+    assert answer["text"] == "Completed 3 of 4 passes."
+    assert answer["evidence_ids"] == ["e1", "e2", "e3", "e4"]

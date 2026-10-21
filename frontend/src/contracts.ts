@@ -11,7 +11,7 @@ export type ProfileMetric = {key: keyof Stats; label: string; per90: number; per
 export type PlayerDetail = {player: Player; stats: Stats; minutes_played: number; moments: Moment[]; profile: {minutes: number; position: string; cohort_size: number; cohort_label: string; metrics: ProfileMetric[]}};
 export type WindowStats = {box_entries: number; actions: number; duration_ms: number; routes: Record<string,number>; evidence_ids: string[]};
 export type Comparison = {before: WindowStats; after: WindowStats; provisional: boolean; pattern_supported: boolean};
-export type Answer = {text: string; intent?: string; generation_mode: string; evidence_ids: string[]};
+export type Answer = {notice?: string; text: string; intent?: string; generation_mode: string; evidence_ids: string[]};
 
 export function formatClock(clock: Clock) {
   const seconds = Math.floor(clock.elapsed_ms / 1000);

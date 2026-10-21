@@ -61,6 +61,7 @@ def test_stat_questions_and_recap_are_clock_safe():
 
 
 def test_configured_workflow_is_used_for_player_answers(monkeypatch):
+    monkeypatch.setenv("MATCHLENS_AI_POLICY", "specialist")
     import matchlens.api as api_module
 
     class Provider:
@@ -87,3 +88,51 @@ def test_configured_workflow_is_used_for_player_answers(monkeypatch):
     assert answer["generation_mode"] == "model"
     assert answer["status"] == "reviewed"
     assert len(answer["trace"]) == 5
+
+
+def test_health_reports_configuration_without_claiming_connection(monkeypatch):
+    monkeypatch.setenv("MATCHLENS_AI_MODE", "foundry")
+    monkeypatch.delenv("AZURE_AI_PROJECT_ENDPOINT", raising=False)
+    status = client.get("/api/health").json()
+    assert status["ai_mode"] == "foundry"
+    assert status["integration_status"] == "missing_configuration"
+    assert status["cloud_connected"] is False
+
+
+def test_shooting_and_causal_questions_are_relevant():
+    match = client.get("/api/matches").json()[0]["id"]
+    body = {"period": 2, "elapsed_ms": 1200000, "player_id": "north-6"}
+    for language, question, expected in [
+        ("en", "How many shots has he taken?", "shots"),
+        ("es", "¿Cuántos tiros lleva?", "tiros"),
+        ("en", "Did his passing cause the goal?", "causation"),
+        ("es", "¿Sus pases causaron el gol?", "causalidad"),
+    ]:
+        result = client.post(
+            f"/api/matches/{match}/questions",
+            json={**body, "language": language, "question": question},
+        ).json()
+        assert expected in result["text"]
+
+
+def test_single_policy_keeps_count_questions_deterministic(monkeypatch):
+    import matchlens.api as api_module
+
+    monkeypatch.setenv("MATCHLENS_AI_POLICY", "single")
+
+    def unavailable():
+        raise AssertionError("Count questions must not invoke a model")
+
+    monkeypatch.setattr(api_module, "configured_provider", unavailable)
+    match = client.get("/api/matches").json()[0]["id"]
+    answer = client.post(
+        f"/api/matches/{match}/questions",
+        json={
+            "period": 2,
+            "elapsed_ms": 1200000,
+            "player_id": "north-6",
+            "question": "How many shots has he taken?",
+        },
+    ).json()
+    assert answer["generation_mode"] == "template"
+    assert "shots" in answer["text"]

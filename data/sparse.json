@@ -218,240 +218,306 @@
   "events": [
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e1",
+      "event_id": "match-7-null-e6",
       "revision": 1,
-      "sequence": 1,
+      "sequence": 6,
       "period": 1,
-      "elapsed_ms": 1000,
-      "team_id": "north",
-      "player_id": "north-7",
+      "elapsed_ms": 31000,
+      "team_id": "harbor",
+      "player_id": "harbor-5",
       "recipient_id": null,
       "event_type": "recovery",
       "outcome": "recorded",
       "start": {
-        "x": 39.06,
-        "y": 29.79
+        "x": 71.65,
+        "y": 30.68
       },
       "end": null,
-      "possession_id": "p1-0",
-      "attack_right": true
+      "possession_id": "p1-1",
+      "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e2",
+      "event_id": "match-7-null-e8",
       "revision": 1,
-      "sequence": 2,
+      "sequence": 8,
       "period": 1,
-      "elapsed_ms": 4000,
+      "elapsed_ms": 61000,
       "team_id": "north",
-      "player_id": "north-7",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
+      "player_id": "north-2",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
       "start": {
-        "x": 39.06,
-        "y": 29.79
+        "x": 32.02,
+        "y": 19.33
       },
-      "end": {
-        "x": 37.08,
-        "y": 46.21
-      },
-      "possession_id": "p1-0",
+      "end": null,
+      "possession_id": "p1-2",
       "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e3",
+      "event_id": "match-7-null-e20",
       "revision": 1,
-      "sequence": 3,
+      "sequence": 20,
       "period": 1,
-      "elapsed_ms": 7500,
+      "elapsed_ms": 127500,
       "team_id": "north",
       "player_id": "north-6",
       "recipient_id": "north-3",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 37.08,
-        "y": 46.21
+        "x": 35.4,
+        "y": 50.46
       },
       "end": {
-        "x": 41.76,
-        "y": 17.2
+        "x": 48.45,
+        "y": 36.77
       },
-      "possession_id": "p1-0",
+      "possession_id": "p1-4",
       "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e4",
+      "event_id": "match-7-null-e26",
       "revision": 1,
-      "sequence": 4,
+      "sequence": 26,
       "period": 1,
-      "elapsed_ms": 11000,
-      "team_id": "north",
-      "player_id": "north-3",
-      "recipient_id": "north-11",
+      "elapsed_ms": 161000,
+      "team_id": "harbor",
+      "player_id": "harbor-10",
+      "recipient_id": "harbor-2",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 41.76,
-        "y": 17.2
+        "x": 59.14,
+        "y": 38.34
       },
       "end": {
-        "x": 43.26,
-        "y": 18.27
+        "x": 42.38,
+        "y": 39.49
       },
-      "possession_id": "p1-0",
+      "possession_id": "p1-5",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e27",
+      "revision": 1,
+      "sequence": 27,
+      "period": 1,
+      "elapsed_ms": 166000,
+      "team_id": "harbor",
+      "player_id": "harbor-2",
+      "recipient_id": "harbor-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 42.38,
+        "y": 39.49
+      },
+      "end": {
+        "x": 13.0,
+        "y": 34.24
+      },
+      "possession_id": "p1-5",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e36",
+      "revision": 1,
+      "sequence": 36,
+      "period": 1,
+      "elapsed_ms": 214000,
+      "team_id": "harbor",
+      "player_id": "harbor-4",
+      "recipient_id": "harbor-2",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 80.28,
+        "y": 27.66
+      },
+      "end": {
+        "x": 73.09,
+        "y": 30.61
+      },
+      "possession_id": "p1-7",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e41",
+      "revision": 1,
+      "sequence": 41,
+      "period": 1,
+      "elapsed_ms": 241000,
+      "team_id": "north",
+      "player_id": "north-10",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 29.06,
+        "y": 29.96
+      },
+      "end": null,
+      "possession_id": "p1-8",
       "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e5",
+      "event_id": "match-7-null-e42",
       "revision": 1,
-      "sequence": 5,
+      "sequence": 42,
       "period": 1,
-      "elapsed_ms": 22000,
+      "elapsed_ms": 244000,
       "team_id": "north",
-      "player_id": "north-11",
+      "player_id": "north-10",
+      "recipient_id": "north-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 29.06,
+        "y": 29.96
+      },
+      "end": {
+        "x": 28.24,
+        "y": 39.1
+      },
+      "possession_id": "p1-8",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e43",
+      "revision": 1,
+      "sequence": 43,
+      "period": 1,
+      "elapsed_ms": 247500,
+      "team_id": "north",
+      "player_id": "north-6",
+      "recipient_id": "north-3",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 28.24,
+        "y": 39.1
+      },
+      "end": {
+        "x": 45.92,
+        "y": 31.74
+      },
+      "possession_id": "p1-8",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e45",
+      "revision": 1,
+      "sequence": 45,
+      "period": 1,
+      "elapsed_ms": 256000,
+      "team_id": "north",
+      "player_id": "north-2",
+      "recipient_id": "north-3",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 45.07,
+        "y": 36.54
+      },
+      "end": {
+        "x": 92.0,
+        "y": 51.06
+      },
+      "possession_id": "p1-8",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e56",
+      "revision": 1,
+      "sequence": 56,
+      "period": 1,
+      "elapsed_ms": 311000,
+      "team_id": "north",
+      "player_id": "north-3",
+      "recipient_id": "north-5",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 56.33,
+        "y": 24.92
+      },
+      "end": {
+        "x": 60.8,
+        "y": 23.47
+      },
+      "possession_id": "p1-10",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e57",
+      "revision": 1,
+      "sequence": 57,
+      "period": 1,
+      "elapsed_ms": 316000,
+      "team_id": "north",
+      "player_id": "north-5",
+      "recipient_id": "north-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 60.8,
+        "y": 23.47
+      },
+      "end": {
+        "x": 92.0,
+        "y": 34.1
+      },
+      "possession_id": "p1-10",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e58",
+      "revision": 1,
+      "sequence": 58,
+      "period": 1,
+      "elapsed_ms": 322000,
+      "team_id": "north",
+      "player_id": "north-6",
       "recipient_id": null,
       "event_type": "turnover",
       "outcome": "recorded",
       "start": {
-        "x": 43.26,
-        "y": 18.27
+        "x": 92.0,
+        "y": 34.1
       },
       "end": null,
-      "possession_id": "p1-0",
+      "possession_id": "p1-10",
       "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e6",
+      "event_id": "match-7-null-e67",
       "revision": 1,
-      "sequence": 6,
+      "sequence": 67,
       "period": 1,
-      "elapsed_ms": 181000,
+      "elapsed_ms": 382000,
       "team_id": "north",
-      "player_id": "north-10",
+      "player_id": "north-4",
       "recipient_id": null,
-      "event_type": "recovery",
+      "event_type": "turnover",
       "outcome": "recorded",
       "start": {
-        "x": 29.64,
-        "y": 47.07
-      },
-      "end": null,
-      "possession_id": "p1-6",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e7",
-      "revision": 1,
-      "sequence": 7,
-      "period": 1,
-      "elapsed_ms": 184000,
-      "team_id": "north",
-      "player_id": "north-10",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 29.64,
-        "y": 47.07
-      },
-      "end": {
-        "x": 29.24,
-        "y": 23.48
-      },
-      "possession_id": "p1-6",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e8",
-      "revision": 1,
-      "sequence": 8,
-      "period": 1,
-      "elapsed_ms": 187500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-2",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 29.24,
-        "y": 23.48
-      },
-      "end": {
-        "x": 38.36,
-        "y": 30.07
-      },
-      "possession_id": "p1-6",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e9",
-      "revision": 1,
-      "sequence": 9,
-      "period": 1,
-      "elapsed_ms": 191000,
-      "team_id": "north",
-      "player_id": "north-2",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 38.36,
-        "y": 30.07
-      },
-      "end": {
-        "x": 36.34,
-        "y": 47.62
-      },
-      "possession_id": "p1-6",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e10",
-      "revision": 1,
-      "sequence": 10,
-      "period": 1,
-      "elapsed_ms": 196000,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-4",
-      "event_type": "pass",
-      "outcome": "incomplete",
-      "start": {
-        "x": 36.34,
-        "y": 47.62
-      },
-      "end": {
-        "x": 48.34,
-        "y": 47.62
-      },
-      "possession_id": "p1-6",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e11",
-      "revision": 1,
-      "sequence": 11,
-      "period": 1,
-      "elapsed_ms": 361000,
-      "team_id": "north",
-      "player_id": "north-10",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 24.12,
-        "y": 26.34
+        "x": 51.92,
+        "y": 19.56
       },
       "end": null,
       "possession_id": "p1-12",
@@ -459,326 +525,326 @@
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e12",
+      "event_id": "match-7-null-e82",
       "revision": 1,
-      "sequence": 12,
+      "sequence": 82,
       "period": 1,
-      "elapsed_ms": 364000,
-      "team_id": "north",
-      "player_id": "north-10",
-      "recipient_id": "north-6",
+      "elapsed_ms": 457500,
+      "team_id": "harbor",
+      "player_id": "harbor-10",
+      "recipient_id": "harbor-11",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 24.12,
-        "y": 26.34
+        "x": 70.99,
+        "y": 22.03
       },
       "end": {
-        "x": 38.26,
-        "y": 21.87
+        "x": 71.25,
+        "y": 47.23
       },
-      "possession_id": "p1-12",
+      "possession_id": "p1-15",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e83",
+      "revision": 1,
+      "sequence": 83,
+      "period": 1,
+      "elapsed_ms": 461000,
+      "team_id": "harbor",
+      "player_id": "harbor-11",
+      "recipient_id": "harbor-9",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 71.25,
+        "y": 47.23
+      },
+      "end": {
+        "x": 57.94,
+        "y": 29.87
+      },
+      "possession_id": "p1-15",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e89",
+      "revision": 1,
+      "sequence": 89,
+      "period": 1,
+      "elapsed_ms": 491000,
+      "team_id": "north",
+      "player_id": "north-11",
+      "recipient_id": "north-3",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 29.45,
+        "y": 22.27
+      },
+      "end": {
+        "x": 37.11,
+        "y": 36.35
+      },
+      "possession_id": "p1-16",
       "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e13",
+      "event_id": "match-7-null-e102",
       "revision": 1,
-      "sequence": 13,
+      "sequence": 102,
       "period": 1,
-      "elapsed_ms": 367500,
+      "elapsed_ms": 604000,
+      "team_id": "north",
+      "player_id": "north-5",
+      "recipient_id": "north-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 35.44,
+        "y": 17.77
+      },
+      "end": {
+        "x": 51.02,
+        "y": 21.19
+      },
+      "possession_id": "p1-20",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e103",
+      "revision": 1,
+      "sequence": 103,
+      "period": 1,
+      "elapsed_ms": 607500,
       "team_id": "north",
       "player_id": "north-6",
       "recipient_id": "north-5",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 38.26,
-        "y": 21.87
+        "x": 51.02,
+        "y": 21.19
       },
       "end": {
-        "x": 43.08,
-        "y": 35.81
+        "x": 51.41,
+        "y": 31.4
       },
-      "possession_id": "p1-12",
+      "possession_id": "p1-20",
       "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e14",
+      "event_id": "match-7-null-e108",
       "revision": 1,
-      "sequence": 14,
+      "sequence": 108,
       "period": 1,
-      "elapsed_ms": 371000,
-      "team_id": "north",
-      "player_id": "north-5",
-      "recipient_id": "north-3",
+      "elapsed_ms": 634000,
+      "team_id": "harbor",
+      "player_id": "harbor-2",
+      "recipient_id": "harbor-7",
       "event_type": "pass",
-      "outcome": "complete",
+      "outcome": "incomplete",
       "start": {
-        "x": 43.08,
-        "y": 35.81
+        "x": 76.08,
+        "y": 33.3
       },
       "end": {
-        "x": 51.93,
-        "y": 38.52
+        "x": 68.32,
+        "y": 50.56
       },
-      "possession_id": "p1-12",
-      "attack_right": true
+      "possession_id": "p1-21",
+      "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e15",
+      "event_id": "match-7-null-e114",
       "revision": 1,
-      "sequence": 15,
+      "sequence": 114,
       "period": 1,
-      "elapsed_ms": 382000,
+      "elapsed_ms": 682000,
       "team_id": "north",
-      "player_id": "north-3",
+      "player_id": "north-8",
       "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
+      "event_type": "shot",
+      "outcome": "saved",
       "start": {
-        "x": 51.93,
-        "y": 38.52
+        "x": 92.0,
+        "y": 33.8
       },
-      "end": null,
-      "possession_id": "p1-12",
+      "end": {
+        "x": 105.0,
+        "y": 34.0
+      },
+      "possession_id": "p1-22",
       "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e16",
+      "event_id": "match-7-null-e115",
       "revision": 1,
-      "sequence": 16,
+      "sequence": 115,
       "period": 1,
-      "elapsed_ms": 541000,
+      "elapsed_ms": 684000,
       "team_id": "north",
-      "player_id": "north-7",
+      "player_id": null,
+      "recipient_id": null,
+      "event_type": "stoppage",
+      "outcome": "recorded",
+      "start": null,
+      "end": null,
+      "possession_id": "p1-22",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e126",
+      "revision": 1,
+      "sequence": 126,
+      "period": 1,
+      "elapsed_ms": 751000,
+      "team_id": "harbor",
+      "player_id": "harbor-2",
       "recipient_id": null,
       "event_type": "recovery",
       "outcome": "recorded",
       "start": {
-        "x": 30.38,
-        "y": 50.94
+        "x": 82.72,
+        "y": 24.68
       },
       "end": null,
-      "possession_id": "p1-18",
-      "attack_right": true
+      "possession_id": "p1-25",
+      "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e17",
+      "event_id": "match-7-null-e127",
       "revision": 1,
-      "sequence": 17,
+      "sequence": 127,
       "period": 1,
-      "elapsed_ms": 544000,
-      "team_id": "north",
-      "player_id": "north-7",
-      "recipient_id": "north-6",
+      "elapsed_ms": 754000,
+      "team_id": "harbor",
+      "player_id": "harbor-2",
+      "recipient_id": "harbor-11",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 30.38,
-        "y": 50.94
+        "x": 82.72,
+        "y": 24.68
       },
       "end": {
-        "x": 34.97,
-        "y": 24.44
+        "x": 65.18,
+        "y": 33.46
       },
-      "possession_id": "p1-18",
+      "possession_id": "p1-25",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e130",
+      "revision": 1,
+      "sequence": 130,
+      "period": 1,
+      "elapsed_ms": 781000,
+      "team_id": "north",
+      "player_id": "north-6",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 34.38,
+        "y": 53.3
+      },
+      "end": null,
+      "possession_id": "p1-26",
       "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e18",
+      "event_id": "match-7-null-e139",
       "revision": 1,
-      "sequence": 18,
+      "sequence": 139,
       "period": 1,
-      "elapsed_ms": 547500,
+      "elapsed_ms": 841000,
       "team_id": "north",
-      "player_id": "north-6",
+      "player_id": "north-10",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 27.82,
+        "y": 15.38
+      },
+      "end": null,
+      "possession_id": "p1-28",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e143",
+      "revision": 1,
+      "sequence": 143,
+      "period": 1,
+      "elapsed_ms": 856000,
+      "team_id": "north",
+      "player_id": "north-5",
       "recipient_id": "north-4",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 34.97,
-        "y": 24.44
+        "x": 50.58,
+        "y": 44.5
       },
       "end": {
-        "x": 46.65,
-        "y": 24.28
+        "x": 92.0,
+        "y": 46.05
       },
-      "possession_id": "p1-18",
+      "possession_id": "p1-28",
       "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e19",
+      "event_id": "match-7-null-e148",
       "revision": 1,
-      "sequence": 19,
+      "sequence": 148,
       "period": 1,
-      "elapsed_ms": 551000,
-      "team_id": "north",
-      "player_id": "north-4",
-      "recipient_id": "north-7",
+      "elapsed_ms": 877500,
+      "team_id": "harbor",
+      "player_id": "harbor-11",
+      "recipient_id": "harbor-8",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 46.65,
-        "y": 24.28
+        "x": 56.75,
+        "y": 47.1
       },
       "end": {
-        "x": 54.68,
-        "y": 48.26
+        "x": 43.7,
+        "y": 25.61
       },
-      "possession_id": "p1-18",
-      "attack_right": true
+      "possession_id": "p1-29",
+      "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e20",
+      "event_id": "match-7-null-e152",
       "revision": 1,
-      "sequence": 20,
-      "period": 1,
-      "elapsed_ms": 562000,
-      "team_id": "north",
-      "player_id": "north-7",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
-      "start": {
-        "x": 54.68,
-        "y": 48.26
-      },
-      "end": null,
-      "possession_id": "p1-18",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e21",
-      "revision": 1,
-      "sequence": 21,
-      "period": 1,
-      "elapsed_ms": 721000,
-      "team_id": "north",
-      "player_id": "north-3",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 24.13,
-        "y": 30.72
-      },
-      "end": null,
-      "possession_id": "p1-24",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e22",
-      "revision": 1,
-      "sequence": 22,
-      "period": 1,
-      "elapsed_ms": 724000,
-      "team_id": "north",
-      "player_id": "north-3",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 24.13,
-        "y": 30.72
-      },
-      "end": {
-        "x": 37.03,
-        "y": 20.78
-      },
-      "possession_id": "p1-24",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e23",
-      "revision": 1,
-      "sequence": 23,
-      "period": 1,
-      "elapsed_ms": 727500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-10",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 37.03,
-        "y": 20.78
-      },
-      "end": {
-        "x": 42.88,
-        "y": 51.56
-      },
-      "possession_id": "p1-24",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e24",
-      "revision": 1,
-      "sequence": 24,
-      "period": 1,
-      "elapsed_ms": 731000,
-      "team_id": "north",
-      "player_id": "north-10",
-      "recipient_id": "north-3",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 42.88,
-        "y": 51.56
-      },
-      "end": {
-        "x": 55.94,
-        "y": 36.77
-      },
-      "possession_id": "p1-24",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e25",
-      "revision": 1,
-      "sequence": 25,
-      "period": 1,
-      "elapsed_ms": 742000,
-      "team_id": "north",
-      "player_id": "north-3",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
-      "start": {
-        "x": 55.94,
-        "y": 36.77
-      },
-      "end": null,
-      "possession_id": "p1-24",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e26",
-      "revision": 1,
-      "sequence": 26,
+      "sequence": 152,
       "period": 1,
       "elapsed_ms": 901000,
       "team_id": "north",
-      "player_id": "north-7",
+      "player_id": "north-10",
       "recipient_id": null,
       "event_type": "recovery",
       "outcome": "recorded",
       "start": {
-        "x": 32.7,
-        "y": 37.2
+        "x": 24.51,
+        "y": 34.95
       },
       "end": null,
       "possession_id": "p1-30",
@@ -786,1636 +852,1952 @@
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e27",
+      "event_id": "match-7-null-e154",
       "revision": 1,
-      "sequence": 27,
-      "period": 1,
-      "elapsed_ms": 904000,
-      "team_id": "north",
-      "player_id": "north-7",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 32.7,
-        "y": 37.2
-      },
-      "end": {
-        "x": 39.28,
-        "y": 46.92
-      },
-      "possession_id": "p1-30",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e28",
-      "revision": 1,
-      "sequence": 28,
+      "sequence": 154,
       "period": 1,
       "elapsed_ms": 907500,
       "team_id": "north",
       "player_id": "north-6",
-      "recipient_id": "north-7",
+      "recipient_id": "north-5",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 39.28,
-        "y": 46.92
+        "x": 32.1,
+        "y": 46.73
       },
       "end": {
-        "x": 46.24,
-        "y": 40.24
+        "x": 30.89,
+        "y": 16.59
       },
       "possession_id": "p1-30",
       "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e29",
+      "event_id": "match-7-null-e158",
       "revision": 1,
-      "sequence": 29,
+      "sequence": 158,
       "period": 1,
-      "elapsed_ms": 911000,
-      "team_id": "north",
-      "player_id": "north-7",
-      "recipient_id": "north-2",
+      "elapsed_ms": 934000,
+      "team_id": "harbor",
+      "player_id": "harbor-5",
+      "recipient_id": "harbor-3",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 46.24,
-        "y": 40.24
+        "x": 74.19,
+        "y": 53.87
       },
       "end": {
-        "x": 58.59,
-        "y": 26.77
+        "x": 61.48,
+        "y": 33.89
       },
-      "possession_id": "p1-30",
+      "possession_id": "p1-31",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e163",
+      "revision": 1,
+      "sequence": 163,
+      "period": 1,
+      "elapsed_ms": 961000,
+      "team_id": "north",
+      "player_id": "north-9",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 38.39,
+        "y": 25.49
+      },
+      "end": null,
+      "possession_id": "p1-32",
       "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e30",
+      "event_id": "match-7-null-e176",
       "revision": 1,
-      "sequence": 30,
+      "sequence": 176,
       "period": 1,
-      "elapsed_ms": 922000,
+      "elapsed_ms": 1021000,
       "team_id": "north",
-      "player_id": "north-2",
+      "player_id": "north-6",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 39.15,
+        "y": 19.3
+      },
+      "end": null,
+      "possession_id": "p1-34",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e181",
+      "revision": 1,
+      "sequence": 181,
+      "period": 1,
+      "elapsed_ms": 1042000,
+      "team_id": "north",
+      "player_id": "north-9",
       "recipient_id": null,
       "event_type": "turnover",
       "outcome": "recorded",
       "start": {
-        "x": 58.59,
-        "y": 26.77
+        "x": 92.0,
+        "y": 42.63
       },
       "end": null,
-      "possession_id": "p1-30",
+      "possession_id": "p1-34",
       "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e31",
+      "event_id": "match-7-null-e185",
       "revision": 1,
-      "sequence": 31,
+      "sequence": 185,
       "period": 1,
-      "elapsed_ms": 1081000,
-      "team_id": "north",
-      "player_id": "north-9",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 27.12,
-        "y": 29.43
-      },
-      "end": null,
-      "possession_id": "p1-36",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e32",
-      "revision": 1,
-      "sequence": 32,
-      "period": 1,
-      "elapsed_ms": 1084000,
-      "team_id": "north",
-      "player_id": "north-9",
-      "recipient_id": "north-6",
+      "elapsed_ms": 1061000,
+      "team_id": "harbor",
+      "player_id": "harbor-6",
+      "recipient_id": "harbor-3",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 27.12,
-        "y": 29.43
+        "x": 81.13,
+        "y": 50.53
       },
       "end": {
-        "x": 38.16,
-        "y": 15.86
+        "x": 76.56,
+        "y": 36.73
       },
-      "possession_id": "p1-36",
-      "attack_right": true
+      "possession_id": "p1-35",
+      "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e33",
+      "event_id": "match-7-null-e195",
       "revision": 1,
-      "sequence": 33,
+      "sequence": 195,
       "period": 1,
-      "elapsed_ms": 1087500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-10",
+      "elapsed_ms": 1117500,
+      "team_id": "harbor",
+      "player_id": "harbor-2",
+      "recipient_id": "harbor-9",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 38.16,
-        "y": 15.86
+        "x": 55.25,
+        "y": 32.1
       },
       "end": {
-        "x": 42.63,
-        "y": 38.21
-      },
-      "possession_id": "p1-36",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e34",
-      "revision": 1,
-      "sequence": 34,
-      "period": 1,
-      "elapsed_ms": 1091000,
-      "team_id": "north",
-      "player_id": "north-10",
-      "recipient_id": "north-9",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 42.63,
-        "y": 38.21
-      },
-      "end": {
-        "x": 40.87,
-        "y": 44.19
-      },
-      "possession_id": "p1-36",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e35",
-      "revision": 1,
-      "sequence": 35,
-      "period": 1,
-      "elapsed_ms": 1096000,
-      "team_id": "north",
-      "player_id": "north-9",
-      "recipient_id": "north-5",
-      "event_type": "pass",
-      "outcome": "incomplete",
-      "start": {
-        "x": 40.87,
-        "y": 44.19
-      },
-      "end": {
-        "x": 52.87,
-        "y": 44.19
-      },
-      "possession_id": "p1-36",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e36",
-      "revision": 1,
-      "sequence": 36,
-      "period": 1,
-      "elapsed_ms": 1261000,
-      "team_id": "north",
-      "player_id": "north-8",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 29.04,
-        "y": 48.86
-      },
-      "end": null,
-      "possession_id": "p1-42",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e37",
-      "revision": 1,
-      "sequence": 37,
-      "period": 1,
-      "elapsed_ms": 1264000,
-      "team_id": "north",
-      "player_id": "north-8",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 29.04,
-        "y": 48.86
-      },
-      "end": {
-        "x": 27.73,
-        "y": 32.07
-      },
-      "possession_id": "p1-42",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e38",
-      "revision": 1,
-      "sequence": 38,
-      "period": 1,
-      "elapsed_ms": 1267500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-11",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 27.73,
-        "y": 32.07
-      },
-      "end": {
-        "x": 30.56,
-        "y": 20.2
-      },
-      "possession_id": "p1-42",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e39",
-      "revision": 1,
-      "sequence": 39,
-      "period": 1,
-      "elapsed_ms": 1271000,
-      "team_id": "north",
-      "player_id": "north-11",
-      "recipient_id": "north-8",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 30.56,
-        "y": 20.2
-      },
-      "end": {
-        "x": 45.71,
-        "y": 25.58
-      },
-      "possession_id": "p1-42",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e40",
-      "revision": 1,
-      "sequence": 40,
-      "period": 1,
-      "elapsed_ms": 1282000,
-      "team_id": "north",
-      "player_id": "north-8",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
-      "start": {
-        "x": 45.71,
-        "y": 25.58
-      },
-      "end": null,
-      "possession_id": "p1-42",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e41",
-      "revision": 1,
-      "sequence": 41,
-      "period": 1,
-      "elapsed_ms": 1441000,
-      "team_id": "north",
-      "player_id": "north-8",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 39.24,
-        "y": 20.04
-      },
-      "end": null,
-      "possession_id": "p1-48",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e42",
-      "revision": 1,
-      "sequence": 42,
-      "period": 1,
-      "elapsed_ms": 1444000,
-      "team_id": "north",
-      "player_id": "north-8",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 39.24,
-        "y": 20.04
-      },
-      "end": {
-        "x": 39.94,
-        "y": 23.81
-      },
-      "possession_id": "p1-48",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e43",
-      "revision": 1,
-      "sequence": 43,
-      "period": 1,
-      "elapsed_ms": 1447500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-5",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 39.94,
-        "y": 23.81
-      },
-      "end": {
-        "x": 37.19,
-        "y": 46.58
-      },
-      "possession_id": "p1-48",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e44",
-      "revision": 1,
-      "sequence": 44,
-      "period": 1,
-      "elapsed_ms": 1451000,
-      "team_id": "north",
-      "player_id": "north-5",
-      "recipient_id": "north-4",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 37.19,
-        "y": 46.58
-      },
-      "end": {
-        "x": 39.71,
-        "y": 15.16
-      },
-      "possession_id": "p1-48",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e45",
-      "revision": 1,
-      "sequence": 45,
-      "period": 1,
-      "elapsed_ms": 1462000,
-      "team_id": "north",
-      "player_id": "north-4",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
-      "start": {
-        "x": 39.71,
-        "y": 15.16
-      },
-      "end": null,
-      "possession_id": "p1-48",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e46",
-      "revision": 1,
-      "sequence": 46,
-      "period": 1,
-      "elapsed_ms": 1621000,
-      "team_id": "north",
-      "player_id": "north-11",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 27.74,
-        "y": 19.02
-      },
-      "end": null,
-      "possession_id": "p1-54",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e47",
-      "revision": 1,
-      "sequence": 47,
-      "period": 1,
-      "elapsed_ms": 1624000,
-      "team_id": "north",
-      "player_id": "north-11",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 27.74,
-        "y": 19.02
-      },
-      "end": {
-        "x": 42.78,
-        "y": 51.11
-      },
-      "possession_id": "p1-54",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e48",
-      "revision": 1,
-      "sequence": 48,
-      "period": 1,
-      "elapsed_ms": 1627500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-2",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 42.78,
-        "y": 51.11
-      },
-      "end": {
-        "x": 49.37,
-        "y": 48.1
-      },
-      "possession_id": "p1-54",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e49",
-      "revision": 1,
-      "sequence": 49,
-      "period": 1,
-      "elapsed_ms": 1631000,
-      "team_id": "north",
-      "player_id": "north-2",
-      "recipient_id": "north-11",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 49.37,
-        "y": 48.1
-      },
-      "end": {
-        "x": 54.61,
-        "y": 30.16
-      },
-      "possession_id": "p1-54",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e50",
-      "revision": 1,
-      "sequence": 50,
-      "period": 1,
-      "elapsed_ms": 1636000,
-      "team_id": "north",
-      "player_id": "north-11",
-      "recipient_id": "north-8",
-      "event_type": "pass",
-      "outcome": "incomplete",
-      "start": {
-        "x": 54.61,
-        "y": 30.16
-      },
-      "end": {
-        "x": 66.61,
-        "y": 30.16
-      },
-      "possession_id": "p1-54",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e51",
-      "revision": 1,
-      "sequence": 51,
-      "period": 1,
-      "elapsed_ms": 1801000,
-      "team_id": "north",
-      "player_id": "north-2",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 25.43,
-        "y": 53.39
-      },
-      "end": null,
-      "possession_id": "p1-60",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e52",
-      "revision": 1,
-      "sequence": 52,
-      "period": 1,
-      "elapsed_ms": 1804000,
-      "team_id": "north",
-      "player_id": "north-2",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 25.43,
-        "y": 53.39
-      },
-      "end": {
-        "x": 31.68,
-        "y": 19.18
-      },
-      "possession_id": "p1-60",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e53",
-      "revision": 1,
-      "sequence": 53,
-      "period": 1,
-      "elapsed_ms": 1807500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-2",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 31.68,
-        "y": 19.18
-      },
-      "end": {
-        "x": 30.83,
-        "y": 36.54
-      },
-      "possession_id": "p1-60",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e54",
-      "revision": 1,
-      "sequence": 54,
-      "period": 1,
-      "elapsed_ms": 1811000,
-      "team_id": "north",
-      "player_id": "north-2",
-      "recipient_id": "north-11",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 30.83,
-        "y": 36.54
-      },
-      "end": {
-        "x": 29.96,
-        "y": 28.82
-      },
-      "possession_id": "p1-60",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e55",
-      "revision": 1,
-      "sequence": 55,
-      "period": 1,
-      "elapsed_ms": 1816000,
-      "team_id": "north",
-      "player_id": "north-11",
-      "recipient_id": "north-5",
-      "event_type": "pass",
-      "outcome": "incomplete",
-      "start": {
-        "x": 29.96,
-        "y": 28.82
-      },
-      "end": {
-        "x": 41.96,
-        "y": 28.82
-      },
-      "possession_id": "p1-60",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e56",
-      "revision": 1,
-      "sequence": 56,
-      "period": 1,
-      "elapsed_ms": 1981000,
-      "team_id": "north",
-      "player_id": "north-11",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 28.77,
-        "y": 39.38
-      },
-      "end": null,
-      "possession_id": "p1-66",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e57",
-      "revision": 1,
-      "sequence": 57,
-      "period": 1,
-      "elapsed_ms": 1984000,
-      "team_id": "north",
-      "player_id": "north-11",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 28.77,
-        "y": 39.38
-      },
-      "end": {
-        "x": 45.84,
-        "y": 37.89
-      },
-      "possession_id": "p1-66",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e58",
-      "revision": 1,
-      "sequence": 58,
-      "period": 1,
-      "elapsed_ms": 1987500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-10",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 45.84,
-        "y": 37.89
-      },
-      "end": {
-        "x": 45.42,
-        "y": 47.26
-      },
-      "possession_id": "p1-66",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e59",
-      "revision": 1,
-      "sequence": 59,
-      "period": 1,
-      "elapsed_ms": 1991000,
-      "team_id": "north",
-      "player_id": "north-10",
-      "recipient_id": "north-9",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 45.42,
-        "y": 47.26
-      },
-      "end": {
-        "x": 52.5,
-        "y": 26.85
-      },
-      "possession_id": "p1-66",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e60",
-      "revision": 1,
-      "sequence": 60,
-      "period": 1,
-      "elapsed_ms": 1996000,
-      "team_id": "north",
-      "player_id": "north-9",
-      "recipient_id": "north-7",
-      "event_type": "pass",
-      "outcome": "incomplete",
-      "start": {
-        "x": 52.5,
-        "y": 26.85
-      },
-      "end": {
-        "x": 64.5,
-        "y": 26.85
-      },
-      "possession_id": "p1-66",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e61",
-      "revision": 1,
-      "sequence": 61,
-      "period": 1,
-      "elapsed_ms": 2161000,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 30.62,
+        "x": 51.03,
         "y": 41.68
       },
-      "end": null,
-      "possession_id": "p1-72",
-      "attack_right": true
+      "possession_id": "p1-37",
+      "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e62",
+      "event_id": "match-7-null-e203",
       "revision": 1,
-      "sequence": 62,
+      "sequence": 203,
       "period": 1,
-      "elapsed_ms": 2164000,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-11",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 30.62,
-        "y": 41.68
-      },
-      "end": {
-        "x": 28.1,
-        "y": 51.14
-      },
-      "possession_id": "p1-72",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e63",
-      "revision": 1,
-      "sequence": 63,
-      "period": 1,
-      "elapsed_ms": 2167500,
+      "elapsed_ms": 1151000,
       "team_id": "north",
       "player_id": "north-11",
-      "recipient_id": "north-10",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 28.1,
-        "y": 51.14
-      },
-      "end": {
-        "x": 32.7,
-        "y": 41.22
-      },
-      "possession_id": "p1-72",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e64",
-      "revision": 1,
-      "sequence": 64,
-      "period": 1,
-      "elapsed_ms": 2171000,
-      "team_id": "north",
-      "player_id": "north-10",
-      "recipient_id": "north-2",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 32.7,
-        "y": 41.22
-      },
-      "end": {
-        "x": 45.62,
-        "y": 26.33
-      },
-      "possession_id": "p1-72",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e65",
-      "revision": 1,
-      "sequence": 65,
-      "period": 1,
-      "elapsed_ms": 2182000,
-      "team_id": "north",
-      "player_id": "north-2",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
-      "start": {
-        "x": 45.62,
-        "y": 26.33
-      },
-      "end": null,
-      "possession_id": "p1-72",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e66",
-      "revision": 1,
-      "sequence": 66,
-      "period": 1,
-      "elapsed_ms": 2341000,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 31.33,
-        "y": 50.33
-      },
-      "end": null,
-      "possession_id": "p1-78",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e67",
-      "revision": 1,
-      "sequence": 67,
-      "period": 1,
-      "elapsed_ms": 2344000,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-8",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 31.33,
-        "y": 50.33
-      },
-      "end": {
-        "x": 44.54,
-        "y": 35.24
-      },
-      "possession_id": "p1-78",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e68",
-      "revision": 1,
-      "sequence": 68,
-      "period": 1,
-      "elapsed_ms": 2347500,
-      "team_id": "north",
-      "player_id": "north-8",
-      "recipient_id": "north-11",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 44.54,
-        "y": 35.24
-      },
-      "end": {
-        "x": 48.46,
-        "y": 23.48
-      },
-      "possession_id": "p1-78",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e69",
-      "revision": 1,
-      "sequence": 69,
-      "period": 1,
-      "elapsed_ms": 2351000,
-      "team_id": "north",
-      "player_id": "north-11",
-      "recipient_id": "north-5",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 48.46,
-        "y": 23.48
-      },
-      "end": {
-        "x": 62.39,
-        "y": 46.1
-      },
-      "possession_id": "p1-78",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e70",
-      "revision": 1,
-      "sequence": 70,
-      "period": 1,
-      "elapsed_ms": 2362000,
-      "team_id": "north",
-      "player_id": "north-5",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
-      "start": {
-        "x": 62.39,
-        "y": 46.1
-      },
-      "end": null,
-      "possession_id": "p1-78",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e71",
-      "revision": 1,
-      "sequence": 71,
-      "period": 1,
-      "elapsed_ms": 2521000,
-      "team_id": "north",
-      "player_id": "north-10",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 30.87,
-        "y": 43.24
-      },
-      "end": null,
-      "possession_id": "p1-84",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e72",
-      "revision": 1,
-      "sequence": 72,
-      "period": 1,
-      "elapsed_ms": 2524000,
-      "team_id": "north",
-      "player_id": "north-10",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 30.87,
-        "y": 43.24
-      },
-      "end": {
-        "x": 48.65,
-        "y": 45.02
-      },
-      "possession_id": "p1-84",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e73",
-      "revision": 1,
-      "sequence": 73,
-      "period": 1,
-      "elapsed_ms": 2527500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-10",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 48.65,
-        "y": 45.02
-      },
-      "end": {
-        "x": 51.09,
-        "y": 41.32
-      },
-      "possession_id": "p1-84",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e74",
-      "revision": 1,
-      "sequence": 74,
-      "period": 1,
-      "elapsed_ms": 2531000,
-      "team_id": "north",
-      "player_id": "north-10",
-      "recipient_id": "north-7",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 51.09,
-        "y": 41.32
-      },
-      "end": {
-        "x": 57.49,
-        "y": 50.61
-      },
-      "possession_id": "p1-84",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e75",
-      "revision": 1,
-      "sequence": 75,
-      "period": 1,
-      "elapsed_ms": 2542000,
-      "team_id": "north",
-      "player_id": "north-7",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
-      "start": {
-        "x": 57.49,
-        "y": 50.61
-      },
-      "end": null,
-      "possession_id": "p1-84",
-      "attack_right": true
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e76",
-      "revision": 1,
-      "sequence": 76,
-      "period": 2,
-      "elapsed_ms": 1000,
-      "team_id": "north",
-      "player_id": "north-7",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 81.55,
-        "y": 49.91
-      },
-      "end": null,
-      "possession_id": "p2-0",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e77",
-      "revision": 1,
-      "sequence": 77,
-      "period": 2,
-      "elapsed_ms": 4000,
-      "team_id": "north",
-      "player_id": "north-7",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 81.55,
-        "y": 49.91
-      },
-      "end": {
-        "x": 74.68,
-        "y": 40.17
-      },
-      "possession_id": "p2-0",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e78",
-      "revision": 1,
-      "sequence": 78,
-      "period": 2,
-      "elapsed_ms": 7500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-10",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 74.68,
-        "y": 40.17
-      },
-      "end": {
-        "x": 64.57,
-        "y": 18.79
-      },
-      "possession_id": "p2-0",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e79",
-      "revision": 1,
-      "sequence": 79,
-      "period": 2,
-      "elapsed_ms": 11000,
-      "team_id": "north",
-      "player_id": "north-10",
-      "recipient_id": "north-2",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 64.57,
-        "y": 18.79
-      },
-      "end": {
-        "x": 57.5,
-        "y": 28.19
-      },
-      "possession_id": "p2-0",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e80",
-      "revision": 1,
-      "sequence": 80,
-      "period": 2,
-      "elapsed_ms": 22000,
-      "team_id": "north",
-      "player_id": "north-2",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
-      "start": {
-        "x": 57.5,
-        "y": 28.19
-      },
-      "end": null,
-      "possession_id": "p2-0",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e81",
-      "revision": 1,
-      "sequence": 81,
-      "period": 2,
-      "elapsed_ms": 181000,
-      "team_id": "north",
-      "player_id": "north-3",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 66.62,
-        "y": 22.71
-      },
-      "end": null,
-      "possession_id": "p2-6",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e82",
-      "revision": 1,
-      "sequence": 82,
-      "period": 2,
-      "elapsed_ms": 184000,
-      "team_id": "north",
-      "player_id": "north-3",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 66.62,
-        "y": 22.71
-      },
-      "end": {
-        "x": 53.87,
-        "y": 34.83
-      },
-      "possession_id": "p2-6",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e83",
-      "revision": 1,
-      "sequence": 83,
-      "period": 2,
-      "elapsed_ms": 187500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-4",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 53.87,
-        "y": 34.83
-      },
-      "end": {
-        "x": 47.76,
-        "y": 28.84
-      },
-      "possession_id": "p2-6",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e84",
-      "revision": 1,
-      "sequence": 84,
-      "period": 2,
-      "elapsed_ms": 191000,
-      "team_id": "north",
-      "player_id": "north-4",
       "recipient_id": "north-3",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 47.76,
-        "y": 28.84
+        "x": 36.94,
+        "y": 18.45
       },
       "end": {
-        "x": 33.94,
-        "y": 16.08
+        "x": 40.64,
+        "y": 29.0
       },
-      "possession_id": "p2-6",
-      "attack_right": false
+      "possession_id": "p1-38",
+      "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e85",
+      "event_id": "match-7-null-e204",
       "revision": 1,
-      "sequence": 85,
-      "period": 2,
-      "elapsed_ms": 202000,
+      "sequence": 204,
+      "period": 1,
+      "elapsed_ms": 1156000,
       "team_id": "north",
       "player_id": "north-3",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
+      "recipient_id": "north-2",
+      "event_type": "pass",
+      "outcome": "complete",
       "start": {
-        "x": 33.94,
-        "y": 16.08
+        "x": 40.64,
+        "y": 29.0
       },
-      "end": null,
-      "possession_id": "p2-6",
+      "end": {
+        "x": 92.0,
+        "y": 22.68
+      },
+      "possession_id": "p1-38",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e207",
+      "revision": 1,
+      "sequence": 207,
+      "period": 1,
+      "elapsed_ms": 1174000,
+      "team_id": "harbor",
+      "player_id": "harbor-8",
+      "recipient_id": "harbor-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 69.57,
+        "y": 45.6
+      },
+      "end": {
+        "x": 65.47,
+        "y": 50.64
+      },
+      "possession_id": "p1-39",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e86",
+      "event_id": "match-7-null-e213",
       "revision": 1,
-      "sequence": 86,
-      "period": 2,
-      "elapsed_ms": 361000,
-      "team_id": "north",
-      "player_id": "north-3",
+      "sequence": 213,
+      "period": 1,
+      "elapsed_ms": 1231000,
+      "team_id": "harbor",
+      "player_id": "harbor-9",
       "recipient_id": null,
       "event_type": "recovery",
       "outcome": "recorded",
       "start": {
-        "x": 69.95,
-        "y": 47.2
+        "x": 83.0,
+        "y": 38.34
       },
       "end": null,
-      "possession_id": "p2-12",
+      "possession_id": "p1-41",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e87",
+      "event_id": "match-7-null-e221",
       "revision": 1,
-      "sequence": 87,
-      "period": 2,
-      "elapsed_ms": 364000,
-      "team_id": "north",
-      "player_id": "north-3",
-      "recipient_id": "north-6",
+      "sequence": 221,
+      "period": 1,
+      "elapsed_ms": 1291000,
+      "team_id": "harbor",
+      "player_id": "harbor-3",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 81.21,
+        "y": 41.99
+      },
+      "end": null,
+      "possession_id": "p1-43",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e224",
+      "revision": 1,
+      "sequence": 224,
+      "period": 1,
+      "elapsed_ms": 1301000,
+      "team_id": "harbor",
+      "player_id": "harbor-2",
+      "recipient_id": "harbor-8",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 69.95,
-        "y": 47.2
+        "x": 67.77,
+        "y": 15.14
       },
       "end": {
-        "x": 70.29,
-        "y": 47.26
+        "x": 57.24,
+        "y": 19.42
       },
-      "possession_id": "p2-12",
+      "possession_id": "p1-43",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e88",
+      "event_id": "match-7-null-e230",
       "revision": 1,
-      "sequence": 88,
-      "period": 2,
-      "elapsed_ms": 367500,
+      "sequence": 230,
+      "period": 1,
+      "elapsed_ms": 1331000,
       "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-10",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 70.29,
-        "y": 47.26
-      },
-      "end": {
-        "x": 56.35,
-        "y": 47.45
-      },
-      "possession_id": "p2-12",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e89",
-      "revision": 1,
-      "sequence": 89,
-      "period": 2,
-      "elapsed_ms": 371000,
-      "team_id": "north",
-      "player_id": "north-10",
+      "player_id": "north-7",
       "recipient_id": "north-9",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 56.35,
-        "y": 47.45
+        "x": 23.46,
+        "y": 16.3
       },
       "end": {
-        "x": 45.55,
-        "y": 39.68
+        "x": 28.07,
+        "y": 30.06
       },
-      "possession_id": "p2-12",
-      "attack_right": false
+      "possession_id": "p1-44",
+      "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e90",
+      "event_id": "match-7-null-e232",
       "revision": 1,
-      "sequence": 90,
-      "period": 2,
-      "elapsed_ms": 382000,
-      "team_id": "north",
-      "player_id": "north-9",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
-      "start": {
-        "x": 45.55,
-        "y": 39.68
-      },
-      "end": null,
-      "possession_id": "p2-12",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e91",
-      "revision": 1,
-      "sequence": 91,
-      "period": 2,
-      "elapsed_ms": 541000,
-      "team_id": "north",
-      "player_id": "north-2",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 68.61,
-        "y": 24.95
-      },
-      "end": null,
-      "possession_id": "p2-18",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e92",
-      "revision": 1,
-      "sequence": 92,
-      "period": 2,
-      "elapsed_ms": 544000,
-      "team_id": "north",
-      "player_id": "north-2",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 68.61,
-        "y": 24.95
-      },
-      "end": {
-        "x": 69.45,
-        "y": 24.52
-      },
-      "possession_id": "p2-18",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e93",
-      "revision": 1,
-      "sequence": 93,
-      "period": 2,
-      "elapsed_ms": 547500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-4",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 69.45,
-        "y": 24.52
-      },
-      "end": {
-        "x": 63.34,
-        "y": 19.87
-      },
-      "possession_id": "p2-18",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e94",
-      "revision": 1,
-      "sequence": 94,
-      "period": 2,
-      "elapsed_ms": 551000,
-      "team_id": "north",
-      "player_id": "north-4",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 63.34,
-        "y": 19.87
-      },
-      "end": {
-        "x": 65.76,
-        "y": 44.91
-      },
-      "possession_id": "p2-18",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e95",
-      "revision": 1,
-      "sequence": 95,
-      "period": 2,
-      "elapsed_ms": 562000,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
-      "start": {
-        "x": 65.76,
-        "y": 44.91
-      },
-      "end": null,
-      "possession_id": "p2-18",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e96",
-      "revision": 1,
-      "sequence": 96,
-      "period": 2,
-      "elapsed_ms": 721000,
-      "team_id": "north",
-      "player_id": "north-7",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 78.33,
-        "y": 37.24
-      },
-      "end": null,
-      "possession_id": "p2-24",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e97",
-      "revision": 1,
-      "sequence": 97,
-      "period": 2,
-      "elapsed_ms": 724000,
-      "team_id": "north",
-      "player_id": "north-7",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 78.33,
-        "y": 37.24
-      },
-      "end": {
-        "x": 78.58,
-        "y": 18.42
-      },
-      "possession_id": "p2-24",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e98",
-      "revision": 1,
-      "sequence": 98,
-      "period": 2,
-      "elapsed_ms": 727500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-8",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 78.58,
-        "y": 18.42
-      },
-      "end": {
-        "x": 62.73,
-        "y": 27.83
-      },
-      "possession_id": "p2-24",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e99",
-      "revision": 1,
-      "sequence": 99,
-      "period": 2,
-      "elapsed_ms": 731000,
-      "team_id": "north",
-      "player_id": "north-8",
-      "recipient_id": "north-11",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 62.73,
-        "y": 27.83
-      },
-      "end": {
-        "x": 56.89,
-        "y": 18.13
-      },
-      "possession_id": "p2-24",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e100",
-      "revision": 1,
-      "sequence": 100,
-      "period": 2,
-      "elapsed_ms": 742000,
+      "sequence": 232,
+      "period": 1,
+      "elapsed_ms": 1342000,
       "team_id": "north",
       "player_id": "north-11",
       "recipient_id": null,
       "event_type": "turnover",
       "outcome": "recorded",
       "start": {
-        "x": 56.89,
-        "y": 18.13
+        "x": 92.0,
+        "y": 26.1
       },
       "end": null,
+      "possession_id": "p1-44",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e236",
+      "revision": 1,
+      "sequence": 236,
+      "period": 1,
+      "elapsed_ms": 1361000,
+      "team_id": "harbor",
+      "player_id": "harbor-3",
+      "recipient_id": "harbor-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 53.63,
+        "y": 34.16
+      },
+      "end": {
+        "x": 46.45,
+        "y": 18.4
+      },
+      "possession_id": "p1-45",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e242",
+      "revision": 1,
+      "sequence": 242,
+      "period": 1,
+      "elapsed_ms": 1387500,
+      "team_id": "north",
+      "player_id": "north-6",
+      "recipient_id": "north-3",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 28.19,
+        "y": 49.13
+      },
+      "end": {
+        "x": 46.14,
+        "y": 50.4
+      },
+      "possession_id": "p1-46",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e259",
+      "revision": 1,
+      "sequence": 259,
+      "period": 1,
+      "elapsed_ms": 1501000,
+      "team_id": "north",
+      "player_id": "north-3",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 22.44,
+        "y": 23.35
+      },
+      "end": null,
+      "possession_id": "p1-50",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e264",
+      "revision": 1,
+      "sequence": 264,
+      "period": 1,
+      "elapsed_ms": 1541000,
+      "team_id": "harbor",
+      "player_id": "harbor-6",
+      "recipient_id": "harbor-8",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 54.72,
+        "y": 23.63
+      },
+      "end": {
+        "x": 39.63,
+        "y": 35.49
+      },
+      "possession_id": "p1-51",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e284",
+      "revision": 1,
+      "sequence": 284,
+      "period": 1,
+      "elapsed_ms": 1657500,
+      "team_id": "harbor",
+      "player_id": "harbor-6",
+      "recipient_id": "harbor-10",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 64.32,
+        "y": 38.85
+      },
+      "end": {
+        "x": 54.66,
+        "y": 23.55
+      },
+      "possession_id": "p1-55",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e287",
+      "revision": 1,
+      "sequence": 287,
+      "period": 1,
+      "elapsed_ms": 1672000,
+      "team_id": "harbor",
+      "player_id": "harbor-8",
+      "recipient_id": null,
+      "event_type": "shot",
+      "outcome": "goal",
+      "start": {
+        "x": 13.0,
+        "y": 44.73
+      },
+      "end": {
+        "x": 0.0,
+        "y": 34.0
+      },
+      "possession_id": "p1-55",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e310",
+      "revision": 1,
+      "sequence": 310,
+      "period": 1,
+      "elapsed_ms": 1781000,
+      "team_id": "harbor",
+      "player_id": "harbor-10",
+      "recipient_id": "harbor-3",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 74.1,
+        "y": 29.91
+      },
+      "end": {
+        "x": 58.11,
+        "y": 29.43
+      },
+      "possession_id": "p1-59",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e311",
+      "revision": 1,
+      "sequence": 311,
+      "period": 1,
+      "elapsed_ms": 1786000,
+      "team_id": "harbor",
+      "player_id": "harbor-3",
+      "recipient_id": "harbor-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 58.11,
+        "y": 29.43
+      },
+      "end": {
+        "x": 13.0,
+        "y": 46.91
+      },
+      "possession_id": "p1-59",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e313",
+      "revision": 1,
+      "sequence": 313,
+      "period": 1,
+      "elapsed_ms": 1801000,
+      "team_id": "north",
+      "player_id": "north-5",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 36.93,
+        "y": 21.32
+      },
+      "end": null,
+      "possession_id": "p1-60",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e316",
+      "revision": 1,
+      "sequence": 316,
+      "period": 1,
+      "elapsed_ms": 1831000,
+      "team_id": "harbor",
+      "player_id": "harbor-5",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 82.26,
+        "y": 31.51
+      },
+      "end": null,
+      "possession_id": "p1-61",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e321",
+      "revision": 1,
+      "sequence": 321,
+      "period": 1,
+      "elapsed_ms": 1852000,
+      "team_id": "harbor",
+      "player_id": "harbor-11",
+      "recipient_id": null,
+      "event_type": "shot",
+      "outcome": "saved",
+      "start": {
+        "x": 13.0,
+        "y": 39.04
+      },
+      "end": {
+        "x": 0.0,
+        "y": 34.0
+      },
+      "possession_id": "p1-61",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e324",
+      "revision": 1,
+      "sequence": 324,
+      "period": 1,
+      "elapsed_ms": 1864000,
+      "team_id": "north",
+      "player_id": "north-9",
+      "recipient_id": "north-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 30.37,
+        "y": 31.87
+      },
+      "end": {
+        "x": 40.36,
+        "y": 46.12
+      },
+      "possession_id": "p1-62",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e327",
+      "revision": 1,
+      "sequence": 327,
+      "period": 1,
+      "elapsed_ms": 1876000,
+      "team_id": "north",
+      "player_id": "north-7",
+      "recipient_id": "north-4",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 44.7,
+        "y": 31.79
+      },
+      "end": {
+        "x": 92.0,
+        "y": 16.55
+      },
+      "possession_id": "p1-62",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e331",
+      "revision": 1,
+      "sequence": 331,
+      "period": 1,
+      "elapsed_ms": 1897500,
+      "team_id": "harbor",
+      "player_id": "harbor-8",
+      "recipient_id": "harbor-3",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 70.85,
+        "y": 23.2
+      },
+      "end": {
+        "x": 52.93,
+        "y": 25.18
+      },
+      "possession_id": "p1-63",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e334",
+      "revision": 1,
+      "sequence": 334,
+      "period": 1,
+      "elapsed_ms": 1912000,
+      "team_id": "harbor",
+      "player_id": "harbor-4",
+      "recipient_id": null,
+      "event_type": "turnover",
+      "outcome": "recorded",
+      "start": {
+        "x": 13.0,
+        "y": 22.18
+      },
+      "end": null,
+      "possession_id": "p1-63",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e337",
+      "revision": 1,
+      "sequence": 337,
+      "period": 1,
+      "elapsed_ms": 1927500,
+      "team_id": "north",
+      "player_id": "north-6",
+      "recipient_id": "north-7",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 36.06,
+        "y": 21.03
+      },
+      "end": {
+        "x": 52.07,
+        "y": 32.34
+      },
+      "possession_id": "p1-64",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e338",
+      "revision": 1,
+      "sequence": 338,
+      "period": 1,
+      "elapsed_ms": 1931000,
+      "team_id": "north",
+      "player_id": "north-7",
+      "recipient_id": "north-10",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 52.07,
+        "y": 32.34
+      },
+      "end": {
+        "x": 53.44,
+        "y": 24.99
+      },
+      "possession_id": "p1-64",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e339",
+      "revision": 1,
+      "sequence": 339,
+      "period": 1,
+      "elapsed_ms": 1936000,
+      "team_id": "north",
+      "player_id": "north-10",
+      "recipient_id": "north-2",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 53.44,
+        "y": 24.99
+      },
+      "end": {
+        "x": 92.0,
+        "y": 27.12
+      },
+      "possession_id": "p1-64",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e341",
+      "revision": 1,
+      "sequence": 341,
+      "period": 1,
+      "elapsed_ms": 1951000,
+      "team_id": "harbor",
+      "player_id": "harbor-6",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 70.77,
+        "y": 18.18
+      },
+      "end": null,
+      "possession_id": "p1-65",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e342",
+      "revision": 1,
+      "sequence": 342,
+      "period": 1,
+      "elapsed_ms": 1954000,
+      "team_id": "harbor",
+      "player_id": "harbor-6",
+      "recipient_id": "harbor-4",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 70.77,
+        "y": 18.18
+      },
+      "end": {
+        "x": 57.13,
+        "y": 42.96
+      },
+      "possession_id": "p1-65",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e343",
+      "revision": 1,
+      "sequence": 343,
+      "period": 1,
+      "elapsed_ms": 1957500,
+      "team_id": "harbor",
+      "player_id": "harbor-4",
+      "recipient_id": "harbor-2",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 57.13,
+        "y": 42.96
+      },
+      "end": {
+        "x": 46.77,
+        "y": 39.33
+      },
+      "possession_id": "p1-65",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e344",
+      "revision": 1,
+      "sequence": 344,
+      "period": 1,
+      "elapsed_ms": 1961000,
+      "team_id": "harbor",
+      "player_id": "harbor-2",
+      "recipient_id": "harbor-11",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 46.77,
+        "y": 39.33
+      },
+      "end": {
+        "x": 38.82,
+        "y": 26.83
+      },
+      "possession_id": "p1-65",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e350",
+      "revision": 1,
+      "sequence": 350,
+      "period": 1,
+      "elapsed_ms": 2011000,
+      "team_id": "harbor",
+      "player_id": "harbor-6",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 68.24,
+        "y": 43.85
+      },
+      "end": null,
+      "possession_id": "p1-67",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e361",
+      "revision": 1,
+      "sequence": 361,
+      "period": 1,
+      "elapsed_ms": 2062000,
+      "team_id": "north",
+      "player_id": "north-7",
+      "recipient_id": null,
+      "event_type": "turnover",
+      "outcome": "recorded",
+      "start": {
+        "x": 92.0,
+        "y": 40.29
+      },
+      "end": null,
+      "possession_id": "p1-68",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e366",
+      "revision": 1,
+      "sequence": 366,
+      "period": 1,
+      "elapsed_ms": 2086000,
+      "team_id": "harbor",
+      "player_id": "harbor-2",
+      "recipient_id": "harbor-4",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 61.8,
+        "y": 52.04
+      },
+      "end": {
+        "x": 13.0,
+        "y": 46.95
+      },
+      "possession_id": "p1-69",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e380",
+      "revision": 1,
+      "sequence": 380,
+      "period": 1,
+      "elapsed_ms": 2167500,
+      "team_id": "north",
+      "player_id": "north-5",
+      "recipient_id": "north-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 32.35,
+        "y": 34.28
+      },
+      "end": {
+        "x": 47.03,
+        "y": 22.71
+      },
+      "possession_id": "p1-72",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e387",
+      "revision": 1,
+      "sequence": 387,
+      "period": 1,
+      "elapsed_ms": 2206000,
+      "team_id": "harbor",
+      "player_id": "harbor-4",
+      "recipient_id": "harbor-8",
+      "event_type": "pass",
+      "outcome": "incomplete",
+      "start": {
+        "x": 45.93,
+        "y": 51.98
+      },
+      "end": {
+        "x": 13.0,
+        "y": 17.7
+      },
+      "possession_id": "p1-73",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e391",
+      "revision": 1,
+      "sequence": 391,
+      "period": 1,
+      "elapsed_ms": 2231000,
+      "team_id": "north",
+      "player_id": "north-2",
+      "recipient_id": "north-11",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 31.45,
+        "y": 37.44
+      },
+      "end": {
+        "x": 47.17,
+        "y": 17.51
+      },
+      "possession_id": "p1-74",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e398",
+      "revision": 1,
+      "sequence": 398,
+      "period": 1,
+      "elapsed_ms": 2266000,
+      "team_id": "harbor",
+      "player_id": "harbor-7",
+      "recipient_id": "harbor-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 64.58,
+        "y": 36.9
+      },
+      "end": {
+        "x": 13.0,
+        "y": 43.25
+      },
+      "possession_id": "p1-75",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e400",
+      "revision": 1,
+      "sequence": 400,
+      "period": 1,
+      "elapsed_ms": 2281000,
+      "team_id": "north",
+      "player_id": "north-7",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 35.85,
+        "y": 38.08
+      },
+      "end": null,
+      "possession_id": "p1-76",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e402",
+      "revision": 1,
+      "sequence": 402,
+      "period": 1,
+      "elapsed_ms": 2287500,
+      "team_id": "north",
+      "player_id": "north-6",
+      "recipient_id": "north-9",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 42.84,
+        "y": 25.93
+      },
+      "end": {
+        "x": 40.5,
+        "y": 34.71
+      },
+      "possession_id": "p1-76",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e403",
+      "revision": 1,
+      "sequence": 403,
+      "period": 1,
+      "elapsed_ms": 2291000,
+      "team_id": "north",
+      "player_id": "north-9",
+      "recipient_id": "north-10",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 40.5,
+        "y": 34.71
+      },
+      "end": {
+        "x": 52.3,
+        "y": 35.44
+      },
+      "possession_id": "p1-76",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e407",
+      "revision": 1,
+      "sequence": 407,
+      "period": 1,
+      "elapsed_ms": 2314000,
+      "team_id": "harbor",
+      "player_id": "harbor-8",
+      "recipient_id": "harbor-2",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 82.98,
+        "y": 45.92
+      },
+      "end": {
+        "x": 85.89,
+        "y": 34.35
+      },
+      "possession_id": "p1-77",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e411",
+      "revision": 1,
+      "sequence": 411,
+      "period": 1,
+      "elapsed_ms": 2347500,
+      "team_id": "north",
+      "player_id": "north-6",
+      "recipient_id": "north-10",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 29.65,
+        "y": 23.16
+      },
+      "end": {
+        "x": 30.13,
+        "y": 50.67
+      },
+      "possession_id": "p1-78",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e417",
+      "revision": 1,
+      "sequence": 417,
+      "period": 1,
+      "elapsed_ms": 2381000,
+      "team_id": "harbor",
+      "player_id": "harbor-7",
+      "recipient_id": "harbor-9",
+      "event_type": "pass",
+      "outcome": "incomplete",
+      "start": {
+        "x": 57.9,
+        "y": 18.75
+      },
+      "end": {
+        "x": 40.26,
+        "y": 29.03
+      },
+      "possession_id": "p1-79",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e424",
+      "revision": 1,
+      "sequence": 424,
+      "period": 1,
+      "elapsed_ms": 2431000,
+      "team_id": "harbor",
+      "player_id": "harbor-5",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 73.86,
+        "y": 43.3
+      },
+      "end": null,
+      "possession_id": "p1-81",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e432",
+      "revision": 1,
+      "sequence": 432,
+      "period": 1,
+      "elapsed_ms": 2494000,
+      "team_id": "harbor",
+      "player_id": "harbor-6",
+      "recipient_id": "harbor-2",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 79.28,
+        "y": 38.47
+      },
+      "end": {
+        "x": 82.02,
+        "y": 20.54
+      },
+      "possession_id": "p1-83",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e438",
+      "revision": 1,
+      "sequence": 438,
+      "period": 1,
+      "elapsed_ms": 2524000,
+      "team_id": "north",
+      "player_id": "north-8",
+      "recipient_id": "north-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 37.23,
+        "y": 40.72
+      },
+      "end": {
+        "x": 47.93,
+        "y": 48.35
+      },
+      "possession_id": "p1-84",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e449",
+      "revision": 1,
+      "sequence": 449,
+      "period": 1,
+      "elapsed_ms": 2581000,
+      "team_id": "north",
+      "player_id": "north-10",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 25.69,
+        "y": 33.03
+      },
+      "end": null,
+      "possession_id": "p1-86",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e457",
+      "revision": 1,
+      "sequence": 457,
+      "period": 1,
+      "elapsed_ms": 2617500,
+      "team_id": "harbor",
+      "player_id": "harbor-9",
+      "recipient_id": "harbor-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 59.58,
+        "y": 29.11
+      },
+      "end": {
+        "x": 60.29,
+        "y": 41.47
+      },
+      "possession_id": "p1-87",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e461",
+      "revision": 1,
+      "sequence": 461,
+      "period": 1,
+      "elapsed_ms": 2647500,
+      "team_id": "north",
+      "player_id": "north-6",
+      "recipient_id": "north-10",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 39.12,
+        "y": 45.76
+      },
+      "end": {
+        "x": 49.61,
+        "y": 42.39
+      },
+      "possession_id": "p1-88",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e463",
+      "revision": 1,
+      "sequence": 463,
+      "period": 1,
+      "elapsed_ms": 2656000,
+      "team_id": "north",
+      "player_id": "north-4",
+      "recipient_id": "north-10",
+      "event_type": "pass",
+      "outcome": "incomplete",
+      "start": {
+        "x": 54.03,
+        "y": 39.27
+      },
+      "end": {
+        "x": 92.0,
+        "y": 46.01
+      },
+      "possession_id": "p1-88",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e466",
+      "revision": 1,
+      "sequence": 466,
+      "period": 1,
+      "elapsed_ms": 2677500,
+      "team_id": "harbor",
+      "player_id": "harbor-9",
+      "recipient_id": "harbor-8",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 66.86,
+        "y": 20.67
+      },
+      "end": {
+        "x": 55.42,
+        "y": 15.65
+      },
+      "possession_id": "p1-89",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e467",
+      "revision": 1,
+      "sequence": 467,
+      "period": 1,
+      "elapsed_ms": 2681000,
+      "team_id": "harbor",
+      "player_id": "harbor-8",
+      "recipient_id": "harbor-10",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 55.42,
+        "y": 15.65
+      },
+      "end": {
+        "x": 58.36,
+        "y": 25.57
+      },
+      "possession_id": "p1-89",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e468",
+      "revision": 1,
+      "sequence": 468,
+      "period": 1,
+      "elapsed_ms": 2686000,
+      "team_id": "harbor",
+      "player_id": "harbor-10",
+      "recipient_id": "harbor-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 58.36,
+        "y": 25.57
+      },
+      "end": {
+        "x": 13.0,
+        "y": 43.69
+      },
+      "possession_id": "p1-89",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e472",
+      "revision": 1,
+      "sequence": 472,
+      "period": 2,
+      "elapsed_ms": 31000,
+      "team_id": "harbor",
+      "player_id": "harbor-2",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 23.54,
+        "y": 36.58
+      },
+      "end": null,
+      "possession_id": "p2-1",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e478",
+      "revision": 1,
+      "sequence": 478,
+      "period": 2,
+      "elapsed_ms": 54000,
+      "team_id": "harbor",
+      "player_id": null,
+      "recipient_id": null,
+      "event_type": "stoppage",
+      "outcome": "recorded",
+      "start": null,
+      "end": null,
+      "possession_id": "p2-1",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e481",
+      "revision": 1,
+      "sequence": 481,
+      "period": 2,
+      "elapsed_ms": 67500,
+      "team_id": "north",
+      "player_id": "north-6",
+      "recipient_id": "north-11",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 70.2,
+        "y": 23.31
+      },
+      "end": {
+        "x": 56.65,
+        "y": 21.13
+      },
+      "possession_id": "p2-2",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e487",
+      "revision": 1,
+      "sequence": 487,
+      "period": 2,
+      "elapsed_ms": 97500,
+      "team_id": "harbor",
+      "player_id": "harbor-10",
+      "recipient_id": "harbor-9",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 37.33,
+        "y": 20.49
+      },
+      "end": {
+        "x": 37.78,
+        "y": 37.78
+      },
+      "possession_id": "p2-3",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e493",
+      "revision": 1,
+      "sequence": 493,
+      "period": 2,
+      "elapsed_ms": 127500,
+      "team_id": "north",
+      "player_id": "north-6",
+      "recipient_id": "north-8",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 69.17,
+        "y": 52.22
+      },
+      "end": {
+        "x": 55.19,
+        "y": 49.43
+      },
+      "possession_id": "p2-4",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e498",
+      "revision": 1,
+      "sequence": 498,
+      "period": 2,
+      "elapsed_ms": 154000,
+      "team_id": "harbor",
+      "player_id": "harbor-10",
+      "recipient_id": "harbor-8",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 35.87,
+        "y": 22.43
+      },
+      "end": {
+        "x": 40.05,
+        "y": 24.56
+      },
+      "possession_id": "p2-5",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e504",
+      "revision": 1,
+      "sequence": 504,
+      "period": 2,
+      "elapsed_ms": 187500,
+      "team_id": "north",
+      "player_id": "north-6",
+      "recipient_id": "north-2",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 79.86,
+        "y": 16.04
+      },
+      "end": {
+        "x": 74.48,
+        "y": 31.94
+      },
+      "possession_id": "p2-6",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e513",
+      "revision": 1,
+      "sequence": 513,
+      "period": 2,
+      "elapsed_ms": 241000,
+      "team_id": "north",
+      "player_id": "north-6",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 72.88,
+        "y": 43.68
+      },
+      "end": null,
+      "possession_id": "p2-8",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e518",
+      "revision": 1,
+      "sequence": 518,
+      "period": 2,
+      "elapsed_ms": 262000,
+      "team_id": "north",
+      "player_id": "north-8",
+      "recipient_id": null,
+      "event_type": "turnover",
+      "outcome": "recorded",
+      "start": {
+        "x": 13.0,
+        "y": 52.46
+      },
+      "end": null,
+      "possession_id": "p2-8",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e523",
+      "revision": 1,
+      "sequence": 523,
+      "period": 2,
+      "elapsed_ms": 286000,
+      "team_id": "harbor",
+      "player_id": "harbor-4",
+      "recipient_id": "harbor-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 36.85,
+        "y": 19.61
+      },
+      "end": {
+        "x": 92.0,
+        "y": 25.47
+      },
+      "possession_id": "p2-9",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e530",
+      "revision": 1,
+      "sequence": 530,
+      "period": 2,
+      "elapsed_ms": 322000,
+      "team_id": "north",
+      "player_id": "north-3",
+      "recipient_id": null,
+      "event_type": "turnover",
+      "outcome": "recorded",
+      "start": {
+        "x": 13.0,
+        "y": 50.7
+      },
+      "end": null,
+      "possession_id": "p2-10",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e531",
+      "revision": 1,
+      "sequence": 531,
+      "period": 2,
+      "elapsed_ms": 331000,
+      "team_id": "harbor",
+      "player_id": "harbor-11",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 24.99,
+        "y": 48.44
+      },
+      "end": null,
+      "possession_id": "p2-11",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e534",
+      "revision": 1,
+      "sequence": 534,
+      "period": 2,
+      "elapsed_ms": 364000,
+      "team_id": "north",
+      "player_id": "north-9",
+      "recipient_id": "north-6",
+      "event_type": "pass",
+      "outcome": "incomplete",
+      "start": {
+        "x": 74.54,
+        "y": 47.34
+      },
+      "end": {
+        "x": 57.25,
+        "y": 48.57
+      },
+      "possession_id": "p2-12",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e539",
+      "revision": 1,
+      "sequence": 539,
+      "period": 2,
+      "elapsed_ms": 424000,
+      "team_id": "north",
+      "player_id": "north-11",
+      "recipient_id": "north-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 77.02,
+        "y": 29.77
+      },
+      "end": {
+        "x": 59.5,
+        "y": 21.41
+      },
+      "possession_id": "p2-14",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e552",
+      "revision": 1,
+      "sequence": 552,
+      "period": 2,
+      "elapsed_ms": 514000,
+      "team_id": "harbor",
+      "player_id": "harbor-11",
+      "recipient_id": "harbor-9",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 35.52,
+        "y": 45.67
+      },
+      "end": {
+        "x": 43.87,
+        "y": 35.37
+      },
+      "possession_id": "p2-17",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e554",
+      "revision": 1,
+      "sequence": 554,
+      "period": 2,
+      "elapsed_ms": 541000,
+      "team_id": "north",
+      "player_id": "north-10",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 77.22,
+        "y": 33.75
+      },
+      "end": null,
+      "possession_id": "p2-18",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e555",
+      "revision": 1,
+      "sequence": 555,
+      "period": 2,
+      "elapsed_ms": 544000,
+      "team_id": "north",
+      "player_id": "north-10",
+      "recipient_id": "north-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 77.22,
+        "y": 33.75
+      },
+      "end": {
+        "x": 75.98,
+        "y": 44.92
+      },
+      "possession_id": "p2-18",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e557",
+      "revision": 1,
+      "sequence": 557,
+      "period": 2,
+      "elapsed_ms": 551000,
+      "team_id": "north",
+      "player_id": "north-7",
+      "recipient_id": "north-11",
+      "event_type": "pass",
+      "outcome": "incomplete",
+      "start": {
+        "x": 71.36,
+        "y": 31.55
+      },
+      "end": {
+        "x": 56.37,
+        "y": 43.64
+      },
+      "possession_id": "p2-18",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e585",
+      "revision": 1,
+      "sequence": 585,
+      "period": 2,
+      "elapsed_ms": 742000,
+      "team_id": "north",
+      "player_id": "north-5",
+      "recipient_id": null,
+      "event_type": "shot",
+      "outcome": "wide",
+      "start": {
+        "x": 30.84,
+        "y": 16.6
+      },
+      "end": {
+        "x": 0.0,
+        "y": 34.0
+      },
       "possession_id": "p2-24",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e101",
+      "event_id": "match-7-null-e587",
       "revision": 1,
-      "sequence": 101,
+      "sequence": 587,
+      "period": 2,
+      "elapsed_ms": 751000,
+      "team_id": "harbor",
+      "player_id": "harbor-7",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 27.81,
+        "y": 23.36
+      },
+      "end": null,
+      "possession_id": "p2-25",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e591",
+      "revision": 1,
+      "sequence": 591,
+      "period": 2,
+      "elapsed_ms": 766000,
+      "team_id": "harbor",
+      "player_id": "harbor-10",
+      "recipient_id": "harbor-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 54.07,
+        "y": 25.12
+      },
+      "end": {
+        "x": 92.0,
+        "y": 20.92
+      },
+      "possession_id": "p2-25",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e593",
+      "revision": 1,
+      "sequence": 593,
+      "period": 2,
+      "elapsed_ms": 781000,
+      "team_id": "north",
+      "player_id": "north-4",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 78.31,
+        "y": 49.63
+      },
+      "end": null,
+      "possession_id": "p2-26",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e594",
+      "revision": 1,
+      "sequence": 594,
+      "period": 2,
+      "elapsed_ms": 784000,
+      "team_id": "north",
+      "player_id": "north-4",
+      "recipient_id": "north-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 78.31,
+        "y": 49.63
+      },
+      "end": {
+        "x": 71.73,
+        "y": 34.67
+      },
+      "possession_id": "p2-26",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e596",
+      "revision": 1,
+      "sequence": 596,
+      "period": 2,
+      "elapsed_ms": 791000,
+      "team_id": "north",
+      "player_id": "north-11",
+      "recipient_id": "north-5",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 73.53,
+        "y": 18.99
+      },
+      "end": {
+        "x": 64.78,
+        "y": 21.26
+      },
+      "possession_id": "p2-26",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e597",
+      "revision": 1,
+      "sequence": 597,
+      "period": 2,
+      "elapsed_ms": 796000,
+      "team_id": "north",
+      "player_id": "north-5",
+      "recipient_id": "north-8",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 64.78,
+        "y": 21.26
+      },
+      "end": {
+        "x": 13.0,
+        "y": 24.32
+      },
+      "possession_id": "p2-26",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e600",
+      "revision": 1,
+      "sequence": 600,
+      "period": 2,
+      "elapsed_ms": 814000,
+      "team_id": "harbor",
+      "player_id": "harbor-5",
+      "recipient_id": "harbor-7",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 38.65,
+        "y": 17.9
+      },
+      "end": {
+        "x": 44.38,
+        "y": 21.16
+      },
+      "possession_id": "p2-27",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e605",
+      "revision": 1,
+      "sequence": 605,
+      "period": 2,
+      "elapsed_ms": 841000,
+      "team_id": "north",
+      "player_id": "north-2",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 66.58,
+        "y": 45.27
+      },
+      "end": null,
+      "possession_id": "p2-28",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e606",
+      "revision": 1,
+      "sequence": 606,
+      "period": 2,
+      "elapsed_ms": 844000,
+      "team_id": "north",
+      "player_id": "north-2",
+      "recipient_id": "north-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 66.58,
+        "y": 45.27
+      },
+      "end": {
+        "x": 57.59,
+        "y": 47.75
+      },
+      "possession_id": "p2-28",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e617",
+      "revision": 1,
+      "sequence": 617,
       "period": 2,
       "elapsed_ms": 900000,
       "team_id": "north",
@@ -2430,19 +2812,19 @@
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e102",
+      "event_id": "match-7-null-e618",
       "revision": 1,
-      "sequence": 102,
+      "sequence": 618,
       "period": 2,
       "elapsed_ms": 901000,
       "team_id": "north",
-      "player_id": "north-11",
+      "player_id": "north-7",
       "recipient_id": null,
       "event_type": "recovery",
       "outcome": "recorded",
       "start": {
-        "x": 73.81,
-        "y": 19.09
+        "x": 82.34,
+        "y": 25.91
       },
       "end": null,
       "possession_id": "p2-30",
@@ -2450,88 +2832,42 @@
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e103",
+      "event_id": "match-7-null-e619",
       "revision": 1,
-      "sequence": 103,
+      "sequence": 619,
       "period": 2,
       "elapsed_ms": 904000,
       "team_id": "north",
-      "player_id": "north-11",
+      "player_id": "north-7",
       "recipient_id": "north-6",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 73.81,
-        "y": 19.09
+        "x": 82.34,
+        "y": 25.91
       },
       "end": {
-        "x": 60.5,
-        "y": 29.87
+        "x": 73.27,
+        "y": 20.39
       },
       "possession_id": "p2-30",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e104",
+      "event_id": "match-7-null-e622",
       "revision": 1,
-      "sequence": 104,
-      "period": 2,
-      "elapsed_ms": 907500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-4",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 60.5,
-        "y": 29.87
-      },
-      "end": {
-        "x": 59.88,
-        "y": 35.01
-      },
-      "possession_id": "p2-30",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e105",
-      "revision": 1,
-      "sequence": 105,
-      "period": 2,
-      "elapsed_ms": 911000,
-      "team_id": "north",
-      "player_id": "north-4",
-      "recipient_id": "north-3",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 59.88,
-        "y": 35.01
-      },
-      "end": {
-        "x": 51.2,
-        "y": 40.61
-      },
-      "possession_id": "p2-30",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e106",
-      "revision": 1,
-      "sequence": 106,
+      "sequence": 622,
       "period": 2,
       "elapsed_ms": 922000,
       "team_id": "north",
-      "player_id": "north-3",
+      "player_id": "north-5",
       "recipient_id": null,
       "event_type": "turnover",
       "outcome": "recorded",
       "start": {
-        "x": 51.2,
-        "y": 40.61
+        "x": 41.78,
+        "y": 20.11
       },
       "end": null,
       "possession_id": "p2-30",
@@ -2539,991 +2875,1355 @@
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e107",
+      "event_id": "match-7-null-e624",
       "revision": 1,
-      "sequence": 107,
+      "sequence": 624,
       "period": 2,
-      "elapsed_ms": 1081000,
-      "team_id": "north",
-      "player_id": "north-3",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 67.1,
-        "y": 51.73
-      },
-      "end": null,
-      "possession_id": "p2-36",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e108",
-      "revision": 1,
-      "sequence": 108,
-      "period": 2,
-      "elapsed_ms": 1084000,
-      "team_id": "north",
-      "player_id": "north-3",
-      "recipient_id": "north-6",
+      "elapsed_ms": 934000,
+      "team_id": "harbor",
+      "player_id": "harbor-2",
+      "recipient_id": "harbor-10",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 67.1,
-        "y": 51.73
+        "x": 27.25,
+        "y": 18.31
       },
       "end": {
-        "x": 66.08,
-        "y": 51.4
+        "x": 33.62,
+        "y": 15.97
       },
-      "possession_id": "p2-36",
-      "attack_right": false
+      "possession_id": "p2-31",
+      "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e109",
+      "event_id": "match-7-null-e628",
       "revision": 1,
-      "sequence": 109,
+      "sequence": 628,
       "period": 2,
-      "elapsed_ms": 1087500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-3",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 66.08,
-        "y": 51.4
-      },
-      "end": {
-        "x": 58.42,
-        "y": 31.65
-      },
-      "possession_id": "p2-36",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e110",
-      "revision": 1,
-      "sequence": 110,
-      "period": 2,
-      "elapsed_ms": 1091000,
-      "team_id": "north",
-      "player_id": "north-3",
-      "recipient_id": "north-4",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 58.42,
-        "y": 31.65
-      },
-      "end": {
-        "x": 52.11,
-        "y": 29.72
-      },
-      "possession_id": "p2-36",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e111",
-      "revision": 1,
-      "sequence": 111,
-      "period": 2,
-      "elapsed_ms": 1102000,
-      "team_id": "north",
-      "player_id": "north-4",
+      "elapsed_ms": 952000,
+      "team_id": "harbor",
+      "player_id": "harbor-2",
       "recipient_id": null,
       "event_type": "turnover",
       "outcome": "recorded",
       "start": {
-        "x": 52.11,
-        "y": 29.72
+        "x": 92.0,
+        "y": 51.3
       },
       "end": null,
-      "possession_id": "p2-36",
-      "attack_right": false
+      "possession_id": "p2-31",
+      "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e112",
+      "event_id": "match-7-null-e629",
       "revision": 1,
-      "sequence": 112,
+      "sequence": 629,
       "period": 2,
-      "elapsed_ms": 1261000,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 74.86,
-        "y": 32.67
-      },
-      "end": null,
-      "possession_id": "p2-42",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e113",
-      "revision": 1,
-      "sequence": 113,
-      "period": 2,
-      "elapsed_ms": 1264000,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-11",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 74.86,
-        "y": 32.67
-      },
-      "end": {
-        "x": 67.19,
-        "y": 43.59
-      },
-      "possession_id": "p2-42",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e114",
-      "revision": 1,
-      "sequence": 114,
-      "period": 2,
-      "elapsed_ms": 1267500,
-      "team_id": "north",
-      "player_id": "north-11",
-      "recipient_id": "north-12",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 67.19,
-        "y": 43.59
-      },
-      "end": {
-        "x": 51.79,
-        "y": 17.2
-      },
-      "possession_id": "p2-42",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e115",
-      "revision": 1,
-      "sequence": 115,
-      "period": 2,
-      "elapsed_ms": 1271000,
-      "team_id": "north",
-      "player_id": "north-12",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 51.79,
-        "y": 17.2
-      },
-      "end": {
-        "x": 35.41,
-        "y": 19.08
-      },
-      "possession_id": "p2-42",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e116",
-      "revision": 1,
-      "sequence": 116,
-      "period": 2,
-      "elapsed_ms": 1276000,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-11",
-      "event_type": "pass",
-      "outcome": "incomplete",
-      "start": {
-        "x": 35.41,
-        "y": 19.08
-      },
-      "end": {
-        "x": 23.41,
-        "y": 19.08
-      },
-      "possession_id": "p2-42",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e117",
-      "revision": 1,
-      "sequence": 117,
-      "period": 2,
-      "elapsed_ms": 1441000,
-      "team_id": "north",
-      "player_id": "north-4",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 75.5,
-        "y": 38.31
-      },
-      "end": null,
-      "possession_id": "p2-48",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e118",
-      "revision": 1,
-      "sequence": 118,
-      "period": 2,
-      "elapsed_ms": 1444000,
-      "team_id": "north",
-      "player_id": "north-4",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 75.5,
-        "y": 38.31
-      },
-      "end": {
-        "x": 71.86,
-        "y": 27.5
-      },
-      "possession_id": "p2-48",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e119",
-      "revision": 1,
-      "sequence": 119,
-      "period": 2,
-      "elapsed_ms": 1447500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-10",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 71.86,
-        "y": 27.5
-      },
-      "end": {
-        "x": 73.33,
-        "y": 27.56
-      },
-      "possession_id": "p2-48",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e120",
-      "revision": 1,
-      "sequence": 120,
-      "period": 2,
-      "elapsed_ms": 1451000,
-      "team_id": "north",
-      "player_id": "north-10",
-      "recipient_id": "north-3",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 73.33,
-        "y": 27.56
-      },
-      "end": {
-        "x": 57.49,
-        "y": 47.13
-      },
-      "possession_id": "p2-48",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e121",
-      "revision": 1,
-      "sequence": 121,
-      "period": 2,
-      "elapsed_ms": 1462000,
-      "team_id": "north",
-      "player_id": "north-3",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
-      "start": {
-        "x": 57.49,
-        "y": 47.13
-      },
-      "end": null,
-      "possession_id": "p2-48",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e122",
-      "revision": 1,
-      "sequence": 122,
-      "period": 2,
-      "elapsed_ms": 1621000,
-      "team_id": "north",
-      "player_id": "north-4",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 78.44,
-        "y": 48.51
-      },
-      "end": null,
-      "possession_id": "p2-54",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e123",
-      "revision": 1,
-      "sequence": 123,
-      "period": 2,
-      "elapsed_ms": 1624000,
-      "team_id": "north",
-      "player_id": "north-4",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 78.44,
-        "y": 48.51
-      },
-      "end": {
-        "x": 71.62,
-        "y": 24.63
-      },
-      "possession_id": "p2-54",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e124",
-      "revision": 1,
-      "sequence": 124,
-      "period": 2,
-      "elapsed_ms": 1627500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-3",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 71.62,
-        "y": 24.63
-      },
-      "end": {
-        "x": 66.26,
-        "y": 34.48
-      },
-      "possession_id": "p2-54",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e125",
-      "revision": 1,
-      "sequence": 125,
-      "period": 2,
-      "elapsed_ms": 1631000,
-      "team_id": "north",
-      "player_id": "north-3",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 66.26,
-        "y": 34.48
-      },
-      "end": {
-        "x": 65.87,
-        "y": 36.6
-      },
-      "possession_id": "p2-54",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e126",
-      "revision": 1,
-      "sequence": 126,
-      "period": 2,
-      "elapsed_ms": 1642000,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
-      "start": {
-        "x": 65.87,
-        "y": 36.6
-      },
-      "end": null,
-      "possession_id": "p2-54",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e127",
-      "revision": 1,
-      "sequence": 127,
-      "period": 2,
-      "elapsed_ms": 1801000,
+      "elapsed_ms": 961000,
       "team_id": "north",
       "player_id": "north-5",
       "recipient_id": null,
       "event_type": "recovery",
       "outcome": "recorded",
       "start": {
-        "x": 76.58,
-        "y": 50.31
+        "x": 78.29,
+        "y": 20.51
       },
       "end": null,
-      "possession_id": "p2-60",
+      "possession_id": "p2-32",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e128",
+      "event_id": "match-7-null-e634",
       "revision": 1,
-      "sequence": 128,
+      "sequence": 634,
       "period": 2,
-      "elapsed_ms": 1804000,
+      "elapsed_ms": 982000,
+      "team_id": "north",
+      "player_id": "north-4",
+      "recipient_id": null,
+      "event_type": "turnover",
+      "outcome": "recorded",
+      "start": {
+        "x": 13.0,
+        "y": 24.06
+      },
+      "end": null,
+      "possession_id": "p2-32",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e661",
+      "revision": 1,
+      "sequence": 661,
+      "period": 2,
+      "elapsed_ms": 1151000,
       "team_id": "north",
       "player_id": "north-5",
-      "recipient_id": "north-6",
+      "recipient_id": "north-11",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 76.58,
-        "y": 50.31
+        "x": 65.15,
+        "y": 24.86
       },
       "end": {
-        "x": 71.9,
-        "y": 40.16
+        "x": 55.34,
+        "y": 31.33
       },
-      "possession_id": "p2-60",
+      "possession_id": "p2-38",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e129",
+      "event_id": "match-7-null-e667",
       "revision": 1,
-      "sequence": 129,
+      "sequence": 667,
       "period": 2,
-      "elapsed_ms": 1807500,
+      "elapsed_ms": 1181000,
+      "team_id": "harbor",
+      "player_id": "harbor-9",
+      "recipient_id": "harbor-4",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 50.05,
+        "y": 30.07
+      },
+      "end": {
+        "x": 65.15,
+        "y": 24.06
+      },
+      "possession_id": "p2-39",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e671",
+      "revision": 1,
+      "sequence": 671,
+      "period": 2,
+      "elapsed_ms": 1207500,
       "team_id": "north",
       "player_id": "north-6",
       "recipient_id": "north-11",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 71.9,
-        "y": 40.16
+        "x": 77.35,
+        "y": 50.46
       },
       "end": {
-        "x": 65.65,
-        "y": 52.31
+        "x": 66.54,
+        "y": 33.35
       },
-      "possession_id": "p2-60",
+      "possession_id": "p2-40",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e130",
+      "event_id": "match-7-null-e672",
       "revision": 1,
-      "sequence": 130,
+      "sequence": 672,
       "period": 2,
-      "elapsed_ms": 1811000,
+      "elapsed_ms": 1211000,
       "team_id": "north",
       "player_id": "north-11",
       "recipient_id": "north-7",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 65.65,
-        "y": 52.31
+        "x": 66.54,
+        "y": 33.35
       },
       "end": {
-        "x": 57.78,
-        "y": 41.77
+        "x": 54.1,
+        "y": 48.85
       },
-      "possession_id": "p2-60",
+      "possession_id": "p2-40",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e131",
+      "event_id": "match-7-null-e673",
       "revision": 1,
-      "sequence": 131,
+      "sequence": 673,
       "period": 2,
-      "elapsed_ms": 1822000,
+      "elapsed_ms": 1216000,
       "team_id": "north",
       "player_id": "north-7",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
+      "recipient_id": "north-4",
+      "event_type": "pass",
+      "outcome": "complete",
       "start": {
-        "x": 57.78,
-        "y": 41.77
+        "x": 54.1,
+        "y": 48.85
       },
-      "end": null,
-      "possession_id": "p2-60",
+      "end": {
+        "x": 13.0,
+        "y": 16.55
+      },
+      "possession_id": "p2-40",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e132",
+      "event_id": "match-7-null-e678",
       "revision": 1,
-      "sequence": 132,
+      "sequence": 678,
       "period": 2,
-      "elapsed_ms": 1981000,
+      "elapsed_ms": 1241000,
+      "team_id": "harbor",
+      "player_id": "harbor-10",
+      "recipient_id": "harbor-4",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 51.04,
+        "y": 38.97
+      },
+      "end": {
+        "x": 56.72,
+        "y": 18.93
+      },
+      "possession_id": "p2-41",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e683",
+      "revision": 1,
+      "sequence": 683,
+      "period": 2,
+      "elapsed_ms": 1267500,
       "team_id": "north",
-      "player_id": "north-5",
+      "player_id": "north-6",
+      "recipient_id": "north-11",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 77.44,
+        "y": 29.39
+      },
+      "end": {
+        "x": 65.9,
+        "y": 42.05
+      },
+      "possession_id": "p2-42",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e685",
+      "revision": 1,
+      "sequence": 685,
+      "period": 2,
+      "elapsed_ms": 1276000,
+      "team_id": "north",
+      "player_id": "north-7",
+      "recipient_id": "north-11",
+      "event_type": "pass",
+      "outcome": "incomplete",
+      "start": {
+        "x": 60.69,
+        "y": 31.9
+      },
+      "end": {
+        "x": 48.69,
+        "y": 31.9
+      },
+      "possession_id": "p2-42",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e689",
+      "revision": 1,
+      "sequence": 689,
+      "period": 2,
+      "elapsed_ms": 1301000,
+      "team_id": "harbor",
+      "player_id": "harbor-5",
+      "recipient_id": "harbor-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 42.7,
+        "y": 49.97
+      },
+      "end": {
+        "x": 59.84,
+        "y": 22.76
+      },
+      "possession_id": "p2-43",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e692",
+      "revision": 1,
+      "sequence": 692,
+      "period": 2,
+      "elapsed_ms": 1321000,
+      "team_id": "north",
+      "player_id": "north-10",
       "recipient_id": null,
       "event_type": "recovery",
       "outcome": "recorded",
       "start": {
-        "x": 65.51,
-        "y": 49.81
+        "x": 77.6,
+        "y": 32.54
       },
       "end": null,
-      "possession_id": "p2-66",
+      "possession_id": "p2-44",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e133",
+      "event_id": "match-7-null-e694",
       "revision": 1,
-      "sequence": 133,
+      "sequence": 694,
       "period": 2,
-      "elapsed_ms": 1984000,
+      "elapsed_ms": 1327500,
       "team_id": "north",
-      "player_id": "north-5",
+      "player_id": "north-6",
+      "recipient_id": "north-12",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 74.04,
+        "y": 29.44
+      },
+      "end": {
+        "x": 61.77,
+        "y": 36.66
+      },
+      "possession_id": "p2-44",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e695",
+      "revision": 1,
+      "sequence": 695,
+      "period": 2,
+      "elapsed_ms": 1331000,
+      "team_id": "north",
+      "player_id": "north-12",
+      "recipient_id": "north-2",
+      "event_type": "pass",
+      "outcome": "incomplete",
+      "start": {
+        "x": 61.77,
+        "y": 36.66
+      },
+      "end": {
+        "x": 52.28,
+        "y": 39.66
+      },
+      "possession_id": "p2-44",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e696",
+      "revision": 1,
+      "sequence": 696,
+      "period": 2,
+      "elapsed_ms": 1351000,
+      "team_id": "harbor",
+      "player_id": "harbor-3",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 31.45,
+        "y": 17.96
+      },
+      "end": null,
+      "possession_id": "p2-45",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e701",
+      "revision": 1,
+      "sequence": 701,
+      "period": 2,
+      "elapsed_ms": 1372000,
+      "team_id": "harbor",
+      "player_id": "harbor-3",
+      "recipient_id": null,
+      "event_type": "turnover",
+      "outcome": "recorded",
+      "start": {
+        "x": 92.0,
+        "y": 41.28
+      },
+      "end": null,
+      "possession_id": "p2-45",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e706",
+      "revision": 1,
+      "sequence": 706,
+      "period": 2,
+      "elapsed_ms": 1411000,
+      "team_id": "harbor",
+      "player_id": "harbor-8",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 25.28,
+        "y": 39.2
+      },
+      "end": null,
+      "possession_id": "p2-47",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e710",
+      "revision": 1,
+      "sequence": 710,
+      "period": 2,
+      "elapsed_ms": 1426000,
+      "team_id": "harbor",
+      "player_id": "harbor-11",
+      "recipient_id": "harbor-2",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 38.31,
+        "y": 26.57
+      },
+      "end": {
+        "x": 92.0,
+        "y": 37.28
+      },
+      "possession_id": "p2-47",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e713",
+      "revision": 1,
+      "sequence": 713,
+      "period": 2,
+      "elapsed_ms": 1444000,
+      "team_id": "north",
+      "player_id": "north-11",
       "recipient_id": "north-6",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 65.51,
-        "y": 49.81
+        "x": 72.79,
+        "y": 19.15
       },
       "end": {
-        "x": 62.93,
-        "y": 51.5
+        "x": 56.99,
+        "y": 33.46
       },
-      "possession_id": "p2-66",
+      "possession_id": "p2-48",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e134",
+      "event_id": "match-7-null-e720",
       "revision": 1,
-      "sequence": 134,
+      "sequence": 720,
+      "period": 2,
+      "elapsed_ms": 1481000,
+      "team_id": "harbor",
+      "player_id": "harbor-6",
+      "recipient_id": "harbor-3",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 45.56,
+        "y": 21.44
+      },
+      "end": {
+        "x": 60.6,
+        "y": 51.01
+      },
+      "possession_id": "p2-49",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e721",
+      "revision": 1,
+      "sequence": 721,
+      "period": 2,
+      "elapsed_ms": 1486000,
+      "team_id": "harbor",
+      "player_id": "harbor-3",
+      "recipient_id": "harbor-9",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 60.6,
+        "y": 51.01
+      },
+      "end": {
+        "x": 92.0,
+        "y": 22.28
+      },
+      "possession_id": "p2-49",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e727",
+      "revision": 1,
+      "sequence": 727,
+      "period": 2,
+      "elapsed_ms": 1516000,
+      "team_id": "north",
+      "player_id": "north-3",
+      "recipient_id": "north-11",
+      "event_type": "pass",
+      "outcome": "incomplete",
+      "start": {
+        "x": 50.06,
+        "y": 22.0
+      },
+      "end": {
+        "x": 13.0,
+        "y": 30.1
+      },
+      "possession_id": "p2-50",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e729",
+      "revision": 1,
+      "sequence": 729,
+      "period": 2,
+      "elapsed_ms": 1534000,
+      "team_id": "harbor",
+      "player_id": "harbor-3",
+      "recipient_id": "harbor-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 26.37,
+        "y": 29.59
+      },
+      "end": {
+        "x": 32.06,
+        "y": 30.15
+      },
+      "possession_id": "p2-51",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e730",
+      "revision": 1,
+      "sequence": 730,
+      "period": 2,
+      "elapsed_ms": 1537500,
+      "team_id": "harbor",
+      "player_id": "harbor-6",
+      "recipient_id": "harbor-2",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 32.06,
+        "y": 30.15
+      },
+      "end": {
+        "x": 45.7,
+        "y": 24.25
+      },
+      "possession_id": "p2-51",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e733",
+      "revision": 1,
+      "sequence": 733,
+      "period": 2,
+      "elapsed_ms": 1552000,
+      "team_id": "harbor",
+      "player_id": "harbor-7",
+      "recipient_id": null,
+      "event_type": "turnover",
+      "outcome": "recorded",
+      "start": {
+        "x": 92.0,
+        "y": 30.05
+      },
+      "end": null,
+      "possession_id": "p2-51",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e734",
+      "revision": 1,
+      "sequence": 734,
+      "period": 2,
+      "elapsed_ms": 1561000,
+      "team_id": "north",
+      "player_id": "north-8",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 76.95,
+        "y": 27.95
+      },
+      "end": null,
+      "possession_id": "p2-52",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e735",
+      "revision": 1,
+      "sequence": 735,
+      "period": 2,
+      "elapsed_ms": 1564000,
+      "team_id": "north",
+      "player_id": "north-8",
+      "recipient_id": "north-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 76.95,
+        "y": 27.95
+      },
+      "end": {
+        "x": 59.77,
+        "y": 36.95
+      },
+      "possession_id": "p2-52",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e756",
+      "revision": 1,
+      "sequence": 756,
+      "period": 2,
+      "elapsed_ms": 1666000,
+      "team_id": "harbor",
+      "player_id": "harbor-6",
+      "recipient_id": "harbor-8",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 59.64,
+        "y": 25.97
+      },
+      "end": {
+        "x": 92.0,
+        "y": 30.16
+      },
+      "possession_id": "p2-55",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e761",
+      "revision": 1,
+      "sequence": 761,
+      "period": 2,
+      "elapsed_ms": 1691000,
+      "team_id": "north",
+      "player_id": "north-10",
+      "recipient_id": "north-8",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 63.91,
+        "y": 26.26
+      },
+      "end": {
+        "x": 59.52,
+        "y": 29.1
+      },
+      "possession_id": "p2-56",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e763",
+      "revision": 1,
+      "sequence": 763,
+      "period": 2,
+      "elapsed_ms": 1702000,
+      "team_id": "north",
+      "player_id": "north-5",
+      "recipient_id": null,
+      "event_type": "shot",
+      "outcome": "wide",
+      "start": {
+        "x": 13.0,
+        "y": 48.62
+      },
+      "end": {
+        "x": 0.0,
+        "y": 34.0
+      },
+      "possession_id": "p2-56",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e767",
+      "revision": 1,
+      "sequence": 767,
+      "period": 2,
+      "elapsed_ms": 1717500,
+      "team_id": "harbor",
+      "player_id": "harbor-5",
+      "recipient_id": "harbor-4",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 34.75,
+        "y": 16.49
+      },
+      "end": {
+        "x": 43.6,
+        "y": 23.65
+      },
+      "possession_id": "p2-57",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e768",
+      "revision": 1,
+      "sequence": 768,
+      "period": 2,
+      "elapsed_ms": 1721000,
+      "team_id": "harbor",
+      "player_id": "harbor-4",
+      "recipient_id": "harbor-11",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 43.6,
+        "y": 23.65
+      },
+      "end": {
+        "x": 45.95,
+        "y": 31.53
+      },
+      "possession_id": "p2-57",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e775",
+      "revision": 1,
+      "sequence": 775,
+      "period": 2,
+      "elapsed_ms": 1771000,
+      "team_id": "harbor",
+      "player_id": "harbor-11",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 36.92,
+        "y": 25.25
+      },
+      "end": null,
+      "possession_id": "p2-59",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e779",
+      "revision": 1,
+      "sequence": 779,
+      "period": 2,
+      "elapsed_ms": 1786000,
+      "team_id": "harbor",
+      "player_id": "harbor-10",
+      "recipient_id": "harbor-4",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 60.45,
+        "y": 40.71
+      },
+      "end": {
+        "x": 92.0,
+        "y": 40.58
+      },
+      "possession_id": "p2-59",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e782",
+      "revision": 1,
+      "sequence": 782,
+      "period": 2,
+      "elapsed_ms": 1801000,
+      "team_id": "north",
+      "player_id": "north-11",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 78.3,
+        "y": 32.14
+      },
+      "end": null,
+      "possession_id": "p2-60",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e785",
+      "revision": 1,
+      "sequence": 785,
+      "period": 2,
+      "elapsed_ms": 1811000,
+      "team_id": "north",
+      "player_id": "north-5",
+      "recipient_id": "north-3",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 43.71,
+        "y": 46.61
+      },
+      "end": {
+        "x": 42.48,
+        "y": 41.2
+      },
+      "possession_id": "p2-60",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e801",
+      "revision": 1,
+      "sequence": 801,
+      "period": 2,
+      "elapsed_ms": 1921000,
+      "team_id": "north",
+      "player_id": "north-12",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 78.24,
+        "y": 28.2
+      },
+      "end": null,
+      "possession_id": "p2-64",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e810",
+      "revision": 1,
+      "sequence": 810,
+      "period": 2,
+      "elapsed_ms": 1966000,
+      "team_id": "harbor",
+      "player_id": "harbor-8",
+      "recipient_id": "harbor-6",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 59.69,
+        "y": 29.0
+      },
+      "end": {
+        "x": 92.0,
+        "y": 29.03
+      },
+      "possession_id": "p2-65",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e815",
+      "revision": 1,
+      "sequence": 815,
       "period": 2,
       "elapsed_ms": 1987500,
       "team_id": "north",
       "player_id": "north-6",
-      "recipient_id": "north-4",
+      "recipient_id": "north-7",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 62.93,
-        "y": 51.5
+        "x": 59.32,
+        "y": 34.02
       },
       "end": {
-        "x": 60.25,
-        "y": 48.08
+        "x": 49.67,
+        "y": 29.19
       },
       "possession_id": "p2-66",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e135",
+      "event_id": "match-7-null-e818",
       "revision": 1,
-      "sequence": 135,
+      "sequence": 818,
       "period": 2,
-      "elapsed_ms": 1991000,
-      "team_id": "north",
-      "player_id": "north-4",
-      "recipient_id": "north-10",
+      "elapsed_ms": 2014000,
+      "team_id": "harbor",
+      "player_id": "harbor-3",
+      "recipient_id": "harbor-10",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 60.25,
-        "y": 48.08
+        "x": 39.62,
+        "y": 48.03
       },
       "end": {
-        "x": 45.41,
-        "y": 27.31
+        "x": 40.63,
+        "y": 42.47
       },
-      "possession_id": "p2-66",
-      "attack_right": false
+      "possession_id": "p2-67",
+      "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e136",
+      "event_id": "match-7-null-e820",
       "revision": 1,
-      "sequence": 136,
+      "sequence": 820,
       "period": 2,
-      "elapsed_ms": 2002000,
-      "team_id": "north",
-      "player_id": "north-10",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
+      "elapsed_ms": 2021000,
+      "team_id": "harbor",
+      "player_id": "harbor-11",
+      "recipient_id": "harbor-10",
+      "event_type": "pass",
+      "outcome": "complete",
       "start": {
-        "x": 45.41,
-        "y": 27.31
+        "x": 46.56,
+        "y": 25.76
       },
-      "end": null,
-      "possession_id": "p2-66",
-      "attack_right": false
+      "end": {
+        "x": 58.49,
+        "y": 48.84
+      },
+      "possession_id": "p2-67",
+      "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e137",
+      "event_id": "match-7-null-e830",
       "revision": 1,
-      "sequence": 137,
+      "sequence": 830,
       "period": 2,
-      "elapsed_ms": 2161000,
+      "elapsed_ms": 2086000,
+      "team_id": "harbor",
+      "player_id": "harbor-6",
+      "recipient_id": "harbor-5",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 77.52,
+        "y": 35.16
+      },
+      "end": {
+        "x": 92.0,
+        "y": 47.23
+      },
+      "possession_id": "p2-69",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e832",
+      "revision": 1,
+      "sequence": 832,
+      "period": 2,
+      "elapsed_ms": 2101000,
       "team_id": "north",
-      "player_id": "north-11",
+      "player_id": "north-3",
       "recipient_id": null,
       "event_type": "recovery",
       "outcome": "recorded",
       "start": {
-        "x": 66.45,
-        "y": 31.18
+        "x": 80.36,
+        "y": 30.84
       },
       "end": null,
-      "possession_id": "p2-72",
+      "possession_id": "p2-70",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e138",
+      "event_id": "match-7-null-e841",
       "revision": 1,
-      "sequence": 138,
+      "sequence": 841,
       "period": 2,
-      "elapsed_ms": 2164000,
-      "team_id": "north",
-      "player_id": "north-11",
-      "recipient_id": "north-6",
+      "elapsed_ms": 2137500,
+      "team_id": "harbor",
+      "player_id": "harbor-11",
+      "recipient_id": "harbor-3",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 66.45,
-        "y": 31.18
+        "x": 35.11,
+        "y": 19.29
       },
       "end": {
-        "x": 54.75,
-        "y": 49.6
+        "x": 49.99,
+        "y": 40.82
       },
-      "possession_id": "p2-72",
-      "attack_right": false
+      "possession_id": "p2-71",
+      "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e139",
+      "event_id": "match-7-null-e842",
       "revision": 1,
-      "sequence": 139,
+      "sequence": 842,
       "period": 2,
-      "elapsed_ms": 2167500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-2",
+      "elapsed_ms": 2141000,
+      "team_id": "harbor",
+      "player_id": "harbor-3",
+      "recipient_id": "harbor-5",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 54.75,
-        "y": 49.6
+        "x": 49.99,
+        "y": 40.82
       },
       "end": {
-        "x": 40.95,
-        "y": 46.03
+        "x": 65.13,
+        "y": 35.92
       },
-      "possession_id": "p2-72",
-      "attack_right": false
+      "possession_id": "p2-71",
+      "attack_right": true
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e140",
+      "event_id": "match-7-null-e854",
       "revision": 1,
-      "sequence": 140,
+      "sequence": 854,
       "period": 2,
-      "elapsed_ms": 2171000,
-      "team_id": "north",
-      "player_id": "north-2",
-      "recipient_id": "north-4",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 40.95,
-        "y": 46.03
-      },
-      "end": {
-        "x": 38.31,
-        "y": 52.36
-      },
-      "possession_id": "p2-72",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e141",
-      "revision": 1,
-      "sequence": 141,
-      "period": 2,
-      "elapsed_ms": 2176000,
+      "elapsed_ms": 2236000,
       "team_id": "north",
       "player_id": "north-4",
-      "recipient_id": "north-7",
+      "recipient_id": "north-2",
       "event_type": "pass",
       "outcome": "incomplete",
       "start": {
-        "x": 38.31,
-        "y": 52.36
+        "x": 58.13,
+        "y": 21.02
       },
       "end": {
-        "x": 26.31,
-        "y": 52.36
+        "x": 13.0,
+        "y": 25.03
       },
-      "possession_id": "p2-72",
+      "possession_id": "p2-74",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e142",
+      "event_id": "match-7-null-e863",
       "revision": 1,
-      "sequence": 142,
+      "sequence": 863,
       "period": 2,
-      "elapsed_ms": 2341000,
-      "team_id": "north",
-      "player_id": "north-3",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 72.05,
-        "y": 45.1
-      },
-      "end": null,
-      "possession_id": "p2-78",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e143",
-      "revision": 1,
-      "sequence": 143,
-      "period": 2,
-      "elapsed_ms": 2344000,
-      "team_id": "north",
-      "player_id": "north-3",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 72.05,
-        "y": 45.1
-      },
-      "end": {
-        "x": 69.5,
-        "y": 48.38
-      },
-      "possession_id": "p2-78",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e144",
-      "revision": 1,
-      "sequence": 144,
-      "period": 2,
-      "elapsed_ms": 2347500,
-      "team_id": "north",
-      "player_id": "north-6",
-      "recipient_id": "north-2",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 69.5,
-        "y": 48.38
-      },
-      "end": {
-        "x": 65.38,
-        "y": 31.98
-      },
-      "possession_id": "p2-78",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e145",
-      "revision": 1,
-      "sequence": 145,
-      "period": 2,
-      "elapsed_ms": 2351000,
-      "team_id": "north",
-      "player_id": "north-2",
-      "recipient_id": "north-7",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 65.38,
-        "y": 31.98
-      },
-      "end": {
-        "x": 55.32,
-        "y": 51.36
-      },
-      "possession_id": "p2-78",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e146",
-      "revision": 1,
-      "sequence": 146,
-      "period": 2,
-      "elapsed_ms": 2362000,
-      "team_id": "north",
-      "player_id": "north-7",
-      "recipient_id": null,
-      "event_type": "turnover",
-      "outcome": "recorded",
-      "start": {
-        "x": 55.32,
-        "y": 51.36
-      },
-      "end": null,
-      "possession_id": "p2-78",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e147",
-      "revision": 1,
-      "sequence": 147,
-      "period": 2,
-      "elapsed_ms": 2521000,
-      "team_id": "north",
-      "player_id": "north-4",
-      "recipient_id": null,
-      "event_type": "recovery",
-      "outcome": "recorded",
-      "start": {
-        "x": 78.29,
-        "y": 46.75
-      },
-      "end": null,
-      "possession_id": "p2-84",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e148",
-      "revision": 1,
-      "sequence": 148,
-      "period": 2,
-      "elapsed_ms": 2524000,
-      "team_id": "north",
-      "player_id": "north-4",
-      "recipient_id": "north-6",
-      "event_type": "pass",
-      "outcome": "complete",
-      "start": {
-        "x": 78.29,
-        "y": 46.75
-      },
-      "end": {
-        "x": 61.71,
-        "y": 29.11
-      },
-      "possession_id": "p2-84",
-      "attack_right": false
-    },
-    {
-      "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e149",
-      "revision": 1,
-      "sequence": 149,
-      "period": 2,
-      "elapsed_ms": 2527500,
+      "elapsed_ms": 2287500,
       "team_id": "north",
       "player_id": "north-6",
       "recipient_id": "north-12",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 61.71,
-        "y": 29.11
+        "x": 81.64,
+        "y": 22.57
       },
       "end": {
-        "x": 48.76,
-        "y": 41.98
+        "x": 65.08,
+        "y": 19.8
       },
-      "possession_id": "p2-84",
+      "possession_id": "p2-76",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e150",
+      "event_id": "match-7-null-e867",
       "revision": 1,
-      "sequence": 150,
+      "sequence": 867,
       "period": 2,
-      "elapsed_ms": 2531000,
-      "team_id": "north",
-      "player_id": "north-12",
-      "recipient_id": "north-11",
+      "elapsed_ms": 2317500,
+      "team_id": "harbor",
+      "player_id": "harbor-8",
+      "recipient_id": "harbor-2",
       "event_type": "pass",
       "outcome": "complete",
       "start": {
-        "x": 48.76,
-        "y": 41.98
+        "x": 56.96,
+        "y": 33.51
       },
       "end": {
-        "x": 37.64,
-        "y": 42.72
+        "x": 70.77,
+        "y": 16.35
       },
-      "possession_id": "p2-84",
+      "possession_id": "p2-77",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e873",
+      "revision": 1,
+      "sequence": 873,
+      "period": 2,
+      "elapsed_ms": 2351000,
+      "team_id": "north",
+      "player_id": "north-2",
+      "recipient_id": "north-8",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 64.16,
+        "y": 21.87
+      },
+      "end": {
+        "x": 55.04,
+        "y": 38.26
+      },
+      "possession_id": "p2-78",
       "attack_right": false
     },
     {
       "match_id": "match-7-sparse",
-      "event_id": "match-7-sparse-e151",
+      "event_id": "match-7-null-e876",
       "revision": 1,
-      "sequence": 151,
+      "sequence": 876,
       "period": 2,
-      "elapsed_ms": 2542000,
+      "elapsed_ms": 2374000,
+      "team_id": "harbor",
+      "player_id": "harbor-7",
+      "recipient_id": "harbor-2",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 26.08,
+        "y": 23.95
+      },
+      "end": {
+        "x": 36.33,
+        "y": 42.62
+      },
+      "possession_id": "p2-79",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e880",
+      "revision": 1,
+      "sequence": 880,
+      "period": 2,
+      "elapsed_ms": 2401000,
       "team_id": "north",
-      "player_id": "north-11",
+      "player_id": "north-8",
       "recipient_id": null,
-      "event_type": "turnover",
+      "event_type": "recovery",
       "outcome": "recorded",
       "start": {
-        "x": 37.64,
-        "y": 42.72
+        "x": 71.6,
+        "y": 28.62
+      },
+      "end": null,
+      "possession_id": "p2-80",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e886",
+      "revision": 1,
+      "sequence": 886,
+      "period": 2,
+      "elapsed_ms": 2431000,
+      "team_id": "harbor",
+      "player_id": "harbor-7",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 37.91,
+        "y": 45.3
+      },
+      "end": null,
+      "possession_id": "p2-81",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e892",
+      "revision": 1,
+      "sequence": 892,
+      "period": 2,
+      "elapsed_ms": 2471000,
+      "team_id": "north",
+      "player_id": "north-4",
+      "recipient_id": "north-12",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 59.16,
+        "y": 41.28
+      },
+      "end": {
+        "x": 48.32,
+        "y": 16.3
+      },
+      "possession_id": "p2-82",
+      "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e897",
+      "revision": 1,
+      "sequence": 897,
+      "period": 2,
+      "elapsed_ms": 2497500,
+      "team_id": "harbor",
+      "player_id": "harbor-9",
+      "recipient_id": "harbor-7",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 51.92,
+        "y": 50.03
+      },
+      "end": {
+        "x": 67.8,
+        "y": 25.48
+      },
+      "possession_id": "p2-83",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e901",
+      "revision": 1,
+      "sequence": 901,
+      "period": 2,
+      "elapsed_ms": 2521000,
+      "team_id": "north",
+      "player_id": "north-12",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 77.91,
+        "y": 33.92
       },
       "end": null,
       "possession_id": "p2-84",
       "attack_right": false
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e907",
+      "revision": 1,
+      "sequence": 907,
+      "period": 2,
+      "elapsed_ms": 2551000,
+      "team_id": "harbor",
+      "player_id": "harbor-2",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 25.82,
+        "y": 27.07
+      },
+      "end": null,
+      "possession_id": "p2-85",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e910",
+      "revision": 1,
+      "sequence": 910,
+      "period": 2,
+      "elapsed_ms": 2561000,
+      "team_id": "harbor",
+      "player_id": "harbor-8",
+      "recipient_id": "harbor-3",
+      "event_type": "pass",
+      "outcome": "complete",
+      "start": {
+        "x": 37.11,
+        "y": 47.81
+      },
+      "end": {
+        "x": 47.26,
+        "y": 27.71
+      },
+      "possession_id": "p2-85",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e918",
+      "revision": 1,
+      "sequence": 918,
+      "period": 2,
+      "elapsed_ms": 2611000,
+      "team_id": "harbor",
+      "player_id": "harbor-4",
+      "recipient_id": null,
+      "event_type": "recovery",
+      "outcome": "recorded",
+      "start": {
+        "x": 33.83,
+        "y": 38.06
+      },
+      "end": null,
+      "possession_id": "p2-87",
+      "attack_right": true
+    },
+    {
+      "match_id": "match-7-sparse",
+      "event_id": "match-7-null-e926",
+      "revision": 1,
+      "sequence": 926,
+      "period": 2,
+      "elapsed_ms": 2644000,
+      "team_id": "north",
+      "player_id": "north-7",
+      "recipient_id": "north-6",
+      "event_type": "pass",
+      "outcome": "incomplete",
+      "start": {
+        "x": 80.29,
+        "y": 28.84
+      },
+      "end": {
+        "x": 74.87,
+        "y": 15.79
+      },
+      "possession_id": "p2-88",
+      "attack_right": false
     }
   ],
-  "final_score": {}
+  "final_score": {
+    "harbor": 3
+  }
 }

@@ -33,8 +33,9 @@ def run_workflow(
 
     def fallback():
         nonlocal facts
-        if not facts and tools:
-            facts = next(iter(tools.values()))()
+        if tools:
+            trusted = tools.get("requested_answer", next(iter(tools.values())))
+            facts = trusted()
         return result(
             " ".join(f["text"] for f in facts) or "Insufficient recorded evidence."
         )

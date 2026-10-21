@@ -1,0 +1,186 @@
+{
+  "synthetic": true,
+  "empirically_calibrated": false,
+  "seeds": [
+    {
+      "seed": 0,
+      "completion": 0.8605,
+      "sparse_team_counts": {
+        "north": 79,
+        "harbor": 78
+      },
+      "gk_max_shots_per90": 0.03558718861209965
+    },
+    {
+      "seed": 1,
+      "completion": 0.8696,
+      "sparse_team_counts": {
+        "north": 68,
+        "harbor": 85
+      },
+      "gk_max_shots_per90": 0.0
+    },
+    {
+      "seed": 2,
+      "completion": 0.8629,
+      "sparse_team_counts": {
+        "north": 87,
+        "harbor": 74
+      },
+      "gk_max_shots_per90": 0.0
+    },
+    {
+      "seed": 3,
+      "completion": 0.8699,
+      "sparse_team_counts": {
+        "north": 87,
+        "harbor": 88
+      },
+      "gk_max_shots_per90": 0.0
+    },
+    {
+      "seed": 4,
+      "completion": 0.8721,
+      "sparse_team_counts": {
+        "harbor": 83,
+        "north": 82
+      },
+      "gk_max_shots_per90": 0.036824877250409165
+    },
+    {
+      "seed": 5,
+      "completion": 0.8686,
+      "sparse_team_counts": {
+        "north": 89,
+        "harbor": 86
+      },
+      "gk_max_shots_per90": 0.03637833468067906
+    },
+    {
+      "seed": 6,
+      "completion": 0.8588,
+      "sparse_team_counts": {
+        "harbor": 83,
+        "north": 67
+      },
+      "gk_max_shots_per90": 0.0
+    },
+    {
+      "seed": 7,
+      "completion": 0.8839,
+      "sparse_team_counts": {
+        "harbor": 85,
+        "north": 96
+      },
+      "gk_max_shots_per90": 0.0
+    },
+    {
+      "seed": 8,
+      "completion": 0.8593,
+      "sparse_team_counts": {
+        "harbor": 87,
+        "north": 91
+      },
+      "gk_max_shots_per90": 0.03564356435643564
+    },
+    {
+      "seed": 9,
+      "completion": 0.8734,
+      "sparse_team_counts": {
+        "north": 82,
+        "harbor": 82
+      },
+      "gk_max_shots_per90": 0.0
+    },
+    {
+      "seed": 10,
+      "completion": 0.8904,
+      "sparse_team_counts": {
+        "north": 65,
+        "harbor": 84
+      },
+      "gk_max_shots_per90": 0.03737541528239203
+    },
+    {
+      "seed": 11,
+      "completion": 0.8621,
+      "sparse_team_counts": {
+        "harbor": 87,
+        "north": 89
+      },
+      "gk_max_shots_per90": 0.0
+    },
+    {
+      "seed": 12,
+      "completion": 0.8668,
+      "sparse_team_counts": {
+        "harbor": 85,
+        "north": 81
+      },
+      "gk_max_shots_per90": 0.0
+    },
+    {
+      "seed": 13,
+      "completion": 0.8779,
+      "sparse_team_counts": {
+        "harbor": 79,
+        "north": 78
+      },
+      "gk_max_shots_per90": 0.03461538461538462
+    },
+    {
+      "seed": 14,
+      "completion": 0.8319,
+      "sparse_team_counts": {
+        "north": 95,
+        "harbor": 66
+      },
+      "gk_max_shots_per90": 0.0
+    },
+    {
+      "seed": 15,
+      "completion": 0.8637,
+      "sparse_team_counts": {
+        "north": 84,
+        "harbor": 75
+      },
+      "gk_max_shots_per90": 0.03637833468067906
+    },
+    {
+      "seed": 16,
+      "completion": 0.8719,
+      "sparse_team_counts": {
+        "north": 97,
+        "harbor": 85
+      },
+      "gk_max_shots_per90": 0.03693065244152647
+    },
+    {
+      "seed": 17,
+      "completion": 0.8811,
+      "sparse_team_counts": {
+        "harbor": 90,
+        "north": 83
+      },
+      "gk_max_shots_per90": 0.0
+    },
+    {
+      "seed": 18,
+      "completion": 0.8764,
+      "sparse_team_counts": {
+        "harbor": 91,
+        "north": 71
+      },
+      "gk_max_shots_per90": 0.0
+    },
+    {
+      "seed": 19,
+      "completion": 0.8772,
+      "sparse_team_counts": {
+        "harbor": 86,
+        "north": 74
+      },
+      "gk_max_shots_per90": 0.03926701570680628
+    }
+  ]
+}

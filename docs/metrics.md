@@ -13,3 +13,6 @@ All metrics describe fictional event data. No tracking measurements are inferred
 - Moments select goals, personal shots, qualifying actions preceding a shot, recoveries/tackles, and losses followed within 20s by an opposition shot before a recorded own recovery. Temporal association is not causal attribution.
 
 The demo generator is reproducible but not empirically calibrated. It scripts baseline entry opportunities, increases right-channel opportunities after a fictional substitution in the shift scenario, and lowers shot probability to avoid treating every box entry as a shot. There is no hidden storyline field in analysis events. Held-out seeds remain necessary before a final accuracy claim.
+
+
+October 21 corrections: zero-duration windows always contain zero actions, entries and evidence. Sparse observations are sampled independently from complete null-scenario ground truth; substitution metadata is retained to preserve roster intervals. Sparse counts are observed lower bounds and missing goals can make the observed score incomplete. Season shooting/progression and match pass-success probabilities depend on position; all ranges are heuristic, not calibrated. Failed passes terminate generated possessions. The five-entry sample gate is editorial only; it is not a hypothesis test or evidence of causation.

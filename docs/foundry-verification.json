@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-21",
+  "connectivity": "two authenticated Responses calls returned model output and usage",
+  "explanation_acceptance": "neither response passed structural validation; default fallback retained",
+  "semantic_quality": "not evaluated",
+  "records": [
+    {
+      "file": "foundry-smoke.json",
+      "deployment": "gpt-4.1-mini",
+      "seed": 101,
+      "latency_ms_including_authentication": 12230.97,
+      "generation_mode": "fallback",
+      "usage": {
+        "input_tokens": 4286,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 216,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4502
+      }
+    },
+    {
+      "file": "foundry-smoke-retry.json",
+      "deployment": "gpt-4.1-mini",
+      "seed": 101,
+      "latency_ms_including_authentication": 11555.78,
+      "generation_mode": "fallback",
+      "usage": {
+        "input_tokens": 4363,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 242,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4605
+      }
+    }
+  ]
+}

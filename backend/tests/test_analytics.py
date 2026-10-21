@@ -176,3 +176,12 @@ def test_turnover_followed_by_opponent_shot_is_temporal_moment():
     )[0]
     assert moment["title"] == "Turnover followed by an opposition shot"
     assert moment["evidence_ids"] == ["loss", "opp-shot"]
+
+
+def test_zero_duration_window_contains_no_actions_at_anchor():
+    clock = Clock(period=2, elapsed_ms=1000)
+    result = compare_windows([entry(1, 1000)], clock, clock, "north")
+    assert result["after"]["duration_ms"] == 0
+    assert result["after"]["actions"] == 0
+    assert result["after"]["box_entries"] == 0
+    assert result["after"]["evidence_ids"] == []

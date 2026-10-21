@@ -51,6 +51,24 @@ def squad() -> list[Player]:
 def generate_match(seed: int = 7, scenario: str = "shift") -> MatchFixture:
     if scenario not in {"shift", "null", "sparse"}:
         raise ValueError("scenario must be shift, null or sparse")
+    if scenario == "sparse":
+        # Missing observation layer over a complete match; RNG is independent of play.
+        full = generate_match(seed, "null")
+        sampling = random.Random(seed + 9000)
+        observed = [
+            e
+            for e in full.events
+            if e.event_type == "substitution" or sampling.random() < 0.18
+        ]
+        match_id = f"match-{seed}-sparse"
+        return full.model_copy(
+            update={
+                "id": match_id,
+                "events": [
+                    e.model_copy(update={"match_id": match_id}) for e in observed
+                ],
+            }
+        )
     rng = random.Random(seed)
     match_id = f"match-{seed}-{scenario}"
     players = squad()
@@ -107,8 +125,6 @@ def generate_match(seed: int = 7, scenario: str = "shift") -> MatchFixture:
                 )
                 active["north"].remove("north-9")
                 active["north"].append("north-12")
-            if scenario == "sparse" and k % 6:
-                continue
             team = "north" if k % 2 == 0 else "harbor"
             right = (team == "north") == (period == 1)
             pid = f"p{period}-{k}"
@@ -124,6 +140,7 @@ def generate_match(seed: int = 7, scenario: str = "shift") -> MatchFixture:
                 )
 
             add(period, base + 1000, team, actor, "recovery", pid, pt(x, y))
+            lost = False
             for j in range(3):
                 recipient = (
                     "north-6"
@@ -131,6 +148,11 @@ def generate_match(seed: int = 7, scenario: str = "shift") -> MatchFixture:
                     else rng.choice([p for p in pool if p != actor])
                 )
                 nx, ny = max(10, x + rng.uniform(-3, 18)), rng.uniform(15, 53)
+                position = next(p.position for p in players if p.id == actor)
+                success = {"CB": 0.94, "FB": 0.90, "CM": 0.92, "W": 0.85, "ST": 0.83}[
+                    position
+                ]
+                completed = rng.random() < success
                 add(
                     period,
                     base + 4000 + j * 3500,
@@ -141,9 +163,14 @@ def generate_match(seed: int = 7, scenario: str = "shift") -> MatchFixture:
                     pt(x, y),
                     pt(nx, ny),
                     recipient,
-                    "complete",
+                    "complete" if completed else "incomplete",
                 )
+                if not completed:
+                    lost = True
+                    break
                 actor, x, y = recipient, nx, ny
+            if lost:
+                continue
             # Match rhythm changes through event probabilities, not labels sent to the analyst.
             shifted = (
                 scenario == "shift" and team == "north" and period == 2 and k >= 30
@@ -157,6 +184,7 @@ def generate_match(seed: int = 7, scenario: str = "shift") -> MatchFixture:
                     if shifted and actor != "north-12"
                     else rng.choice([p for p in pool if p != actor])
                 )
+                entry_complete = rng.random() < 0.78
                 add(
                     period,
                     base + 16000,
@@ -167,8 +195,10 @@ def generate_match(seed: int = 7, scenario: str = "shift") -> MatchFixture:
                     pt(x, y),
                     pt(92, lane),
                     recipient,
-                    "complete",
+                    "complete" if entry_complete else "incomplete",
                 )
+                if not entry_complete:
+                    continue
                 actor, x, y = recipient, 92, lane
             elif rng.random() < 0.35:
                 add(
@@ -241,9 +271,31 @@ def generate_seasons(seed: int = 7) -> list[SeasonRecord]:
                 league=LEAGUES[i % 5],
                 minutes=minutes,
                 completed_passes=int(factor * rate * rng.uniform(0.65, 1.35)),
-                progressive_passes=int(factor * rng.uniform(2, 8)),
+                progressive_passes=int(
+                    factor
+                    * rng.uniform(
+                        *{
+                            "GK": (0.2, 1.5),
+                            "CB": (2, 6),
+                            "FB": (2, 7),
+                            "CM": (3, 9),
+                            "W": (1, 5),
+                            "ST": (0.3, 2.5),
+                        }[p.position]
+                    )
+                ),
                 shots=int(
-                    factor * rng.uniform(0.1 if p.position == "GK" else 0.6, 3.5)
+                    factor
+                    * rng.uniform(
+                        *{
+                            "GK": (0, 0.04),
+                            "CB": (0.2, 1),
+                            "FB": (0.3, 1.3),
+                            "CM": (0.5, 2.2),
+                            "W": (1.2, 3.5),
+                            "ST": (1.8, 4.2),
+                        }[p.position]
+                    )
                 ),
                 recoveries=int(factor * rng.uniform(2, 9)),
             )

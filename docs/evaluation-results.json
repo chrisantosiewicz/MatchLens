@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-21",
+  "deployment": "gpt-4.1-mini",
+  "evaluation_version": "initial-three-policy; raw single-model count routing before hybrid correction",
+  "cases_per_policy": 20,
+  "not_final_acceptance": true,
+  "independent_human_bilingual_review": false,
+  "cost_usd": null,
+  "cost_limitation": "Azure deployment-specific rates were not independently established; usage is measured, monetary cost is not invented.",
+  "policies": {
+    "template": {
+      "model_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "median_model_case_latency_ms": null,
+      "max_model_case_latency_ms": null,
+      "latency_includes_first_authentication": false,
+      "unreviewed_quality_scores": null
+    },
+    "single": {
+      "model_calls": 12,
+      "input_tokens": 34570,
+      "output_tokens": 1250,
+      "median_model_case_latency_ms": 1742.0,
+      "max_model_case_latency_ms": 12225.87,
+      "latency_includes_first_authentication": true,
+      "unreviewed_quality_scores": null
+    },
+    "specialist": {
+      "model_calls": 33,
+      "input_tokens": 10739,
+      "output_tokens": 589,
+      "median_model_case_latency_ms": 2995.225,
+      "max_model_case_latency_ms": 5474.72,
+      "latency_includes_first_authentication": true,
+      "unreviewed_quality_scores": null
+    }
+  }
+}

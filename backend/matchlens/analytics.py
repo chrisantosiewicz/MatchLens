@@ -57,6 +57,8 @@ def player_stats(events: list[Event], player_id: str, viewer_clock: Clock) -> di
 
 
 def window_stats(events, duration_ms):
+    if duration_ms <= 0:
+        events = []
     entries = [e for e in events if is_entry(e)]
     routes = {"left": 0, "central": 0, "right": 0}
     for e in entries:

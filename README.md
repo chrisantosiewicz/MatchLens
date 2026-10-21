@@ -59,12 +59,56 @@ backend/.venv/Scripts/python.exe -m matchlens.synthetic --output data
 
 ## Current stage
 
-Implemented: local synthetic replay, before/after metrics, player profiles and percentile bars, key event sequences, bounded template questions, English/Spanish analytical text, and template recaps. SQLite revision storage is tested separately; the demo API currently serves deterministic in-memory fixtures. Polling updates the viewer's requested clock; live SSE ingestion is not implemented yet.
+Implemented: local synthetic replay, before/after metrics, player profiles and percentile bars, key event sequences, bounded template questions, English/Spanish analytical text, and template recaps. The API serves canonical revision-aware events through SQLite (in memory by default); token-protected event upserts recompute subsequent reads. Polling updates the viewer's requested clock; live SSE ingestion is not implemented yet.
 
-**AI is not connected.** Question/recap responses are explicitly labeled deterministic templates. The bounded Analyst → Reviewer → Producer orchestration is implemented and tested with a scripted provider. It chooses allowed tools, supports one revision, rejects unknown fact IDs/changed sentences, and falls back on failure. The optional Foundry adapter is written but has not been installed or tested against an actual project. See `.env.example`; nothing is loaded from that file automatically, and no live requests occur in default template mode.
+**Live AI has not been verified.** Question/recap responses are explicitly labeled deterministic templates. The bounded Analyst → Reviewer → Producer orchestration is implemented and tested with a scripted provider. It chooses allowed tools, supports one revision, rejects unknown fact IDs/changed sentences, and falls back on failure. The optional Foundry adapter and SDK dependencies are installed locally and locked, but have not been tested against an actual project. See `.env.example`; nothing is loaded from that file automatically, and no live requests occur in default template mode.
 
-Azure subscription/Foundry setup is not available yet. Live-agent evaluation, cloud deployment, durable publication/authentication, actual overlay scheduling/retractions, and full localization remain subsequent milestones. Never describe this local build as a finished AI submission. The current producer selects and orders canonical factual sentences; unrestricted generated explanations are intentionally withheld pending evaluation.
+Registration is confirmed by the user; Azure subscription/Foundry setup is in progress. Live-agent evaluation, cloud deployment, durable publication/authentication, actual overlay scheduling/retractions, and full localization remain subsequent milestones. Never describe this local build as a finished AI submission. The current producer selects and orders canonical factual sentences; unrestricted generated explanations are intentionally withheld pending evaluation.
 
 No real footage, live tracking, off-ball movement, real league rankings, licensed data or predictive models are included. External font delivery is optional; system-font fallbacks remain usable offline. Synthetic realism is rule-based, not empirically calibrated. Season profiles are illustrative fictional baselines and not real European competition rankings.
 
 Design and implementation plan: `docs/superpowers/`. Build decisions and actual validation: `docs/build-ledger.md`.
+
+
+## Recovery milestones and built-demo serving
+
+See [submission checklist](docs/submission-checklist.md) for review triage, dependencies and acceptance criteria. [AGENTS.md](AGENTS.md) defines project rules. Data checks across seeds 0–19 are recorded in [data validation](docs/data-validation.json); these are heuristic sanity checks, not empirical calibration. Sparse data is a missing-observation sample of the corresponding complete `null` fixture (same seed). Its final score is simulator ground truth; the API computes the observed score from visible events, which can be incomplete.
+
+To serve the built demo without the Vite proxy, first run `npm ci` and `npm run build` in `frontend`, then from the repository root:
+
+```powershell
+$env:MATCHLENS_FRONTEND_DIR = (Resolve-Path frontend/dist).Path
+backend/.venv/Scripts/python.exe -m uvicorn matchlens.api:app --host 127.0.0.1 --port 8000
+```
+
+Open http://127.0.0.1:8000. This is reproducible built-demo serving, not a claim of production hardening. Do not expose a paid model endpoint publicly before access limits are implemented.
+
+### Optional Foundry candidate and evaluation
+
+```powershell
+uv sync --project backend --extra foundry --locked
+$env:MATCHLENS_AI_MODE = 'foundry'
+$env:MATCHLENS_AI_POLICY = 'single'
+# Set AZURE_AI_PROJECT_ENDPOINT and AZURE_AI_MODEL_DEPLOYMENT_NAME locally.
+# Authenticate locally with an Entra credential supported by DefaultAzureCredential.
+```
+
+No environment file is loaded automatically. Restart the server after configuration changes. `single` opts into an experimental free-form interpretation using a calculated context packet; `specialist` retains canonical sentence selection for optional comparison; the default single policy keeps direct counts deterministic. Live connectivity is verified, but neither has met semantic-quality acceptance criteria. Unsupported tracking and causal questions are conservatively answered before model invocation. Unknown citations/numeric tokens trigger fallback; matching tokens do not establish semantic support. Human evaluation is required before claiming trustworthy explanations.
+
+Offline paired evaluation:
+
+```powershell
+backend/.venv/Scripts/python.exe -m matchlens.evaluate --output artifacts/evaluation.json
+```
+
+Add `--live` only with configured, authenticated Foundry access: it makes billable requests. See [evaluation protocol](docs/evaluation.md). Initial live latency/token measurements and observed quality failures are recorded in docs/evaluation-results.json; current-policy acceptance and Azure-specific monetary cost remain unverified.
+
+
+October 21 live verification update: tenant-specific authentication succeeded against the supplied Foundry project. Two gpt-4.1-mini Responses calls returned model output and token usage. Neither candidate passed structural output validation; the first introduced unsupported numeric tokens (89 and 100). Fallback remained active. See `docs/foundry-verification.json` (or `foundry-verification.json` from this directory). Earlier statements of no live requests are historical; a passing interpretation, semantic quality and reliability remain unverified. Next: retain rejected candidate diagnostics, repair output-contract adherence, then paired live evaluation. Do not widen validators merely to obtain a passing demo.
+
+
+### Current local launcher and corrections
+
+After building the frontend, run `./scripts/Start-MatchLens.ps1` for account-free template mode, or `./scripts/Start-MatchLens.ps1 -Foundry` to explicitly opt into the locally configured project. The launcher reads only whitelisted configuration from ignored `.env`; it binds to loopback and never prints secrets. Browser authentication is opt-in (`MATCHLENS_ALLOW_BROWSER_LOGIN=1`) with explicit `AZURE_TENANT_ID`. Tokens are kept in process memory; another process may require sign-in again.
+
+`POST /api/matches/{id}/events` accepts synthetic events/revisions only when the server has `MATCHLENS_INGEST_TOKEN` and the caller supplies the matching `X-MatchLens-Token` header. No token belongs in browser code. Higher revisions replace earlier events; duplicates/stale revisions are ignored. State/statistics/alerts/answers/recaps read canonical events afterward. Set `MATCHLENS_EVENT_DB` to a local SQLite path for restart persistence. This is a local ingestion demonstration, not an authenticated external feed connector. Previously displayed narratives are not yet automatically retracted when an event is corrected; request a new answer/recap. No correction-notification stream or public model access protection is claimed.
