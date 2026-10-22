@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-22",
+  "source_commit": "8a446e0",
+  "url": "https://matchlens-chris-demo-2026.azurewebsites.net",
+  "checks": [
+    "8 deployed paired evidence cases match build",
+    "default is recorded accepted meaning example",
+    "public template includes narrative",
+    "complete teammate source IDs",
+    "selected-clock sequence bounds",
+    "Spanish narrative"
+  ],
+  "model_requests_in_this_verification": 0,
+  "limits": "Recorded AI evaluation is separate; no independent human acceptance or uptime guarantee"
+}
