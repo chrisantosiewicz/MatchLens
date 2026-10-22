@@ -6,7 +6,7 @@ Completed in source and recorded checks:
 - Deterministic, clock-safe metrics/narratives; revision invalidation and paused polling.
 - Position-sensitive synthetic data and 20-seed sanity validation; sparse scores explicitly observed/incomplete.
 - Review fixes: rewind anchor label, progression relevance, input scope/quota handling, integration mode honesty.
-- 83 backend / 23 frontend tests, production build, lint and package test.
+- 84 backend / 23 frontend tests, production build, lint and package test.
 - Real Foundry runs with frozen source/cases, usage, latency, retained failures and complete deterministic fact provenance.
 - Recorded evidence viewer with all v4 cases and offline rejection replay; public paid model calls disabled.
 - Public source and free Azure hosting; source ZIP and dated hosting records remain reproducible fallbacks.

@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-22",
+  "source_commit": "83b9704",
+  "url": "https://matchlens-chris-demo-2026.azurewebsites.net",
+  "model_calls_for_checks": 0,
+  "checks": [
+    "5 evidence files match index SHA256 and build",
+    "event location metadata present",
+    "policy/source revision consistency",
+    "location/sequence role leads answer",
+    "complete supporting story IDs",
+    "substitute missing baseline distinct from zero",
+    "sparse narrative/trend/game-state suppression"
+  ],
+  "test_counts": {
+    "backend": 83,
+    "frontend": 23
+  },
+  "limits": [
+    "No independent human semantic acceptance",
+    "Recorded candidate is separate from current offline guard replay",
+    "Point-in-time checks, no uptime guarantee"
+  ]
+}

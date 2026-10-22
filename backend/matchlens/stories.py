@@ -134,9 +134,9 @@ def sequence_stories(match, player_id, clock, start_ms=0, include_all=False):
                     chain,
                     action,
                     terminal,
-                    "Recorded build-up involvement can be missed by headline progressive-pass totals; a connecting pass can belong to a shot-ending move without qualifying as progressive.",
-                    "La participación registrada en la jugada puede quedar oculta en el total de pases progresivos: un pase de conexión puede formar parte de una secuencia con tiro sin ser progresivo.",
-                    "Sequence involvement is not an assist, proof of chance quality, or proof that this pass caused the shot.",
+                    "Recorded build-up can be missed by headline progressive-pass totals, which measure movement closer to goal rather than every contribution.",
+                    "Los pases progresivos que acercaron el balón a portería no describen toda la participación registrada en esta jugada.",
+                    "Sequence involvement does not establish chance quality, an assist or causation.",
                     "Participar en la secuencia no equivale a una asistencia ni demuestra calidad de ocasión o causalidad.",
                 )
             elif terminal.event_type == "turnover" and is_progressive(action):
@@ -253,6 +253,18 @@ def render_story(story, language="en"):
             "goal": "gol",
             "turnover": "pérdida",
         }.get(story["outcome"], story["outcome"])
+        if story["kind"] == "shot_build_up" and story.get("pass_rank_before_shot"):
+            loc = story.get("action_location", {})
+            route = (
+                f"un pase de {loc['distance_m']}m"
+                if loc.get("distance_m") is not None
+                else "un pase"
+            )
+            return (
+                f"A las {story['action_clock']}, {story['player_name']} completó {route}, "
+                f"el {story['pass_rank_before_shot']}º pase completo antes del tiro de {story['outcome_player']} "
+                f"a las {story['outcome_clock']} ({outcome}). {story['meaning_es']} {story['limitation_es']}"
+            )
         return (
             f"A las {story['action_clock']}, {story['player_name']} participó en una secuencia registrada "
             f"que terminó a las {story['outcome_clock']} ({outcome}). "

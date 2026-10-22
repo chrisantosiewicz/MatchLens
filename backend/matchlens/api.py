@@ -402,7 +402,13 @@ def template_question(match_id: str, request: Question, match=None):
             )
         if narrative:
             # A concrete sequence adds football meaning even when cloud generation is disabled.
-            text = render_story(narrative[0], request.language) + " " + text
+            interpretive_story = intent in {"change", "involvement"} or any(
+                word in q for word in ("why", "mean", "por qué", "por que", "importa")
+            )
+            if interpretive_story:
+                text = render_story(narrative[0], request.language) + (
+                    " " + text if request.depth == "analyst" else ""
+                )
             evidence = list(dict.fromkeys(evidence + narrative[0]["evidence_ids"]))
     if request.depth == "analyst" and intent != "unsupported":
         text += (

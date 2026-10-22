@@ -36,3 +36,5 @@ Box access counts distinct explicitly completed entry possessions in the last15m
 Low involvement uses <=3recorded on-ball actions over at least15active match minutes as a conservative provisional gate; it says limited recorded on-ball involvement, never no overall influence. Fan and analyst share all eligibility gates and material limitations; analyst adds denominators/source details.
 
 Still useful from you: examples of backward circulation you consider worth a spotlight; whether the3-sequence immediate-loss gate is too noisy; and examples where even third-last-pass credit feels too remote. These will refine editorial selection, not authorize inferred defensive lines, intent or unobserved supporting players.
+
+Fan interpretation now uses the concise story (moment, meaning, limitation); analyst mode retains calculation detail. Direct pass-count questions keep their direct numeric answer. Both modes retain identical structured evidence and policy gates.

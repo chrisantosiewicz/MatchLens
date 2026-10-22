@@ -11,7 +11,7 @@ Authoritative current status; dated traces and build-ledger are historical recor
 | Public demo | Azure LinuxFree, deterministic template mode; no paid public model calls. Source/build ready for final location deployment; dated anonymous checks document deployed behavior. No prospective uptime guarantee. |
 | AI | Optional English single-model wording remains experimental. V8:3structurally accepted, semantic review found2failures and causal-wording concern. V9:2requests,1guard fallback and1structurally accepted with semantic concerns. Current regression guards withhold both saved v9 candidates in offline replay;0new calls for replay. No independent human acceptance. |
 | Evidence viewer | Latest main view separates current offline guarded replay from original recorded candidate prose; semantic concerns, original output, full facts/source IDs, reconstructed model input and earlier candidates remain inspectable. Not live AI. |
-| Verification |83backend tests,23frontend tests, Ruff and package test pass. Final production build and public deployment verification recorded separately. |
+| Verification |84backend tests,23frontend tests, Ruff and package test pass. Final production build and public deployment verification recorded separately. |
 | Synthetic data | Fictional teams/players/season profiles; heuristic20-seed sanity checks, no empirical calibration or real European rankings. No video recognition/tracking or licensed footage. |
 | Submission | Owner registration confirmed. Rights/eligibility/category/final platform submission remain owner decisions. Existing YouTube edited screenshot video has weak quality; replacement/playback work deferred by owner. |
 

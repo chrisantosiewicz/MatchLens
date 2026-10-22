@@ -334,3 +334,29 @@ def test_recovery_card_names_box_entry_even_without_a_later_shot():
     )
     assert story["qualifying_outcome"] == "box entry"
     assert story["review_window_seconds"] == 20
+
+
+def test_casual_interpretation_is_shorter_but_direct_pass_count_stays_relevant():
+    from matchlens.api import Question, template_question
+    from matchlens.synthetic import generate_match
+
+    m = generate_match(7, "shift")
+    request = Question(
+        period=2,
+        elapsed_ms=1500000,
+        player_id="north-6",
+        question="Why does his passing matter?",
+    )
+    fan = template_question(m.id, request, m)
+    analyst = template_question(
+        m.id, request.model_copy(update={"depth": "analyst"}), m
+    )
+    assert len(fan["text"].split()) <= 100
+    assert len(fan["text"]) < len(analyst["text"])
+    direct = template_question(
+        m.id,
+        request.model_copy(update={"question": "How many passes has he completed?"}),
+        m,
+    )
+    assert "66 of 70" in direct["text"]
+    assert not direct["text"].startswith("At ")

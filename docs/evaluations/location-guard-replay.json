@@ -3,7 +3,7 @@
   "source_hashes": {
     "backend/matchlens/alerts.py": "d0d6425059e01aac82f6bc96356d90ae2c03c05b4f38708ef5d8c3f46854d8ae",
     "backend/matchlens/analytics.py": "4847638d4b9df0dc4a4598edc17d814c23d8fd550f3785450688d74c442ce472",
-    "backend/matchlens/api.py": "59b4293fc066fd28f62e8d30659283016bf007197cdfab9c026faabd513b53bd",
+    "backend/matchlens/api.py": "6753a2a1cda9911aca901e1cca163ba9f2696c02fe373ac5ccedd20ad22085fb",
     "backend/matchlens/editorial.py": "d6a71eb5bf16fa74cf6c156c56735813d7d6192c14126af09369b0f5599f21d0",
     "backend/matchlens/evaluate.py": "5d4bf4a483036895f43dafe79fba67b5256612a64b3fe78bbba8e27d0cb7aaf9",
     "backend/matchlens/explainer.py": "5ad6535db677bb03ab9bff4cd903dae683cf7b5b0b731b81390d209c479957db",
@@ -14,7 +14,7 @@
     "backend/matchlens/providers.py": "8bdccdae95422081fa09a3246d8080d77e321959a55ed332b265ca60571d134f",
     "backend/matchlens/serving.py": "39000f6291d5016a35404ed782dce81764907798be6ac621e79fe4be90c787af",
     "backend/matchlens/store.py": "7eaa1def818511f652c82b3a889b301de7265be16b0b53e33c7ad51f6a73c8ef",
-    "backend/matchlens/stories.py": "ead602b28c384f18d8480015dc597ef28fed8a55928c5d81e73971fc3fe82db5",
+    "backend/matchlens/stories.py": "b92ec44698430e0bb6f2fd0567da13e72c8e04274ab9b3b43d76fda729ae4fac",
     "backend/matchlens/summaries.py": "8d8a63d419482249a0faaab1d932c8208441318c1e1f0af4496886963042c57a",
     "backend/matchlens/synthetic.py": "f3263d351cc126026998be2526b9530a6399cec88d0fe6dc640283d708cc555d",
     "backend/matchlens/workflow.py": "0345f2af7181171f08ebad4e3328d5c79a3fffbc68b13de82f193ae68dd54e13",
@@ -26,7 +26,7 @@
       "description": "Saved candidate replayed offline through current guards, not new model generation.",
       "remote_calls": 0,
       "answer": {
-        "text": "At 66:16, Mateo Silva's 42.61m pass from own half (middle third) into the attacking third was the last completed pass before Nico Vega's shot at 66:22 (wide). Recorded build-up involvement can be missed by headline progressive-pass totals; a connecting pass can belong to a shot-ending move without qualifying as progressive. Sequence involvement is not an assist, proof of chance quality, or proof that this pass caused the shot. Mateo Silva completed 64 of 68 passes, including 24 progressive passes. Select an action on the pitch to inspect its destination. These passes moved the ball at least 10m closer to goal from outside the box: they record forward progression, beyond pass volume alone. This does not establish chance quality, defensive-line breaking or causation.",
+        "text": "At 66:16, Mateo Silva's 42.61m pass from own half (middle third) into the attacking third was the last completed pass before Nico Vega's shot at 66:22 (wide). Recorded build-up can be missed by headline progressive-pass totals, which measure movement closer to goal rather than every contribution. Sequence involvement does not establish chance quality, an assist or causation.",
         "narrative_evidence": [
           {
             "id": "shot_build_up:match-6401-shift-e661:match-6401-shift-e662",
@@ -66,9 +66,9 @@
             "player_action_progressive": true,
             "outcome": "wide",
             "outcome_player": "Nico Vega",
-            "meaning_en": "Recorded build-up involvement can be missed by headline progressive-pass totals; a connecting pass can belong to a shot-ending move without qualifying as progressive.",
-            "meaning_es": "La participación registrada en la jugada puede quedar oculta en el total de pases progresivos: un pase de conexión puede formar parte de una secuencia con tiro sin ser progresivo.",
-            "limitation_en": "Sequence involvement is not an assist, proof of chance quality, or proof that this pass caused the shot.",
+            "meaning_en": "Recorded build-up can be missed by headline progressive-pass totals, which measure movement closer to goal rather than every contribution.",
+            "meaning_es": "Los pases progresivos que acercaron el balón a portería no describen toda la participación registrada en esta jugada.",
+            "limitation_en": "Sequence involvement does not establish chance quality, an assist or causation.",
             "limitation_es": "Participar en la secuencia no equivale a una asistencia ni demuestra calidad de ocasión o causalidad.",
             "evidence_ids": [
               "match-6401-shift-e661",
@@ -215,7 +215,7 @@
           "match-6401-shift-e688",
           "match-6401-shift-e662"
         ],
-        "latency_ms": 1.4,
+        "latency_ms": 1.38,
         "usage": null,
         "validation": "structural_only; semantic support requires evaluation",
         "rejection_reason": "causal_sequence_wording"
@@ -226,7 +226,7 @@
       "description": "Saved candidate replayed offline through current guards, not new model generation.",
       "remote_calls": 0,
       "answer": {
-        "text": "At 64:07, Mateo Silva's 31.14m pass from own half (middle third) into the middle third was the third-last completed pass before Nico Vega's shot at 64:22 (wide). Recorded build-up involvement can be missed by headline progressive-pass totals; a connecting pass can belong to a shot-ending move without qualifying as progressive. Sequence involvement is not an assist, proof of chance quality, or proof that this pass caused the shot. Mateo Silva completed 69 of 74 passes, including 36 progressive passes. Select an action on the pitch to inspect its destination. These passes moved the ball at least 10m closer to goal from outside the box: they record forward progression, beyond pass volume alone. This does not establish chance quality, defensive-line breaking or causation.",
+        "text": "At 64:07, Mateo Silva's 31.14m pass from own half (middle third) into the middle third was the third-last completed pass before Nico Vega's shot at 64:22 (wide). Recorded build-up can be missed by headline progressive-pass totals, which measure movement closer to goal rather than every contribution. Sequence involvement does not establish chance quality, an assist or causation.",
         "narrative_evidence": [
           {
             "id": "shot_build_up:match-6407-shift-e682:match-6407-shift-e685",
@@ -266,9 +266,9 @@
             "player_action_progressive": true,
             "outcome": "wide",
             "outcome_player": "Nico Vega",
-            "meaning_en": "Recorded build-up involvement can be missed by headline progressive-pass totals; a connecting pass can belong to a shot-ending move without qualifying as progressive.",
-            "meaning_es": "La participación registrada en la jugada puede quedar oculta en el total de pases progresivos: un pase de conexión puede formar parte de una secuencia con tiro sin ser progresivo.",
-            "limitation_en": "Sequence involvement is not an assist, proof of chance quality, or proof that this pass caused the shot.",
+            "meaning_en": "Recorded build-up can be missed by headline progressive-pass totals, which measure movement closer to goal rather than every contribution.",
+            "meaning_es": "Los pases progresivos que acercaron el balón a portería no describen toda la participación registrada en esta jugada.",
+            "limitation_en": "Sequence involvement does not establish chance quality, an assist or causation.",
             "limitation_es": "Participar en la secuencia no equivale a una asistencia ni demuestra calidad de ocasión o causalidad.",
             "evidence_ids": [
               "match-6407-shift-e682",
@@ -462,7 +462,7 @@
           "match-6407-shift-e684",
           "match-6407-shift-e685"
         ],
-        "latency_ms": 0.49,
+        "latency_ms": 0.48,
         "usage": null,
         "validation": "structural_only; semantic support requires evaluation",
         "rejection_reason": "unapproved_rate_claim"
