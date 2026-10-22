@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-22",
+  "source_commit": "6e18712",
+  "url": "https://matchlens-chris-demo-2026.azurewebsites.net",
+  "test_counts": {
+    "backend": 84,
+    "frontend": 23
+  },
+  "checks": [
+    "57word fan example",
+    "analyst detail retains identical policy/conclusion/source cards",
+    "direct numeric pass answer remains relevant",
+    "all5evidence files match build and SHA256",
+    "separate current offline guard replay and original model candidate"
+  ],
+  "remote_model_calls_for_checks": 0,
+  "limits": [
+    "No independent human semantic acceptance",
+    "Current guard replay is not new model generation",
+    "No future uptime guarantee"
+  ]
+}
