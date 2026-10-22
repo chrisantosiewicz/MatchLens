@@ -67,6 +67,10 @@ backend/.venv/Scripts/python.exe -m matchlens.synthetic --output data
 
 Answers can now show a concrete build-up or turnover sequence, why that recorded contribution matters, and its limits. Expand **The moment behind the explanation** to inspect it. [Situations where your football judgment helps](docs/football-meaning-review.md). Model generation remains experimental; all current trial outcomes are visible in recorded evidence.
 
+## Location-aware editorial context
+
+Hover an action for its event location, then ask about the player. Answers lead with the recorded sequence, measured pass origin/destination, and build-up role. Expand **Location, role & editorial context** for exposure, same-metric comparison gates and coverage limits. These are provisional editorial policies; geometry does not establish intent or defensive-line breaks. Recorded AI candidates and their review failures remain separate from the current guarded fallback.
+
 ## Current stage
 
 See [STATUS.md](STATUS.md) for the authoritative dated implementation and submission status. Older experiment reports are historical evidence.

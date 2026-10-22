@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-22",
+  "model": "gpt-4.1-mini",
+  "model_version": "2025-04-14",
+  "manifest_sha256": "c70240031dd0b30ee9fac0a47545ba6e21ff786aa77c9ae6ce84e264940ab4c7",
+  "trace_sha256": "63c2d93a8d79d6bec2d7fef4f3742b8194fcdbc5a477394470aaedb389e12d97",
+  "live_generation": false,
+  "independent_human_acceptance": false,
+  "cases": [
+    {
+      "id": "location-6303",
+      "question": "Why does his passing matter?",
+      "player": "Mateo Silva",
+      "file": "location-6303.json",
+      "sha256": "b8c908abc03c1c9e897fe503cb8a33a4002cb89d7d9048c2848ba589ab35c1b1"
+    },
+    {
+      "id": "location-6307",
+      "question": "Why does his passing matter?",
+      "player": "Mateo Silva",
+      "file": "location-6307.json",
+      "sha256": "9d374072697e6193b17ba1872cd68b3cdead9ff67293261fb50f6e57bc54c802"
+    },
+    {
+      "id": "location-6301",
+      "question": "What changed since the selected moment?",
+      "player": "Mateo Silva",
+      "file": "location-6301.json",
+      "sha256": "9cfd557e6a17114a975367b00cde136611749a30bcaec37d95d374e2f1a8b77b"
+    }
+  ],
+  "default_case": "location-6307.json",
+  "semantic_review": "location-review.json",
+  "workflow_note": "Archived three live-model candidates. Full original six-case run, including deterministic boundaries, is retained in docs/evaluations/frozen-location-v8.json."
+}

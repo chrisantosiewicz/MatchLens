@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-22",
+  "model": "gpt-4.1-mini",
+  "model_version": "2025-04-14",
+  "manifest_sha256": "a9a6c29572ed86364fcb2fa10f7aa58c630ace490758c13575ac26f7f8e7597f",
+  "trace_sha256": "701d3aa2a62f48b9cd880ee7eb57ab8ae7d5cf15305eb7b1aa81359657feeb75",
+  "live_generation": false,
+  "independent_human_acceptance": false,
+  "cases": [
+    {
+      "id": "meaning-5301-0",
+      "question": "What changed since the selected moment?",
+      "player": "Mateo Silva",
+      "file": "meaning-5301-0.json",
+      "sha256": "f07ac226bc1984a71dc568ad00c335b02dd4bc884153b1135d67ebe489a70b72"
+    },
+    {
+      "id": "meaning-5301-1",
+      "question": "Why does his passing matter?",
+      "player": "Mateo Silva",
+      "file": "meaning-5301-1.json",
+      "sha256": "af846b3451ab2152160b3de33a26d46743ca47cbeab00f19a383803190c452f4"
+    },
+    {
+      "id": "meaning-5303-0",
+      "question": "What changed since the selected moment?",
+      "player": "Mateo Silva",
+      "file": "meaning-5303-0.json",
+      "sha256": "9b835376637aa2191fe151124de8947354d2750d81137a17a1fb29d75e089ecd"
+    },
+    {
+      "id": "meaning-5303-1",
+      "question": "Why does his passing matter?",
+      "player": "Mateo Silva",
+      "file": "meaning-5303-1.json",
+      "sha256": "8644f6e0ded6168350e7c93eb100d83a2d34e5989c4ecfe5b2621b3126840c60"
+    },
+    {
+      "id": "meaning-sparse",
+      "question": "Why does his passing matter?",
+      "player": "Mateo Silva",
+      "file": "meaning-sparse.json",
+      "sha256": "91e39f18a615691669910df8b2f5bf70012b15466a27769924c79426c2498b39"
+    },
+    {
+      "id": "meaning-tracking",
+      "question": "How fast is he running off-ball?",
+      "player": "Mateo Silva",
+      "file": "meaning-tracking.json",
+      "sha256": "dbbf552fe8f3953929d5856865ef4db774ef43e1ff401a5c890a0102ce11a25a"
+    },
+    {
+      "id": "meaning-spanish",
+      "question": "\u00bfPor qu\u00e9 importan sus pases?",
+      "player": "Mateo Silva",
+      "file": "meaning-spanish.json",
+      "sha256": "aab5363c864fbf563e787768b588d5d1230c7cf51214debb3632a85819e4b7c2"
+    },
+    {
+      "id": "meaning-zero",
+      "question": "What changed since the selected moment?",
+      "player": "Mateo Silva",
+      "file": "meaning-zero.json",
+      "sha256": "e2437279631c952731b4712955433bd56f19f7cb9e51c558d0bfffbcd337076b"
+    }
+  ],
+  "default_case": "meaning-5301-1.json"
+}

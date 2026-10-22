@@ -97,3 +97,9 @@ October 21 retry after user requested renewed sign-in: successful authenticated 
 ## October22 final product/evidence pass
 
 Fixed future anchor labels, incomplete-feed score disclosure, template passing relevance, limited-input quota consumption and paused correction invalidation. Backend60/frontend23 tests pass; build/Ruff/package test pass. Frozen v4 has4actual model calls across2fresh complete matches and8deterministic boundary cases; no independent human acceptance. Retained v1-v3 failures and added offline replay of an actual unsupported-speed output. Recorded viewer separates actual model citations from complete deterministic sources after second-AI review identified a misleading label. Anonymous deployment checks in hosting-verification-oct22.json. Video quality work remains deferred by owner.
+
+## October22 location/editorial pass
+
+Applied owner/judge feedback as deterministic editorial eligibility rules, not model-decided significance. Added attack-oriented thirds/halves/pass direction and length, last3-pass build-up role, actual loss actor/intervening action counts, recovery-to-entry/shot, backward circulation, distinct completed entry possessions, same-metric player/team gates, late-score and replacement/position context. Incomplete observations suppress absence/trend conclusions. Fan/analyst share sources and limits. Confirmed review defects have regression tests;83backend/23frontend tests, Ruff and packaging test pass.
+
+Retained v8/v9 live model failures. Additional guards reject saved subject/metric/citation/causal-wording errors in an explicitly offline replay; no semantic-accuracy or reliability claim. Local explanations remain useful and lead with concrete locations/sequence roles. Public deployment proof is recorded separately.

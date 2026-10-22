@@ -30,3 +30,9 @@ After renewed sign-in, all 60 paired rows completed on commit d814db3. See evalu
 ## October22 v4 frozen narrow capability
 
 Current raw trace: evaluations/frozen-v4.json; normalized backend source6da84d6. Twelve paired questions,24rows,4actual model calls; other single-policy cases use deterministic boundaries. Usage/latencies: evaluations/frozen-summary.json. Independent human review remains pending; developer/second-AI review in evaluations/v4-ai-review.md found supported factual clauses in all4actual outputs, with modest passing interpretation. No population reliability claim. Earlier failed candidates remain. Changed scopes and held-out cases prevent version-to-version acceptance-rate comparison. Inspect the public recorded evidence page without generating calls. Public production remains templates.
+
+## Location/editorial trials
+
+Frozen-location-v8:6paired cases,3actual model requests,3structurally accepted outputs. AI/developer review found subject/metric/exposure errors and causal-wording concern. Frozen-location-v9:5paired cases,2requests,1guard fallback and1structurally accepted output with further semantic concerns. These are not semantic passes or population reliability estimates.
+
+Current location-guard-replay.json replays saved v9 candidates offline through additional regression guards:both return source-complete local fallback,0new model calls. This is a separate current-guard test, not regeneration of old model results. Raw traces remain immutable. The public recorded page separates guarded results, original model prose and review labels. Independent human acceptance remains pending.

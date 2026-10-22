@@ -12,6 +12,7 @@ from pydantic import BaseModel, Field
 
 from .alerts import progressive_alerts
 from .analytics import compare_windows, player_stats
+from .editorial import action_location, editorial_summary, editorial_summary_sources
 from .explainer import context_packet, explain, interpretation_limit
 from .limits import model_budget
 from .models import Clock, Event, visible
@@ -164,7 +165,9 @@ def state(
         "teams": match.teams,
         "players": match.players,
         "clock": clock,
-        "events": events,
+        "events": [
+            {**e.model_dump(), "location_context": action_location(e)} for e in events
+        ],
         "score": score_at(events),
         "feed_completeness": match.feed_completeness,
         "synthetic": True,
@@ -364,6 +367,7 @@ def template_question(match_id: str, request: Question, match=None):
         )
         evidence = []
     narrative = []
+    editorial = None
     if intent in {"passing", "change", "involvement"}:
         start = (
             max(0, min(request.anchor_ms, clock.elapsed_ms) - 600000)
@@ -383,9 +387,22 @@ def template_question(match_id: str, request: Question, match=None):
             if intent != "change" or clock.elapsed_ms > request.anchor_ms
             else []
         )
+        editorial = context_packet(match, player.id, clock, request.anchor_ms)[
+            "editorial_context"
+        ]
+        summary = (
+            ""
+            if intent == "change" and clock.elapsed_ms <= request.anchor_ms
+            else editorial_summary(editorial, player.name, request.language)
+        )
+        if summary:
+            text = summary + " " + text
+            evidence = list(
+                dict.fromkeys(evidence + editorial_summary_sources(editorial))
+            )
         if narrative:
             # A concrete sequence adds football meaning even when cloud generation is disabled.
-            text += " " + render_story(narrative[0], request.language)
+            text = render_story(narrative[0], request.language) + " " + text
             evidence = list(dict.fromkeys(evidence + narrative[0]["evidence_ids"]))
     if request.depth == "analyst" and intent != "unsupported":
         text += (
@@ -408,6 +425,7 @@ def template_question(match_id: str, request: Question, match=None):
         "language": request.language,
         "notice": "Deterministic event-backed answer",
         "narrative_evidence": narrative[:1],
+        "editorial_context": editorial,
     }
 
 

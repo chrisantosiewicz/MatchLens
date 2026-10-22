@@ -2,9 +2,11 @@
 
 import re
 from decimal import Decimal
+from hashlib import sha256
 from time import perf_counter
 
 from .analytics import compare_windows, is_entry, is_progressive, player_stats
+from .editorial import editorial_packet
 from .models import Clock, Event, visible
 from .stories import sequence_stories
 
@@ -144,6 +146,51 @@ def context_packet(match, player_id, clock, anchor_ms):
     packet["events"] = list(
         {e["event_id"]: e for e in packet["events"] + list(extra.values())}.values()
     )
+    packet["editorial_context"] = editorial_packet(
+        match,
+        player,
+        clock,
+        comparison,
+        packet["contributions_before"],
+        packet["contributions_after"],
+        packet["player_window_minutes"],
+        round(
+            sum(
+                active_minutes(
+                    match,
+                    player,
+                    p,
+                    0,
+                    clock.elapsed_ms if p == clock.period else 2700000,
+                )
+                for p in range(1, clock.period + 1)
+            ),
+            4,
+        ),
+        sha256(
+            repr(sorted((e.event_id, e.revision) for e in match.events)).encode()
+        ).hexdigest()[:24],
+    )
+
+    def ids(value):
+        if isinstance(value, dict):
+            for key, child in value.items():
+                if key.endswith("evidence_ids"):
+                    yield from child
+                else:
+                    yield from ids(child)
+        elif isinstance(value, list):
+            for child in value:
+                yield from ids(child)
+
+    eligible_ids = set(ids(approved_editorial(packet)))
+    packet["events"] = list(
+        {
+            e["event_id"]: e
+            for e in packet["events"]
+            + [e.model_dump() for e in events if e.event_id in eligible_ids]
+        }.values()
+    )
     return packet
 
 
@@ -167,6 +214,20 @@ def calculated_numbers(context):
         for value in (
             Decimal(str(story["sequence_duration_seconds"])),
             Decimal(str(story["review_window_seconds"])),
+            *[
+                Decimal(str(v))
+                for v in story.get("action_location", {}).values()
+                if isinstance(v, (int, float)) and not isinstance(v, bool)
+            ],
+            *[
+                Decimal(str(story[k]))
+                for k in (
+                    "pass_rank_before_shot",
+                    "intervening_on_ball_actions",
+                    "subsequent_on_ball_actions",
+                )
+                if story.get(k) is not None
+            ],
         )
     } | set(
         walk(
@@ -184,6 +245,7 @@ def calculated_numbers(context):
                     "player_rates",
                     "player_window_minutes",
                     "rate_contract",
+                    "editorial_context",
                 )
             }
         )
@@ -262,6 +324,52 @@ def comparison_fact_support(context):
     return cards
 
 
+def approved_editorial(context):
+    """Ineligible conclusions are withheld, not exposed with a footnote for AI to ignore."""
+    packet = context.get("editorial_context", {})
+    approved = {
+        key: packet.get(key)
+        for key in (
+            "policy_version",
+            "source_revision",
+            "coverage",
+            "position",
+            "position_rule",
+            "prohibited_inferences",
+            "replacement",
+        )
+    }
+    for key, gate in [
+        ("passing", "recycling_eligible"),
+        ("player_team_contrast", "eligible"),
+        ("box_access", "spotlight_eligible"),
+        ("on_ball_involvement", "eligible"),
+        ("progression_loss_followups", "spotlight_eligible"),
+    ]:
+        fact = packet.get(key, {})
+        approved[key] = (
+            fact
+            if fact.get(gate)
+            else {
+                gate: False,
+                "reason": fact.get(
+                    "reason",
+                    "Editorial sample/coverage gate not met; do not publish this conclusion.",
+                ),
+            }
+        )
+    game = packet.get("game_state", {})
+    approved["game_state"] = (
+        game
+        if game.get("available") and game.get("phase") == "late"
+        else {
+            "available": False,
+            "reason": "Late-game emphasis unavailable or not applicable.",
+        }
+    )
+    return approved
+
+
 def model_context(context):
     """Only relevant calculated facts; raw coordinates/action totals invite invalid inferences."""
     return {
@@ -272,16 +380,14 @@ def model_context(context):
         "window_minutes": context["window_minutes"],
         "player_window_minutes": context["player_window_minutes"],
         "rate_contract": context["rate_contract"],
-        "player_progressive_passes": {
-            window: {
-                "count": context[f"contributions_{window}"]["progressive_passes"],
-                "per_active_minute": context["player_rates"][window][
-                    "progressive_passes_per_minute"
-                ],
-            }
-            for window in ("before", "after")
-        },
-        "metric_sources": [e["event_id"] for e in context["events"]],
+        "editorial_context": approved_editorial(context),
+        "metric_sources": list(
+            dict.fromkeys(
+                i
+                for card in comparison_fact_support(context)
+                for i in card["source_ids"]
+            )
+        ),
         "narrative_evidence": [
             {
                 k: v
@@ -375,14 +481,48 @@ def explain(
             raise ValueError(rejection)
         # Conservative scope filter, not a proof that remaining prose is supported.
         if re.search(
-            r"\b(speed|velocity|sprints?|pressing|pressure|chaos|dominance|sparse)\b"
+            r"\b(speed|velocity|sprints?|pressing|pressure|chaos|dominance|sparse|tempo|probing)\b"
             r"|\bactions?\s+(?:rate|per minute)|\b(?:all|recorded|total)\s+actions\b"
-            r"|attacking presence|retained control|defensive.line.break"
+            r"|attacking presence|retained control|defensive.line.break|line.break|through.ball|risk.taking|defensive presence|unsupported attack"
             r"|improved (?:passing|quality)|creates? (?:space|chances)",
             text,
             re.IGNORECASE,
         ):
             rejection = "unsupported_concept"
+            raise ValueError(rejection)
+        # Regression guards for observed subject/metric failures; not a semantic proof.
+        name = re.escape(context["player"]["name"].split()[0])
+        if re.search(r"\bactions?\s+by\s+" + name + r"\b", text, re.IGNORECASE):
+            rejection = "unsupported_sequence_attribution"
+            raise ValueError(rejection)
+        without_clocks = re.sub(r"(?<!\d)\d{1,2}:\d{2}(?!\d)", "clock", text)
+        contrast = context.get("editorial_context", {}).get("player_team_contrast", {})
+        if re.search(
+            r"\b(?:passing|progressive[- ]pass(?:ing)?|team[- ]pass(?:ing)?)\s+rate",
+            text,
+            re.IGNORECASE,
+        ) or (
+            not contrast.get("eligible")
+            and re.search(
+                r"\d+(?:\.\d+)?\s*(?:to|→)\s*\d+(?:\.\d+)?|per (?:active )?minute",
+                without_clocks,
+                re.IGNORECASE,
+            )
+            and context.get("editorial_context")
+        ):
+            rejection = "unapproved_rate_claim"
+            raise ValueError(rejection)
+        if min(context["player_window_minutes"].values()) >= 10 and re.search(
+            r"insufficient (?:comparable )?exposure", text, re.IGNORECASE
+        ):
+            rejection = "incorrect_exposure_claim"
+            raise ValueError(rejection)
+        if re.search(
+            r"\bled to\b|\bresulted in\b|\bcreated a (?:shot|chance|goal)",
+            text,
+            re.IGNORECASE,
+        ):
+            rejection = "causal_sequence_wording"
             raise ValueError(rejection)
         if (
             not isinstance(ids, list)
@@ -404,6 +544,18 @@ def explain(
             rejection = "missing_story"
             raise ValueError(rejection)
         selected_stories = [stories[i] for i in dict.fromkeys(story_ids)]
+        if (
+            selected_stories
+            and re.search(r"\bturnovers?\b", text, re.IGNORECASE)
+            and not any(
+                s["outcome"] == "turnover"
+                or s["kind"] == "turnover_then_opposition_shot"
+                for s in selected_stories
+            )
+        ):
+            rejection = "unselected_sequence_claim"
+            raise ValueError(rejection)
+
         if any(
             not set(story["evidence_ids"]) <= set(ids) for story in selected_stories
         ):

@@ -1,10 +1,11 @@
 """Deterministic narrative evidence, never off-ball or causal inference."""
 
-from .analytics import is_progressive
+from .analytics import is_entry, is_progressive
+from .editorial import POLICY_VERSION, action_location
 from .models import visible
 
 
-def sequence_stories(match, player_id, clock, start_ms=0):
+def sequence_stories(match, player_id, clock, start_ms=0, include_all=False):
     if match.feed_completeness != "complete":
         return []
     player = next(p for p in match.players if p.id == player_id)
@@ -31,11 +32,50 @@ def sequence_stories(match, player_id, clock, start_ms=0):
             {
                 "id": f"{kind}:{action.event_id}:{terminal.event_id}",
                 "kind": kind,
+                "policy_version": POLICY_VERSION,
+                "qualifying_outcome": "shot"
+                if terminal.event_type == "shot"
+                else "box entry"
+                if any(is_entry(e) for e in chain)
+                else terminal.event_type,
+                "action_location": action_location(action),
+                "pass_rank_before_shot": sum(
+                    e.event_type == "pass" and e.outcome == "complete"
+                    for e in chain[:-1]
+                )
+                if kind == "shot_build_up" and action.event_type == "pass"
+                else None,
+                "subsequent_on_ball_actions": sum(
+                    e.event_type not in {"stoppage", "substitution"} for e in chain[1:]
+                ),
+                "intervening_on_ball_actions": sum(
+                    e.event_type not in {"stoppage", "substitution"}
+                    for e in chain[1:-1]
+                ),
+                "immediate_attempt": kind == "turnover_then_opposition_shot"
+                and sum(
+                    e.event_type not in {"stoppage", "substitution"}
+                    for e in chain[1:-1]
+                )
+                <= 1,
+                "loss_player": names.get(terminal.player_id)
+                if terminal.event_type == "turnover"
+                else None,
+                "prohibited_inferences": [
+                    "line break",
+                    "tempo intent",
+                    "defensive presence",
+                    "nearby support",
+                    "receiver control error",
+                    "sole blame",
+                    "causation",
+                ],
                 "player_name": player.name,
                 "sequence_duration_seconds": (terminal.elapsed_ms - action.elapsed_ms)
                 / 1000,
                 "review_window_seconds": 20
-                if kind == "turnover_then_opposition_shot"
+                if kind
+                in {"turnover_then_opposition_shot", "recovery_followed_by_attack"}
                 else 30,
                 "action_clock": stamp(action),
                 "outcome_clock": stamp(terminal),
@@ -81,6 +121,14 @@ def sequence_stories(match, player_id, clock, start_ms=0):
             ):
                 continue
             if terminal.event_type == "shot" and terminal.player_id != player_id:
+                if (
+                    sum(
+                        e.event_type == "pass" and e.outcome == "complete"
+                        for e in chain[:-1]
+                    )
+                    > 3
+                ):
+                    continue
                 add(
                     "shot_build_up",
                     chain,
@@ -102,16 +150,68 @@ def sequence_stories(match, player_id, clock, start_ms=0):
                     "This does not prove a poor pass or a poor decision; the feed does not explain defensive pressure or alternatives.",
                     "Esto no demuestra un mal pase ni una mala decisión; el flujo no describe presión defensiva ni alternativas.",
                 )
+    for group in groups.values():
+        for i, recovery in enumerate(group):
+            if recovery.player_id != player_id or recovery.event_type != "recovery":
+                continue
+            chain = [recovery]
+            first_entry = None
+            terminal = None
+            for e in group[i + 1 :]:
+                if (
+                    e.elapsed_ms - recovery.elapsed_ms > 20000
+                    or e.team_id != player.team_id
+                    or e.event_type == "substitution"
+                ):
+                    break
+                if (
+                    e.event_type not in {"stoppage", "substitution"}
+                    and sum(
+                        x.event_type not in {"stoppage", "substitution"}
+                        for x in chain[1:]
+                    )
+                    >= 5
+                ):
+                    break
+                chain.append(e)
+                if is_entry(e) and first_entry is None:
+                    first_entry = e
+                if e.event_type in {"shot", "turnover", "stoppage"} or (
+                    e.event_type == "pass" and e.outcome == "incomplete"
+                ):
+                    terminal = e
+                    break
+            if terminal is None:
+                terminal = first_entry
+            if terminal and (terminal.event_type == "shot" or first_entry):
+                selected_chain = chain[: chain.index(terminal) + 1]
+                add(
+                    "recovery_followed_by_attack",
+                    selected_chain,
+                    recovery,
+                    terminal,
+                    "A recorded recovery was followed by a box entry or shot in the same possession, connecting ball recovery with an observable attacking outcome.",
+                    "Una recuperación registrada fue seguida por una entrada al área o un tiro en la misma posesión: conecta la recuperación con un resultado ofensivo observable.",
+                    "Followed by is sequence membership, not proof of creating a counterattack or beating pressure.",
+                    "Seguido por describe la secuencia; no demuestra que creara un contraataque ni superara presión.",
+                )
     for index, loss in enumerate(events):
         if loss.player_id != player_id or loss.event_type != "turnover":
             continue
         chain = [loss]
         for e in events[index + 1 :]:
-            if e.elapsed_ms - loss.elapsed_ms > 20000 or (
-                e.team_id == player.team_id
-                and (
-                    e.event_type in {"recovery", "tackle", "shot"}
-                    or (e.event_type in {"pass", "carry"} and e.outcome == "complete")
+            if (
+                e.event_type in {"stoppage", "substitution"}
+                or e.elapsed_ms - loss.elapsed_ms > 20000
+                or (
+                    e.team_id == player.team_id
+                    and (
+                        e.event_type in {"recovery", "tackle", "shot"}
+                        or (
+                            e.event_type in {"pass", "carry"}
+                            and e.outcome == "complete"
+                        )
+                    )
                 )
             ):
                 break
@@ -129,12 +229,15 @@ def sequence_stories(match, player_id, clock, start_ms=0):
                         "El orden temporal no demuestra causalidad ni responsabilidad exclusiva; no se observan presión, apoyos ni alternativas.",
                     )
                 break
+    if include_all:
+        return stories
     # One recent example of each kind; keep the model packet small and varied.
     selected = []
     for kind in (
         "shot_build_up",
         "progression_without_shot",
         "turnover_then_opposition_shot",
+        "recovery_followed_by_attack",
     ):
         options = [s for s in stories if s["kind"] == kind]
         if options:
@@ -154,6 +257,46 @@ def render_story(story, language="en"):
             f"A las {story['action_clock']}, {story['player_name']} participó en una secuencia registrada "
             f"que terminó a las {story['outcome_clock']} ({outcome}). "
             f"{story['meaning_es']} {story['limitation_es']}"
+        )
+    location = story.get("action_location", {})
+    route = (
+        f" from the {location['origin_zone']} to the {location['destination_zone']}"
+        if location.get("destination_zone")
+        else f" in the {location['origin_zone']}"
+        if location.get("available")
+        else ""
+    )
+    rank = story.get("pass_rank_before_shot")
+    if story["kind"] == "shot_build_up" and rank:
+        ordinal = {1: "last", 2: "second-last", 3: "third-last"}[rank]
+        located_pass = (
+            f"{location['distance_m']}m pass from {location['origin_half']} ({location['origin_zone']}) into the {location['destination_zone']}"
+            if location.get("destination_zone")
+            else "completed pass"
+        )
+        fact = (
+            f"At {story['action_clock']}, {story['player_name']}'s {located_pass} was the {ordinal} completed pass "
+            f"before {story['outcome_player']}'s shot at {story['outcome_clock']} ({story['outcome']})."
+        )
+        return fact + " " + story["meaning_en"] + " " + story["limitation_en"]
+    if story["kind"] == "progression_without_shot":
+        fact = (
+            f"At {story['action_clock']}, {story['player_name']} completed a progressive pass{route}. "
+            f"The recorded move ended with {story['loss_player'] or 'a teammate'}'s turnover at {story['outcome_clock']}, "
+            f"after {story['intervening_on_ball_actions']} intervening on-ball actions."
+        )
+        return fact + " " + story["limitation_en"]
+    if story["kind"] == "turnover_then_opposition_shot":
+        return (
+            f"{story['player_name']}'s recorded turnover at {story['action_clock']}{route} was followed by "
+            f"an opposition shot at {story['outcome_clock']}, with {story['intervening_on_ball_actions']} intervening on-ball actions. "
+            + story["limitation_en"]
+        )
+    if story["kind"] == "recovery_followed_by_attack":
+        return (
+            f"{story['player_name']}'s recovery at {story['action_clock']}{route} was followed by "
+            f"{story['subsequent_on_ball_actions']} on-ball actions in a recorded {story['qualifying_outcome']} sequence ending at {story['outcome_clock']} ({story['outcome']}). "
+            + story["limitation_en"]
         )
     return (
         f"At {story['action_clock']}, {story['player_name']} contributed to a recorded sequence ending "

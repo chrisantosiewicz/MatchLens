@@ -12,3 +12,6 @@
 - Add regression coverage for confirmed consequential bugs; avoid tests that merely repeat implementation logic.
 - Defer video recognition, tracking, extra agents and major infrastructure unless essential to the demonstrated use case.
 - Keep project facts and verification evidence in repository documentation. Do not claim live integration or reliability without recorded verification.
+
+- Let deterministic editorial gates decide eligible claims; withhold unsupported conclusions rather than appending a disclaimer. Fan and analyst modes share the same evidence standard.
+- Treat action coordinates as ball-event locations. Geometric advancement does not establish a defensive line break, tempo intent, pressure, receiver error or nearby support.

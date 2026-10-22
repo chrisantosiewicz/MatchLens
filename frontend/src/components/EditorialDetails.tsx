@@ -1,0 +1,18 @@
+import type {EditorialContext} from '../contracts';
+
+export default function EditorialDetails({context:c,es,analyst}:{context:EditorialContext;es:boolean;analyst:boolean}) {
+ const p=c.passing, t=c.player_team_contrast, b=c.box_access;
+ return <details className="answer-evidence"><summary>{es?'Ubicación, función y límites editoriales':'Location, role & editorial context'}</summary>
+ <p>{es?'Posición registrada':'Listed position'}: {c.position}. {es?'La posición no limita automáticamente su aportación ofensiva.':'Position does not set a ceiling on attacking contribution.'}</p>
+ {c.coverage!=='complete'?<p>{es?'Datos incompletos: se omiten conclusiones sobre ausencia, tendencias y estado del partido.':'Incomplete coverage: absence, trend and game-state conclusions are withheld.'}</p>:<>
+ <p>{p.backward_completed} / {p.completed} {es?'pases completos hacia atrás':'completed passes were backward'} · {p.window_minutes} min. {p.recycling_eligible?(es?'Circulación hacia atrás registrada; la intención de controlar el ritmo no se observa.':'Recorded backward recycling; intent to manage tempo is unobserved.'):(es?'Datos descriptivos; no hay titular de control del ritmo.':'Descriptive counts; no tempo-management headline.')}</p>
+ <p>{c.on_ball_involvement.recorded_actions} {es?'acciones con balón':'recorded on-ball actions'} / {c.on_ball_involvement.active_minutes} {es?'minutos en el campo':'active match minutes'}. {es?'No mide el valor sin balón.':'Off-ball value is unmeasured.'}</p>
+ {c.replacement.available&&<p>{es?'Sustituye a':'Replaced'} {c.replacement.replaced_player} ({c.replacement.replaced_position}). {!c.replacement.has_before_baseline&&(es?'Sin referencia previa del jugador; no equivale a cero aportaciones. ':'No player before baseline; this is not zero contribution. ')}{es?'El antes/después del equipo no aísla el efecto de la sustitución.':'Team before/after does not isolate the substitution effect.'}</p>}
+ <p>{t.eligible?(es?'Contraste elegible: entradas al área del jugador y del equipo.':'Eligible contrast: player versus team box entries.'):(es?'No se publica una tendencia jugador/equipo: muestra o exposición insuficiente, o sin contraste opuesto.':'Player/team trend withheld: insufficient sample/exposure, or no opposite trend.')}</p>
+ {analyst&&<table><thead><tr><th>{es?'Entradas al área':'Box entries'}</th><th>{es?'Antes':'Before'}</th><th>{es?'Después':'After'}</th></tr></thead><tbody><tr><td>{es?'Jugador':'Player'}</td><td>{t.player_before_count}/{t.player_before_minutes} min · {t.player_before_rate??'—'}/min</td><td>{t.player_after_count}/{t.player_after_minutes} min · {t.player_after_rate??'—'}/min</td></tr><tr><td>{es?'Equipo':'Team'}</td><td>{t.team_before_count}/{t.before_minutes} min · {t.team_before_rate??'—'}/min</td><td>{t.team_after_count}/{t.after_minutes} min · {t.team_after_rate??'—'}/min</td></tr></tbody></table>}
+ <p>{b.completed_entry_possessions} {es?'posesiones completas con entrada al área':'completed box-entry possessions'}; {b.with_later_shot} {es?'con tiro posterior':'with a later shot'} · {b.window_minutes} min. {b.unfinished_excluded} {es?'sin finalizar excluidas':'unfinished excluded'}. {es?'No mide calidad de ocasión.':'This does not measure chance quality.'}</p>
+ {c.game_state.available&&c.game_state.phase==='late'&&<p>{es?'Contexto tardío':'Late-game context'}: {c.game_state.score_for}–{c.game_state.score_against} ({c.game_state.state}). {es?'El marcador da contexto; no demuestra intención.':'The score provides context, not intent.'}</p>}
+ </>}
+ <small>{es?'Política editorial inicial, no umbral estadístico validado.':'Starting editorial policy, not a validated statistical threshold.'} {c.policy_version} · {c.source_revision}</small>
+ </details>;
+}

@@ -1,0 +1,13 @@
+{
+  "kind": "developer_and_second_AI_review_not_independent_human",
+  "cases": {
+    "location-6407": {
+      "verdict": "original response has semantic concerns; current guard withholds it",
+      "notes": "Geometry/actor/progression/clocks are supported. Original prose invents a team-pass-rate comparison and refers to an unselected turnover sequence. Current result shown below is an offline guarded replay, not new model generation."
+    },
+    "location-6401": {
+      "verdict": "original response rejected; current guard withholds it",
+      "notes": "Causal-sounding led to a shot triggers fallback. The current local explanation uses measured pass location and length without that claim."
+    }
+  }
+}

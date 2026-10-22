@@ -331,3 +331,76 @@ def test_fallback_retains_the_teammate_events_behind_its_story():
         result["evidence_ids"]
     )
     assert result["narrative_evidence"] == p["narrative_evidence"][:1]
+
+
+def test_recorded_location_trial_subject_and_metric_errors_are_rejected():
+    import json
+    from pathlib import Path
+
+    rows = json.loads(
+        (
+            Path(__file__).resolve().parents[2]
+            / "docs/evaluations/frozen-location-v8.json"
+        ).read_text(encoding="utf-8")
+    )["rows"]
+    expected = {
+        "location-6301": "unsupported_sequence_attribution",
+        "location-6303": "unapproved_rate_claim",
+        "location-6307": "causal_sequence_wording",
+    }
+    for row in rows:
+        if row["policy"] != "single" or row["case_id"] not in expected:
+            continue
+
+        class Recorded:
+            def complete(self, *args, recorded_row=row):
+                answer = recorded_row["answer"]
+                ctx = recorded_row["context"]
+                return {
+                    "text": answer["text"],
+                    "evidence_ids": answer["model_cited_event_ids"],
+                    "story_ids": [s["id"] for s in answer["narrative_evidence"]],
+                    "rate_basis": ctx["rate_contract"]["basis"],
+                    "team_entry_rate_change": ctx["rate_contract"][
+                        "team_entry_rate_change"
+                    ],
+                }
+
+        result = explain(
+            row["request"], row["context"], Recorded(), "Trusted local explanation."
+        )
+        assert result["generation_mode"] == "fallback"
+        assert result["rejection_reason"] == expected[row["case_id"]]
+
+
+def test_model_cannot_reference_unselected_turnover_story_or_invent_team_pass_metric():
+    import json
+    from pathlib import Path
+
+    rows = json.loads(
+        (
+            Path(__file__).resolve().parents[2]
+            / "docs/evaluations/frozen-location-v9.json"
+        ).read_text(encoding="utf-8")
+    )["rows"]
+    row = next(
+        r for r in rows if r["policy"] == "single" and r["case_id"] == "location-6407"
+    )
+
+    class Recorded:
+        def complete(self, *args):
+            a = row["answer"]
+            c = row["context"]
+            return {
+                "text": a["text"],
+                "evidence_ids": a["model_cited_event_ids"],
+                "story_ids": [s["id"] for s in a["narrative_evidence"]],
+                "rate_basis": c["rate_contract"]["basis"],
+                "team_entry_rate_change": c["rate_contract"]["team_entry_rate_change"],
+            }
+
+    answer = explain(
+        row["request"], row["context"], Recorded(), "Trusted local explanation."
+    )
+    assert answer["generation_mode"] == "fallback"
+    assert answer["rejection_reason"] == "unapproved_rate_claim"

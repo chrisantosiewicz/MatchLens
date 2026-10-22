@@ -26,6 +26,7 @@ export default function Pitch({events, players, selectedPlayer, onPlayer, onEven
         return <g key={e.event_id} role="button" tabIndex={0} aria-label={`${p?.name??'Unknown player'} · ${e.event_type}`}
           onClick={()=>{if(e.player_id)onPlayer(e.player_id);onEvent?.(e);}}
           onKeyDown={k=>{if(k.key==='Enter'||k.key===' '){k.preventDefault();if(e.player_id)onPlayer(e.player_id);onEvent?.(e);}}} className="pitch-marker">
+          <title>{`${p?.name??'Unknown player'} · ${e.event_type}${e.location_context?.available?` · ${e.location_context.origin_zone}${e.location_context.destination_zone?` → ${e.location_context.destination_zone}`:''}${e.location_context.distance_m!=null?` · ${e.location_context.distance_m}m`:''} · event location, not player tracking`:''}`}</title>
           <circle cx={e.start!.x} cy={68-e.start!.y} r={e.player_id===selectedPlayer?2:1.35} fill={e.player_id===selectedPlayer?'#c9f296':e.team_id==='north'?'#70baa4':'#d69b82'} stroke="#10211d" strokeWidth=".5" opacity={.55+i/actions.length*.45}/>
           {e.player_id===selectedPlayer && <text x={e.start!.x} y={68-e.start!.y+.7} fontSize="2" fill="#142416" textAnchor="middle" fontWeight="700">{p?.number}</text>}
         </g>;

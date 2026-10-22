@@ -1,0 +1,17 @@
+{
+  "kind": "developer_and_second_AI_review_not_independent_human",
+  "cases": {
+    "location-6303": {
+      "verdict": "fail",
+      "notes": "Undefined player passing rate uses exposed TEAM entry-rate numbers; insufficient-exposure explanation is false with full10/10active minutes. Structurally accepted is not semantically accepted."
+    },
+    "location-6301": {
+      "verdict": "fail",
+      "notes": "Two subsequent on-ball actions belong to teammates, not Mateo. Do not attribute the full sequence action count to the selected player."
+    },
+    "location-6307": {
+      "verdict": "needs wording review",
+      "notes": "Geometry, actor, outcome and clocks supported; led to a shot is causal-sounding despite caveat. No independent human acceptance."
+    }
+  }
+}

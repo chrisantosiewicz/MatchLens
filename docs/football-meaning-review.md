@@ -20,3 +20,19 @@ These are editorial questions for the owner, not blockers or claims that the eve
 Implemented first: same-team shot build-up, progressive-pass sequence ending in turnover, and selected-player turnover followed by an opposition shot within20seconds. Each exposes complete source events and a limitation. Thirty-second build-up and20-second transition windows are editorial heuristics, not validated football thresholds. Progressive-pass/entry definitions remain the documented deterministic metrics.
 
 Start with the first four rows. Your examples can improve story selection and language; they will not be used to pretend that unseen pressure or intent was measured.
+
+## Owner feedback applied — location-editorial-v1
+
+Action origins/destinations are normalized by attack direction. Backward means at least5m toward own goal along the pitch; own-half/final-third and Euclidean pass length are explicit geometric facts. They are event locations, not tracked player positions. Five completed backward passes making up at least half the completed passes in the selected interval qualify for descriptive recycling language. This does not establish intent to manage tempo.
+
+Shot build-up credit is limited to the last three completed passes within30seconds of a same-team shot. The card exposes exact rank, measured origin/destination/distance and all intervening recorded events. A deep pass into the final third retains this credit even if it is not the final pass. No line break, through-ball class or assist is inferred.
+
+Progression-loss stories name the actual turnover actor and intervening action count. Repeated immediate outcomes require at least3sequences in the last10minutes for a spotlight; this does not diagnose risk-taking or poor receiver control. Turnover/opposition-attempt cards expose origin zone and whether zero/one on-ball actions intervene; later shots do not imply sole responsibility. Regained possession and stoppages cut the linkage.
+
+Same-metric player/team entry contrast: two complete10-minute windows, full player exposure in each, at least5player entries combined and absolute player-count difference>=3, plus opposite directions. Counts/durations/rates remain inspectable. This is a starting editorial policy, not validated significance. No before exposure remains unavailable rather than zero; replacement name/listed position is shown without claiming tactical equivalence or substitution causation. Positions never impose a ceiling on attacking impact.
+
+Box access counts distinct explicitly completed entry possessions in the last15minutes; unfinished or ambiguous groups are excluded. Spotlight gate: at least8completed entry possessions and at most1followed by a same-team shot. Recovery stories require a same-possession box entry/shot within20seconds and five subsequent on-ball actions. Late starts75:00 and only complete visible goal records provide game state. Incomplete feeds suppress these conclusions. Existing revision checks withdraw stale narratives and reject mixed source versions.
+
+Low involvement uses <=3recorded on-ball actions over at least15active match minutes as a conservative provisional gate; it says limited recorded on-ball involvement, never no overall influence. Fan and analyst share all eligibility gates and material limitations; analyst adds denominators/source details.
+
+Still useful from you: examples of backward circulation you consider worth a spotlight; whether the3-sequence immediate-loss gate is too noisy; and examples where even third-last-pass credit feels too remote. These will refine editorial selection, not authorize inferred defensive lines, intent or unobserved supporting players.
