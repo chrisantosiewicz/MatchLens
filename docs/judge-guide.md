@@ -2,6 +2,10 @@
 
 Status: see [STATUS.md](../STATUS.md), updated October22. This is a local prototype using fictional clubs, players, matches and season baselines. Start with the [public template demo](https://matchlens-chris-demo-2026.azurewebsites.net) or the reproducible local build. No Azure account is required for either.
 
+## October22 reassessment evidence
+
+Open [recorded AI evidence](https://matchlens-chris-demo-2026.azurewebsites.net/evidence/index.html): all12 v4 cases, template/model comparison, exact metric sources and an earlier failure replayed through the current guard. It makes no model calls. Current verification:60backend /23frontend tests, build, Ruff and packaging test pass. Raw run: evaluations/frozen-v4.json; second-AI review: evaluations/v4-ai-review.md; independent human acceptance remains pending. Public app stays in template mode.
+
 ## Run the local build
 
 Prerequisites: Python 3.12+, uv, Node.js 20+, npm. From the extracted repository root in PowerShell:

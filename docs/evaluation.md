@@ -26,3 +26,7 @@ Current rate contract supplies exact window durations, calculated per-minute tea
 ## October 21 current-contract rerun
 
 After renewed sign-in, all 60 paired rows completed on commit d814db3. See evaluation-current-results.json. The hybrid single policy made 6 calls (4 structural acceptances, 1 abstention, 1 fallback); specialist made 40 calls. Developer inspection still rejected semantic quality: action-rate/pass wording, area-presence inference, internal-key leakage, and specialist relevance errors. Conditional retail estimates are recorded, not actual bills. Follow-up fixes distinguish hyphenated minute ranges from negative values and tighten wording instructions. Those follow-up instructions require fresh live acceptance; a passing regression is not a passing model evaluation.
+
+## October22 v4 frozen narrow capability
+
+Current raw trace: evaluations/frozen-v4.json; normalized backend source6da84d6. Twelve paired questions,24rows,4actual model calls; other single-policy cases use deterministic boundaries. Usage/latencies: evaluations/frozen-summary.json. Independent human review remains pending; developer/second-AI review in evaluations/v4-ai-review.md found supported factual clauses in all4actual outputs, with modest passing interpretation. No population reliability claim. Earlier failed candidates remain. Changed scopes and held-out cases prevent version-to-version acceptance-rate comparison. Inspect the public recorded evidence page without generating calls. Public production remains templates.

@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-22",
+  "url": "https://matchlens-chris-demo-2026.azurewebsites.net",
+  "checks": [
+    "rewind excludes future events",
+    "revision consistency",
+    "incomplete feed metadata",
+    "template passing significance",
+    "12 recorded cases",
+    "model citations separately rendered",
+    "all 12 deployed case files match local build",
+    "environment request returns404"
+  ],
+  "limits": [
+    "Point-in-time checks, not future uptime guarantee",
+    "Public demo uses templates; recorded Foundry evidence is not live generation"
+  ],
+  "health": {
+    "status": "ok",
+    "data_mode": "synthetic",
+    "ai_mode": "template",
+    "integration_status": "disabled",
+    "cloud_connected": false
+  },
+  "sparse_observed_score": {
+    "north": 0,
+    "harbor": 1
+  }
+}

@@ -1,22 +1,21 @@
-# Submission checklist — October22
+# Submission checklist — October 22
 
-Current source of truth: [STATUS.md](../STATUS.md). Historical findings and experiments remain in Git history/build-ledger.md.
+Current source of truth: [STATUS.md](../STATUS.md).
 
-## Completed
+Completed in source and recorded checks:
+- Deterministic, clock-safe metrics/narratives; revision invalidation and paused polling.
+- Position-sensitive synthetic data and 20-seed sanity validation; sparse scores explicitly observed/incomplete.
+- Review fixes: rewind anchor label, progression relevance, input scope/quota handling, integration mode honesty.
+- 60 backend / 23 frontend tests, production build, lint and package test.
+- Real Foundry runs with frozen source/cases, usage, latency, retained failures and complete deterministic fact provenance.
+- Recorded evidence viewer with all v4 cases and offline rejection replay; public paid model calls disabled.
+- Public source and free Azure hosting; source ZIP and dated hosting records remain reproducible fallbacks.
+- YouTube publication exists, but its quality is not accepted as final.
 
-- [x] Deterministic metrics, selected-clock boundaries, canonical revisions, useful fallback.
-- [x] Synthetic sparse sampling, goalkeeper distributions and completion sanity checks across20seeds.
-- [x] Public LinuxFree hosting and original anonymous browser/API verification.
-- [x] Public repository, reproducible source ZIP, SHA256 manifest and local setup guide.
-- [x] Real Foundry connectivity, paired experiments, usage/latency/cost estimates; rejected results retained.
-- [x] Confirmed review fixes in source: future anchor labels, incomplete-feed score/recap disclosure, grounded template why-answer. 57backend/21frontend tests and build pass.
+Remaining gates:
+1. Independent human review: subject, time, factual support, relevance, abstention, uncertainty; report denominators and failures. AI/developer review is not independent human acceptance.
+2. Improve/verify video when owner resumes video work. Official rules §4.4 require <2-minute working-project footage at a public URL on YouTube/Vimeo/Facebook Video/Youku and public GitHub. Anonymous playback and replacement quality remain unchecked.
+3. Recheck judge access near submission and judging; free hosting stop/start verification cannot promise future capacity or uptime.
+4. Owner confirms category, rights/license, eligibility and final platform submission by October27. Registration is not submission.
 
-## Ordered remaining work
-
-1. Verify October22 deployment anonymously and regenerate judge ZIP. Acceptance: rewinding before substitution shows neutral anchor; sparse score explicitly incomplete; why answer explains recorded progression and limits.
-2. Freeze English-only duration-aware player/team explanation and new cases before running. Acceptance: actual trace with exact source hash, calculated facts/windows/evidence, billable usage and failure behavior. Spanish remains deterministic.
-3. Obtain independent human review. Reviewer scores correct subject/time, evidence support, relevance and uncertainty blind to policy where possible; report failures/disagreements. Developer/script checks do not substitute for independence. No unsupported factual claims in reviewed sample; provisional relevance>=90%, unsupported-request refusal>=95%; no population guarantee.
-4. Show actual question-to-response-to-evidence/fallback operation, with honest latency/mode labels. Keep public templates safe; no new agents/infrastructure required.
-5. Upload video to YouTube (owner-selected), verify anonymous playback and required visibility/duration. Studio sign-in pending. Accepted-host requirement is reported by independent review; primary rules URL could not be fetched on October22 and must be owner-checked before submission.
-6. Check cold-start recovery and access near judging; preserve local fallback. No prospective uptime guarantee. No paid hosting tier authorized.
-7. Owner confirms actual category, license/rights, eligibility attestations and final platform submission by deadline. Registration confirmed; final submission not claimed.
+Primary rules: https://github.com/microsoft/insidethegamehackathon/blob/main/OFFICIAL%20RULES.md . §4.8 requires unrestricted free judge demo access; judging ends November10. Checked October22.

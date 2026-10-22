@@ -9,3 +9,9 @@ Foundry uses the declared/locked Azure AI Projects2.0.0 OpenAI-compatible Respon
 The specialist comparator selects canonical sentences through Analyst/Reviewer/Producer application code; it is not Agent Framework integration and has shown no reliable relevance/quality advantage. Fewer single-model calls did not mean lower estimated cost: its context was larger. Routing differences prevent isolating orchestration effects.
 
 Evidence: evaluation-results.json (initial raw policy), evaluation-current-results.json (d814db3 hybrid contract), foundry-current-verification.json (fresh505/606 developer review), deployment-model-verification.json (actual deployment SKU/version). None establishes final independent semantic acceptance. English-only routing added October22 invalidates any claim that earlier bilingual experiments measure the current exact policy.
+
+## October22 frozen narrow workflow
+
+Current trace: evaluations/frozen-v4.json; manifest frozen-english-v4.json; backend source6da84d6. Twelve paired cases, four actual model calls. Sparse/no-active-baseline/zero-duration/no-passing inputs return deterministic limitations before provider creation or quota consumption. Concept guards are conservative heuristics, not semantic proof.
+
+Accepted results retain model_cited_event_ids separately from evidence_ids, which unions model citations with complete deterministic metric sources. fact_support provides each count, duration, rate, exact source IDs and window bounds; metric_definition explains progression without implying quality. The recorded evidence viewer renders these separately. Historical v1 failures remain; replay_recorded_failure.py feeds an actual saved bad response through the current guard without remote generation. See evaluations/v4-ai-review.md and independent-review.md for limits and external acceptance.

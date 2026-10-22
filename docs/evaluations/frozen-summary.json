@@ -1,0 +1,84 @@
+{
+  "warning": "Different scope and fresh cases between versions; do not compare acceptance rates as an orchestration experiment. Token usage is measured, not an Azure invoice. No independent human acceptance.",
+  "runs": [
+    {
+      "version": 1,
+      "manifest_sha256": "6e867de0f558d51eb7da62c3820fd0aaa74ec031d85b5dac6496d3fa8cd4c338",
+      "rows": 24,
+      "actual_model_calls": 9,
+      "input_tokens": 37398,
+      "output_tokens": 1964,
+      "model_call_latency_ms": [
+        9526.38,
+        3265.98,
+        3567.2,
+        3485.43,
+        3100.26,
+        2632.44,
+        5563.88,
+        2947.87,
+        2944.85
+      ],
+      "statuses": {
+        "completed": 24
+      },
+      "independent_human_review": "pending"
+    },
+    {
+      "version": 2,
+      "manifest_sha256": "ba06443fdd9e24d647812d384e90bfb98d3dd6be5609bf381bfca718ec4b556d",
+      "rows": 24,
+      "actual_model_calls": 6,
+      "input_tokens": 30565,
+      "output_tokens": 1156,
+      "model_call_latency_ms": [
+        9702.85,
+        3111.72,
+        2870.13,
+        2681.55,
+        2824.85,
+        2645.71
+      ],
+      "statuses": {
+        "completed": 24
+      },
+      "independent_human_review": "pending"
+    },
+    {
+      "version": 3,
+      "manifest_sha256": "b4d95318b6ed41abdd296115df2eb2d8248801202b0fb29309045bca7b5e1bc1",
+      "rows": 24,
+      "actual_model_calls": 4,
+      "input_tokens": 27646,
+      "output_tokens": 749,
+      "model_call_latency_ms": [
+        9102.94,
+        3048.11,
+        3176.85,
+        3092.9
+      ],
+      "statuses": {
+        "completed": 24
+      },
+      "independent_human_review": "pending"
+    },
+    {
+      "version": 4,
+      "manifest_sha256": "2176b7bf0f16bdd25298e7dbe6a5bad83db2df3c5af9889a57019adef9ac82e4",
+      "rows": 24,
+      "actual_model_calls": 4,
+      "input_tokens": 23942,
+      "output_tokens": 727,
+      "model_call_latency_ms": [
+        8520.81,
+        3360.23,
+        2765.54,
+        3477.32
+      ],
+      "statuses": {
+        "completed": 24
+      },
+      "independent_human_review": "pending"
+    }
+  ]
+}

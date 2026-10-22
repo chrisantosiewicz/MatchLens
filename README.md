@@ -59,6 +59,10 @@ Generate versioned example data from repository root:
 backend/.venv/Scripts/python.exe -m matchlens.synthetic --output data
 ```
 
+## Inspect recorded AI evidence
+
+[Open all frozen cases and source-event proof](https://matchlens-chris-demo-2026.azurewebsites.net/evidence/index.html). This is recorded model output, not live generation. Complete metric sources and actual model citations are shown separately. Independent human review is pending. Paused visible views check event corrections every15seconds without moving the clock.
+
 ## Current stage
 
 See [STATUS.md](STATUS.md) for the authoritative dated implementation and submission status. Older experiment reports are historical evidence.
