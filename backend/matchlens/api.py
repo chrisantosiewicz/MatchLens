@@ -4,6 +4,7 @@ import os
 import secrets
 from collections import Counter
 from functools import lru_cache
+from hashlib import sha256
 from typing import Literal
 
 from fastapi import FastAPI, Header, HTTPException, Query
@@ -12,6 +13,7 @@ from pydantic import BaseModel, Field
 from .alerts import progressive_alerts
 from .analytics import compare_windows, player_stats
 from .explainer import context_packet, explain
+from .limits import model_budget
 from .models import Clock, Event, visible
 from .moments import key_moments
 from .profiles import profile
@@ -51,6 +53,11 @@ def match_or_404(match_id):
     return fixtures()[match_id].model_copy(
         update={"events": event_store().events_at(2, 3600000, match_id)}
     )
+
+
+def source_version(match):
+    revision_list = sorted((e.event_id, e.revision) for e in match.events)
+    return sha256(repr(revision_list).encode()).hexdigest()[:24]
 
 
 @app.post("/api/matches/{match_id}/events")
@@ -146,6 +153,7 @@ def state(
     events = visible(match.events, clock)
     return {
         "id": match.id,
+        "source_version": source_version(match),
         "teams": match.teams,
         "players": match.players,
         "clock": clock,
@@ -174,6 +182,7 @@ def player_detail(
     clock = Clock(period=period, elapsed_ms=elapsed_ms)
     return {
         "player": player,
+        "source_version": source_version(match),
         "stats": player_stats(match.events, player_id, clock),
         "minutes_played": minutes_played(match, player_id, clock),
         "profile": profile(player_id, seasons()),
@@ -191,12 +200,13 @@ def comparison(
 ):
     match = match_or_404(match_id)
     try:
-        return compare_windows(
+        result = compare_windows(
             match.events,
             Clock(period=period, elapsed_ms=anchor_ms),
             Clock(period=period, elapsed_ms=elapsed_ms),
             team_id,
         )
+        return {**result, "source_version": source_version(match)}
     except ValueError as exc:
         raise HTTPException(422, str(exc)) from exc
 
@@ -287,7 +297,8 @@ def template_question(match_id: str, request: Question, match=None):
             [
                 e
                 for e in relevant
-                if request.anchor_ms
+                if clock.elapsed_ms > request.anchor_ms
+                and request.anchor_ms
                 <= e.elapsed_ms
                 <= min(clock.elapsed_ms, request.anchor_ms + 600000)
             ],
@@ -339,6 +350,7 @@ def template_question(match_id: str, request: Question, match=None):
         )
     return {
         "text": text,
+        "source_version": source_version(match),
         "intent": intent,
         "evidence_ids": evidence,
         "generation_mode": "template",
@@ -356,7 +368,8 @@ def interpretation_requested(request, requested):
 
 @app.post("/api/matches/{match_id}/questions")
 def question(match_id: str, request: Question):
-    requested = template_question(match_id, request)
+    match = match_or_404(match_id)
+    requested = template_question(match_id, request, match)
     interpretive = interpretation_requested(request, requested)
     if os.getenv("MATCHLENS_AI_POLICY", "single") == "single" and not interpretive:
         return {
@@ -384,7 +397,7 @@ def question(match_id: str, request: Question):
             def call_tool(name=name, text=text):
                 return fact(
                     template_question(
-                        match_id, request.model_copy(update={"question": text})
+                        match_id, request.model_copy(update={"question": text}), match
                     ),
                     name,
                 )
@@ -396,11 +409,19 @@ def question(match_id: str, request: Question):
         )
     except RuntimeError:
         provider = None
+    if provider is not None and not model_budget().acquire():
+        if hasattr(provider, "close"):
+            provider.close()
+        return {
+            **requested,
+            "generation_mode": "fallback",
+            "status": "budget_limited",
+            "notice": "Local factual answer · demo model request budget reached",
+        }
     if (
         os.getenv("MATCHLENS_AI_POLICY", "single") == "single"
         and requested["intent"] != "unsupported"
     ):
-        match = match_or_404(match_id)
         packet = context_packet(
             match,
             request.player_id,
@@ -444,7 +465,10 @@ def recap(
     match = match_or_404(match_id)
     player_or_404(match, player_id)
     clock = Clock(period=period, elapsed_ms=elapsed_ms)
-    return build_recap(match, player_id, clock, language)
+    return {
+        **build_recap(match, player_id, clock, language),
+        "source_version": source_version(match),
+    }
 
 
 if os.getenv("MATCHLENS_FRONTEND_DIR"):

@@ -27,6 +27,10 @@ def test_single_model_can_interpret_context_but_unknown_sources_fall_back():
         def complete(self, role, state):
             assert role == "explainer"
             return {
+                "rate_basis": state["context"]["rate_contract"]["basis"],
+                "team_entry_rate_change": state["context"]["rate_contract"][
+                    "team_entry_rate_change"
+                ],
                 "text": "A useful progression contribution, with a limited observation window.",
                 "evidence_ids": [state["context"]["events"][0]["event_id"]],
             }
@@ -71,7 +75,14 @@ def test_numeric_equivalence_is_allowed_but_rounding_and_id_digits_are_not():
             self.text = text
 
         def complete(self, role, state):
-            return {"text": self.text, "evidence_ids": ["event-999"]}
+            return {
+                "text": self.text,
+                "evidence_ids": ["event-999"],
+                "rate_basis": state["context"]["rate_contract"]["basis"],
+                "team_entry_rate_change": state["context"]["rate_contract"][
+                    "team_entry_rate_change"
+                ],
+            }
 
     assert (
         explain({}, p, Model("100% completion in the after window."), "Trusted.")[
@@ -79,7 +90,12 @@ def test_numeric_equivalence_is_allowed_but_rounding_and_id_digits_are_not():
         ]
         == "model"
     )
-    for text in ["89% completion.", "999 completed passes."]:
+    for text in [
+        "89% completion.",
+        "999 completed passes.",
+        "-100% completion.",
+        "−100% completion.",
+    ]:
         answer = explain({}, p, Model(text), "Trusted.")
         assert answer["generation_mode"] == "fallback"
         assert answer["rejection_reason"] == "unknown_number"
@@ -96,3 +112,35 @@ def test_diagnostics_preserve_rejected_output_without_changing_fallback():
     assert answer["rejection_reason"] == "unknown_evidence"
     assert diagnostics[0]["candidate"]["text"] == "Unsupported claim."
     assert "candidate" not in answer
+
+
+def test_model_must_use_calculated_rate_direction_for_unequal_windows():
+    p = packet()
+    p["rate_contract"] = {
+        "basis": "per_minute",
+        "team_entry_rate_change": "unchanged",
+        "before": 0.4,
+        "after": 0.4,
+    }
+
+    class Misleading:
+        def complete(self, role, state):
+            return {
+                "text": "The team entry rate decreased.",
+                "evidence_ids": [p["events"][0]["event_id"]],
+                "rate_basis": "raw_counts",
+                "team_entry_rate_change": "decreased",
+            }
+
+    answer = explain({}, p, Misleading(), "Trusted.")
+    assert answer["generation_mode"] == "fallback"
+    assert answer["rejection_reason"] == "invalid_rate_comparison"
+
+
+def test_substitute_rates_use_active_minutes_and_zero_window_is_unrated():
+    match = generate_match(202, "sparse")
+    p = context_packet(match, "north-12", Clock(period=2, elapsed_ms=1200000), 900000)
+    assert p["player_window_minutes"] == {"before": 0, "after": 5}
+    assert p["player_rates"]["before"]["actions_per_minute"] is None
+    p = context_packet(match, "north-12", Clock(period=2, elapsed_ms=900000), 900000)
+    assert p["player_rates"]["after"]["actions_per_minute"] is None

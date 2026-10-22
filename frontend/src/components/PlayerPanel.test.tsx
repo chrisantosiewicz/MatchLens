@@ -1,4 +1,4 @@
-import {render,screen,fireEvent,cleanup} from '@testing-library/react';
+import {render,screen,fireEvent,cleanup,act} from '@testing-library/react';
 import {afterEach,expect,it,vi} from 'vitest';
 import PlayerPanel from './PlayerPanel';
 import type {PlayerDetail} from '../contracts';
@@ -30,4 +30,21 @@ it('keeps a timestamped answer during forward playback and clears it on rewind',
   expect(screen.getByText(/Answer at 0:03/)).toBeTruthy();
   view.rerender(<PlayerPanel {...props} clock={{period:1,elapsed_ms:1000}}/>);
   expect(screen.queryByText('One completed pass.')).toBeNull();
+});
+
+it('clears cached answers and rejects pending answers after an event correction',async()=>{
+  let resolveAnswer!: (response:Response)=>void;
+  const fetcher=vi.fn().mockResolvedValueOnce({ok:true,json:async()=>({source_version:'v1',text:'Cached old evidence',evidence_ids:['e1'],generation_mode:'template'})})
+    .mockImplementationOnce(()=>new Promise<Response>(resolve=>{resolveAnswer=resolve;}));
+  vi.stubGlobal('fetch',fetcher);
+  const props={detail,matchId:'demo',language:'en',depth:'casual',anchor:0,onMoment:()=>{},clock:{period:1,elapsed_ms:3000}};
+  const view=render(<PlayerPanel {...props} sourceVersion="v1"/>);
+  fireEvent.click(screen.getByRole('button',{name:'How involved has he been?'}));
+  await screen.findByText('Cached old evidence');
+  view.rerender(<PlayerPanel {...props} sourceVersion="v2"/>);
+  expect(screen.queryByText('Cached old evidence')).toBeNull();
+  fireEvent.click(screen.getByRole('button',{name:'How involved has he been?'}));
+  view.rerender(<PlayerPanel {...props} sourceVersion="v3"/>);
+  await act(async()=>{resolveAnswer({ok:true,json:async()=>({source_version:'v2',text:'Delayed old evidence',evidence_ids:[],generation_mode:'template'})} as Response);});
+  expect(screen.queryByText('Delayed old evidence')).toBeNull();
 });

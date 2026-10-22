@@ -25,7 +25,7 @@ npm run dev -- --port 5173
 
 Open http://127.0.0.1:5173. API documentation: http://127.0.0.1:8000/docs.
 
-On macOS/Linux, use `backend/.venv/bin/python` instead of the Windows interpreter path. Keep these development servers bound to loopback: this local prototype has no production authentication or rate limiting.
+On macOS/Linux, use `backend/.venv/bin/python` instead of the Windows interpreter path. Keep these development servers bound to loopback: this local prototype has no production authentication. Model work has a process-local request budget, which is not distributed access control.
 
 ## Try it
 
@@ -59,16 +59,13 @@ backend/.venv/Scripts/python.exe -m matchlens.synthetic --output data
 
 ## Current stage
 
-Implemented: local synthetic replay, before/after metrics, player profiles and percentile bars, key event sequences, bounded template questions, English/Spanish analytical text, and template recaps. The API serves canonical revision-aware events through SQLite (in memory by default); token-protected event upserts recompute subsequent reads. Polling updates the viewer's requested clock; live SSE ingestion is not implemented yet.
+Implemented: synthetic replay; deterministic clock-limited metrics, profiles, fictional positional percentiles, key moments, questions and recaps; English/Spanish presentation; Watch/Explore; progressive-pass alerts; canonical SQLite revisions and token-protected local ingestion. The Watch scene is an SVG illustration, not video recognition or tracking.
 
-**Live AI has not been verified.** Question/recap responses are explicitly labeled deterministic templates. The bounded Analyst → Reviewer → Producer orchestration is implemented and tested with a scripted provider. It chooses allowed tools, supports one revision, rejects unknown fact IDs/changed sentences, and falls back on failure. The optional Foundry adapter and SDK dependencies are installed locally and locked, but have not been tested against an actual project. See `.env.example`; nothing is loaded from that file automatically, and no live requests occur in default template mode.
+**Foundry connectivity is verified; semantic quality is experimental.** Authenticated `gpt-4.1-mini` calls returned outputs and usage. Initial held-out evaluation exposed incorrect subject/time-window interpretations, including unequal-window comparisons. The current implementation supplies calculated per-minute rates, active player minutes, evidence IDs and uncertainty, and rejects a mismatched rate-comparison contract. That revised contract has regression coverage but has not yet completed a fresh live acceptance run. Default local operation uses deterministic templates and remains useful without Azure.
 
-Registration is confirmed by the user; Azure subscription/Foundry setup is in progress. Live-agent evaluation, cloud deployment, durable publication/authentication, actual overlay scheduling/retractions, and full localization remain subsequent milestones. Never describe this local build as a finished AI submission. The current producer selects and orders canonical factual sentences; unrestricted generated explanations are intentionally withheld pending evaluation.
+The single-model policy keeps direct-count questions deterministic. The specialist workflow is retained for evaluation, with no demonstrated quality advantage. Historical measurements and limitations are in [evaluation](docs/evaluation.md). No broad analytical accuracy, independent bilingual acceptance, or production reliability is claimed.
 
-No real footage, live tracking, off-ball movement, real league rankings, licensed data or predictive models are included. External font delivery is optional; system-font fallbacks remain usable offline. Synthetic realism is rule-based, not empirically calibrated. Season profiles are illustrative fictional baselines and not real European competition rankings.
-
-Design and implementation plan: `docs/superpowers/`. Build decisions and actual validation: `docs/build-ledger.md`.
-
+No real footage, off-ball tracking, real league rankings, licensed match data or predictive models are included. Synthetic realism is rule-based, not empirically calibrated. Public source: [MatchLens on GitHub](https://github.com/chrisantosiewicz/MatchLens). A 105-second captioned walkthrough accompanies the release; it uses edited screenshots of actual template-mode operation. Start with the [judge guide](docs/judge-guide.md) and [architecture](docs/architecture.md).
 
 ## Recovery milestones and built-demo serving
 
@@ -101,14 +98,11 @@ Offline paired evaluation:
 backend/.venv/Scripts/python.exe -m matchlens.evaluate --output artifacts/evaluation.json
 ```
 
-Add `--live` only with configured, authenticated Foundry access: it makes billable requests. See [evaluation protocol](docs/evaluation.md). Initial live latency/token measurements and observed quality failures are recorded in docs/evaluation-results.json; current-policy acceptance and Azure-specific monetary cost remain unverified.
-
-
-October 21 live verification update: tenant-specific authentication succeeded against the supplied Foundry project. Two gpt-4.1-mini Responses calls returned model output and token usage. Neither candidate passed structural output validation; the first introduced unsupported numeric tokens (89 and 100). Fallback remained active. See `docs/foundry-verification.json` (or `foundry-verification.json` from this directory). Earlier statements of no live requests are historical; a passing interpretation, semantic quality and reliability remain unverified. Next: retain rejected candidate diagnostics, repair output-contract adherence, then paired live evaluation. Do not widen validators merely to obtain a passing demo.
+Add `--live` only with configured, authenticated Foundry access: it makes billable requests. See [evaluation protocol](docs/evaluation.md). Initial live latency/token measurements and observed quality failures are recorded in docs/evaluation-results.json; current-policy acceptance remains unverified. A conditional Global Standard retail estimate for the initial experiment is recorded alongside token usage; it is not an Azure bill.
 
 
 ### Current local launcher and corrections
 
 After building the frontend, run `./scripts/Start-MatchLens.ps1` for account-free template mode, or `./scripts/Start-MatchLens.ps1 -Foundry` to explicitly opt into the locally configured project. The launcher reads only whitelisted configuration from ignored `.env`; it binds to loopback and never prints secrets. Browser authentication is opt-in (`MATCHLENS_ALLOW_BROWSER_LOGIN=1`) with explicit `AZURE_TENANT_ID`. Tokens are kept in process memory; another process may require sign-in again.
 
-`POST /api/matches/{id}/events` accepts synthetic events/revisions only when the server has `MATCHLENS_INGEST_TOKEN` and the caller supplies the matching `X-MatchLens-Token` header. No token belongs in browser code. Higher revisions replace earlier events; duplicates/stale revisions are ignored. State/statistics/alerts/answers/recaps read canonical events afterward. Set `MATCHLENS_EVENT_DB` to a local SQLite path for restart persistence. This is a local ingestion demonstration, not an authenticated external feed connector. Previously displayed narratives are not yet automatically retracted when an event is corrected; request a new answer/recap. No correction-notification stream or public model access protection is claimed.
+`POST /api/matches/{id}/events` accepts synthetic events/revisions only when the server has `MATCHLENS_INGEST_TOKEN` and the caller supplies the matching `X-MatchLens-Token` header. No token belongs in browser code. Higher revisions replace earlier events; duplicates/stale revisions are ignored. State/statistics/alerts/answers/recaps read canonical events afterward. Set `MATCHLENS_EVENT_DB` to a local SQLite path for restart persistence. This is a local ingestion demonstration, not an authenticated external feed connector. Responses carry a canonical source revision. On the next fetch, the viewer invalidates old narratives and rejects mixed-revision snapshots; paused views receive no background correction notification. Model work defaults to six requests per minute and fifty requests per process session. This is a demo work budget, not a dollar cap or public access-control system.

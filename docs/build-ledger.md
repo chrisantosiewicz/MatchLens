@@ -57,3 +57,23 @@ Preflight: project contains only approved design/plan documents. No baseline sou
 - Connected canonical SQLite revisions to read APIs and token-protected synthetic ingestion. Regression verifies corrected pass updates stats, alert, answer and recap; duplicates do not inflate. Previously displayed answers/recaps are not auto-retracted; correction-notification stream remains a limitation.
 - Added loopback built-demo launcher and same-origin static serving. HTTP smoke verified HTML/assets/state/template question. Public paid-model access controls, hosted judge access, repository publication/license and demo video remain unfinished.
 - Verification: 47 backend tests pass; 15 frontend tests pass; production build passes; Ruff lint/format and git diff whitespace checks pass. Read-only fresh review found one consequential eval mismatch, now fixed with test. No live semantic reliability or independent bilingual/user evaluation claimed. Azure-specific dollar cost remains unknown; token usage is recorded.
+
+
+October 21 retry after user requested renewed sign-in: successful authenticated fresh-seed calls for seeds 303/404, English/Spanish, all four structurally accepted. Development inspection still found misleading unequal-window interpretations; semantic acceptance remains false. Measured calls recorded in foundry-fresh-verification.json; full local context/output in ignored artifacts/foundry-fresh-check.json. No broad reliability or independent bilingual validation claimed. Next: supply explicit duration-normalized rates and enforce temporal-comparison constraints before another semantic acceptance check.
+
+
+## October 21 evening — local recovery verified
+
+- Fresh full verification: 54 backend tests, 19 frontend tests, Vite/TypeScript build, Ruff backend/scripts and packaging unittest pass.
+- Rapid seeking exposed parallel SQLite cursor interference. Concurrent read/correction regression reproduced invalid JSON; locking reads as well as writes fixed it.
+- Canonical source versions now prevent mixed UI snapshots and invalidate old answers/recaps when a correction is observed. No background correction stream.
+- Comparison cards disclose actual durations; rates rather than raw counts determine unequal-window direction. Active player minutes and a checked rate contract enter optional model context. New contract has scripted regression coverage, not fresh live acceptance.
+- Explore scene preview now uses document flow so it does not cover recap controls.
+- Added process-local model request budget (6/minute, 50/session defaults); not distributed protection or a dollar ceiling.
+- Official Azure Retail Prices meters yield conditional initial-experiment estimate USD 0.021066 assuming Global Standard. Actual deployment SKU/bill/credits remain unverified. See price-reference.json.
+- Public GitHub repository created; final source/package/video publication in progress. No public hosted application or semantic quality acceptance claimed.
+
+- Final independent review reproduced zero-duration fallback counting at the exact anchor and signed-number validation stripping minus signs. Added failing regressions, fixed both; full backend 54 passed afterward.
+
+- Clean extracted ZIP independently installed locked backend/frontend dependencies, passed 54/19 tests and built. Initial npm audit found development-only Vitest/tinypool advisories; upgraded Vitest to 4.1.12, reran all 19 frontend tests/build and audit: zero reported vulnerabilities (including development dependencies). This is a dated registry audit, not a security certification.
+- Created and decoded 105-second captioned edited screenshot walkthrough; all seven sections visually inspected. Not continuous interaction/video-recognition evidence.

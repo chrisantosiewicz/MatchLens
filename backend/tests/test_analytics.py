@@ -185,3 +185,26 @@ def test_zero_duration_window_contains_no_actions_at_anchor():
     assert result["after"]["actions"] == 0
     assert result["after"]["box_entries"] == 0
     assert result["after"]["evidence_ids"] == []
+
+
+def test_unequal_windows_compare_event_frequency_not_raw_totals():
+    events = [entry(i, 400000 + i * 10000) for i in range(4)] + [
+        entry(10 + i, 1000000 + i * 10000) for i in range(2)
+    ]
+    result = compare_windows(
+        events,
+        Clock(period=2, elapsed_ms=900000),
+        Clock(period=2, elapsed_ms=1200000),
+        "north",
+    )
+    assert result["before"]["box_entries_per_minute"] == 0.4
+    assert result["after"]["box_entries_per_minute"] == 0.4
+    assert result["entry_rate_change"] == "unchanged"
+    zero = compare_windows(
+        events,
+        Clock(period=2, elapsed_ms=900000),
+        Clock(period=2, elapsed_ms=900000),
+        "north",
+    )
+    assert zero["after"]["box_entries_per_minute"] is None
+    assert zero["entry_rate_change"] == "not_comparable"

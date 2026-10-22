@@ -4,8 +4,8 @@ import {api} from '../api';
 import {formatClock} from '../contracts';
 import type {Answer, Clock, Moment, PlayerDetail} from '../contracts';
 
-export default function PlayerPanel({detail, clock, matchId, language, depth, anchor, onMoment, onInteract}: {
-  detail: PlayerDetail | null; clock: Clock; matchId:string; language:string; depth:string; anchor:number; onMoment:(m:Moment)=>void; onInteract?:()=>void;
+export default function PlayerPanel({detail, sourceVersion, clock, matchId, language, depth, anchor, onMoment, onInteract}: {
+  sourceVersion?:string; detail: PlayerDetail | null; clock: Clock; matchId:string; language:string; depth:string; anchor:number; onMoment:(m:Moment)=>void; onInteract?:()=>void;
 }) {
   const [tab,setTab] = useState('profile');
   const [question,setQuestion] = useState('');
@@ -14,6 +14,9 @@ export default function PlayerPanel({detail, clock, matchId, language, depth, an
   const [error,setError] = useState('');
   const [answerAt,setAnswerAt] = useState('');
   const active = useRef(0);
+  const currentSource=useRef(sourceVersion);
+  currentSource.current=sourceVersion;
+  useEffect(()=>{active.current++;setAnswer(null);setBusy(false);setError('');},[sourceVersion]);
   const previousClock=useRef(clock);
   useEffect(()=>{
     const previous=previousClock.current;
@@ -27,8 +30,9 @@ export default function PlayerPanel({detail, clock, matchId, language, depth, an
     if(!text.trim()||busy||!detail)return;
     onInteract?.();
     const request=++active.current;
+    const requestedSource=sourceVersion;
     setBusy(true);setError('');setAnswer(null);
-    try {const result=await api<Answer>(`/matches/${matchId}/questions`,{...clock,player_id:detail.player.id,question:text,language,depth,anchor_ms:anchor});if(request===active.current){setAnswer(result);setAnswerAt(formatClock(clock));}}
+    try {const result=await api<Answer>(`/matches/${matchId}/questions`,{...clock,player_id:detail.player.id,question:text,language,depth,anchor_ms:anchor});if(request===active.current&&requestedSource===currentSource.current&&result.source_version===requestedSource){setAnswer(result);setAnswerAt(formatClock(clock));}}
     catch(e){if(request===active.current)setError((e as Error).message);}finally{if(request===active.current)setBusy(false);}
   }
   if(!detail)return <aside className="panel loading-panel" aria-busy="true">{es?'Cargando perfil…':'Loading player profile…'}</aside>;

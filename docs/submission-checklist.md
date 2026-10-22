@@ -36,3 +36,12 @@ October 21 live verification update: tenant-specific authentication succeeded ag
 
 
 Latest milestone: 47 backend / 15 frontend tests, build/lint/format pass. Revision store is now connected to serving; see build ledger for verified correction behavior and remaining stale-display limitation. Actual Foundry connectivity/initial development evaluation is recorded, but semantic quality gates failed inspection. Current-policy refresh is blocked on completing another Microsoft sign-in. Public repository owner/destination, licensing choice, hosting/access and video remain outstanding.
+
+## Current superseding status — October 21 evening
+
+- Local data and boundary defects: fixed; 54 backend tests and 19 frontend tests pass, production build and lint pass.
+- Canonical revisions: connected to serving; concurrent SQLite regression fixed. Source versions prevent mixed snapshots and invalidate old narratives on the next fetch. Paused views have no notification stream.
+- AI: live connectivity and initial three-policy measurements recorded; semantic acceptance failed developer inspection. Explicit duration/rate/active-minute contract now implemented and unit-tested; fresh authenticated live acceptance remains pending. No architecture winner is claimed.
+- Cost: initial experiment conditional Global Standard retail estimate USD 0.021066, assuming the cited SKU; not an actual bill or total project cost.
+- Serving: built same-origin local launcher verified; no hosted app. Process-local paid-model request budget implemented, not public authentication.
+- Public repository created at https://github.com/chrisantosiewicz/MatchLens; checked source/package publication is the next delivery step. Registration confirmed. License choice, final submission and current AI acceptance remain separate owner/account-dependent milestones.

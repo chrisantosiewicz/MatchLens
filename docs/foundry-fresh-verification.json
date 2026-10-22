@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-21",
+  "deployment": "gpt-4.1-mini",
+  "seeds": [
+    303,
+    404
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "requests": 4,
+  "structurally_accepted": 4,
+  "semantic_acceptance": false,
+  "reviewer": "development assistant; not independent bilingual human review",
+  "reason": "Candidate outputs still imply reduced involvement or effectiveness from unequal 10-minute and 5-minute counts; some omit duration/sample caveats. Structural acceptance is not semantic support.",
+  "calls": [
+    {
+      "role": "explainer",
+      "usage": {
+        "input_tokens": 4985,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 168,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5153
+      },
+      "status": "completed",
+      "latency_ms": 11185.24
+    },
+    {
+      "role": "explainer",
+      "usage": {
+        "input_tokens": 4986,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 185,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5171
+      },
+      "status": "completed",
+      "latency_ms": 2179.45
+    },
+    {
+      "role": "explainer",
+      "usage": {
+        "input_tokens": 5456,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 161,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5617
+      },
+      "status": "completed",
+      "latency_ms": 1945.72
+    },
+    {
+      "role": "explainer",
+      "usage": {
+        "input_tokens": 5456,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 194,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5650
+      },
+      "status": "completed",
+      "latency_ms": 2163.76
+    }
+  ]
+}

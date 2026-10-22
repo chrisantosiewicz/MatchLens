@@ -6,7 +6,7 @@
   "not_final_acceptance": true,
   "independent_human_bilingual_review": false,
   "cost_usd": null,
-  "cost_limitation": "Azure deployment-specific rates were not independently established; usage is measured, monetary cost is not invented.",
+  "cost_limitation": "Conditional USD Global Standard retail estimate, not an Azure bill; actual deployment SKU/offer/credits/taxes and other resources not independently verified.",
   "policies": {
     "template": {
       "model_calls": 0,
@@ -15,7 +15,9 @@
       "median_model_case_latency_ms": null,
       "max_model_case_latency_ms": null,
       "latency_includes_first_authentication": false,
-      "unreviewed_quality_scores": null
+      "unreviewed_quality_scores": null,
+      "conditional_global_standard_retail_estimate_usd": 0.0,
+      "cached_input_tokens": 0
     },
     "single": {
       "model_calls": 12,
@@ -24,7 +26,9 @@
       "median_model_case_latency_ms": 1742.0,
       "max_model_case_latency_ms": 12225.87,
       "latency_includes_first_authentication": true,
-      "unreviewed_quality_scores": null
+      "unreviewed_quality_scores": null,
+      "conditional_global_standard_retail_estimate_usd": 0.015828,
+      "cached_input_tokens": 0
     },
     "specialist": {
       "model_calls": 33,
@@ -33,7 +37,10 @@
       "median_model_case_latency_ms": 2995.225,
       "max_model_case_latency_ms": 5474.72,
       "latency_includes_first_authentication": true,
-      "unreviewed_quality_scores": null
+      "unreviewed_quality_scores": null,
+      "conditional_global_standard_retail_estimate_usd": 0.005238,
+      "cached_input_tokens": 0
     }
-  }
+  },
+  "conditional_global_standard_retail_estimate_usd": 0.021066
 }

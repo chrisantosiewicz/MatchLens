@@ -69,3 +69,64 @@ it('accepts a clock-stamped recap during forward playback and keeps it readable'
     expect(screen.getByText('At your selected time: 70:00. Recap stays readable.')).toBeTruthy();
   }finally{vi.useRealTimers();}
 });
+
+async function versionedFetch(url:string,version:string){
+  const response=await localFetch(url);
+  const data=await response.json();
+  return {ok:true,json:async()=>Array.isArray(data)?data:{...data,source_version:version}} as Response;
+}
+it('retries mixed source reads without displaying inconsistent player facts',async()=>{
+  let corrected=false;
+  let resolveState!: (value:Response)=>void;
+  vi.stubGlobal('fetch',vi.fn((url:string)=>{
+    if(url.includes('/state?')&&!corrected){corrected=true;return versionedFetch(url,'v1');}
+    if(url.includes('/state?'))return new Promise<Response>(r=>{resolveState=r;});
+    return versionedFetch(url,'v2');
+  }));
+  render(<App/>);
+  await waitFor(()=>expect(resolveState).toBeTypeOf('function'));
+  expect(screen.queryByRole('heading',{name:'Mateo Silva'})).toBeNull();
+  await act(async()=>{resolveState(await versionedFetch('/state?','v2'));});
+  await screen.findByRole('heading',{name:'Mateo Silva'});
+});
+it('clears cached recaps and rejects an old in-flight recap after corrections',async()=>{
+  let version='v1';
+  let resolveRecap!: (value:Response)=>void;
+  let recapCalls=0;
+  vi.stubGlobal('fetch',vi.fn((url:string)=>{
+    if(url.includes('/recap?')){
+      if(++recapCalls===1)return Promise.resolve({ok:true,json:async()=>({source_version:'v1',text:'Cached recap',evidence_ids:[],generation_mode:'template'})} as Response);
+      return new Promise<Response>(r=>{resolveRecap=r;});
+    }
+    return versionedFetch(url,version);
+  }));
+  render(<App/>);
+  await screen.findByRole('heading',{name:'Mateo Silva'});
+  fireEvent.click(screen.getByRole('button',{name:'Build my recap'}));
+  await screen.findByText('Cached recap');
+  fireEvent.click(screen.getByRole('button',{name:'Explore evidence'}));
+  expect(screen.getByText('Selected sequence')).toBeTruthy();
+  fireEvent.click(screen.getByRole('button',{name:'Build my recap'}));
+  version='v2';
+  fireEvent.change(screen.getByRole('slider',{name:'Match clock'}),{target:{value:'1510000'}});
+  await screen.findByText('Match events were corrected. Generate answers and recaps again.');
+  expect(screen.queryByText('Cached recap')).toBeNull();
+  expect(screen.queryByText('Selected sequence')).toBeNull();
+  await act(async()=>{resolveRecap({ok:true,json:async()=>({source_version:'v1',text:'Delayed recap',evidence_ids:[],generation_mode:'template'})} as Response);});
+  expect(screen.queryByText('Delayed recap')).toBeNull();
+});
+
+it('shows actual window durations and compares recorded entry rates for unequal windows',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async(url:string)=>{
+    const response=await localFetch(url);
+    if(!url.includes('/comparison?'))return response;
+    const data=await response.json();
+    return {ok:true,json:async()=>({...data,pattern_supported:true,entry_rate_change:'increased',before:{...data.before,box_entries:6,duration_ms:600000,box_entries_per_minute:0.6},after:{...data.after,box_entries:4,duration_ms:300000,box_entries_per_minute:0.8}})} as Response;
+  }));
+  render(<App/>);
+  await screen.findByText(/Recorded box entries: 6 in 10.0 min before; 4 in 5.0 min after/);
+  expect(screen.getByText(/Rate per minute: 0.60 before and 0.80 after/)).toBeTruthy();
+  expect(screen.getAllByText('BEFORE · 10.0 min')).toHaveLength(3);
+  expect(screen.getAllByText('AFTER · 5.0 min')).toHaveLength(3);
+  expect(screen.queryByText(/decreased|reduced frequency/i)).toBeNull();
+});

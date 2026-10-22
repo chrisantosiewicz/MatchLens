@@ -8,6 +8,28 @@ from .analytics import compare_windows, player_stats
 from .models import Clock, visible
 
 
+def active_minutes(match, player, period, start_ms, end_ms):
+    offset = (period - 1) * 2700000
+    low, high = offset + start_ms, offset + end_ms
+    active_from = 0 if player.starter else None
+    duration = 0
+    for event in sorted(
+        visible(match.events, Clock(period=period, elapsed_ms=end_ms)),
+        key=lambda e: (e.period, e.elapsed_ms, e.sequence),
+    ):
+        if event.event_type != "substitution":
+            continue
+        time = (event.period - 1) * 2700000 + event.elapsed_ms
+        if event.player_id == player.id and active_from is not None:
+            duration += max(0, min(high, time) - max(low, active_from))
+            active_from = None
+        if event.recipient_id == player.id:
+            active_from = time
+    if active_from is not None:
+        duration += max(0, high - max(low, active_from))
+    return round(duration / 60000, 4)
+
+
 def context_packet(match, player_id, clock, anchor_ms):
     player = next(p for p in match.players if p.id == player_id)
     events = visible(match.events, clock)
@@ -20,7 +42,7 @@ def context_packet(match, player_id, clock, anchor_ms):
         if e.period == clock.period
         and max(0, anchor.elapsed_ms - 600000) <= e.elapsed_ms
     ]
-    return {
+    packet = {
         "synthetic": True,
         "viewer_clock": clock.model_dump(),
         "display_clock_minutes": (clock.period - 1) * 45 + clock.elapsed_ms / 60000,
@@ -76,6 +98,35 @@ def context_packet(match, player_id, clock, anchor_ms):
         "limits": "Temporal association, not causation. Event-only: no tracking, defensive lines, pressure, off-ball movement or video inference. Unequal windows and sparse observations limit comparison. Five entries is an editorial gate, not significance. Synthetic heuristics are not calibrated football truth.",
     }
 
+    bounds = {
+        "before": (max(0, anchor.elapsed_ms - 600000), anchor.elapsed_ms),
+        "after": (anchor.elapsed_ms, min(clock.elapsed_ms, anchor.elapsed_ms + 600000)),
+    }
+    packet["player_window_minutes"] = {
+        key: active_minutes(match, player, clock.period, *window)
+        for key, window in bounds.items()
+    }
+    packet["player_rates"] = {
+        key: {
+            f"{metric}_per_minute": round(
+                packet[f"contributions_{key}"][metric] / minutes, 4
+            )
+            if minutes
+            else None
+            for metric in ("actions", "progressive_passes", "box_entries")
+        }
+        for key, minutes in packet["player_window_minutes"].items()
+    }
+    packet["rate_contract"] = {
+        "basis": "per_minute"
+        if comparison["entry_rate_change"] != "not_comparable"
+        else "not_comparable",
+        "team_entry_rate_change": comparison["entry_rate_change"],
+        "before": comparison["before"]["box_entries_per_minute"],
+        "after": comparison["after"]["box_entries_per_minute"],
+    }
+    return packet
+
 
 def calculated_numbers(context):
     """Use calculated metric values, never incidental digits in IDs or coordinates."""
@@ -104,6 +155,9 @@ def calculated_numbers(context):
                     "anchor_clock_minutes",
                     "window_bounds_minutes",
                     "window_minutes",
+                    "player_rates",
+                    "player_window_minutes",
+                    "rate_contract",
                 )
             }
         )
@@ -159,10 +213,18 @@ def explain(request, context, provider, trusted_text, diagnostics=None):
         # Exact numerical equivalence accepts 100 == 100.0; rounding is still rejected.
         numbers = calculated_numbers(context)
         if any(
-            Decimal(n.replace(",", ".")) not in numbers
-            for n in re.findall(r"\d+(?:[.,]\d+)?", text)
+            Decimal(n.replace(",", ".").replace("−", "-")) not in numbers
+            for n in re.findall(r"[+−-]?\d+(?:[.,]\d+)?", text)
         ):
             rejection = "unknown_number"
+            raise ValueError(rejection)
+        contract = context.get("rate_contract")
+        if contract and (
+            output.get("rate_basis") != contract["basis"]
+            or output.get("team_entry_rate_change")
+            != contract["team_entry_rate_change"]
+        ):
+            rejection = "invalid_rate_comparison"
             raise ValueError(rejection)
         return result(text, "model", "experimental", list(dict.fromkeys(ids)))
     except (TimeoutError, RuntimeError, ValueError, KeyError, TypeError):

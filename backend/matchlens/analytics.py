@@ -65,12 +65,14 @@ def window_stats(events, duration_ms):
         # Flip both axes for attack-oriented lane labels after a direction switch.
         y = e.end.y if e.attack_right else 68 - e.end.y
         routes["right" if y < 68 / 3 else "left" if y > 136 / 3 else "central"] += 1
+    actions = sum(e.event_type not in {"stoppage", "substitution"} for e in events)
+    minutes = duration_ms / 60000
     return {
         "box_entries": len(entries),
         "routes": routes,
-        "actions": sum(
-            e.event_type not in {"stoppage", "substitution"} for e in events
-        ),
+        "actions": actions,
+        "box_entries_per_minute": round(len(entries) / minutes, 4) if minutes else None,
+        "actions_per_minute": round(actions / minutes, 4) if minutes else None,
         "duration_ms": duration_ms,
         "evidence_ids": [e.event_id for e in entries],
     }
@@ -108,6 +110,15 @@ def compare_windows(
         "provisional": end < anchor.elapsed_ms + 600_000
         or start != anchor.elapsed_ms - 600_000,
         "pattern_supported": before["box_entries"] >= 5 and after["box_entries"] >= 5,
+        "entry_rate_change": "not_comparable"
+        if not before["duration_ms"] or not after["duration_ms"]
+        else "unchanged"
+        if before["box_entries"] * after["duration_ms"]
+        == after["box_entries"] * before["duration_ms"]
+        else "increased"
+        if after["box_entries"] * before["duration_ms"]
+        > before["box_entries"] * after["duration_ms"]
+        else "decreased",
         "team_id": team_id,
         "viewer_clock": viewer_clock.model_dump(),
     }

@@ -136,3 +136,35 @@ def test_single_policy_keeps_count_questions_deterministic(monkeypatch):
     ).json()
     assert answer["generation_mode"] == "template"
     assert "shots" in answer["text"]
+
+
+def test_change_answer_does_not_count_anchor_event_in_zero_duration_window():
+    from matchlens import api
+    from matchlens.models import Event
+    from matchlens.synthetic import generate_match
+
+    match = generate_match()
+    event = Event(
+        match_id=match.id,
+        event_id="at-anchor",
+        period=2,
+        elapsed_ms=900000,
+        team_id="north",
+        player_id="north-6",
+        event_type="recovery",
+        possession_id="anchor-possession",
+    )
+    match = match.model_copy(update={"events": [event]})
+    answer = api.template_question(
+        match.id,
+        api.Question(
+            period=2,
+            elapsed_ms=900000,
+            anchor_ms=900000,
+            player_id="north-6",
+            question="What changed since the selected moment?",
+        ),
+        match,
+    )
+    assert "0 before and 0 after" in answer["text"]
+    assert answer["evidence_ids"] == []

@@ -35,10 +35,12 @@ class EventStore:
     def events_at(
         self, period: int, elapsed_ms: int, match_id: str | None = None
     ) -> list[Event]:
-        rows = self.db.execute(
-            "SELECT payload FROM events" + (" WHERE match_id=?" if match_id else ""),
-            (match_id,) if match_id else (),
-        ).fetchall()
+        with self.lock:
+            rows = self.db.execute(
+                "SELECT payload FROM events"
+                + (" WHERE match_id=?" if match_id else ""),
+                (match_id,) if match_id else (),
+            ).fetchall()
         events = [Event.model_validate_json(row[0]) for row in rows]
         return sorted(
             [e for e in events if (e.period, e.elapsed_ms) <= (period, elapsed_ms)],
@@ -46,4 +48,5 @@ class EventStore:
         )
 
     def close(self):
-        self.db.close()
+        with self.lock:
+            self.db.close()
