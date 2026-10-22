@@ -1,6 +1,6 @@
 # MatchLens judge guide
 
-Status: October 21, 2026. This is a local prototype using fictional clubs, players, matches and season baselines. Start with the account-free demo; cloud access is optional.
+Status: October 21, 2026. This is a local prototype using fictional clubs, players, matches and season baselines. Start with the [public template demo](https://matchlens-chris-demo-2026.azurewebsites.net) or the reproducible local build. No Azure account is required for either.
 
 ## Run the local build
 
@@ -53,4 +53,4 @@ The ZIP contains current working-tree bytes for eligible Git-tracked files, thes
 
 ## Remaining limitations and submission work
 
-Public source: https://github.com/chrisantosiewicz/MatchLens. No public hosted application or completed competition submission is claimed. Use the reproducible local build. Licensing/asset provenance and final competition access requirements need owner review before submission. Source-revision invalidation, actual window durations and concurrent SQLite reads have regression coverage. Model requests have a process-local demo budget; there is no public authentication or distributed quota. Current-contract live AI acceptance still requires authenticated evaluation. Never infer causation or off-ball behavior from event sequences.
+Public source: https://github.com/chrisantosiewicz/MatchLens. The public template application is verified (hosting-verification.json); final competition submission is not claimed. The local build remains available. Licensing/asset provenance and final competition access requirements need owner review before submission. Source-revision invalidation, actual window durations and concurrent SQLite reads have regression coverage. Model requests have a process-local demo budget; there is no public authentication or distributed quota. Authenticated current-contract and fresh-seed evaluation completed; overall semantic acceptance remains false (foundry-current-verification.json). Never infer causation or off-ball behavior from event sequences.

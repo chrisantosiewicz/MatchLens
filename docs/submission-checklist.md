@@ -45,3 +45,7 @@ Latest milestone: 47 backend / 15 frontend tests, build/lint/format pass. Revisi
 - Cost: initial experiment conditional Global Standard retail estimate USD 0.021066, assuming the cited SKU; not an actual bill or total project cost.
 - Serving: built same-origin local launcher verified; no hosted app. Process-local paid-model request budget implemented, not public authentication.
 - Public repository created at https://github.com/chrisantosiewicz/MatchLens; checked source/package publication is the next delivery step. Registration confirmed. License choice, final submission and current AI acceptance remain separate owner/account-dependent milestones.
+
+Latest: current-contract paired Foundry evaluation completed after sign-in; semantic quality remains unaccepted (evaluation-current-results.json). Range false-rejection fixed, all54 backend tests pass. Free-only hosting authorized; production archive smoke passes. Management sign-in timed out; no hosting resources provisioned. Next: renewed management authentication, inspect F1 availability, then fresh prompt acceptance and actual hosted checks.
+
+Superseding delivery status: public free-tier template app is deployed and anonymously verified (hosting-verification.json). Fresh authenticated six-case prompt check is recorded; four explanations developer-supported, one Spanish failure, one appropriate abstention. Overall AI acceptance remains false. Next priority is improving multilingual grounded explanations and preparing the final owner-reviewed submission; no paid hosting/model exposure enabled.

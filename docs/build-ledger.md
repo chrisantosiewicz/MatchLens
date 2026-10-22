@@ -77,3 +77,19 @@ October 21 retry after user requested renewed sign-in: successful authenticated 
 
 - Clean extracted ZIP independently installed locked backend/frontend dependencies, passed 54/19 tests and built. Initial npm audit found development-only Vitest/tinypool advisories; upgraded Vitest to 4.1.12, reran all 19 frontend tests/build and audit: zero reported vulnerabilities (including development dependencies). This is a dated registry audit, not a security certification.
 - Created and decoded 105-second captioned edited screenshot walkthrough; all seven sections visually inspected. Not continuous interaction/video-recognition evidence.
+
+
+## October 21 — authenticated current-policy evaluation and hosting preparation
+
+- Successful renewed Foundry sign-in; completed identical 20-case template/single/specialist comparison on d814db3. See evaluation-current-results.json. Single: six calls, four structurally accepted, one abstention, one fallback; specialist: forty calls. Semantic developer review still found inaccurate subject wording and unsupported area-presence descriptions; no final acceptance or independent bilingual review claimed.
+- Reproduced range-parser false rejection (50-60 minutes interpreted as negative60), fixed without accepting genuinely unsupported signed values. Seven explanation tests and all54 backend tests pass; Ruff passes. Tightened prompt to distinguish all recorded actions from passes and exclude internal field names/area-presence inference. Revised prompt not yet live-accepted.
+- User authorized free-tier hosting only. Added package_hosting.py: exact locked production dependencies, Python source and frontend assets only, credential-pattern check, no environment or caches. Extracted20-file hosting archive independently passed HTML, hidden environment, health/template, state, player, comparison, question and recap checks.
+- Azure management interactive sign-in timed out after300seconds; no subscription/resource discovery or hosting provisioning completed. No paid plan created. See deployment.md for precise runtime/startup/configuration and acceptance checks.
+
+
+## October 21 — public free-tier deployment verified
+
+- Renewed Azure management authentication succeeded. Registered Microsoft.Web. North Central US F1 creation rejected for zero quota; West US3 requested F1 succeeded, Azure returned LinuxFree/U13. Created app matchlens-chris-demo-2026 with template mode, HTTPS, disabled FTP and one worker; no paid tier enabled.
+- ZIP deployment completed. Anonymous public checks pass HTML/assets (hashes match local build), .env404, template health, match/player/comparison/question/recap and source revision consistency. Browser player question and recap verified. Evidence: hosting-verification.json and ignored artifacts/matchlens-public-preview.png. No uptime/load-testing claim.
+- ARM read verified model deployment GlobalStandard, gpt-4.1-mini version2025-04-14. Retail usage estimates remain estimates, not bills.
+- Fresh prompt check seeds505/606 made six calls: five structural explanations, one abstention. Developer reviewed four supported explanations, one Spanish failure and one appropriate abstention. Overall semantic quality remains unaccepted; independent bilingual review absent. See foundry-current-verification.json. Public demo remains template-only.

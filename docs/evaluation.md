@@ -22,3 +22,7 @@ Review caught a measurement mismatch after the application switched to hybrid ro
 Current choice: deterministic counts and unsupported-question boundaries by default, one optional experimental model interpretation for why/change questions. The specialist remains opt-in for comparison, not a recommended production default. This favors simpler orchestration without claiming the model is reliable yet.
 
 Current rate contract supplies exact window durations, calculated per-minute team rates and player active minutes. Structured fields must match the calculated comparison direction. This prevents one class of error but does not prove free-form claims: final acceptance still requires manual subject/window/evidence review. Signed numeric values are validated without dropping minus signs.
+
+## October 21 current-contract rerun
+
+After renewed sign-in, all 60 paired rows completed on commit d814db3. See evaluation-current-results.json. The hybrid single policy made 6 calls (4 structural acceptances, 1 abstention, 1 fallback); specialist made 40 calls. Developer inspection still rejected semantic quality: action-rate/pass wording, area-presence inference, internal-key leakage, and specialist relevance errors. Conditional retail estimates are recorded, not actual bills. Follow-up fixes distinguish hyphenated minute ranges from negative values and tighten wording instructions. Those follow-up instructions require fresh live acceptance; a passing regression is not a passing model evaluation.

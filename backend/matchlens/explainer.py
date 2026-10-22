@@ -214,7 +214,7 @@ def explain(request, context, provider, trusted_text, diagnostics=None):
         numbers = calculated_numbers(context)
         if any(
             Decimal(n.replace(",", ".").replace("−", "-")) not in numbers
-            for n in re.findall(r"[+−-]?\d+(?:[.,]\d+)?", text)
+            for n in re.findall(r"(?<!\w)[+−-]?\d+(?:[.,]\d+)?", text)
         ):
             rejection = "unknown_number"
             raise ValueError(rejection)

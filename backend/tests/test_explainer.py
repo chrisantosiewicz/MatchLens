@@ -90,6 +90,12 @@ def test_numeric_equivalence_is_allowed_but_rounding_and_id_digits_are_not():
         ]
         == "model"
     )
+    assert (
+        explain({}, p, Model("50-60 minutes before; 60–65 minutes after."), "Trusted.")[
+            "generation_mode"
+        ]
+        == "model"
+    )
     for text in [
         "89% completion.",
         "999 completed passes.",

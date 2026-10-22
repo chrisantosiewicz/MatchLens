@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-21",
+  "url": "https://matchlens-chris-demo-2026.azurewebsites.net",
+  "hosting_region": "westus3",
+  "requested_sku": "F1",
+  "returned_tier": "LinuxFree",
+  "returned_sku": "U13",
+  "generation_mode": "template",
+  "paid_model_calls_enabled": false,
+  "result": "pass",
+  "checks": [
+    "HTML",
+    "hashed assets match local production build",
+    "environment not served",
+    "template health",
+    "/state",
+    "/players/north-6",
+    "/comparison",
+    "question",
+    "selected-clock recap",
+    "consistent source revision"
+  ],
+  "limits": [
+    "No uptime guarantee; free-tier cold starts and quotas apply.",
+    "Experimental Foundry interpretation remains separate and unaccepted."
+  ]
+}

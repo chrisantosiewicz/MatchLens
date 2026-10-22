@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-21",
+  "tested_commit": "d814db3",
+  "evaluation": "current hybrid routing and explicit duration/rate contract, before subsequent range-parser and wording fixes",
+  "cases_per_policy": 20,
+  "independent_human_review": false,
+  "quality_accepted": false,
+  "policies": {
+    "template": {
+      "model_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cached_input_tokens": 0,
+      "conditional_global_standard_retail_estimate_usd": 0.0,
+      "output_status_counts": {
+        "template": 12,
+        "abstain": 8
+      },
+      "median_model_case_latency_ms": null,
+      "max_model_case_latency_ms": null
+    },
+    "single": {
+      "model_calls": 6,
+      "input_tokens": 20216,
+      "output_tokens": 1051,
+      "cached_input_tokens": 0,
+      "conditional_global_standard_retail_estimate_usd": 0.009768,
+      "output_status_counts": {
+        "fallback": 1,
+        "template": 6,
+        "experimental": 4,
+        "abstain": 9
+      },
+      "median_model_case_latency_ms": 1973.8649999999998,
+      "max_model_case_latency_ms": 6311.41
+    },
+    "specialist": {
+      "model_calls": 40,
+      "input_tokens": 12806,
+      "output_tokens": 665,
+      "cached_input_tokens": 0,
+      "conditional_global_standard_retail_estimate_usd": 0.006186,
+      "output_status_counts": {
+        "reviewed": 12,
+        "abstain": 8
+      },
+      "median_model_case_latency_ms": 3243.115,
+      "max_model_case_latency_ms": 5264.97
+    }
+  },
+  "review_notes": [
+    "All unsupported causal/tracking cases were routed to conservative deterministic abstention before model invocation (8 per policy). This measures routing, not model abstention capability.",
+    "Single policy made six interpretation calls: four structurally accepted, one abstained, one fell back. Count questions stayed deterministic.",
+    "Single 101-0 was rejected for unknown_number: parser treated hyphenated minute range as a signed number. Also mislabeled all-action rate as pass activity. Subsequent code/prompt fixes require fresh live checks.",
+    "Single 101-2 and 101-7 used correct supplied rates, but leaked internal keys or described area presence beyond event-entry evidence. Not semantically accepted.",
+    "Specialist kept sentence selection and made more calls. Shooting questions sometimes selected generic involvement instead of requested shooting facts; no advantage demonstrated.",
+    "No independent bilingual reviewer, unbiased final benchmark, or population reliability claim. Current choice remains deterministic facts plus optional experimental single interpretation.",
+    "Cost is conditional Global Standard retail estimate using docs/price-reference.json, not a bill; deployment SKU/credits/taxes and other resources remain unverified."
+  ]
+}

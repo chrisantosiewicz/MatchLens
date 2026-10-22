@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-21",
+  "source": "Authenticated Azure Resource Manager deployment read",
+  "deployment": "gpt-4.1-mini",
+  "sku": "GlobalStandard",
+  "model_name": "gpt-4.1-mini",
+  "model_version": "2025-04-14",
+  "note": "SKU verified; usage-based retail estimates are still not an actual bill."
+}

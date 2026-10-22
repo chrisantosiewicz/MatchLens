@@ -1,0 +1,501 @@
+{
+  "date": "2026-10-21",
+  "type": "fresh-seed development check; not independent final acceptance",
+  "seeds": [
+    505,
+    606
+  ],
+  "overall_quality_accepted": false,
+  "independent_bilingual_review": false,
+  "provider_source_sha256": "266b0b8905f947afb6be8634122979a4f8d04fc1afee224d62b68cb4ea9709f3",
+  "cases": [
+    {
+      "seed": 505,
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1200000,
+        "player_id": "north-6",
+        "question": "Why does his passing matter?",
+        "language": "en",
+        "depth": "casual",
+        "anchor_ms": 900000
+      },
+      "answer": {
+        "text": "Mateo Silva's passing is significant because despite the shorter after-window of 5 minutes compared to the before-window of 10 minutes, his recorded actions per minute increased from 0.9 to 1.4 and his progressive passes per minute rose from 0.5 to 0.8. This indicates that his involvement in advancing the ball was higher after the 60th minute. Additionally, the team's box entries per minute increased from 0.4 to 0.6 between the two windows (a 10-minute before window and a 5-minute after window), showing an increased team entry rate overall. These observations suggest enhanced passing contributions by Silva coinciding with the team's increased attacking entries, but small sample sizes and temporal association limit causal interpretation.",
+        "generation_mode": "model",
+        "status": "experimental",
+        "evidence_ids": [
+          "match-505-shift-e511",
+          "match-505-shift-e523",
+          "match-505-shift-e530",
+          "match-505-shift-e542",
+          "match-505-shift-e553",
+          "match-505-shift-e605"
+        ],
+        "latency_ms": 5117.13,
+        "usage": {
+          "input_tokens": 5573,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 231,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5804
+        },
+        "validation": "structural_only; semantic support requires evaluation"
+      },
+      "developer_review": {
+        "verdict": "pass",
+        "note": "Rates, player/team subjects and progression interpretation match supplied context; small-sample/association caveat present. Four sentences exceed requested style limit."
+      },
+      "rate_contract": {
+        "basis": "per_minute",
+        "team_entry_rate_change": "increased",
+        "before": 0.4,
+        "after": 0.6
+      },
+      "window_minutes": {
+        "before": 10.0,
+        "after": 5.0
+      },
+      "player_rates": {
+        "before": {
+          "actions_per_minute": 0.9,
+          "progressive_passes_per_minute": 0.5,
+          "box_entries_per_minute": 0.0
+        },
+        "after": {
+          "actions_per_minute": 1.4,
+          "progressive_passes_per_minute": 0.8,
+          "box_entries_per_minute": 0.2
+        }
+      },
+      "calls": [
+        {
+          "role": "explainer",
+          "usage": {
+            "input_tokens": 5573,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 231,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 5804
+          },
+          "status": "completed",
+          "latency_ms": 5116.59
+        }
+      ]
+    },
+    {
+      "seed": 505,
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1200000,
+        "player_id": "north-6",
+        "question": "What changed since the selected moment?",
+        "language": "en",
+        "depth": "casual",
+        "anchor_ms": 900000
+      },
+      "answer": {
+        "text": "Comparing the 10-minute window before (50.0 to 60.0 minutes) and 5-minute window after (60.0 to 65.0 minutes) the selected moment at 60 minutes, TEAM Northbridge FC increased their box entries per minute from 0.4 to 0.6, indicating an increased frequency of penetrating the attacking box. Mateo Silva individually raised his recorded actions per minute from 0.9 to 1.4 and progressive passes per minute from 0.5 to 0.8, alongside adding one box entry after the anchor. These differences suggest more active player involvement and slight increase in attacking contributions post the 60th minute, with the caveat of small sample size and unequal time windows limiting firm conclusions.",
+        "generation_mode": "model",
+        "status": "experimental",
+        "evidence_ids": [
+          "match-505-shift-e604",
+          "match-505-shift-e605",
+          "match-505-shift-e615",
+          "match-505-shift-e626",
+          "match-505-shift-e638",
+          "match-505-shift-e650"
+        ],
+        "latency_ms": 2625.14,
+        "usage": {
+          "input_tokens": 5574,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 233,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5807
+        },
+        "validation": "structural_only; semantic support requires evaluation"
+      },
+      "developer_review": {
+        "verdict": "pass",
+        "note": "Window bounds, durations, rates and one recorded player box entry match context; small-sample caveat present. Internal TEAM label is awkward."
+      },
+      "rate_contract": {
+        "basis": "per_minute",
+        "team_entry_rate_change": "increased",
+        "before": 0.4,
+        "after": 0.6
+      },
+      "window_minutes": {
+        "before": 10.0,
+        "after": 5.0
+      },
+      "player_rates": {
+        "before": {
+          "actions_per_minute": 0.9,
+          "progressive_passes_per_minute": 0.5,
+          "box_entries_per_minute": 0.0
+        },
+        "after": {
+          "actions_per_minute": 1.4,
+          "progressive_passes_per_minute": 0.8,
+          "box_entries_per_minute": 0.2
+        }
+      },
+      "calls": [
+        {
+          "role": "explainer",
+          "usage": {
+            "input_tokens": 5574,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 233,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 5807
+          },
+          "status": "completed",
+          "latency_ms": 2624.72
+        }
+      ]
+    },
+    {
+      "seed": 505,
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1200000,
+        "player_id": "north-6",
+        "question": "Que cambio desde el momento seleccionado?",
+        "language": "es",
+        "depth": "casual",
+        "anchor_ms": 900000
+      },
+      "answer": {
+        "text": "Desde el momento anclado en el minuto 60 (ventana antes: 50-60 min, duración 10 min; ventana después: 60-65 min, duración 5 min), el equipo Northbridge FC incrementó su frecuencia de entradas al área rival, pasando de 0.4 a 0.6 box entries por minuto observados. Esto representa un aumento en la tasa de entradas desde diversas rutas, aunque específicamente cambió la distribución de accesos al área. El jugador Mateo Silva mostró un aumento en sus acciones registradas por minuto, progresando más pases por minuto y realizando una entrada al área tras el momento anclado. Estas diferencias se describen según tasas por minuto para considerar la desigual duración de las ventanas y deben interpretarse con cautela dada la muestra prolongada y la asociación temporal sin establecer causalidad.",
+        "generation_mode": "model",
+        "status": "experimental",
+        "evidence_ids": [
+          "match-505-shift-e604",
+          "match-505-shift-e615",
+          "match-505-shift-e638",
+          "match-505-shift-e650",
+          "match-505-shift-e652"
+        ],
+        "latency_ms": 2935.54,
+        "usage": {
+          "input_tokens": 5574,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 241,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5815
+        },
+        "validation": "structural_only; semantic support requires evaluation"
+      },
+      "developer_review": {
+        "verdict": "fail",
+        "note": "Unsupported route-distribution wording and Spanish prolonged-sample phrasing weaken factual support/uncertainty; not accepted."
+      },
+      "rate_contract": {
+        "basis": "per_minute",
+        "team_entry_rate_change": "increased",
+        "before": 0.4,
+        "after": 0.6
+      },
+      "window_minutes": {
+        "before": 10.0,
+        "after": 5.0
+      },
+      "player_rates": {
+        "before": {
+          "actions_per_minute": 0.9,
+          "progressive_passes_per_minute": 0.5,
+          "box_entries_per_minute": 0.0
+        },
+        "after": {
+          "actions_per_minute": 1.4,
+          "progressive_passes_per_minute": 0.8,
+          "box_entries_per_minute": 0.2
+        }
+      },
+      "calls": [
+        {
+          "role": "explainer",
+          "usage": {
+            "input_tokens": 5574,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 241,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 5815
+          },
+          "status": "completed",
+          "latency_ms": 2935.12
+        }
+      ]
+    },
+    {
+      "seed": 606,
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1050000,
+        "player_id": "north-12",
+        "question": "Why does his passing matter?",
+        "language": "en",
+        "depth": "casual",
+        "anchor_ms": 900000
+      },
+      "answer": {
+        "text": "Insufficient evidence for that interpretation.",
+        "generation_mode": "model",
+        "status": "abstain",
+        "evidence_ids": [],
+        "latency_ms": 1118.44,
+        "usage": {
+          "input_tokens": 1901,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 31,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1932
+        },
+        "validation": "structural_only; semantic support requires evaluation"
+      },
+      "developer_review": {
+        "verdict": "abstain",
+        "note": "Appropriate: substitute has no observed passing contributions in sparse feed."
+      },
+      "rate_contract": {
+        "basis": "per_minute",
+        "team_entry_rate_change": "decreased",
+        "before": 0.2,
+        "after": 0.0
+      },
+      "window_minutes": {
+        "before": 10.0,
+        "after": 2.5
+      },
+      "player_rates": {
+        "before": {
+          "actions_per_minute": null,
+          "progressive_passes_per_minute": null,
+          "box_entries_per_minute": null
+        },
+        "after": {
+          "actions_per_minute": 0.0,
+          "progressive_passes_per_minute": 0.0,
+          "box_entries_per_minute": 0.0
+        }
+      },
+      "calls": [
+        {
+          "role": "explainer",
+          "usage": {
+            "input_tokens": 1901,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 31,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1932
+          },
+          "status": "completed",
+          "latency_ms": 1118.38
+        }
+      ]
+    },
+    {
+      "seed": 606,
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1050000,
+        "player_id": "north-12",
+        "question": "What changed since the selected moment?",
+        "language": "en",
+        "depth": "casual",
+        "anchor_ms": 900000
+      },
+      "answer": {
+        "text": "The team Northbridge FC's rate of recorded box entries decreased from 0.2 per minute during the 10-minute window before the selected moment to 0.0 per minute in the 2.5-minute window after. The before window was from 50.0 to 60.0 minutes and the after window from 60.0 to 62.5 minutes. The selected player Nico Vega had no recorded actions or box entries in either window, limiting individual contribution analysis. This comparison is based on observed entry rates per minute and is descriptive given the small sample and unequal window durations.",
+        "generation_mode": "model",
+        "status": "experimental",
+        "evidence_ids": [
+          "match-606-null-e530",
+          "match-606-null-e582"
+        ],
+        "latency_ms": 1923.01,
+        "usage": {
+          "input_tokens": 1902,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 164,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2066
+        },
+        "validation": "structural_only; semantic support requires evaluation"
+      },
+      "developer_review": {
+        "verdict": "pass",
+        "note": "Descriptive team rates and no recorded player actions match context, with sparse/unequal-window limitations."
+      },
+      "rate_contract": {
+        "basis": "per_minute",
+        "team_entry_rate_change": "decreased",
+        "before": 0.2,
+        "after": 0.0
+      },
+      "window_minutes": {
+        "before": 10.0,
+        "after": 2.5
+      },
+      "player_rates": {
+        "before": {
+          "actions_per_minute": null,
+          "progressive_passes_per_minute": null,
+          "box_entries_per_minute": null
+        },
+        "after": {
+          "actions_per_minute": 0.0,
+          "progressive_passes_per_minute": 0.0,
+          "box_entries_per_minute": 0.0
+        }
+      },
+      "calls": [
+        {
+          "role": "explainer",
+          "usage": {
+            "input_tokens": 1902,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 164,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2066
+          },
+          "status": "completed",
+          "latency_ms": 1922.64
+        }
+      ]
+    },
+    {
+      "seed": 606,
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1050000,
+        "player_id": "north-12",
+        "question": "Que cambio desde el momento seleccionado?",
+        "language": "es",
+        "depth": "casual",
+        "anchor_ms": 900000
+      },
+      "answer": {
+        "text": "El equipo Northbridge FC tuvo dos entradas al área en los 10 minutos previos al momento seleccionado, con una frecuencia de 0.2 entradas por minuto. En los 2.5 minutos posteriores, no registró entradas al área, con una frecuencia de 0.0 por minuto, por lo que la tasa de entradas observada fue menor después del momento ancla. Nico Vega no realizó ninguna acción registrada en ninguno de los dos periodos. Esta comparación usa ventanas desiguales y datos escasos, lo que limita la interpretación y no establece causalidad.",
+        "generation_mode": "model",
+        "status": "experimental",
+        "evidence_ids": [
+          "match-606-null-e530",
+          "match-606-null-e582"
+        ],
+        "latency_ms": 2026.26,
+        "usage": {
+          "input_tokens": 1902,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 159,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2061
+        },
+        "validation": "structural_only; semantic support requires evaluation"
+      },
+      "developer_review": {
+        "verdict": "pass",
+        "note": "Spanish counts/rates and recorded-action limitation match context; developer review only, not independent bilingual acceptance."
+      },
+      "rate_contract": {
+        "basis": "per_minute",
+        "team_entry_rate_change": "decreased",
+        "before": 0.2,
+        "after": 0.0
+      },
+      "window_minutes": {
+        "before": 10.0,
+        "after": 2.5
+      },
+      "player_rates": {
+        "before": {
+          "actions_per_minute": null,
+          "progressive_passes_per_minute": null,
+          "box_entries_per_minute": null
+        },
+        "after": {
+          "actions_per_minute": 0.0,
+          "progressive_passes_per_minute": 0.0,
+          "box_entries_per_minute": 0.0
+        }
+      },
+      "calls": [
+        {
+          "role": "explainer",
+          "usage": {
+            "input_tokens": 1902,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 159,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2061
+          },
+          "status": "completed",
+          "latency_ms": 2025.94
+        }
+      ]
+    }
+  ]
+}

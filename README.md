@@ -2,6 +2,8 @@
 
 **Every moment matters. See what changed. Understand who made it happen.**
 
+**[Open the public demo](https://matchlens-chris-demo-2026.azurewebsites.net)** — Azure free-tier hosting, deterministic template mode.
+
 An event-backed football analysis workspace for the Inside the Game hackathon. All clubs, players, matches and season profiles are fictional.
 
 ## Run locally (Windows PowerShell)
@@ -61,7 +63,7 @@ backend/.venv/Scripts/python.exe -m matchlens.synthetic --output data
 
 Implemented: synthetic replay; deterministic clock-limited metrics, profiles, fictional positional percentiles, key moments, questions and recaps; English/Spanish presentation; Watch/Explore; progressive-pass alerts; canonical SQLite revisions and token-protected local ingestion. The Watch scene is an SVG illustration, not video recognition or tracking.
 
-**Foundry connectivity is verified; semantic quality is experimental.** Authenticated `gpt-4.1-mini` calls returned outputs and usage. Initial held-out evaluation exposed incorrect subject/time-window interpretations, including unequal-window comparisons. The current implementation supplies calculated per-minute rates, active player minutes, evidence IDs and uncertainty, and rejects a mismatched rate-comparison contract. That revised contract has regression coverage but has not yet completed a fresh live acceptance run. Default local operation uses deterministic templates and remains useful without Azure.
+**Foundry connectivity is verified; semantic quality is experimental.** Authenticated `gpt-4.1-mini` calls returned outputs and usage. Initial held-out evaluation exposed incorrect subject/time-window interpretations, including unequal-window comparisons. The current implementation supplies calculated per-minute rates, active player minutes, evidence IDs and uncertainty, and rejects a mismatched rate-comparison contract. A current-policy paired live run completed: rate comparisons improved, but subject wording and unsupported area-presence descriptions still failed developer semantic review. See [current results](docs/evaluation-current-results.json). Follow-up range parsing and prompt changes are regression-checked but not yet live-accepted. Default local operation uses deterministic templates and remains useful without Azure.
 
 The single-model policy keeps direct-count questions deterministic. The specialist workflow is retained for evaluation, with no demonstrated quality advantage. Historical measurements and limitations are in [evaluation](docs/evaluation.md). No broad analytical accuracy, independent bilingual acceptance, or production reliability is claimed.
 
@@ -106,3 +108,7 @@ Add `--live` only with configured, authenticated Foundry access: it makes billab
 After building the frontend, run `./scripts/Start-MatchLens.ps1` for account-free template mode, or `./scripts/Start-MatchLens.ps1 -Foundry` to explicitly opt into the locally configured project. The launcher reads only whitelisted configuration from ignored `.env`; it binds to loopback and never prints secrets. Browser authentication is opt-in (`MATCHLENS_ALLOW_BROWSER_LOGIN=1`) with explicit `AZURE_TENANT_ID`. Tokens are kept in process memory; another process may require sign-in again.
 
 `POST /api/matches/{id}/events` accepts synthetic events/revisions only when the server has `MATCHLENS_INGEST_TOKEN` and the caller supplies the matching `X-MatchLens-Token` header. No token belongs in browser code. Higher revisions replace earlier events; duplicates/stale revisions are ignored. State/statistics/alerts/answers/recaps read canonical events afterward. Set `MATCHLENS_EVENT_DB` to a local SQLite path for restart persistence. This is a local ingestion demonstration, not an authenticated external feed connector. Responses carry a canonical source revision. On the next fetch, the viewer invalidates old narratives and rejects mixed-revision snapshots; paused views receive no background correction notification. Model work defaults to six requests per minute and fifty requests per process session. This is a demo work budget, not a dollar cap or public access-control system.
+
+Free-only hosting preparation and exact deployment boundaries: [deployment guide](docs/deployment.md). Anonymous public application checks pass; see [hosting verification](docs/hosting-verification.json). Free-tier cold starts and quotas apply.
+
+A fresh six-case check of the revised prompt produced five structurally accepted explanations and one abstention. Developer review found four supported explanations and one Spanish failure; overall quality remains unaccepted. See [current Foundry verification](docs/foundry-current-verification.json). Public hosting uses templates; no paid model endpoint is exposed.
