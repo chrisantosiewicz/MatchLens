@@ -6,7 +6,7 @@ Completed in source and recorded checks:
 - Deterministic, clock-safe metrics/narratives; revision invalidation and paused polling.
 - Position-sensitive synthetic data and 20-seed sanity validation; sparse scores explicitly observed/incomplete.
 - Review fixes: rewind anchor label, progression relevance, input scope/quota handling, integration mode honesty.
-- 60 backend / 23 frontend tests, production build, lint and package test.
+- 69 backend / 23 frontend tests, production build, lint and package test.
 - Real Foundry runs with frozen source/cases, usage, latency, retained failures and complete deterministic fact provenance.
 - Recorded evidence viewer with all v4 cases and offline rejection replay; public paid model calls disabled.
 - Public source and free Azure hosting; source ZIP and dated hosting records remain reproducible fallbacks.
@@ -19,3 +19,5 @@ Remaining gates:
 4. Owner confirms category, rights/license, eligibility and final platform submission by October27. Registration is not submission.
 
 Primary rules: https://github.com/microsoft/insidethegamehackathon/blob/main/OFFICIAL%20RULES.md . §4.8 requires unrestricted free judge demo access; judging ends November10. Checked October22.
+
+Meaning-led update: curated story evidence, safe local story explanations and full sequence drill-down implemented. V7 has1accepted/1guard rejection/2timeouts among4model requests; do not report4/4success. Owner football-meaning guide prepared; independent quality gate unchanged.

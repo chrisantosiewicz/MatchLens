@@ -32,7 +32,7 @@ def test_single_model_can_interpret_context_but_unknown_sources_fall_back():
                     "team_entry_rate_change"
                 ],
                 "text": "A useful progression contribution, with a limited observation window.",
-                "evidence_ids": [state["context"]["events"][0]["event_id"]],
+                "evidence_ids": [state["context"]["metric_sources"][0]],
             }
 
     p = packet()
@@ -209,7 +209,7 @@ def test_rate_facts_cannot_authorize_speed_or_off_ball_interpretations():
             context = state["context"]
             return {
                 "text": "This indicates increased offensive penetration speed.",
-                "evidence_ids": [context["events"][0]["event_id"]],
+                "evidence_ids": [context["metric_sources"][0]],
                 "rate_basis": context["rate_contract"]["basis"],
                 "team_entry_rate_change": context["rate_contract"][
                     "team_entry_rate_change"
@@ -219,3 +219,115 @@ def test_rate_facts_cannot_authorize_speed_or_off_ball_interpretations():
     result = explain({}, packet(), Model(), "Trusted observed facts.")
     assert result["generation_mode"] == "fallback"
     assert result["rejection_reason"] == "unsupported_concept"
+
+
+def test_selected_story_requires_complete_sources_and_exact_visible_clocks():
+    p = packet()
+    assert p["narrative_evidence"]
+    story = p["narrative_evidence"][0]
+
+    class Model:
+        def __init__(self, ids, text, story_ids):
+            self.ids, self.text, self.story_ids = ids, text, story_ids
+
+        def complete(self, role, state):
+            return {
+                "text": self.text,
+                "evidence_ids": self.ids,
+                "story_ids": self.story_ids,
+                "rate_basis": p["rate_contract"]["basis"],
+                "team_entry_rate_change": p["rate_contract"]["team_entry_rate_change"],
+            }
+
+    good = Model(
+        story["evidence_ids"],
+        f"Recorded build-up at {story['action_clock']}; sequence involvement is not an assist.",
+        [story["id"]],
+    )
+    assert explain({}, p, good, "Trusted.")["narrative_evidence"] == [story]
+    partial = Model(story["evidence_ids"][:1], "Recorded involvement.", [story["id"]])
+    assert (
+        explain({}, p, partial, "Trusted.")["rejection_reason"]
+        == "incomplete_story_evidence"
+    )
+    future = Model(story["evidence_ids"], "Recorded build-up at 89:59.", [story["id"]])
+    assert explain({}, p, future, "Trusted.")["rejection_reason"] == "unknown_clock"
+    invented = Model(story["evidence_ids"], "Recorded involvement.", ["invented"])
+    assert explain({}, p, invented, "Trusted.")["rejection_reason"] == "unknown_story"
+
+
+def test_model_receives_curated_football_facts_not_coordinates_or_unrelated_action_totals():
+    p = packet()
+
+    class Inspect:
+        def complete(self, role, state):
+            context = state["context"]
+            assert "events" not in context and "player_stats" not in context
+            assert "contributions_after" not in context
+            assert context["player_name"] == p["player"]["name"]
+            assert context["narrative_evidence"][0]["evidence_ids"]
+            assert "sequence" not in context["narrative_evidence"][0]
+            return {"abstain": True}
+
+    assert explain({}, p, Inspect(), "Trusted.")["status"] == "abstain"
+
+
+def test_connecting_action_word_is_not_confused_with_an_all_action_rate():
+    p = packet()
+
+    class Model:
+        def __init__(self, text):
+            self.text = text
+
+        def complete(self, role, state):
+            return {
+                "text": self.text,
+                "evidence_ids": [p["events"][0]["event_id"]],
+                "rate_basis": p["rate_contract"]["basis"],
+                "team_entry_rate_change": p["rate_contract"]["team_entry_rate_change"],
+            }
+
+    assert (
+        explain(
+            {},
+            p,
+            Model("A recorded connecting action in a shot-ending sequence."),
+            "Trusted.",
+        )["generation_mode"]
+        == "model"
+    )
+    assert (
+        explain({}, p, Model("His action rate per minute increased."), "Trusted.")[
+            "rejection_reason"
+        ]
+        == "unsupported_concept"
+    )
+
+
+def test_narrative_stays_inside_comparison_window_even_when_viewer_is_later():
+    p = context_packet(
+        generate_match(7, "shift"),
+        "north-6",
+        Clock(period=2, elapsed_ms=2700000),
+        900000,
+    )
+    assert p["narrative_evidence"]
+    assert all(
+        e["elapsed_ms"] <= 1500000
+        for s in p["narrative_evidence"]
+        for e in s["sequence"]
+    )
+
+
+def test_fallback_retains_the_teammate_events_behind_its_story():
+    p = packet()
+
+    class Timeout:
+        def complete(self, *args):
+            raise TimeoutError()
+
+    result = explain({}, p, Timeout(), "Trusted sequence explanation.")
+    assert set(p["narrative_evidence"][0]["evidence_ids"]) <= set(
+        result["evidence_ids"]
+    )
+    assert result["narrative_evidence"] == p["narrative_evidence"][:1]

@@ -61,6 +61,8 @@ def run(manifest, output, live=False):
                         provider,
                         trusted["text"],
                         diagnostics,
+                        trusted_evidence_ids=trusted["evidence_ids"],
+                        trusted_narrative=trusted.get("narrative_evidence", []),
                     )
                     status = "completed"
                 else:

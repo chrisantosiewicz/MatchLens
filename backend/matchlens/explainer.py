@@ -6,6 +6,7 @@ from time import perf_counter
 
 from .analytics import compare_windows, is_entry, is_progressive, player_stats
 from .models import Clock, Event, visible
+from .stories import sequence_stories
 
 
 def active_minutes(match, player, period, start_ms, end_ms):
@@ -126,6 +127,23 @@ def context_packet(match, player_id, clock, anchor_ms):
         "before": comparison["before"]["box_entries_per_minute"],
         "after": comparison["after"]["box_entries_per_minute"],
     }
+    packet["narrative_evidence"] = sequence_stories(
+        match,
+        player_id,
+        Clock(
+            period=clock.period,
+            elapsed_ms=min(clock.elapsed_ms, anchor.elapsed_ms + 600000),
+        ),
+        max(0, anchor.elapsed_ms - 600000),
+    )
+    extra = {
+        e["event_id"]: e
+        for story in packet["narrative_evidence"]
+        for e in story["sequence"]
+    }
+    packet["events"] = list(
+        {e["event_id"]: e for e in packet["events"] + list(extra.values())}.values()
+    )
     return packet
 
 
@@ -143,7 +161,14 @@ def calculated_numbers(context):
         elif isinstance(value, (int, float)) and not isinstance(value, bool):
             yield Decimal(str(value))
 
-    return set(
+    return {
+        value
+        for story in context.get("narrative_evidence", [])
+        for value in (
+            Decimal(str(story["sequence_duration_seconds"])),
+            Decimal(str(story["review_window_seconds"])),
+        )
+    } | set(
         walk(
             {
                 key: context[key]
@@ -237,12 +262,73 @@ def comparison_fact_support(context):
     return cards
 
 
-def explain(request, context, provider, trusted_text, diagnostics=None):
+def model_context(context):
+    """Only relevant calculated facts; raw coordinates/action totals invite invalid inferences."""
+    return {
+        "synthetic": True,
+        "player_name": context["player"]["name"],
+        "viewer_clock_minutes": context["display_clock_minutes"],
+        "window_bounds_minutes": context["window_bounds_minutes"],
+        "window_minutes": context["window_minutes"],
+        "player_window_minutes": context["player_window_minutes"],
+        "rate_contract": context["rate_contract"],
+        "player_progressive_passes": {
+            window: {
+                "count": context[f"contributions_{window}"]["progressive_passes"],
+                "per_active_minute": context["player_rates"][window][
+                    "progressive_passes_per_minute"
+                ],
+            }
+            for window in ("before", "after")
+        },
+        "metric_sources": [e["event_id"] for e in context["events"]],
+        "narrative_evidence": [
+            {
+                k: v
+                for k, v in story.items()
+                if k not in {"sequence", "meaning_es", "limitation_es"}
+            }
+            for story in context.get("narrative_evidence", [])
+        ],
+        "limits": context["limits"],
+    }
+
+
+def explain(
+    request,
+    context,
+    provider,
+    trusted_text,
+    diagnostics=None,
+    trusted_evidence_ids=None,
+    trusted_narrative=None,
+):
     start = perf_counter()
+    fallback_ids = (
+        trusted_evidence_ids
+        if trusted_evidence_ids is not None
+        else list(
+            dict.fromkeys(
+                context["player_stats"]["evidence_ids"]
+                + [
+                    i
+                    for story in context.get("narrative_evidence", [])[:1]
+                    for i in story["evidence_ids"]
+                ]
+            )
+        )
+    )
 
     def result(text, mode, status, ids):
         return {
             "text": text,
+            "narrative_evidence": (
+                trusted_narrative
+                if trusted_narrative is not None
+                else context.get("narrative_evidence", [])[:1]
+            )
+            if mode != "model"
+            else [],
             "generation_mode": mode,
             "status": status,
             "evidence_ids": ids,
@@ -258,7 +344,7 @@ def explain(request, context, provider, trusted_text, diagnostics=None):
                 trusted_text,
                 "template",
                 "limited_input",
-                context["player_stats"]["evidence_ids"],
+                fallback_ids,
             ),
             "limitation": limited_reason,
         }
@@ -267,13 +353,13 @@ def explain(request, context, provider, trusted_text, diagnostics=None):
             trusted_text,
             "template",
             "template",
-            context["player_stats"]["evidence_ids"],
+            fallback_ids,
         )
     output = None
     rejection = "provider_unavailable"
     try:
         output = provider.complete(
-            "explainer", {"request": request, "context": context}
+            "explainer", {"request": request, "context": model_context(context)}
         )
         if output.get("abstain") is True:
             text = (
@@ -289,7 +375,8 @@ def explain(request, context, provider, trusted_text, diagnostics=None):
             raise ValueError(rejection)
         # Conservative scope filter, not a proof that remaining prose is supported.
         if re.search(
-            r"\b(speed|velocity|sprints?|pressing|pressure|chaos|dominance|actions?|sparse)\b"
+            r"\b(speed|velocity|sprints?|pressing|pressure|chaos|dominance|sparse)\b"
+            r"|\bactions?\s+(?:rate|per minute)|\b(?:all|recorded|total)\s+actions\b"
             r"|attacking presence|retained control|defensive.line.break"
             r"|improved (?:passing|quality)|creates? (?:space|chances)",
             text,
@@ -304,11 +391,39 @@ def explain(request, context, provider, trusted_text, diagnostics=None):
         ):
             rejection = "unknown_evidence"
             raise ValueError(rejection)
+        story_ids = output.get("story_ids", [])
+        stories = {
+            story["id"]: story for story in context.get("narrative_evidence", [])
+        }
+        if not isinstance(story_ids, list) or any(
+            not isinstance(i, str) or i not in stories for i in story_ids
+        ):
+            rejection = "unknown_story"
+            raise ValueError(rejection)
+        if "story_ids" in output and stories and not story_ids:
+            rejection = "missing_story"
+            raise ValueError(rejection)
+        selected_stories = [stories[i] for i in dict.fromkeys(story_ids)]
+        if any(
+            not set(story["evidence_ids"]) <= set(ids) for story in selected_stories
+        ):
+            rejection = "incomplete_story_evidence"
+            raise ValueError(rejection)
+        allowed_clocks = {
+            story[key]
+            for story in selected_stories
+            for key in ("action_clock", "outcome_clock")
+        }
+        times = re.findall(r"(?<!\d)\d{1,2}:\d{2}(?!\d)", text)
+        if any(time not in allowed_clocks for time in times):
+            rejection = "unknown_clock"
+            raise ValueError(rejection)
+        numeric_text = re.sub(r"(?<!\d)\d{1,2}:\d{2}(?!\d)", "", text)
         # Exact numerical equivalence accepts 100 == 100.0; rounding is still rejected.
         numbers = calculated_numbers(context)
         if any(
             Decimal(n.replace(",", ".").replace("−", "-")) not in numbers
-            for n in re.findall(r"(?<!\w)[+−-]?\d+(?:[.,]\d+)?", text)
+            for n in re.findall(r"(?<!\w)[+−-]?\d+(?:[.,]\d+)?", numeric_text)
         ):
             rejection = "unknown_number"
             raise ValueError(rejection)
@@ -329,6 +444,7 @@ def explain(request, context, provider, trusted_text, diagnostics=None):
         return {
             **result(text, "model", "experimental", complete_ids),
             "model_cited_event_ids": list(dict.fromkeys(ids)),
+            "narrative_evidence": selected_stories,
             "fact_support": support,
             "metric_definition": "Recorded progression means completed passes moving the ball at least 10m closer to goal from outside the box. Frequency is not passing quality or causation.",
         }
@@ -340,7 +456,7 @@ def explain(request, context, provider, trusted_text, diagnostics=None):
                 trusted_text,
                 "fallback",
                 "fallback",
-                context["player_stats"]["evidence_ids"],
+                fallback_ids,
             ),
             "rejection_reason": rejection,
         }

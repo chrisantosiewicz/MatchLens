@@ -63,6 +63,10 @@ backend/.venv/Scripts/python.exe -m matchlens.synthetic --output data
 
 [Open all frozen cases and source-event proof](https://matchlens-chris-demo-2026.azurewebsites.net/evidence/index.html). This is recorded model output, not live generation. Complete metric sources and actual model citations are shown separately. Independent human review is pending. Paused visible views check event corrections every15seconds without moving the clock.
 
+## Football meaning
+
+Answers can now show a concrete build-up or turnover sequence, why that recorded contribution matters, and its limits. Expand **The moment behind the explanation** to inspect it. [Situations where your football judgment helps](docs/football-meaning-review.md). Model generation remains experimental; all current trial outcomes are visible in recorded evidence.
+
 ## Current stage
 
 See [STATUS.md](STATUS.md) for the authoritative dated implementation and submission status. Older experiment reports are historical evidence.

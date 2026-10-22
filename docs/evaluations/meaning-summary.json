@@ -1,0 +1,16 @@
+{
+  "manifest": "frozen-meaning-v7.json",
+  "paired_cases": 8,
+  "actual_requests": 4,
+  "successful_responses": 2,
+  "accepted_model_outputs": 1,
+  "input_tokens_recorded": 2833,
+  "output_tokens_recorded": 427,
+  "latency_ms": [
+    10432.48,
+    5357.06,
+    2863.94,
+    8011.32
+  ],
+  "limits": "Timeout usage unavailable, not zero cost. Not a reliability estimate; cases selected for story coverage. Independent human review pending."
+}

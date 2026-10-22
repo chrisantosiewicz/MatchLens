@@ -15,3 +15,11 @@ Evidence: evaluation-results.json (initial raw policy), evaluation-current-resul
 Current trace: evaluations/frozen-v4.json; manifest frozen-english-v4.json; backend source6da84d6. Twelve paired cases, four actual model calls. Sparse/no-active-baseline/zero-duration/no-passing inputs return deterministic limitations before provider creation or quota consumption. Concept guards are conservative heuristics, not semantic proof.
 
 Accepted results retain model_cited_event_ids separately from evidence_ids, which unions model citations with complete deterministic metric sources. fact_support provides each count, duration, rate, exact source IDs and window bounds; metric_definition explains progression without implying quality. The recorded evidence viewer renders these separately. Historical v1 failures remain; replay_recorded_failure.py feeds an actual saved bad response through the current guard without remote generation. See evaluations/v4-ai-review.md and independent-review.md for limits and external acceptance.
+
+## Meaning-led workflow (supersedes rate-only prompt)
+
+sequence_stories supplies verified story cards: recorded same-team involvement before a teammate shot; progressive pass followed by an observed turnover without an intervening shot; selected-player turnover followed by an opposition shot within20seconds without observed own regained possession. Examples are bounded to the comparison window. Build-up uses30seconds. These are editorial heuristics, not assist/causal or decision-quality models.
+
+The model receives model_context's curated rates and story metadata, not raw coordinates or all-action totals. It explains contribution, selects story IDs and cites every event in each selected story. Backend checks source/clock/number/rate contracts; full deterministic sources are retained separately. Template/fallback answers retain their own story sources and render narratives without model access. Spanish remains deterministic, including translated outcome labels.
+
+V7:8paired cases,4requests,1accepted experimental explanation,1guard fallback,2timeouts. Failed trials v5/v6 remain; they are not quality successes. Independent review remains pending. View exact reconstructed input (not an independently captured request) and all outputs at /evidence/index.html. Actual measured transport times are not an8second end-to-end guarantee.

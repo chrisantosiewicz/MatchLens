@@ -19,6 +19,7 @@ from .moments import key_moments
 from .profiles import profile
 from .providers import configured_provider
 from .store import EventStore
+from .stories import render_story, sequence_stories
 from .summaries import build_recap
 from .synthetic import generate_match, generate_seasons
 from .workflow import run_workflow
@@ -362,6 +363,30 @@ def template_question(match_id: str, request: Question, match=None):
             else "Ask about involvement, passing, changes since a moment, or his synthetic season baseline."
         )
         evidence = []
+    narrative = []
+    if intent in {"passing", "change", "involvement"}:
+        start = (
+            max(0, min(request.anchor_ms, clock.elapsed_ms) - 600000)
+            if intent == "change"
+            else max(0, clock.elapsed_ms - 600000)
+        )
+        story_clock = (
+            Clock(
+                period=clock.period,
+                elapsed_ms=min(clock.elapsed_ms, request.anchor_ms + 600000),
+            )
+            if intent == "change"
+            else clock
+        )
+        narrative = (
+            sequence_stories(match, player.id, story_clock, start)
+            if intent != "change" or clock.elapsed_ms > request.anchor_ms
+            else []
+        )
+        if narrative:
+            # A concrete sequence adds football meaning even when cloud generation is disabled.
+            text += " " + render_story(narrative[0], request.language)
+            evidence = list(dict.fromkeys(evidence + narrative[0]["evidence_ids"]))
     if request.depth == "analyst" and intent != "unsupported":
         text += (
             " Definición: un pase progresivo reduce al menos 10 m la distancia a la portería, desde fuera del área."
@@ -382,6 +407,7 @@ def template_question(match_id: str, request: Question, match=None):
         "generation_mode": "template",
         "language": request.language,
         "notice": "Deterministic event-backed answer",
+        "narrative_evidence": narrative[:1],
     }
 
 
@@ -420,7 +446,14 @@ def question(match_id: str, request: Question):
         if interpretation_limit(request.model_dump(), packet):
             return {
                 **requested,
-                **explain(request.model_dump(), packet, None, requested["text"]),
+                **explain(
+                    request.model_dump(),
+                    packet,
+                    None,
+                    requested["text"],
+                    trusted_evidence_ids=requested["evidence_ids"],
+                    trusted_narrative=requested["narrative_evidence"],
+                ),
                 "notice": "Deterministic explanation; input outside experimental interpretation scope",
             }
 
@@ -470,7 +503,14 @@ def question(match_id: str, request: Question):
     ):
         assert packet is not None
         try:
-            result = explain(request.model_dump(), packet, provider, requested["text"])
+            result = explain(
+                request.model_dump(),
+                packet,
+                provider,
+                requested["text"],
+                trusted_evidence_ids=requested["evidence_ids"],
+                trusted_narrative=requested["narrative_evidence"],
+            )
         finally:
             if hasattr(provider, "close"):
                 provider.close()

@@ -7,6 +7,7 @@ import re
 from pathlib import Path
 
 from matchlens.analytics import compare_windows, is_progressive, player_stats
+from matchlens.explainer import model_context
 from matchlens.models import Clock, visible
 from matchlens.synthetic import generate_match
 from package_judge import SECRET_TEXT
@@ -117,6 +118,7 @@ def export(trace_path, specification_path):
             "id": case["id"],
             "question": case["request"]["question"],
             "context": context,
+            "reconstructed_model_input": {"request": pair["single"]["request"], "context": model_context(context)},
             "template": pair["template"],
             "single": pair["single"],
             "visible_events": [e.model_dump(mode="json") for e in events],
@@ -129,6 +131,8 @@ def export(trace_path, specification_path):
             raise ValueError("Credential-like content in export")
         filename = case["id"] + ".json"
         (target / filename).write_bytes(encoded)
+        if pair['single']['answer'].get('generation_mode') == 'model' and 'default_case' not in index:
+            index['default_case'] = filename
         index["cases"].append(
             {
                 "id": case["id"],
