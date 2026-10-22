@@ -30,6 +30,12 @@ def build_recap(
         if es
         else f"At your selected time: {selected}."
     ]
+    if match.feed_completeness == "incomplete":
+        parts.append(
+            "Datos incompletos: los goles y acciones son solo los observados; la ausencia de un evento no demuestra que no ocurriera."
+            if es
+            else "Incomplete feed: goals and actions are observed only; a missing event does not prove it did not happen."
+        )
     goal_context = None
     if goals:
         goal = goals[-1]

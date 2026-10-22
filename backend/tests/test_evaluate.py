@@ -33,7 +33,13 @@ def test_single_evaluation_uses_same_deterministic_count_routing_as_api():
             return {"abstain": True}
 
     rows = run_evaluation(Provider(), policies=("single",))
-    assert len(calls) == 6
+    assert len(calls) == 2
+    limited = [
+        r
+        for r in rows
+        if r["seed"] == 202 and r["answer"].get("status") == "limited_input"
+    ]
+    assert len(limited) == 2
     counts = [
         r
         for r in rows

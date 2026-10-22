@@ -12,7 +12,7 @@ from pydantic import BaseModel, Field
 
 from .alerts import progressive_alerts
 from .analytics import compare_windows, player_stats
-from .explainer import context_packet, explain
+from .explainer import context_packet, explain, interpretation_limit
 from .limits import model_budget
 from .models import Clock, Event, visible
 from .moments import key_moments
@@ -142,6 +142,12 @@ def matches():
     ]
 
 
+@app.get("/api/matches/{match_id}/revision")
+def revision(match_id: str):
+    match = match_or_404(match_id)
+    return {"id": match.id, "source_version": source_version(match)}
+
+
 @app.get("/api/matches/{match_id}/state")
 def state(
     match_id: str,
@@ -159,6 +165,7 @@ def state(
         "clock": clock,
         "events": events,
         "score": score_at(events),
+        "feed_completeness": match.feed_completeness,
         "synthetic": True,
         "alerts": progressive_alerts(events, match.players, clock),
         "moments": [
@@ -318,6 +325,19 @@ def template_question(match_id: str, request: Question, match=None):
             if spanish
             else f"{player.name} completed {stats['completed_passes']} of {stats['pass_attempts']} passes, including {stats['progressive_passes']} progressive passes. Select an action on the pitch to inspect its destination."
         )
+        if any(word in q for word in ("why", "por qué", "por que", "importa")):
+            if stats["progressive_passes"]:
+                text += (
+                    " Estos pases acercaron el balón a la portería al menos 10 m desde fuera del área: registran progresión, no solo volumen de pases. Esto no demuestra calidad de ocasiones, superación de líneas defensivas ni causalidad."
+                    if spanish
+                    else " These passes moved the ball at least 10m closer to goal from outside the box: they record forward progression, beyond pass volume alone. This does not establish chance quality, defensive-line breaking or causation."
+                )
+            else:
+                text += (
+                    " No hay progresión registrada que cumpla nuestra definición; completar pases por sí solo no explica su impacto."
+                    if spanish
+                    else " No qualifying forward progression is recorded; pass completion alone does not establish impact."
+                )
     elif any(
         word in q
         for word in [
@@ -348,6 +368,12 @@ def template_question(match_id: str, request: Question, match=None):
             if spanish
             else " Definition: a progressive pass reduces distance to goal by at least 10m, starting outside the box."
         )
+    if match.feed_completeness == "incomplete":
+        text += (
+            " Datos incompletos: los recuentos incluyen solo los eventos observados."
+            if spanish
+            else " Incomplete feed: counts include observed events only."
+        )
     return {
         "text": text,
         "source_version": source_version(match),
@@ -360,6 +386,8 @@ def template_question(match_id: str, request: Question, match=None):
 
 
 def interpretation_requested(request, requested):
+    if request.language != "en":
+        return False
     return requested["intent"] == "change" or any(
         word in request.question.lower()
         for word in ("why", "por qué", "por que", "importa")
@@ -377,6 +405,24 @@ def question(match_id: str, request: Question):
             "status": "abstain" if requested["intent"] == "unsupported" else "template",
             "notice": "Deterministic event-backed answer",
         }
+
+    packet = None
+    if (
+        os.getenv("MATCHLENS_AI_POLICY", "single") == "single"
+        and requested["intent"] != "unsupported"
+    ):
+        packet = context_packet(
+            match,
+            request.player_id,
+            Clock(period=request.period, elapsed_ms=request.elapsed_ms),
+            request.anchor_ms,
+        )
+        if interpretation_limit(request.model_dump(), packet):
+            return {
+                **requested,
+                **explain(request.model_dump(), packet, None, requested["text"]),
+                "notice": "Deterministic explanation; input outside experimental interpretation scope",
+            }
 
     def fact(answer, key):
         return [
@@ -422,12 +468,7 @@ def question(match_id: str, request: Question):
         os.getenv("MATCHLENS_AI_POLICY", "single") == "single"
         and requested["intent"] != "unsupported"
     ):
-        packet = context_packet(
-            match,
-            request.player_id,
-            Clock(period=request.period, elapsed_ms=request.elapsed_ms),
-            request.anchor_ms,
-        )
+        assert packet is not None
         try:
             result = explain(request.model_dump(), packet, provider, requested["text"])
         finally:
@@ -436,9 +477,17 @@ def question(match_id: str, request: Question):
         return {
             **requested,
             **result,
-            "notice": "Experimental model interpretation; inspect supporting events"
-            if result["generation_mode"] == "model"
-            else "Deterministic answer; model unavailable or disabled",
+            "notice": (
+                "Model declined interpretation; no factual conclusion"
+                if result["status"] == "abstain"
+                else "Experimental model interpretation; inspect supporting events"
+                if result["generation_mode"] == "model"
+                else "Deterministic explanation; input outside experimental interpretation scope"
+                if result["status"] == "limited_input"
+                else "Model unavailable or rejected; deterministic fallback"
+                if result["generation_mode"] == "fallback"
+                else "Deterministic event-backed explanation"
+            ),
         }
     try:
         result = run_workflow(request.model_dump(), tools, provider)

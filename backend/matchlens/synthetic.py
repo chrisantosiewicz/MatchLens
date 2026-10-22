@@ -64,6 +64,7 @@ def generate_match(seed: int = 7, scenario: str = "shift") -> MatchFixture:
         return full.model_copy(
             update={
                 "id": match_id,
+                "feed_completeness": "incomplete",
                 "events": [
                     e.model_copy(update={"match_id": match_id}) for e in observed
                 ],

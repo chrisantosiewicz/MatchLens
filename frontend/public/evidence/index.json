@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-22",
+  "model": "gpt-4.1-mini",
+  "model_version": "2025-04-14",
+  "manifest_sha256": "b4d95318b6ed41abdd296115df2eb2d8248801202b0fb29309045bca7b5e1bc1",
+  "trace_sha256": "bc20de14bb1f5e05545b69b618ab821dd919d4ce6de65d034cc1831a68adc77c",
+  "live_generation": false,
+  "independent_human_acceptance": false,
+  "cases": [
+    {
+      "id": "3109-0",
+      "question": "What changed since the selected moment?",
+      "player": "Mateo Silva",
+      "file": "3109-0.json",
+      "sha256": "b0e2a51847944a17b34c71d933cd828c3396ac621ae8a44b09519ace0d024c38"
+    },
+    {
+      "id": "3109-1",
+      "question": "Why does his passing matter?",
+      "player": "Mateo Silva",
+      "file": "3109-1.json",
+      "sha256": "ef60ffed7b3bbe37f854b72b543cf28e1bb359499fe9a6e321deb3805ec77eb9"
+    },
+    {
+      "id": "3119-0",
+      "question": "What changed since the selected moment?",
+      "player": "Mateo Silva",
+      "file": "3119-0.json",
+      "sha256": "88d8e102ab0acd0dc3345a0f77514a59a06b94719cc74127e28964279e815c60"
+    },
+    {
+      "id": "3119-1",
+      "question": "Why does his passing matter?",
+      "player": "Mateo Silva",
+      "file": "3119-1.json",
+      "sha256": "59cb2a634a16f268a522f7aaaefeeaf8bd24f7599b10d02c763cae2f2ccdfe24"
+    },
+    {
+      "id": "3137-0",
+      "question": "What changed since the selected moment?",
+      "player": "Nico Vega",
+      "file": "3137-0.json",
+      "sha256": "29b9ab87c94ae8f35a411f93370fe9c22dd7f6034b66cb9956135d0c9534f3cf"
+    },
+    {
+      "id": "3137-1",
+      "question": "Why does his passing matter?",
+      "player": "Nico Vega",
+      "file": "3137-1.json",
+      "sha256": "1498d0889cdaf5a9082fee55cd4a09899b0a82608ee58179f4d8a39c001bd9a2"
+    },
+    {
+      "id": "3163-0",
+      "question": "What changed since the selected moment?",
+      "player": "Nico Vega",
+      "file": "3163-0.json",
+      "sha256": "547014b53d80c4ca3dc7545c3d0021a8ce6a7893751273b58fc7ebd475b30795"
+    },
+    {
+      "id": "3163-1",
+      "question": "Why does his passing matter?",
+      "player": "Nico Vega",
+      "file": "3163-1.json",
+      "sha256": "992e147aafb78e2318bb347f675336de9928f7ea952c905665b115d45f63aa63"
+    },
+    {
+      "id": "zero-window",
+      "question": "What changed since the selected moment?",
+      "player": "Mateo Silva",
+      "file": "zero-window.json",
+      "sha256": "4d5cea5c02afb021d6f3a4a0efcc1f38cef12a9bbb574bf390e1022bc046c38b"
+    },
+    {
+      "id": "causal",
+      "question": "Did his passing cause the goal?",
+      "player": "Mateo Silva",
+      "file": "causal.json",
+      "sha256": "8524220eaa2f3a32116ff890d711c74ff2dab612c1aa070a0d871ce593c97080"
+    },
+    {
+      "id": "tracking",
+      "question": "How fast is he running off-ball?",
+      "player": "Mateo Silva",
+      "file": "tracking.json",
+      "sha256": "f0b170ad7b3486bd36274d03d580c5d56a64ac8a5f01469a3fc5e3b56a31d53f"
+    },
+    {
+      "id": "spanish-boundary",
+      "question": "\u00bfPor qu\u00e9 importan sus pases?",
+      "player": "Mateo Silva",
+      "file": "spanish-boundary.json",
+      "sha256": "ac5cec33baa7a9556c1b3ffad3ea4dc5a97456d0eb01007ad72f6134ec00789e"
+    }
+  ]
+}

@@ -2,10 +2,10 @@ import {ArrowUpRight, ChevronRight, CornerDownLeft, UserRound} from 'lucide-reac
 import {useEffect, useRef, useState} from 'react';
 import {api} from '../api';
 import {formatClock} from '../contracts';
-import type {Answer, Clock, Moment, PlayerDetail} from '../contracts';
+import type {Answer, Clock, MatchEvent, Moment, Player, PlayerDetail} from '../contracts';
 
-export default function PlayerPanel({detail, sourceVersion, clock, matchId, language, depth, anchor, onMoment, onInteract}: {
-  sourceVersion?:string; detail: PlayerDetail | null; clock: Clock; matchId:string; language:string; depth:string; anchor:number; onMoment:(m:Moment)=>void; onInteract?:()=>void;
+export default function PlayerPanel({detail, sourceVersion, clock, matchId, language, depth, anchor, onMoment, onInteract, evidenceEvents=[], evidencePlayers=[]}: {
+  evidenceEvents?:MatchEvent[]; evidencePlayers?:Player[]; sourceVersion?:string; detail: PlayerDetail | null; clock: Clock; matchId:string; language:string; depth:string; anchor:number; onMoment:(m:Moment)=>void; onInteract?:()=>void;
 }) {
   const [tab,setTab] = useState('profile');
   const [question,setQuestion] = useState('');
@@ -37,6 +37,10 @@ export default function PlayerPanel({detail, sourceVersion, clock, matchId, lang
   }
   if(!detail)return <aside className="panel loading-panel" aria-busy="true">{es?'Cargando perfil…':'Loading player profile…'}</aside>;
   const {player,stats,profile} = detail;
+  const evidenceIds=new Set(answer?.evidence_ids??[]);
+  const supporting=evidenceEvents.filter(e=>evidenceIds.has(e.event_id)&&(e.period<clock.period||(e.period===clock.period&&e.elapsed_ms<=clock.elapsed_ms))).sort((a,b)=>b.period-a.period||b.elapsed_ms-a.elapsed_ms);
+  const actor=(id:string|null)=>evidencePlayers.find(p=>p.id===id)?.name??(id===player.id?player.name:id??(es?'Sin jugador':'No player'));
+  const provenance=answer?.generation_mode==='model'?(es?'Interpretación experimental del modelo':'Experimental model interpretation'):answer?.generation_mode==='fallback'?(es?'Explicación de respaldo':'Fallback explanation'):(es?'Explicación por plantilla':'Template explanation');
   return <aside className="player-panel panel" onFocusCapture={onInteract}>
     <div className="section-label"><span className="live-dot"/>{es?'JUGADOR SELECCIONADO':'PLAYER SPOTLIGHT'}<UserRound size={14}/></div>
     <div className="player-heading"><div className="shirt">{player.number}</div><div><span className="eyebrow">{player.team_id==='north'?'NORTHBRIDGE FC':'HARBOR ATHLETIC'} · {player.position}</span><h2>{player.name}</h2><p>{detail.minutes_played} {es?'minutos jugados':'minutes played'} <span>·</span> {es?'Datos sintéticos':'Synthetic data'}</p></div></div>
@@ -52,7 +56,13 @@ export default function PlayerPanel({detail, sourceVersion, clock, matchId, lang
       <form onSubmit={e=>{e.preventDefault();void ask();}}><input aria-label="Ask about selected player" value={question} onChange={e=>setQuestion(e.target.value)} placeholder={es?'Participación, pases, cambios…':'Involvement, passing, changes…'} maxLength={500}/><button aria-label="Send player question" disabled={busy||!question.trim()}><CornerDownLeft size={17}/></button></form>
       {busy&&<p className="tiny muted" role="status">{es?'Consultando eventos…':'Checking match events…'}</p>}
       {error&&<p role="alert" className="error-text">{error}</p>}
-      {answer&&<div className="answer" aria-live="polite"><span>{es?'Respuesta a las':'Answer at'} {answerAt}</span><p>{answer.text}</p><span>{answer.evidence_ids.length} {answer.generation_mode==='model'?(es?'eventos · Interpretación del modelo; revisa la evidencia':'events · Model output; inspect evidence'):(es?'eventos · Explicación por plantilla':'events · Template explanation')}</span></div>}
+      {answer&&<div className="answer" aria-live="polite"><span>{es?'Respuesta a las':'Answer at'} {answerAt}</span><p>{answer.text}</p>{answer.metric_definition&&<p className="tiny muted">{answer.metric_definition}</p>}<span>{answer.evidence_ids.length} {es?'eventos':'events'} · {provenance}</span>
+        {answer.fact_support&&<div className="rate-support">{answer.fact_support.map(card=><details key={`${card.metric}-${card.window}`}><summary>{({team_box_entries:'Team entries',player_progressive_passes:'Player progressive passes',player_box_entries:'Player entries'} as Record<string,string>)[card.metric]??card.metric} · {card.window}: {card.count} / {card.minutes} min = {card.rate??'—'} / min</summary><p className="tiny muted">{formatClock({period:card.period,elapsed_ms:card.start_ms})} → {formatClock({period:card.period,elapsed_ms:card.end_ms})}</p><small>{card.source_ids.length?card.source_ids.join(', '):'No qualifying recorded events.'}</small></details>)}<p className="tiny muted">Rate sources are calculated separately from the model's {answer.model_cited_event_ids?.length??0} citations; this does not prove every sentence is supported.</p></div>}
+        <details className="answer-evidence"><summary>{es?'Inspeccionar eventos de apoyo':'Inspect supporting events'} ({answer.evidence_ids.length})</summary>
+          <p>{es?'Los eventos respaldan observaciones del partido, no percentiles de temporada ni causalidad. Un ID válido por sí solo no verifica una interpretación.':'Events support match observations, not season percentiles or causation. A valid ID alone does not verify an interpretation.'}</p>
+          {supporting.length?<><ol>{supporting.slice(0,12).map(e=><li key={e.event_id}>{formatClock(e)} · {actor(e.player_id)} · {es?(({pass:'pase',carry:'conducción',shot:'tiro',recovery:'recuperación',tackle:'entrada',turnover:'pérdida'} as Record<string,string>)[e.event_type]??e.event_type):e.event_type} · {es?(({complete:'completo',incomplete:'incompleto',goal:'gol',saved:'parado',wide:'fuera',recorded:'registrado'} as Record<string,string>)[e.outcome]??e.outcome):e.outcome}<small>{e.event_id}</small></li>)}</ol><p>{es?'Últimos':'Latest'} {Math.min(12,supporting.length)} / {supporting.length} {es?'eventos disponibles':'available events'}.</p></>:<p>{es?'No hay registros de eventos para inspeccionar en esta respuesta.':'No event records are available to inspect for this answer.'}</p>}
+        </details>
+      </div>}
       <p className="mode-note">{answer?.notice ?? (es?'Demo sintética · Respuestas locales disponibles':'Synthetic demo · Local answers available')}</p>
     </section>
   </aside>;

@@ -4,8 +4,8 @@ import re
 from decimal import Decimal
 from time import perf_counter
 
-from .analytics import compare_windows, player_stats
-from .models import Clock, visible
+from .analytics import compare_windows, is_entry, is_progressive, player_stats
+from .models import Clock, Event, visible
 
 
 def active_minutes(match, player, period, start_ms, end_ms):
@@ -44,6 +44,7 @@ def context_packet(match, player_id, clock, anchor_ms):
     ]
     packet = {
         "synthetic": True,
+        "feed_completeness": match.feed_completeness,
         "viewer_clock": clock.model_dump(),
         "display_clock_minutes": (clock.period - 1) * 45 + clock.elapsed_ms / 60000,
         "anchor_clock_minutes": (clock.period - 1) * 45 + anchor.elapsed_ms / 60000,
@@ -164,6 +165,78 @@ def calculated_numbers(context):
     )
 
 
+def interpretation_limit(request, context):
+    return (
+        "incomplete_feed"
+        if context.get("feed_completeness") == "incomplete"
+        else "zero_duration"
+        if any(value <= 0 for value in context["window_minutes"].values())
+        else "no_player_comparison_baseline"
+        if any(value <= 0 for value in context["player_window_minutes"].values())
+        else "no_recorded_passing"
+        if "pass" in request.get("question", "").lower()
+        and context["player_stats"]["pass_attempts"] == 0
+        else None
+    )
+
+
+def comparison_fact_support(context):
+    """Attach complete deterministic metric sources, separate from model citations."""
+    events = [Event.model_validate(e) for e in context["events"]]
+    player = context["player"]
+    period = context["viewer_clock"]["period"]
+    offset = (period - 1) * 45
+    cards = []
+    for window in ("before", "after"):
+        bounds = context["window_bounds_minutes"][window]
+        low, high = (round((minute - offset) * 60000) for minute in bounds)
+        selected = [
+            e
+            for e in events
+            if e.period == period
+            and high > low
+            and low <= e.elapsed_ms
+            and (e.elapsed_ms < high if window == "before" else e.elapsed_ms <= high)
+        ]
+        groups = [
+            (
+                "team_box_entries",
+                context["window_minutes"][window],
+                [e for e in selected if e.team_id == player["team_id"] and is_entry(e)],
+            ),
+            (
+                "player_progressive_passes",
+                context["player_window_minutes"][window],
+                [
+                    e
+                    for e in selected
+                    if e.player_id == player["id"] and is_progressive(e)
+                ],
+            ),
+            (
+                "player_box_entries",
+                context["player_window_minutes"][window],
+                [e for e in selected if e.player_id == player["id"] and is_entry(e)],
+            ),
+        ]
+        for metric, minutes, qualifying in groups:
+            cards.append(
+                {
+                    "metric": metric,
+                    "window": window,
+                    "count": len(qualifying),
+                    "minutes": minutes,
+                    "rate": round(len(qualifying) / minutes, 4) if minutes else None,
+                    "source_ids": [e.event_id for e in qualifying],
+                    "period": period,
+                    "start_ms": low,
+                    "end_ms": high,
+                    "end_inclusive": window == "after",
+                }
+            )
+    return cards
+
+
 def explain(request, context, provider, trusted_text, diagnostics=None):
     start = perf_counter()
 
@@ -178,6 +251,17 @@ def explain(request, context, provider, trusted_text, diagnostics=None):
             "validation": "structural_only; semantic support requires evaluation",
         }
 
+    limited_reason = interpretation_limit(request, context)
+    if limited_reason:
+        return {
+            **result(
+                trusted_text,
+                "template",
+                "limited_input",
+                context["player_stats"]["evidence_ids"],
+            ),
+            "limitation": limited_reason,
+        }
     if provider is None:
         return result(
             trusted_text,
@@ -203,6 +287,16 @@ def explain(request, context, provider, trusted_text, diagnostics=None):
         if not isinstance(text, str) or not text.strip() or len(text) > 1800:
             rejection = "invalid_narrative"
             raise ValueError(rejection)
+        # Conservative scope filter, not a proof that remaining prose is supported.
+        if re.search(
+            r"\b(speed|velocity|sprints?|pressing|pressure|chaos|dominance|actions?|sparse)\b"
+            r"|attacking presence|retained control|defensive.line.break"
+            r"|improved (?:passing|quality)|creates? (?:space|chances)",
+            text,
+            re.IGNORECASE,
+        ):
+            rejection = "unsupported_concept"
+            raise ValueError(rejection)
         if (
             not isinstance(ids, list)
             or not ids
@@ -226,7 +320,18 @@ def explain(request, context, provider, trusted_text, diagnostics=None):
         ):
             rejection = "invalid_rate_comparison"
             raise ValueError(rejection)
-        return result(text, "model", "experimental", list(dict.fromkeys(ids)))
+        support = comparison_fact_support(context)
+        complete_ids = list(
+            dict.fromkeys(
+                ids + [event_id for card in support for event_id in card["source_ids"]]
+            )
+        )
+        return {
+            **result(text, "model", "experimental", complete_ids),
+            "model_cited_event_ids": list(dict.fromkeys(ids)),
+            "fact_support": support,
+            "metric_definition": "Recorded progression means completed passes moving the ball at least 10m closer to goal from outside the box. Frequency is not passing quality or causation.",
+        }
     except (TimeoutError, RuntimeError, ValueError, KeyError, TypeError):
         if diagnostics is not None:
             diagnostics.append({"candidate": output, "rejection_reason": rejection})

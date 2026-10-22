@@ -1,6 +1,6 @@
 # MatchLens judge guide
 
-Status: October 21, 2026. This is a local prototype using fictional clubs, players, matches and season baselines. Start with the [public template demo](https://matchlens-chris-demo-2026.azurewebsites.net) or the reproducible local build. No Azure account is required for either.
+Status: see [STATUS.md](../STATUS.md), updated October22. This is a local prototype using fictional clubs, players, matches and season baselines. Start with the [public template demo](https://matchlens-chris-demo-2026.azurewebsites.net) or the reproducible local build. No Azure account is required for either.
 
 ## Run the local build
 
@@ -32,9 +32,9 @@ The short recording plan is in [demo-script.md](demo-script.md). Technical bound
 - Canonical SQLite event revisions served through the API. Administrator ingestion requires a server-side `MATCHLENS_INGEST_TOKEN` and matching `X-MatchLens-Token`; higher revisions replace earlier versions and stale/duplicate writes are ignored. This is a local ingestion demonstration, not a connected external live feed. Persistence requires `MATCHLENS_EVENT_DB`; the default is in memory.
 - Same-origin serving of built frontend assets and a useful template fallback. See dated local checks in [build-ledger.md](build-ledger.md), rather than treating configuration as verification.
 - Actual authenticated Foundry `gpt-4.1-mini` responses and usage were recorded: [foundry-verification.json](foundry-verification.json), [foundry-fresh-verification.json](foundry-fresh-verification.json). The fresh four-call check accepted output structure but failed semantic acceptance. It is not evidence of trustworthy interpretations or broad reliability.
-- Historical policy measurements and quality failures are recorded in [evaluation.md](evaluation.md) and [evaluation-results.json](evaluation-results.json). The raw-policy timing/token comparison does not measure the later hybrid routing policy. A conditional Global Standard retail estimate is recorded in evaluation-results.json and price-reference.json; the deployment SKU and actual Azure bill remain unverified. Independent bilingual acceptance remains unverified.
+- Historical policy measurements and quality failures are recorded in [evaluation.md](evaluation.md) and [evaluation-results.json](evaluation-results.json). The raw-policy timing/token comparison does not measure the later hybrid routing policy. A conditional Global Standard retail estimate is recorded in evaluation-results.json and price-reference.json; deployment GlobalStandard SKU is verified; actual Azure bill remains unverified. Independent bilingual acceptance remains unverified.
 
-The optional `single` model policy keeps direct-count answers deterministic and may call a model for interpretation. `specialist` is experimental canonical sentence selection, not a validated advantage. Read template/model/fallback disclosures on each output. Structural citation and number validation does not prove semantic support. Use template mode for the core demonstration.
+The optional `single` model policy keeps direct counts and Spanish deterministic and may call a model for supported English interpretation. `specialist` is experimental canonical sentence selection, not a validated advantage. Read template/model/fallback disclosures on each output. Structural citation and number validation does not prove semantic support. Use template mode for the core demonstration.
 
 ## Reproduce checks and package
 

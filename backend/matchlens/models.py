@@ -56,6 +56,7 @@ class MatchFixture(BaseModel):
     players: list[Player]
     events: list[Event]
     final_score: dict[str, int]
+    feed_completeness: Literal["complete", "incomplete"] = "complete"
 
 
 class SeasonRecord(BaseModel):

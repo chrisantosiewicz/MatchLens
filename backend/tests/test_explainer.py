@@ -41,6 +41,24 @@ def test_single_model_can_interpret_context_but_unknown_sources_fall_back():
     )
     assert answer["generation_mode"] == "model"
     assert "limited observation" in answer["text"]
+    before = next(
+        c
+        for c in answer["fact_support"]
+        if c["metric"] == "team_box_entries" and c["window"] == "before"
+    )
+    after = next(
+        c
+        for c in answer["fact_support"]
+        if c["metric"] == "team_box_entries" and c["window"] == "after"
+    )
+    assert (before["count"], before["minutes"], before["rate"]) == (2, 10, 0.2)
+    assert (after["count"], after["minutes"], after["rate"]) == (3, 5, 0.6)
+    assert len(before["source_ids"]) == 2 and len(after["source_ids"]) == 3
+    assert set(before["source_ids"] + after["source_ids"]) <= set(
+        answer["evidence_ids"]
+    )
+    assert len(answer["model_cited_event_ids"]) == 1
+    assert "closer to goal" in answer["metric_definition"]
 
     class Invented:
         def complete(self, role, state):
@@ -146,7 +164,58 @@ def test_model_must_use_calculated_rate_direction_for_unequal_windows():
 def test_substitute_rates_use_active_minutes_and_zero_window_is_unrated():
     match = generate_match(202, "sparse")
     p = context_packet(match, "north-12", Clock(period=2, elapsed_ms=1200000), 900000)
+    assert p["feed_completeness"] == "incomplete"
     assert p["player_window_minutes"] == {"before": 0, "after": 5}
     assert p["player_rates"]["before"]["actions_per_minute"] is None
     p = context_packet(match, "north-12", Clock(period=2, elapsed_ms=900000), 900000)
     assert p["player_rates"]["after"]["actions_per_minute"] is None
+
+
+def test_interpretation_does_not_call_model_for_incomplete_or_zero_windows():
+    class Forbidden:
+        def complete(self, *args):
+            raise AssertionError("Insufficient context should stay deterministic")
+
+    sparse = generate_match(1741, "sparse")
+    contexts = [
+        context_packet(sparse, "north-12", Clock(period=2, elapsed_ms=1050000), 900000),
+        context_packet(
+            generate_match(1709, "shift"),
+            "north-6",
+            Clock(period=2, elapsed_ms=900000),
+            900000,
+        ),
+        context_packet(
+            generate_match(1753, "shift"),
+            "north-12",
+            Clock(period=2, elapsed_ms=1200000),
+            900000,
+        ),
+    ]
+    for context in contexts:
+        answer = explain(
+            {"question": "What changed since the selected moment?"},
+            context,
+            Forbidden(),
+            "Trusted observed facts.",
+        )
+        assert answer["generation_mode"] == "template"
+        assert answer["status"] == "limited_input"
+
+
+def test_rate_facts_cannot_authorize_speed_or_off_ball_interpretations():
+    class Model:
+        def complete(self, role, state):
+            context = state["context"]
+            return {
+                "text": "This indicates increased offensive penetration speed.",
+                "evidence_ids": [context["events"][0]["event_id"]],
+                "rate_basis": context["rate_contract"]["basis"],
+                "team_entry_rate_change": context["rate_contract"][
+                    "team_entry_rate_change"
+                ],
+            }
+
+    result = explain({}, packet(), Model(), "Trusted observed facts.")
+    assert result["generation_mode"] == "fallback"
+    assert result["rejection_reason"] == "unsupported_concept"

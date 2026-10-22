@@ -12,3 +12,9 @@
 
 /* Reserve normal document space so the video never covers recap controls or results. */
 .video-pip{position:static;margin:18px 0 18px auto}
+
+.score-context{display:flex;flex-direction:column;align-items:center;gap:4px}.score-context small{font-size:9px;color:var(--muted);text-align:center;max-width:160px}
+
+.answer-evidence{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}.answer-evidence summary{cursor:pointer;font-size:11px;color:var(--green)}.answer-evidence ol{padding-left:18px;max-height:260px;overflow:auto}.answer-evidence li{font-size:11px;margin:9px 0;line-height:1.5}.answer-evidence li small{display:block;color:var(--muted);overflow-wrap:anywhere}
+
+.rate-support{margin:12px 0}.rate-support details{padding:6px 0;font-size:10px}.rate-support summary{cursor:pointer;color:var(--green)}.rate-support small{overflow-wrap:anywhere;line-height:1.6}

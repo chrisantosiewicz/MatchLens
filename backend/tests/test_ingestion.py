@@ -39,6 +39,10 @@ def test_corrected_event_recomputes_stats_alerts_answers_and_recap(monkeypatch):
     initial = client.get(f"{path}/state?{query}").json()
     assert initial["alerts"][0]["count"] == 8
     version = initial["source_version"]
+    assert client.get(f"{path}/revision").json() == {
+        "id": match.id,
+        "source_version": version,
+    }
     assert (
         client.get(f"{path}/state?period=1&elapsed_ms=6000").json()["source_version"]
         == version
@@ -54,6 +58,7 @@ def test_corrected_event_recomputes_stats_alerts_answers_and_recap(monkeypatch):
     assert changed.status_code == 200
     assert changed.json()["invalidated"] == ["pass-7"]
     assert client.get(f"{path}/state?{query}").json()["source_version"] != version
+    assert client.get(f"{path}/revision").json()["source_version"] != version
     assert not client.post(f"{path}/events", json=corrected, headers=headers).json()[
         "changed"
     ]

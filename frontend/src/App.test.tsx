@@ -22,6 +22,29 @@ function localFetch(url: string) {
   return Promise.resolve({ok:true,json:async()=>data} as Response);
 }
 
+it('labels the effective anchor only from an event visible at that time',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async(url:string)=>{
+    const response=await localFetch(url);const data=await response.json();
+    if(url.includes('/state?'))return {ok:true,json:async()=>({...data,moments:url.includes('elapsed_ms=0')?[]:[{event_id:'sub',period:2,elapsed_ms:900000,event_type:'substitution',recipient_id:'north-12'}],players:[...data.players,{id:'north-12',name:'Nico Vega'}]})} as Response;
+    return response;
+  }));
+  render(<App/>);
+  await screen.findByText(/Substitution · Nico Vega on/);
+  fireEvent.change(screen.getByRole('slider',{name:'Match clock'}),{target:{value:'0'}});
+  expect(screen.queryByText(/Substitution · Nico Vega on/)).toBeNull();
+  await screen.findByText(/Comparison anchor/);
+});
+
+it('qualifies the scoreboard for an incomplete observed feed',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async(url:string)=>{
+    const response=await localFetch(url);const data=await response.json();
+    return {ok:true,json:async()=>url.includes('/state?')?{...data,feed_completeness:'incomplete'}:data} as Response;
+  }));
+  render(<App/>);
+  await screen.findByRole('heading',{name:'Mateo Silva'});
+  expect(screen.getByText('Observed goals in incomplete feed')).toBeTruthy();
+});
+
 it('hides old match data immediately when seeking while replacement is pending', async()=>{
   vi.stubGlobal('fetch',vi.fn((url:string)=>url.includes('elapsed_ms=0')?new Promise(()=>{}):localFetch(url)));
   render(<App/>);
@@ -75,6 +98,28 @@ async function versionedFetch(url:string,version:string){
   const data=await response.json();
   return {ok:true,json:async()=>Array.isArray(data)?data:{...data,source_version:version}} as Response;
 }
+
+it('checks corrections while paused and clears old narratives without moving the clock',async()=>{
+  let corrected=false;
+  vi.stubGlobal('fetch',vi.fn((url:string)=>{
+    if(url.includes('/revision'))corrected=true;
+    if(url.includes('/recap?'))return Promise.resolve({ok:true,json:async()=>({text:'Old paused recap',evidence_ids:[],generation_mode:'template',source_version:'v1'})} as Response);
+    return versionedFetch(url,corrected?'v2':'v1');
+  }));
+  render(<App/>);
+  await screen.findByRole('heading',{name:'Mateo Silva'});
+  fireEvent.click(screen.getByRole('button',{name:'Build my recap'}));
+  await screen.findByText('Old paused recap');
+  vi.useFakeTimers();
+  try {
+    fireEvent.click(screen.getByRole('button',{name:'Play replay'}));
+    fireEvent.click(screen.getByRole('button',{name:'Pause replay'}));
+    await act(async()=>{await vi.advanceTimersByTimeAsync(15000);});
+    expect(screen.queryByText('Old paused recap')).toBeNull();
+    expect((screen.getByRole('slider',{name:'Match clock'}) as HTMLInputElement).value).toBe('1500000');
+    expect(fetch).toHaveBeenCalledWith(expect.stringContaining('/revision'),expect.anything());
+  } finally {vi.useRealTimers();}
+});
 it('retries mixed source reads without displaying inconsistent player facts',async()=>{
   let corrected=false;
   let resolveState!: (value:Response)=>void;

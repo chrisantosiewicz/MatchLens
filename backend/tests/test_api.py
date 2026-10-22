@@ -4,6 +4,77 @@ from matchlens.api import app
 client = TestClient(app)
 
 
+def test_sparse_score_is_explicitly_observed_in_incomplete_feed():
+    state = client.get(
+        "/api/matches/match-7-sparse/state?period=2&elapsed_ms=2700000"
+    ).json()
+    assert state["feed_completeness"] == "incomplete"
+    assert state["score"] == {"north": 0, "harbor": 1}
+    complete = client.get(
+        "/api/matches/match-7-null/state?period=2&elapsed_ms=2700000"
+    ).json()
+    assert complete["feed_completeness"] == "complete"
+    assert complete["score"] == {"north": 0, "harbor": 3}
+
+
+def test_why_passing_template_explains_significance_and_limits():
+    answer = client.post(
+        "/api/matches/match-7-shift/questions",
+        json={
+            "period": 2,
+            "elapsed_ms": 1500000,
+            "player_id": "north-6",
+            "question": "Why does his passing matter?",
+        },
+    ).json()
+    assert "closer to goal" in answer["text"]
+    assert "does not establish chance quality" in answer["text"]
+    assert answer["evidence_ids"]
+
+
+def test_spanish_interpretation_stays_deterministic(monkeypatch):
+    from matchlens import api
+
+    def forbidden():
+        raise AssertionError("Spanish model interpretation is not accepted")
+
+    monkeypatch.setattr(api, "configured_provider", forbidden)
+    monkeypatch.setenv("MATCHLENS_AI_POLICY", "single")
+    result = client.post(
+        "/api/matches/match-7-shift/questions",
+        json={
+            "period": 2,
+            "elapsed_ms": 1500000,
+            "player_id": "north-6",
+            "language": "es",
+            "question": "¿Por qué importan sus pases?",
+        },
+    ).json()
+    assert result["generation_mode"] == "template"
+    assert "acercaron el balón" in result["text"]
+
+
+def test_limited_input_never_constructs_provider_or_consumes_model_budget(monkeypatch):
+    from matchlens import api
+
+    def forbidden():
+        raise AssertionError("No model work or budget should be requested")
+
+    monkeypatch.setattr(api, "configured_provider", forbidden)
+    monkeypatch.setattr(api, "model_budget", forbidden)
+    result = client.post(
+        "/api/matches/match-7-sparse/questions",
+        json={
+            "period": 2,
+            "elapsed_ms": 1200000,
+            "player_id": "north-6",
+            "question": "What changed since the selected moment?",
+        },
+    ).json()
+    assert result["generation_mode"] == "template"
+    assert result["status"] == "limited_input"
+
+
 def test_player_and_clock_contracts():
     matches = client.get("/api/matches").json()
     match = matches[0]["id"]

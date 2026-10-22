@@ -1,0 +1,191 @@
+{
+  "date": "2026-10-22",
+  "scope": "English duration-aware player/team interpretation; Spanish deterministic; no final acceptance claimed",
+  "source_hashes": {
+    "backend/matchlens/__init__.py": "279dd36603544e97760d3019439e9f62f1e149e30b21066b7355d8f4cb3ab9e2",
+    "backend/matchlens/alerts.py": "d0d6425059e01aac82f6bc96356d90ae2c03c05b4f38708ef5d8c3f46854d8ae",
+    "backend/matchlens/analytics.py": "4847638d4b9df0dc4a4598edc17d814c23d8fd550f3785450688d74c442ce472",
+    "backend/matchlens/api.py": "ec918940e3d128e120d126628e2c24d874540af3cea22be3f4a1ce0d02a484c5",
+    "backend/matchlens/evaluate.py": "5d4bf4a483036895f43dafe79fba67b5256612a64b3fe78bbba8e27d0cb7aaf9",
+    "backend/matchlens/explainer.py": "030816d34a975632650ddc0344fe63e2b2173218378d96a95b8d386fd780e0dd",
+    "backend/matchlens/limits.py": "96a42b299dc095491db78f98cfa0ebf2f82818619d381cdb79f5128236f91c0b",
+    "backend/matchlens/models.py": "d8d3fec3377e9ef1d4f80ac321720026cf1a6338fb0a56b5d18b79c634d97aa0",
+    "backend/matchlens/moments.py": "461068db247e7c5a626b8d689ea26373608f10e0eeb62de80ec00f7569874a36",
+    "backend/matchlens/profiles.py": "4448b8aa25aa0bc8c40ab0038cc978cb83d244af37a5dc82e5deb92db76dd623",
+    "backend/matchlens/providers.py": "15c0dd35a458106c091f19f3cec64ce1e99319dde24a99bcd14604d2fb762eca",
+    "backend/matchlens/serving.py": "39000f6291d5016a35404ed782dce81764907798be6ac621e79fe4be90c787af",
+    "backend/matchlens/store.py": "7eaa1def818511f652c82b3a889b301de7265be16b0b53e33c7ad51f6a73c8ef",
+    "backend/matchlens/summaries.py": "8d8a63d419482249a0faaab1d932c8208441318c1e1f0af4496886963042c57a",
+    "backend/matchlens/synthetic.py": "f3263d351cc126026998be2526b9530a6399cec88d0fe6dc640283d708cc555d",
+    "backend/matchlens/workflow.py": "0345f2af7181171f08ebad4e3328d5c79a3fffbc68b13de82f193ae68dd54e13",
+    "scripts/run_frozen_evaluation.py": "678ee5d942c35011532980431e982ba06bdcb80e92d82df1531a723d7a12fdce"
+  },
+  "cases": [
+    {
+      "id": "1709-0",
+      "seed": 1709,
+      "scenario": "shift",
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1200000,
+        "anchor_ms": 900000,
+        "player_id": "north-6",
+        "language": "en",
+        "depth": "casual",
+        "question": "What changed since the selected moment?"
+      }
+    },
+    {
+      "id": "1709-1",
+      "seed": 1709,
+      "scenario": "shift",
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1200000,
+        "anchor_ms": 900000,
+        "player_id": "north-6",
+        "language": "en",
+        "depth": "casual",
+        "question": "Why does his passing matter?"
+      }
+    },
+    {
+      "id": "1721-0",
+      "seed": 1721,
+      "scenario": "null",
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1500000,
+        "anchor_ms": 900000,
+        "player_id": "north-6",
+        "language": "en",
+        "depth": "casual",
+        "question": "What changed since the selected moment?"
+      }
+    },
+    {
+      "id": "1721-1",
+      "seed": 1721,
+      "scenario": "null",
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1500000,
+        "anchor_ms": 900000,
+        "player_id": "north-6",
+        "language": "en",
+        "depth": "casual",
+        "question": "Why does his passing matter?"
+      }
+    },
+    {
+      "id": "1741-0",
+      "seed": 1741,
+      "scenario": "sparse",
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1050000,
+        "anchor_ms": 900000,
+        "player_id": "north-12",
+        "language": "en",
+        "depth": "casual",
+        "question": "What changed since the selected moment?"
+      }
+    },
+    {
+      "id": "1741-1",
+      "seed": 1741,
+      "scenario": "sparse",
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1050000,
+        "anchor_ms": 900000,
+        "player_id": "north-12",
+        "language": "en",
+        "depth": "casual",
+        "question": "Why does his passing matter?"
+      }
+    },
+    {
+      "id": "1753-0",
+      "seed": 1753,
+      "scenario": "shift",
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1200000,
+        "anchor_ms": 900000,
+        "player_id": "north-12",
+        "language": "en",
+        "depth": "casual",
+        "question": "What changed since the selected moment?"
+      }
+    },
+    {
+      "id": "1753-1",
+      "seed": 1753,
+      "scenario": "shift",
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1200000,
+        "anchor_ms": 900000,
+        "player_id": "north-12",
+        "language": "en",
+        "depth": "casual",
+        "question": "Why does his passing matter?"
+      }
+    },
+    {
+      "id": "zero-window",
+      "seed": 1783,
+      "scenario": "sparse",
+      "request": {
+        "period": 2,
+        "elapsed_ms": 900000,
+        "anchor_ms": 900000,
+        "player_id": "north-6",
+        "language": "en",
+        "question": "What changed since the selected moment?"
+      }
+    },
+    {
+      "id": "causal",
+      "seed": 1783,
+      "scenario": "sparse",
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1200000,
+        "anchor_ms": 900000,
+        "player_id": "north-6",
+        "language": "en",
+        "question": "Did his passing cause the goal?"
+      }
+    },
+    {
+      "id": "tracking",
+      "seed": 1783,
+      "scenario": "sparse",
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1200000,
+        "anchor_ms": 900000,
+        "player_id": "north-6",
+        "language": "en",
+        "question": "How fast is he running off-ball?"
+      }
+    },
+    {
+      "id": "spanish-boundary",
+      "seed": 1783,
+      "scenario": "sparse",
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1200000,
+        "anchor_ms": 900000,
+        "player_id": "north-6",
+        "language": "es",
+        "question": "¿Por qué importan sus pases?"
+      }
+    }
+  ],
+  "independent_review_complete": false,
+  "live_run_complete": false
+}
