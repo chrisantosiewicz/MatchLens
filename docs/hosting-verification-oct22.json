@@ -25,5 +25,13 @@
   "sparse_observed_score": {
     "north": 0,
     "harbor": 1
+  },
+  "controlled_stop_start": {
+    "arm_stopped_observed": true,
+    "first_health_http_status": 403,
+    "first_check_seconds": 1.5,
+    "followup_health_http_status": 200,
+    "followup_check_seconds": 50.05,
+    "limits": "One controlled restart. Includes delay between checks; not minimum boot time, natural idle cold-start or future availability proof."
   }
 }
