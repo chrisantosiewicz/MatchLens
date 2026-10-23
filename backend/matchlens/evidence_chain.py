@@ -180,41 +180,9 @@ def run_evidence_chain(request, context, trusted, provider, acquire=None):
                 "publication_rule": "Every claim must be supported, relevant and appropriately limited; reject if not. Do not rewrite.",
             },
         )
-        if set(checked) != {"snapshot_id", "verdict", "checks"} or checked[
-            "verdict"
-        ] not in {"accept", "reject", "abstain"}:
-            raise ValueError("invalid_checker_contract")
-        checks = checked["checks"]
-        if not isinstance(checks, list) or any(
-            not isinstance(c, dict) or set(c) != {"claim_id", "verdict", "reason"}
-            for c in checks
-        ):
-            raise ValueError("invalid_claim_check")
-        if len(checks) != len(proposed) or {c["claim_id"] for c in checks} != set(
-            chosen["claim_ids"]
-        ):
-            raise ValueError("incomplete_claim_checks")
-        if any(
-            c["reason"]
-            not in {
-                "supported_by_facts",
-                "irrelevant",
-                "wrong_subject",
-                "wrong_scope",
-                "unsupported_inference",
-                "missing_limitation",
-            }
-            or c["verdict"] not in {"supported", "unsupported", "uncertain"}
-            for c in checks
-        ):
-            raise ValueError("invalid_check_reason")
+        checks = validate_checker(checked, proposed, snapshot)
         stages[2]["verdict"] = checked["verdict"]
         stages[2]["checks"] = checks
-        if checked["verdict"] != "accept" or any(
-            c["verdict"] != "supported" or c["reason"] != "supported_by_facts"
-            for c in checks
-        ):
-            raise ValueError("checker_veto")
         # Published sentences are server-authored claim cards; agents cannot replace a number or subject.
         answer = enrich_answer(
             request,
@@ -267,3 +235,42 @@ def run_evidence_chain(request, context, trusted, provider, acquire=None):
             if stage["status"] == "running":
                 stage["status"] = "failed"
         return fallback()
+
+
+def validate_checker(checked, proposed, snapshot):
+    if not isinstance(checked, dict) or checked.get("snapshot_id") != snapshot:
+        raise ValueError("snapshot_mismatch")
+    if set(checked) != {"snapshot_id", "verdict", "checks"} or checked[
+        "verdict"
+    ] not in {"accept", "reject", "abstain"}:
+        raise ValueError("invalid_checker_contract")
+    checks = checked["checks"]
+    if not isinstance(checks, list) or any(
+        not isinstance(c, dict) or set(c) != {"claim_id", "verdict", "reason"}
+        for c in checks
+    ):
+        raise ValueError("invalid_claim_check")
+    if len(checks) != len(proposed) or {c["claim_id"] for c in checks} != {
+        c["id"] for c in proposed
+    }:
+        raise ValueError("incomplete_claim_checks")
+    if any(
+        c["reason"]
+        not in {
+            "supported_by_facts",
+            "irrelevant",
+            "wrong_subject",
+            "wrong_scope",
+            "unsupported_inference",
+            "missing_limitation",
+        }
+        or c["verdict"] not in {"supported", "unsupported", "uncertain"}
+        for c in checks
+    ):
+        raise ValueError("invalid_check_reason")
+    if checked["verdict"] != "accept" or any(
+        c["verdict"] != "supported" or c["reason"] != "supported_by_facts"
+        for c in checks
+    ):
+        raise ValueError("checker_veto")
+    return checks

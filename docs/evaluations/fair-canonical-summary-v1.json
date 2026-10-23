@@ -1,0 +1,206 @@
+{
+  "manifest_sha256": "2cd77ee0cb2412f8aa8b7c90bc2348b3fc6b1979d907e19af4474b1a9cfdc869",
+  "policies": {
+    "deterministic": {
+      "eligible_cases": 6,
+      "model_exercised_cases": 0,
+      "deterministic_bypasses": 4,
+      "model_selected_cases": 0,
+      "fallback_cases": 0,
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "median_exercised_case_ms": null
+    },
+    "canonical_single": {
+      "eligible_cases": 6,
+      "model_exercised_cases": 6,
+      "deterministic_bypasses": 4,
+      "model_selected_cases": 4,
+      "fallback_cases": 2,
+      "calls": 6,
+      "input_tokens": 33459,
+      "output_tokens": 479,
+      "median_exercised_case_ms": 1562.72
+    },
+    "evidence_chain": {
+      "eligible_cases": 6,
+      "model_exercised_cases": 6,
+      "deterministic_bypasses": 4,
+      "model_selected_cases": 3,
+      "fallback_cases": 3,
+      "calls": 16,
+      "input_tokens": 86124,
+      "output_tokens": 1400,
+      "median_exercised_case_ms": 4954.07
+    }
+  },
+  "choices": [
+    {
+      "case_id": "5201-north-6",
+      "candidate_count": 2,
+      "selections": {
+        "deterministic": "story:progression_without_shot:match-5201-shift-e692:match-5201-shift-e695",
+        "canonical_single": "story:shot_build_up:match-5201-shift-e538:match-5201-shift-e541",
+        "evidence_chain": "story:shot_build_up:match-5201-shift-e538:match-5201-shift-e541"
+      },
+      "texts_identical": false,
+      "all_model_policies_completed": true
+    },
+    {
+      "case_id": "5201-north-8",
+      "candidate_count": 1,
+      "selections": {
+        "deterministic": "story:progression_without_shot:match-5201-shift-e678:match-5201-shift-e680",
+        "canonical_single": "story:progression_without_shot:match-5201-shift-e678:match-5201-shift-e680",
+        "evidence_chain": "story:progression_without_shot:match-5201-shift-e678:match-5201-shift-e680"
+      },
+      "texts_identical": true,
+      "all_model_policies_completed": false
+    },
+    {
+      "case_id": "5209-north-6",
+      "candidate_count": 2,
+      "selections": {
+        "deterministic": "story:shot_build_up:match-5209-shift-e642:match-5209-shift-e645",
+        "canonical_single": "story:shot_build_up:match-5209-shift-e642:match-5209-shift-e645",
+        "evidence_chain": "story:shot_build_up:match-5209-shift-e642:match-5209-shift-e645"
+      },
+      "texts_identical": true,
+      "all_model_policies_completed": false
+    },
+    {
+      "case_id": "5209-north-8",
+      "candidate_count": 1,
+      "selections": {
+        "deterministic": "story:progression_without_shot:match-5209-shift-e538:match-5209-shift-e539",
+        "canonical_single": null,
+        "evidence_chain": null
+      },
+      "texts_identical": false,
+      "all_model_policies_completed": false
+    },
+    {
+      "case_id": "5227-north-7",
+      "candidate_count": 2,
+      "selections": {
+        "deterministic": "story:shot_build_up:match-5227-shift-e642:match-5227-shift-e644",
+        "canonical_single": "story:shot_build_up:match-5227-shift-e642:match-5227-shift-e644",
+        "evidence_chain": "story:shot_build_up:match-5227-shift-e642:match-5227-shift-e644"
+      },
+      "texts_identical": true,
+      "all_model_policies_completed": false
+    },
+    {
+      "case_id": "5227-harbor-6",
+      "candidate_count": 2,
+      "selections": {
+        "deterministic": "story:shot_build_up:match-5227-shift-e634:match-5227-shift-e637",
+        "canonical_single": "story:shot_build_up:match-5227-shift-e634:match-5227-shift-e637",
+        "evidence_chain": "story:shot_build_up:match-5227-shift-e634:match-5227-shift-e637"
+      },
+      "texts_identical": true,
+      "all_model_policies_completed": true
+    }
+  ],
+  "checker": {
+    "bad_proposals": 8,
+    "good_controls": 4,
+    "bad_rejected": 2,
+    "bad_accepted": 5,
+    "good_accepted": 4,
+    "good_withheld": 0,
+    "unresolved_contract_or_provider_errors": 1,
+    "results": [
+      {
+        "id": "scope-0",
+        "kind": "wrong_scope",
+        "expected_accept": false,
+        "accepted": true,
+        "contract_error": null
+      },
+      {
+        "id": "generalization-0",
+        "kind": "overgeneralization",
+        "expected_accept": false,
+        "accepted": false,
+        "contract_error": "checker_veto"
+      },
+      {
+        "id": "omission-0",
+        "kind": "omitted_limitation",
+        "expected_accept": false,
+        "accepted": true,
+        "contract_error": null
+      },
+      {
+        "id": "irrelevant-0",
+        "kind": "irrelevant_but_factual",
+        "expected_accept": false,
+        "accepted": true,
+        "contract_error": null
+      },
+      {
+        "id": "scope-1",
+        "kind": "wrong_scope",
+        "expected_accept": false,
+        "accepted": true,
+        "contract_error": null
+      },
+      {
+        "id": "generalization-1",
+        "kind": "overgeneralization",
+        "expected_accept": false,
+        "accepted": false,
+        "contract_error": "checker_veto"
+      },
+      {
+        "id": "omission-1",
+        "kind": "omitted_limitation",
+        "expected_accept": false,
+        "accepted": null,
+        "contract_error": "incomplete_claim_checks"
+      },
+      {
+        "id": "irrelevant-1",
+        "kind": "irrelevant_but_factual",
+        "expected_accept": false,
+        "accepted": true,
+        "contract_error": null
+      },
+      {
+        "id": "good-0",
+        "kind": "supported_sequence",
+        "expected_accept": true,
+        "accepted": true,
+        "contract_error": null
+      },
+      {
+        "id": "non-refutation-0",
+        "kind": "supported_with_other_sequence",
+        "expected_accept": true,
+        "accepted": true,
+        "contract_error": null
+      },
+      {
+        "id": "good-1",
+        "kind": "supported_sequence",
+        "expected_accept": true,
+        "accepted": true,
+        "contract_error": null
+      },
+      {
+        "id": "non-refutation-1",
+        "kind": "supported_with_other_sequence",
+        "expected_accept": true,
+        "accepted": true,
+        "contract_error": null
+      }
+    ],
+    "interpretation": "Isolated checker probes with developer-authored expectations, including repeated controls. These proposals are not eligible production claims. This does not measure incremental production errors prevented or independent semantic accuracy."
+  },
+  "independent_human_review": null,
+  "viewer_study": null,
+  "dollar_cost": null,
+  "decision": "No quality winner without independent review. Canonical single is the lower-call alternative; retain local default and do not claim multi-agent superiority."
+}

@@ -129,3 +129,5 @@ Free-only hosting preparation and exact deployment boundaries: [deployment guide
 A fresh six-case check of the revised prompt produced five structurally accepted explanations and one abstention. Developer review found four supported explanations and one Spanish failure; overall quality remains unaccepted. See [current Foundry verification](docs/foundry-current-verification.json). Public hosting uses templates; no paid model endpoint is exposed.
 
 Three-role recommendation workflow and sentence-level evidence: [implementation, setup and limits](docs/evidence-chain.md). Opt-in policy `evidence_chain`; public paid model calls remain disabled.
+
+Latest judge response: [fair same-ledger evaluation and limitations](docs/fair-canonical-evaluation.md). [Football decisions and actual recorded Foundry execution](https://matchlens-chris-demo-2026.azurewebsites.net/review/). [Phone-friendly human review protocol](docs/human-review-protocol.md); real participant results remain pending.

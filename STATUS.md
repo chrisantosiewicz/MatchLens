@@ -20,3 +20,7 @@ Current policy and applied feedback: docs/football-meaning-review.md. Live sourc
 ## Three-role evidence-chain update - October 22
 
 Implemented opt-in evidence-analysis -> conclusion -> checker with typed canonical claim ledger, exact event revisions, source-correction recheck, per-role budgets and UI evidence inspection. Default policy remains single; public paid model calls remain disabled. First live smoke exposed a passing/recovery relevance mismatch and is retained. Deterministic topical gate added; comparisons remain local pending typed comparison claims. See [evidence-chain details](docs/evidence-chain.md). Independent human review and superiority/reliability claims remain unverified.
+
+## Response to the 67/100 review
+
+Fair canonical one-call baseline implemented and compared against fixed ranking and three roles on six fresh eligible cases plus four deterministic boundaries. Recorded 34 calls including 12 isolated checker probes. No demonstrated three-agent advantage: one selector produced 4 model selections/2 fallbacks; chain 3/3. Checker accepted five flawed probes, vetoed two, and one was unresolved/incomplete. Prefer the lower-call canonical selector for controlled model use; retain local anonymous mode and experimental chain. Added three synthetic football decisions, recorded correction replay, actual Foundry handoffs and phone-friendly review/study forms. Human review and observed viewer usefulness remain pending; no score increase or market claim. See docs/fair-canonical-evaluation.md and docs/human-review-protocol.md.

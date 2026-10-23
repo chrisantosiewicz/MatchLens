@@ -1,0 +1,981 @@
+{
+  "version": "pilot-v1",
+  "cases": [
+    {
+      "id": "hidden-7",
+      "kind": "hidden",
+      "title": "Who took part before the shot?",
+      "disclosure": "Seeded synthetic event sequence; complete event feed, no tracking.",
+      "facts": [
+        "Viewer clock 70:00. Mateo Silva: 66 completed passes, 28 progressive passes, 0 shots.",
+        "The selected pass is not progressive under the 10m-closer-to-goal definition. Recorded shot outcome: goal."
+      ],
+      "events": [
+        {
+          "match_id": "match-7-shift",
+          "event_id": "match-7-shift-e631",
+          "revision": 1,
+          "sequence": 631,
+          "period": 2,
+          "elapsed_ms": 967500,
+          "team_id": "north",
+          "player_id": "north-6",
+          "recipient_id": "north-11",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 67.92,
+            "y": 35.37
+          },
+          "end": {
+            "x": 68.76,
+            "y": 19.96
+          },
+          "possession_id": "p2-32",
+          "attack_right": false,
+          "actor_name": "Mateo Silva"
+        },
+        {
+          "match_id": "match-7-shift",
+          "event_id": "match-7-shift-e632",
+          "revision": 1,
+          "sequence": 632,
+          "period": 2,
+          "elapsed_ms": 971000,
+          "team_id": "north",
+          "player_id": "north-11",
+          "recipient_id": "north-2",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 68.76,
+            "y": 19.96
+          },
+          "end": {
+            "x": 66.03,
+            "y": 35.34
+          },
+          "possession_id": "p2-32",
+          "attack_right": false,
+          "actor_name": "Theo Marin"
+        },
+        {
+          "match_id": "match-7-shift",
+          "event_id": "match-7-shift-e633",
+          "revision": 1,
+          "sequence": 633,
+          "period": 2,
+          "elapsed_ms": 976000,
+          "team_id": "north",
+          "player_id": "north-2",
+          "recipient_id": "north-12",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 66.03,
+            "y": 35.34
+          },
+          "end": {
+            "x": 13.0,
+            "y": 47.15
+          },
+          "possession_id": "p2-32",
+          "attack_right": false,
+          "actor_name": "Luca Moreno"
+        },
+        {
+          "match_id": "match-7-shift",
+          "event_id": "match-7-shift-e634",
+          "revision": 1,
+          "sequence": 634,
+          "period": 2,
+          "elapsed_ms": 982000,
+          "team_id": "north",
+          "player_id": "north-12",
+          "recipient_id": null,
+          "event_type": "shot",
+          "outcome": "goal",
+          "start": {
+            "x": 13.0,
+            "y": 47.15
+          },
+          "end": {
+            "x": 0.0,
+            "y": 34.0
+          },
+          "possession_id": "p2-32",
+          "attack_right": false,
+          "actor_name": "Nico Vega"
+        }
+      ],
+      "explanation": "At 61:07, Mateo Silva's 15.43m pass from own half (middle third) into the middle third was the third-last completed pass before Nico Vega's shot at 61:22 (goal). Recorded build-up can be missed by headline progressive-pass totals, which measure movement closer to goal rather than every contribution. Sequence involvement does not establish chance quality, an assist or causation.",
+      "source": "449bf7f2fe824a4db2667096",
+      "questions": [
+        {
+          "id": "involvement",
+          "prompt": "What can these records establish about Mateo Silva?",
+          "options": [
+            "Recorded involvement before this shot",
+            "Scored this goal",
+            "Created the chance alone",
+            "No recorded involvement"
+          ],
+          "correct": 0
+        },
+        {
+          "id": "causation",
+          "prompt": "Does the sequence establish an assist or that this player caused the shot?",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "correct": 1
+        }
+      ]
+    },
+    {
+      "id": "hidden-5209",
+      "kind": "hidden",
+      "title": "Who took part before the shot?",
+      "disclosure": "Seeded synthetic event sequence; complete event feed, no tracking.",
+      "facts": [
+        "Viewer clock 70:00. Mateo Silva: 60 completed passes, 28 progressive passes, 0 shots.",
+        "The selected pass is not progressive under the 10m-closer-to-goal definition. Recorded shot outcome: wide."
+      ],
+      "events": [
+        {
+          "match_id": "match-5209-shift",
+          "event_id": "match-5209-shift-e642",
+          "revision": 1,
+          "sequence": 642,
+          "period": 2,
+          "elapsed_ms": 1147500,
+          "team_id": "north",
+          "player_id": "north-6",
+          "recipient_id": "north-11",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 81.4,
+            "y": 34.53
+          },
+          "end": {
+            "x": 84.25,
+            "y": 49.63
+          },
+          "possession_id": "p2-38",
+          "attack_right": false,
+          "actor_name": "Mateo Silva"
+        },
+        {
+          "match_id": "match-5209-shift",
+          "event_id": "match-5209-shift-e643",
+          "revision": 1,
+          "sequence": 643,
+          "period": 2,
+          "elapsed_ms": 1151000,
+          "team_id": "north",
+          "player_id": "north-11",
+          "recipient_id": "north-12",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 84.25,
+            "y": 49.63
+          },
+          "end": {
+            "x": 70.78,
+            "y": 31.98
+          },
+          "possession_id": "p2-38",
+          "attack_right": false,
+          "actor_name": "Theo Marin"
+        },
+        {
+          "match_id": "match-5209-shift",
+          "event_id": "match-5209-shift-e644",
+          "revision": 1,
+          "sequence": 644,
+          "period": 2,
+          "elapsed_ms": 1156000,
+          "team_id": "north",
+          "player_id": "north-12",
+          "recipient_id": "north-3",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 70.78,
+            "y": 31.98
+          },
+          "end": {
+            "x": 13.0,
+            "y": 53.5
+          },
+          "possession_id": "p2-38",
+          "attack_right": false,
+          "actor_name": "Nico Vega"
+        },
+        {
+          "match_id": "match-5209-shift",
+          "event_id": "match-5209-shift-e645",
+          "revision": 1,
+          "sequence": 645,
+          "period": 2,
+          "elapsed_ms": 1162000,
+          "team_id": "north",
+          "player_id": "north-3",
+          "recipient_id": null,
+          "event_type": "shot",
+          "outcome": "wide",
+          "start": {
+            "x": 13.0,
+            "y": 53.5
+          },
+          "end": {
+            "x": 0.0,
+            "y": 34.0
+          },
+          "possession_id": "p2-38",
+          "attack_right": false,
+          "actor_name": "Jonas Berg"
+        }
+      ],
+      "explanation": "At 64:07, Mateo Silva's 15.37m pass from own half (defensive third) into the defensive third was the third-last completed pass before Jonas Berg's shot at 64:22 (wide). Recorded build-up can be missed by headline progressive-pass totals, which measure movement closer to goal rather than every contribution. Sequence involvement does not establish chance quality, an assist or causation.",
+      "source": "cf37828b368e9909e8a0d2e5",
+      "questions": [
+        {
+          "id": "involvement",
+          "prompt": "What can these records establish about Mateo Silva?",
+          "options": [
+            "Recorded involvement before this shot",
+            "Scored this goal",
+            "Created the chance alone",
+            "No recorded involvement"
+          ],
+          "correct": 0
+        },
+        {
+          "id": "causation",
+          "prompt": "Does the sequence establish an assist or that this player caused the shot?",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "correct": 1
+        }
+      ]
+    },
+    {
+      "id": "attribution-north-6",
+      "kind": "attribution",
+      "title": "Does the team headline describe this player?",
+      "disclosure": "Explicitly scripted synthetic variant to demonstrate opposite same-metric trends; not a held-out model test.",
+      "facts": [
+        "Complete event coverage. Before 50:00–60:00; after 60:00–70:00. Player active for both complete 10-minute windows.",
+        "Northbridge box entries: 4 before, 6 after. Rates: 0.4 and 0.6 per minute.",
+        "Mateo Silva box entries: 4 before, 1 after. Rates: 0.4 and 0.1 per active minute.",
+        "A substitution is recorded at 60:00. These are descriptive observations, with no causal comparison group."
+      ],
+      "events": [
+        {
+          "match_id": "scripted-attribution-north-6",
+          "event_id": "scripted-attribution-north-6-528",
+          "revision": 1,
+          "sequence": 529,
+          "period": 2,
+          "elapsed_ms": 316000,
+          "team_id": "north",
+          "player_id": "north-6",
+          "recipient_id": "north-3",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 38.44,
+            "y": 51.0
+          },
+          "end": {
+            "x": 13.0,
+            "y": 50.7
+          },
+          "possession_id": "p2-10",
+          "attack_right": false,
+          "actor_name": "Mateo Silva"
+        },
+        {
+          "match_id": "scripted-attribution-north-6",
+          "event_id": "scripted-attribution-north-6-541",
+          "revision": 1,
+          "sequence": 542,
+          "period": 2,
+          "elapsed_ms": 436000,
+          "team_id": "north",
+          "player_id": "north-6",
+          "recipient_id": "north-10",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 38.84,
+            "y": 30.13
+          },
+          "end": {
+            "x": 13.0,
+            "y": 22.32
+          },
+          "possession_id": "p2-14",
+          "attack_right": false,
+          "actor_name": "Mateo Silva"
+        },
+        {
+          "match_id": "scripted-attribution-north-6",
+          "event_id": "scripted-attribution-north-6-596",
+          "revision": 1,
+          "sequence": 597,
+          "period": 2,
+          "elapsed_ms": 796000,
+          "team_id": "north",
+          "player_id": "north-6",
+          "recipient_id": "north-8",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 64.78,
+            "y": 21.26
+          },
+          "end": {
+            "x": 13.0,
+            "y": 24.32
+          },
+          "possession_id": "p2-26",
+          "attack_right": false,
+          "actor_name": "Mateo Silva"
+        },
+        {
+          "match_id": "scripted-attribution-north-6",
+          "event_id": "scripted-attribution-north-6-608",
+          "revision": 1,
+          "sequence": 609,
+          "period": 2,
+          "elapsed_ms": 856000,
+          "team_id": "north",
+          "player_id": "north-6",
+          "recipient_id": "north-5",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 29.97,
+            "y": 25.23
+          },
+          "end": {
+            "x": 13.0,
+            "y": 46.34
+          },
+          "possession_id": "p2-28",
+          "attack_right": false,
+          "actor_name": "Mateo Silva"
+        },
+        {
+          "match_id": "scripted-attribution-north-6",
+          "event_id": "scripted-attribution-north-6-632",
+          "revision": 1,
+          "sequence": 633,
+          "period": 2,
+          "elapsed_ms": 976000,
+          "team_id": "north",
+          "player_id": "north-6",
+          "recipient_id": "north-12",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 66.03,
+            "y": 35.34
+          },
+          "end": {
+            "x": 13.0,
+            "y": 47.15
+          },
+          "possession_id": "p2-32",
+          "attack_right": false,
+          "actor_name": "Mateo Silva"
+        },
+        {
+          "match_id": "scripted-attribution-north-6",
+          "event_id": "scripted-attribution-north-6-659",
+          "revision": 1,
+          "sequence": 660,
+          "period": 2,
+          "elapsed_ms": 1156000,
+          "team_id": "north",
+          "player_id": "north-7",
+          "recipient_id": "north-12",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 54.86,
+            "y": 25.03
+          },
+          "end": {
+            "x": 13.0,
+            "y": 51.42
+          },
+          "possession_id": "p2-38",
+          "attack_right": false,
+          "actor_name": "Ibrahim Diallo"
+        },
+        {
+          "match_id": "scripted-attribution-north-6",
+          "event_id": "scripted-attribution-north-6-680",
+          "revision": 1,
+          "sequence": 681,
+          "period": 2,
+          "elapsed_ms": 1276000,
+          "team_id": "north",
+          "player_id": "north-7",
+          "recipient_id": "north-12",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 65.45,
+            "y": 15.27
+          },
+          "end": {
+            "x": 13.0,
+            "y": 46.35
+          },
+          "possession_id": "p2-42",
+          "attack_right": false,
+          "actor_name": "Ibrahim Diallo"
+        },
+        {
+          "match_id": "scripted-attribution-north-6",
+          "event_id": "scripted-attribution-north-6-692",
+          "revision": 1,
+          "sequence": 693,
+          "period": 2,
+          "elapsed_ms": 1336000,
+          "team_id": "north",
+          "player_id": "north-7",
+          "recipient_id": "north-12",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 52.03,
+            "y": 43.25
+          },
+          "end": {
+            "x": 13.0,
+            "y": 51.3
+          },
+          "possession_id": "p2-44",
+          "attack_right": false,
+          "actor_name": "Ibrahim Diallo"
+        },
+        {
+          "match_id": "scripted-attribution-north-6",
+          "event_id": "scripted-attribution-north-6-701",
+          "revision": 1,
+          "sequence": 702,
+          "period": 2,
+          "elapsed_ms": 1396000,
+          "team_id": "north",
+          "player_id": "north-7",
+          "recipient_id": "north-12",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 40.09,
+            "y": 18.83
+          },
+          "end": {
+            "x": 13.0,
+            "y": 47.78
+          },
+          "possession_id": "p2-46",
+          "attack_right": false,
+          "actor_name": "Ibrahim Diallo"
+        },
+        {
+          "match_id": "scripted-attribution-north-6",
+          "event_id": "scripted-attribution-north-6-711",
+          "revision": 1,
+          "sequence": 712,
+          "period": 2,
+          "elapsed_ms": 1456000,
+          "team_id": "north",
+          "player_id": "north-7",
+          "recipient_id": "north-12",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 47.7,
+            "y": 29.01
+          },
+          "end": {
+            "x": 13.0,
+            "y": 47.77
+          },
+          "possession_id": "p2-48",
+          "attack_right": false,
+          "actor_name": "Ibrahim Diallo"
+        }
+      ],
+      "explanation": "Northbridge's box-entry rate rose from 0.4 to 0.6 per minute, while Mateo Silva's fell from 0.4 to 0.1 per active minute. The team's increased activity does not establish an increase in this player's comparable on-ball contribution. These two 10-minute windows do not isolate a substitution effect or measure off-ball value.",
+      "source": "01bab4d10e51d3ad52fddb81",
+      "contrast": {
+        "metric": "box_entries",
+        "eligible": true,
+        "sample_gate_passed": true,
+        "player_before_count": 4,
+        "player_after_count": 1,
+        "team_before_count": 4,
+        "team_after_count": 6,
+        "before_minutes": 10.0,
+        "after_minutes": 10.0,
+        "player_before_minutes": 10.0,
+        "player_after_minutes": 10.0,
+        "player_before_rate": 0.4,
+        "player_after_rate": 0.1,
+        "team_before_rate": 0.4,
+        "team_after_rate": 0.6,
+        "limitation": "Descriptive editorial gate, not statistical significance or substitution causation.",
+        "reason": "opposite same-metric trends",
+        "evidence_ids": [
+          "scripted-attribution-north-6-526",
+          "scripted-attribution-north-6-528",
+          "scripted-attribution-north-6-539",
+          "scripted-attribution-north-6-541",
+          "scripted-attribution-north-6-542",
+          "scripted-attribution-north-6-555",
+          "scripted-attribution-north-6-562",
+          "scripted-attribution-north-6-563",
+          "scripted-attribution-north-6-574",
+          "scripted-attribution-north-6-582",
+          "scripted-attribution-north-6-594",
+          "scripted-attribution-north-6-596",
+          "scripted-attribution-north-6-606",
+          "scripted-attribution-north-6-608",
+          "scripted-attribution-north-6-619",
+          "scripted-attribution-north-6-630",
+          "scripted-attribution-north-6-632",
+          "scripted-attribution-north-6-643",
+          "scripted-attribution-north-6-650",
+          "scripted-attribution-north-6-657",
+          "scripted-attribution-north-6-669",
+          "scripted-attribution-north-6-678",
+          "scripted-attribution-north-6-690",
+          "scripted-attribution-north-6-699",
+          "scripted-attribution-north-6-709",
+          "scripted-attribution-north-6-659",
+          "scripted-attribution-north-6-680",
+          "scripted-attribution-north-6-692",
+          "scripted-attribution-north-6-701",
+          "scripted-attribution-north-6-711"
+        ]
+      },
+      "questions": [
+        {
+          "id": "rates",
+          "prompt": "Which description matches the box-entry rates?",
+          "options": [
+            "Team rose; player rose",
+            "Team rose; player fell",
+            "Both fell",
+            "No comparable window"
+          ],
+          "correct": 1
+        },
+        {
+          "id": "substitution",
+          "prompt": "Can the rate change be attributed to the substitution from these records alone?",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "correct": 1
+        }
+      ]
+    },
+    {
+      "id": "attribution-north-8",
+      "kind": "attribution",
+      "title": "Does the team headline describe this player?",
+      "disclosure": "Explicitly scripted synthetic variant to demonstrate opposite same-metric trends; not a held-out model test.",
+      "facts": [
+        "Complete event coverage. Before 50:00–60:00; after 60:00–70:00. Player active for both complete 10-minute windows.",
+        "Northbridge box entries: 4 before, 6 after. Rates: 0.4 and 0.6 per minute.",
+        "Leon Fischer box entries: 4 before, 1 after. Rates: 0.4 and 0.1 per active minute.",
+        "A substitution is recorded at 60:00. These are descriptive observations, with no causal comparison group."
+      ],
+      "events": [
+        {
+          "match_id": "scripted-attribution-north-8",
+          "event_id": "scripted-attribution-north-8-528",
+          "revision": 1,
+          "sequence": 529,
+          "period": 2,
+          "elapsed_ms": 316000,
+          "team_id": "north",
+          "player_id": "north-8",
+          "recipient_id": "north-3",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 38.44,
+            "y": 51.0
+          },
+          "end": {
+            "x": 13.0,
+            "y": 50.7
+          },
+          "possession_id": "p2-10",
+          "attack_right": false,
+          "actor_name": "Leon Fischer"
+        },
+        {
+          "match_id": "scripted-attribution-north-8",
+          "event_id": "scripted-attribution-north-8-541",
+          "revision": 1,
+          "sequence": 542,
+          "period": 2,
+          "elapsed_ms": 436000,
+          "team_id": "north",
+          "player_id": "north-8",
+          "recipient_id": "north-6",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 38.84,
+            "y": 30.13
+          },
+          "end": {
+            "x": 13.0,
+            "y": 22.32
+          },
+          "possession_id": "p2-14",
+          "attack_right": false,
+          "actor_name": "Leon Fischer"
+        },
+        {
+          "match_id": "scripted-attribution-north-8",
+          "event_id": "scripted-attribution-north-8-596",
+          "revision": 1,
+          "sequence": 597,
+          "period": 2,
+          "elapsed_ms": 796000,
+          "team_id": "north",
+          "player_id": "north-8",
+          "recipient_id": "north-10",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 64.78,
+            "y": 21.26
+          },
+          "end": {
+            "x": 13.0,
+            "y": 24.32
+          },
+          "possession_id": "p2-26",
+          "attack_right": false,
+          "actor_name": "Leon Fischer"
+        },
+        {
+          "match_id": "scripted-attribution-north-8",
+          "event_id": "scripted-attribution-north-8-608",
+          "revision": 1,
+          "sequence": 609,
+          "period": 2,
+          "elapsed_ms": 856000,
+          "team_id": "north",
+          "player_id": "north-8",
+          "recipient_id": "north-5",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 29.97,
+            "y": 25.23
+          },
+          "end": {
+            "x": 13.0,
+            "y": 46.34
+          },
+          "possession_id": "p2-28",
+          "attack_right": false,
+          "actor_name": "Leon Fischer"
+        },
+        {
+          "match_id": "scripted-attribution-north-8",
+          "event_id": "scripted-attribution-north-8-632",
+          "revision": 1,
+          "sequence": 633,
+          "period": 2,
+          "elapsed_ms": 976000,
+          "team_id": "north",
+          "player_id": "north-8",
+          "recipient_id": "north-12",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 66.03,
+            "y": 35.34
+          },
+          "end": {
+            "x": 13.0,
+            "y": 47.15
+          },
+          "possession_id": "p2-32",
+          "attack_right": false,
+          "actor_name": "Leon Fischer"
+        },
+        {
+          "match_id": "scripted-attribution-north-8",
+          "event_id": "scripted-attribution-north-8-659",
+          "revision": 1,
+          "sequence": 660,
+          "period": 2,
+          "elapsed_ms": 1156000,
+          "team_id": "north",
+          "player_id": "north-7",
+          "recipient_id": "north-12",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 54.86,
+            "y": 25.03
+          },
+          "end": {
+            "x": 13.0,
+            "y": 51.42
+          },
+          "possession_id": "p2-38",
+          "attack_right": false,
+          "actor_name": "Ibrahim Diallo"
+        },
+        {
+          "match_id": "scripted-attribution-north-8",
+          "event_id": "scripted-attribution-north-8-680",
+          "revision": 1,
+          "sequence": 681,
+          "period": 2,
+          "elapsed_ms": 1276000,
+          "team_id": "north",
+          "player_id": "north-7",
+          "recipient_id": "north-12",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 65.45,
+            "y": 15.27
+          },
+          "end": {
+            "x": 13.0,
+            "y": 46.35
+          },
+          "possession_id": "p2-42",
+          "attack_right": false,
+          "actor_name": "Ibrahim Diallo"
+        },
+        {
+          "match_id": "scripted-attribution-north-8",
+          "event_id": "scripted-attribution-north-8-692",
+          "revision": 1,
+          "sequence": 693,
+          "period": 2,
+          "elapsed_ms": 1336000,
+          "team_id": "north",
+          "player_id": "north-7",
+          "recipient_id": "north-12",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 52.03,
+            "y": 43.25
+          },
+          "end": {
+            "x": 13.0,
+            "y": 51.3
+          },
+          "possession_id": "p2-44",
+          "attack_right": false,
+          "actor_name": "Ibrahim Diallo"
+        },
+        {
+          "match_id": "scripted-attribution-north-8",
+          "event_id": "scripted-attribution-north-8-701",
+          "revision": 1,
+          "sequence": 702,
+          "period": 2,
+          "elapsed_ms": 1396000,
+          "team_id": "north",
+          "player_id": "north-7",
+          "recipient_id": "north-12",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 40.09,
+            "y": 18.83
+          },
+          "end": {
+            "x": 13.0,
+            "y": 47.78
+          },
+          "possession_id": "p2-46",
+          "attack_right": false,
+          "actor_name": "Ibrahim Diallo"
+        },
+        {
+          "match_id": "scripted-attribution-north-8",
+          "event_id": "scripted-attribution-north-8-711",
+          "revision": 1,
+          "sequence": 712,
+          "period": 2,
+          "elapsed_ms": 1456000,
+          "team_id": "north",
+          "player_id": "north-7",
+          "recipient_id": "north-12",
+          "event_type": "pass",
+          "outcome": "complete",
+          "start": {
+            "x": 47.7,
+            "y": 29.01
+          },
+          "end": {
+            "x": 13.0,
+            "y": 47.77
+          },
+          "possession_id": "p2-48",
+          "attack_right": false,
+          "actor_name": "Ibrahim Diallo"
+        }
+      ],
+      "explanation": "Northbridge's box-entry rate rose from 0.4 to 0.6 per minute, while Leon Fischer's fell from 0.4 to 0.1 per active minute. The team's increased activity does not establish an increase in this player's comparable on-ball contribution. These two 10-minute windows do not isolate a substitution effect or measure off-ball value.",
+      "source": "fa8bb42dda4d55dfb16ac83c",
+      "contrast": {
+        "metric": "box_entries",
+        "eligible": true,
+        "sample_gate_passed": true,
+        "player_before_count": 4,
+        "player_after_count": 1,
+        "team_before_count": 4,
+        "team_after_count": 6,
+        "before_minutes": 10.0,
+        "after_minutes": 10.0,
+        "player_before_minutes": 10.0,
+        "player_after_minutes": 10.0,
+        "player_before_rate": 0.4,
+        "player_after_rate": 0.1,
+        "team_before_rate": 0.4,
+        "team_after_rate": 0.6,
+        "limitation": "Descriptive editorial gate, not statistical significance or substitution causation.",
+        "reason": "opposite same-metric trends",
+        "evidence_ids": [
+          "scripted-attribution-north-8-528",
+          "scripted-attribution-north-8-541",
+          "scripted-attribution-north-8-596",
+          "scripted-attribution-north-8-597",
+          "scripted-attribution-north-8-608",
+          "scripted-attribution-north-8-632",
+          "scripted-attribution-north-8-641",
+          "scripted-attribution-north-8-642",
+          "scripted-attribution-north-8-691",
+          "scripted-attribution-north-8-707",
+          "scripted-attribution-north-8-708",
+          "scripted-attribution-north-8-659",
+          "scripted-attribution-north-8-680",
+          "scripted-attribution-north-8-692",
+          "scripted-attribution-north-8-701",
+          "scripted-attribution-north-8-711"
+        ]
+      },
+      "questions": [
+        {
+          "id": "rates",
+          "prompt": "Which description matches the box-entry rates?",
+          "options": [
+            "Team rose; player rose",
+            "Team rose; player fell",
+            "Both fell",
+            "No comparable window"
+          ],
+          "correct": 1
+        },
+        {
+          "id": "substitution",
+          "prompt": "Can the rate change be attributed to the substitution from these records alone?",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "correct": 1
+        }
+      ]
+    },
+    {
+      "id": "withheld-7",
+      "kind": "withheld",
+      "title": "What does a sparse feed let us conclude?",
+      "disclosure": "Synthetic feed intentionally omits events; no tracking.",
+      "facts": [
+        "Viewer clock 70:00. Coverage: incomplete. Mateo Silva has 19 observed actions and 0 observed shots.",
+        "Unknown actions may be missing. The feed does not measure off-ball movement."
+      ],
+      "events": [],
+      "source": "ee6f788761fca0a61303e1d8",
+      "explanation": "An overall impact conclusion is withheld. Sparse observations can describe recorded actions but cannot establish that Mateo had no involvement or no value. Missing events and off-ball contributions remain unknown.",
+      "questions": [
+        {
+          "id": "absence",
+          "prompt": "Do the low observed counts establish no contribution?",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "correct": 1
+        },
+        {
+          "id": "unknown",
+          "prompt": "Which statement is supported?",
+          "options": [
+            "The player was ineffective",
+            "Only recorded actions can be counted; total involvement remains unknown",
+            "The player stayed in one position"
+          ],
+          "correct": 1
+        }
+      ]
+    },
+    {
+      "id": "withheld-5209",
+      "kind": "withheld",
+      "title": "What does a sparse feed let us conclude?",
+      "disclosure": "Synthetic feed intentionally omits events; no tracking.",
+      "facts": [
+        "Viewer clock 70:00. Coverage: incomplete. Mateo Silva has 13 observed actions and 0 observed shots.",
+        "Unknown actions may be missing. The feed does not measure off-ball movement."
+      ],
+      "events": [],
+      "source": "a32e888bb349ee8fe1308381",
+      "explanation": "An overall impact conclusion is withheld. Sparse observations can describe recorded actions but cannot establish that Mateo had no involvement or no value. Missing events and off-ball contributions remain unknown.",
+      "questions": [
+        {
+          "id": "absence",
+          "prompt": "Do the low observed counts establish no contribution?",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "correct": 1
+        },
+        {
+          "id": "unknown",
+          "prompt": "Which statement is supported?",
+          "options": [
+            "The player was ineffective",
+            "Only recorded actions can be counted; total involvement remains unknown",
+            "The player stayed in one position"
+          ],
+          "correct": 1
+        }
+      ]
+    }
+  ]
+}

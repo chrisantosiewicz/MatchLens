@@ -1,0 +1,26 @@
+{
+  "participants": 0,
+  "included": [],
+  "excluded": [],
+  "conditions": {
+    "stats": {
+      "trials": 0,
+      "questions": 0,
+      "correct": 0,
+      "accuracy": null,
+      "median_trial_ms_uninterrupted": null,
+      "mean_confidence": null
+    },
+    "matchlens": {
+      "trials": 0,
+      "questions": 0,
+      "correct": 0,
+      "accuracy": null,
+      "median_trial_ms_uninterrupted": null,
+      "mean_confidence": null
+    }
+  },
+  "trials": [],
+  "status": "awaiting_real_participants",
+  "limitations": "Voluntary self-reported independence; no market-demand inference, significance claim or broad reliability claim. Six situations include paired synthetic variants; trials are not independent population samples. Time includes reading and answering, with interrupted trials excluded from time summaries."
+}

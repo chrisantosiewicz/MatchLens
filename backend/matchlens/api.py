@@ -479,7 +479,10 @@ def question(match_id: str, request: Question):
     requested = template_question(match_id, request, match)
     interpretive = interpretation_requested(request, requested)
     # The opt-in evidence chain preserves legacy evaluation policies unchanged.
-    if os.getenv("MATCHLENS_AI_POLICY", "single") == "evidence_chain":
+    if os.getenv("MATCHLENS_AI_POLICY", "single") in {
+        "evidence_chain",
+        "canonical_single",
+    }:
         from .claims import enrich_answer
         from .evidence_chain import run_evidence_chain
 
@@ -499,7 +502,14 @@ def question(match_id: str, request: Question):
         except RuntimeError:
             provider = None
         try:
-            result = run_evidence_chain(
+            from .canonical import run_canonical
+
+            runner = (
+                run_canonical
+                if os.getenv("MATCHLENS_AI_POLICY") == "canonical_single"
+                else run_evidence_chain
+            )
+            result = runner(
                 request.model_dump(),
                 packet,
                 requested,
@@ -518,7 +528,7 @@ def question(match_id: str, request: Question):
             }
         return {
             **result,
-            "notice": "Experimental agent-selected canonical explanation"
+            "notice": "Experimental model-selected canonical explanation"
             if result["generation_mode"] == "model"
             else "Local evidence-backed explanation; inspect workflow status",
         }
