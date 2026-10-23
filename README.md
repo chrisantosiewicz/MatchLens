@@ -127,3 +127,5 @@ After building the frontend, run `./scripts/Start-MatchLens.ps1` for account-fre
 Free-only hosting preparation and exact deployment boundaries: [deployment guide](docs/deployment.md). Anonymous public application checks pass; see [hosting verification](docs/hosting-verification.json). Free-tier cold starts and quotas apply.
 
 A fresh six-case check of the revised prompt produced five structurally accepted explanations and one abstention. Developer review found four supported explanations and one Spanish failure; overall quality remains unaccepted. See [current Foundry verification](docs/foundry-current-verification.json). Public hosting uses templates; no paid model endpoint is exposed.
+
+Three-role recommendation workflow and sentence-level evidence: [implementation, setup and limits](docs/evidence-chain.md). Opt-in policy `evidence_chain`; public paid model calls remain disabled.

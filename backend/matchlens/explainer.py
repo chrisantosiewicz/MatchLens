@@ -47,6 +47,8 @@ def context_packet(match, player_id, clock, anchor_ms):
     ]
     packet = {
         "synthetic": True,
+        "audit_events": [e.model_dump() for e in events],
+        "player_directory": {p.id: {"name":p.name,"team_id":p.team_id,"position":p.position} for p in match.players},
         "feed_completeness": match.feed_completeness,
         "viewer_clock": clock.model_dump(),
         "display_clock_minutes": (clock.period - 1) * 45 + clock.elapsed_ms / 60000,

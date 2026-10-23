@@ -2,6 +2,7 @@ import {ArrowUpRight, ChevronRight, CornerDownLeft, UserRound} from 'lucide-reac
 import {useEffect, useRef, useState} from 'react';
 import {api} from '../api';
 import EditorialDetails from './EditorialDetails';
+import ClaimEvidence from './ClaimEvidence';
 import {formatClock} from '../contracts';
 import type {Answer, Clock, MatchEvent, Moment, Player, PlayerDetail} from '../contracts';
 
@@ -38,7 +39,7 @@ export default function PlayerPanel({detail, sourceVersion, clock, matchId, lang
   }
   if(!detail)return <aside className="panel loading-panel" aria-busy="true">{es?'Cargando perfil…':'Loading player profile…'}</aside>;
   const {player,stats,profile} = detail;
-  const evidenceIds=new Set(answer?.evidence_ids??[]);
+  const evidenceIds=new Set(answer?.primary_evidence_ids??answer?.evidence_ids??[]);
   const supporting=evidenceEvents.filter(e=>evidenceIds.has(e.event_id)&&(e.period<clock.period||(e.period===clock.period&&e.elapsed_ms<=clock.elapsed_ms))).sort((a,b)=>b.period-a.period||b.elapsed_ms-a.elapsed_ms);
   const actor=(id:string|null)=>evidencePlayers.find(p=>p.id===id)?.name??(id===player.id?player.name:id??(es?'Sin jugador':'No player'));
   const provenance=answer?.generation_mode==='model'?(es?'Interpretación experimental del modelo':'Experimental model interpretation'):answer?.generation_mode==='fallback'?(es?'Explicación de respaldo':'Fallback explanation'):(es?'Explicación por plantilla':'Template explanation');
@@ -57,11 +58,12 @@ export default function PlayerPanel({detail, sourceVersion, clock, matchId, lang
       <form onSubmit={e=>{e.preventDefault();void ask();}}><input aria-label="Ask about selected player" value={question} onChange={e=>setQuestion(e.target.value)} placeholder={es?'Participación, pases, cambios…':'Involvement, passing, changes…'} maxLength={500}/><button aria-label="Send player question" disabled={busy||!question.trim()}><CornerDownLeft size={17}/></button></form>
       {busy&&<p className="tiny muted" role="status">{es?'Consultando eventos…':'Checking match events…'}</p>}
       {error&&<p role="alert" className="error-text">{error}</p>}
-      {answer&&<div className="answer" aria-live="polite"><span>{es?'Respuesta a las':'Answer at'} {answerAt}</span><p>{answer.text}</p>{answer.metric_definition&&<p className="tiny muted">{answer.metric_definition}</p>}<span>{answer.evidence_ids.length} {es?'eventos':'events'} · {provenance}</span>
+      {answer&&<div className="answer" aria-live="polite"><span>{es?'Respuesta a las':'Answer at'} {answerAt}</span><p>{answer.text}</p>{answer.metric_definition&&<p className="tiny muted">{answer.metric_definition}</p>}<span>{(answer.primary_evidence_ids??answer.evidence_ids).length} {es?'eventos':'events'} · {provenance}</span>
+        <ClaimEvidence answer={answer} es={es}/>
         {answer.fact_support&&<div className="rate-support">{answer.fact_support.map(card=><details key={`${card.metric}-${card.window}`}><summary>{({team_box_entries:'Team entries',player_progressive_passes:'Player progressive passes',player_box_entries:'Player entries'} as Record<string,string>)[card.metric]??card.metric} · {card.window}: {card.count} / {card.minutes} min = {card.rate??'—'} / min</summary><p className="tiny muted">{formatClock({period:card.period,elapsed_ms:card.start_ms})} → {formatClock({period:card.period,elapsed_ms:card.end_ms})}</p><small>{card.source_ids.length?card.source_ids.join(', '):'No qualifying recorded events.'}</small></details>)}<p className="tiny muted">Rate sources are calculated separately from the model's {answer.model_cited_event_ids?.length??0} citations; this does not prove every sentence is supported.</p></div>}
         {answer.editorial_context&&<EditorialDetails context={answer.editorial_context} es={es} analyst={depth==='analyst'}/>}
         {answer.narrative_evidence?.map(story=><details key={story.id} className="answer-evidence"><summary>{es?'La jugada detrás de la explicación':'The moment behind the explanation'} · {story.action_clock} → {story.outcome_clock}</summary><p>{es?story.meaning_es:story.meaning_en}</p>{story.action_location?.available&&<p>{story.action_location.origin_zone} → {story.action_location.destination_zone??'—'} · {story.action_location.distance_m??'—'} m · {story.action_location.direction??''}{story.pass_rank_before_shot?` · ${story.pass_rank_before_shot} completed pass(es) before shot`:''}</p>}<ol>{story.sequence.map(e=><li key={e.event_id}>{formatClock(e)} · {actor(e.player_id)} · {e.event_type} / {e.outcome}</li>)}</ol><p className="tiny muted">{es?story.limitation_es:story.limitation_en}</p></details>)}
-        <details className="answer-evidence"><summary>{es?'Inspeccionar eventos de apoyo':'Inspect supporting events'} ({answer.evidence_ids.length})</summary>
+        <details className="answer-evidence"><summary>{es?'Inspeccionar eventos de apoyo':'Inspect supporting events'} ({(answer.primary_evidence_ids??answer.evidence_ids).length})</summary>
           <p>{es?'Los eventos respaldan observaciones del partido, no percentiles de temporada ni causalidad. Un ID válido por sí solo no verifica una interpretación.':'Events support match observations, not season percentiles or causation. A valid ID alone does not verify an interpretation.'}</p>
           {supporting.length?<><ol>{supporting.slice(0,12).map(e=><li key={e.event_id}>{formatClock(e)} · {actor(e.player_id)} · {es?(({pass:'pase',carry:'conducción',shot:'tiro',recovery:'recuperación',tackle:'entrada',turnover:'pérdida'} as Record<string,string>)[e.event_type]??e.event_type):e.event_type} · {es?(({complete:'completo',incomplete:'incompleto',goal:'gol',saved:'parado',wide:'fuera',recorded:'registrado'} as Record<string,string>)[e.outcome]??e.outcome):e.outcome}<small>{e.event_id}</small></li>)}</ol><p>{es?'Últimos':'Latest'} {Math.min(12,supporting.length)} / {supporting.length} {es?'eventos disponibles':'available events'}.</p></>:<p>{es?'No hay registros de eventos para inspeccionar en esta respuesta.':'No event records are available to inspect for this answer.'}</p>}
         </details>

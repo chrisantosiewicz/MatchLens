@@ -17,7 +17,7 @@ def digest(path):
     return hashlib.sha256(Path(path).read_text(encoding="utf-8").encode()).hexdigest()
 
 
-def run(manifest, output, live=False):
+def run(manifest, output, live=False, include_chain=False):
     root = Path(__file__).resolve().parents[1]
     specification = json.loads(manifest.read_text(encoding="utf-8"))
     for name, expected in specification["source_hashes"].items():
@@ -43,17 +43,31 @@ def run(manifest, output, live=False):
                 Clock(period=request.period, elapsed_ms=request.elapsed_ms),
                 request.anchor_ms,
             )
-            for policy in ("template", "single"):
+            for policy in (
+                ("template", "single", "evidence_chain")
+                if include_chain
+                else ("template", "single")
+            ):
                 start = perf_counter()
                 first = len(getattr(provider, "call_records", []))
                 diagnostics = []
                 needs_model = (
-                    policy == "single"
+                    policy in {"single", "evidence_chain"}
                     and trusted["intent"] != "unsupported"
                     and interpretation_requested(request, trusted)
                 )
                 if needs_model and provider is None:
                     answer, status = None, "skipped_no_live_provider"
+                elif policy == "evidence_chain":
+                    from matchlens.evidence_chain import run_evidence_chain
+
+                    answer = run_evidence_chain(
+                        request.model_dump(),
+                        packet,
+                        trusted,
+                        provider if needs_model else None,
+                    )
+                    status = "completed"
                 elif needs_model:
                     answer = explain(
                         request.model_dump(),
@@ -110,5 +124,10 @@ if __name__ == "__main__":
     parser.add_argument(
         "--live", action="store_true", help="Makes bounded billable model requests"
     )
+    parser.add_argument(
+        "--include-chain",
+        action="store_true",
+        help="Compare opt-in three-role canonical workflow on the same cases",
+    )
     args = parser.parse_args()
-    run(args.manifest, args.output, args.live)
+    run(args.manifest, args.output, args.live, args.include_chain)

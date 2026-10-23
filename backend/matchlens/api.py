@@ -422,7 +422,7 @@ def template_question(match_id: str, request: Question, match=None):
             if spanish
             else " Incomplete feed: counts include observed events only."
         )
-    return {
+    answer = {
         "text": text,
         "source_version": source_version(match),
         "intent": intent,
@@ -433,6 +433,15 @@ def template_question(match_id: str, request: Question, match=None):
         "narrative_evidence": narrative[:1],
         "editorial_context": editorial,
     }
+    from .claims import enrich_answer
+
+    packet = context_packet(
+        match,
+        request.player_id,
+        Clock(period=request.period, elapsed_ms=request.elapsed_ms),
+        request.anchor_ms,
+    )
+    return enrich_answer(request.model_dump(), packet, answer)
 
 
 def interpretation_requested(request, requested):
@@ -444,11 +453,75 @@ def interpretation_requested(request, requested):
     )
 
 
+def compatible_trace(requested, result):
+    # Legacy free-text workflows have no per-sentence contract; never attach template claims.
+    if (
+        result.get("generation_mode") == "model"
+        or result.get("text", requested["text"]) != requested["text"]
+    ):
+        return {
+            k: v
+            for k, v in requested.items()
+            if k
+            not in {
+                "claims",
+                "evidence_trail",
+                "primary_evidence_ids",
+                "aggregate_evidence_ids",
+            }
+        }
+    return requested
+
+
 @app.post("/api/matches/{match_id}/questions")
 def question(match_id: str, request: Question):
     match = match_or_404(match_id)
     requested = template_question(match_id, request, match)
     interpretive = interpretation_requested(request, requested)
+    # The opt-in evidence chain preserves legacy evaluation policies unchanged.
+    if os.getenv("MATCHLENS_AI_POLICY", "single") == "evidence_chain":
+        from .claims import enrich_answer
+        from .evidence_chain import run_evidence_chain
+
+        packet = context_packet(
+            match,
+            request.player_id,
+            Clock(period=request.period, elapsed_ms=request.elapsed_ms),
+            request.anchor_ms,
+        )
+        if not interpretive or requested["intent"] == "unsupported":
+            return {
+                **enrich_answer(request.model_dump(), packet, requested),
+                "status": "template",
+            }
+        try:
+            provider = configured_provider()
+        except RuntimeError:
+            provider = None
+        try:
+            result = run_evidence_chain(
+                request.model_dump(),
+                packet,
+                requested,
+                provider,
+                acquire=model_budget().acquire,
+            )
+        finally:
+            if hasattr(provider, "close"):
+                provider.close()
+        if source_version(match_or_404(match_id)) != requested["source_version"]:
+            return {
+                **template_question(match_id, request),
+                "generation_mode": "fallback",
+                "status": "source_changed",
+                "notice": "Match corrected during analysis; refreshed local answer",
+            }
+        return {
+            **result,
+            "notice": "Experimental agent-selected canonical explanation"
+            if result["generation_mode"] == "model"
+            else "Local evidence-backed explanation; inspect workflow status",
+        }
     if os.getenv("MATCHLENS_AI_POLICY", "single") == "single" and not interpretive:
         return {
             **requested,
@@ -539,7 +612,7 @@ def question(match_id: str, request: Question):
             if hasattr(provider, "close"):
                 provider.close()
         return {
-            **requested,
+            **compatible_trace(requested, result),
             **result,
             "notice": (
                 "Model declined interpretation; no factual conclusion"
@@ -559,7 +632,7 @@ def question(match_id: str, request: Question):
         if hasattr(provider, "close"):
             provider.close()
     return {
-        **requested,
+        **compatible_trace(requested, result),
         **result,
         "notice": "Model-selected verified sentences"
         if result["generation_mode"] == "model"

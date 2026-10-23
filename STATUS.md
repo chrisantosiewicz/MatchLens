@@ -16,3 +16,7 @@ Authoritative current status; dated traces and build-ledger are historical recor
 | Submission | Owner registration confirmed. Rights/eligibility/category/final platform submission remain owner decisions. Existing YouTube edited screenshot video has weak quality; replacement/playback work deferred by owner. |
 
 Current policy and applied feedback: docs/football-meaning-review.md. Live source freezes: docs/frozen-location-v8.json andv9.json; raw outputs in docs/evaluations. Additional guard replay has its own current source hashes and no remote calls. Inspect docs/evaluations/location-guard-replay.json. Do not describe structural acceptance as factual correctness or compare changing trial scopes as reliability rates.
+
+## Three-role evidence-chain update - October 22
+
+Implemented opt-in evidence-analysis -> conclusion -> checker with typed canonical claim ledger, exact event revisions, source-correction recheck, per-role budgets and UI evidence inspection. Default policy remains single; public paid model calls remain disabled. First live smoke exposed a passing/recovery relevance mismatch and is retained. Deterministic topical gate added; comparisons remain local pending typed comparison claims. See [evidence-chain details](docs/evidence-chain.md). Independent human review and superiority/reliability claims remain unverified.
