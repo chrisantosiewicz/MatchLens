@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-22",
+  "source_commit": "f0cdc9b",
+  "url": "https://matchlens-chris-demo-2026.azurewebsites.net",
+  "test_counts": {
+    "backend": 124,
+    "frontend": 30
+  },
+  "checks": {
+    "health": {
+      "status": "ok",
+      "data_mode": "synthetic",
+      "ai_mode": "template",
+      "integration_status": "disabled",
+      "cloud_connected": false
+    },
+    "final_asset_present": true,
+    "defensive_sources": 8,
+    "guidance": {
+      "branch": "defending",
+      "viewer_clock": {
+        "period": 2,
+        "elapsed_ms": 1500000
+      },
+      "generation_mode": "template",
+      "model_calls": 0
+    },
+    "public_raw_matches_local": true
+  },
+  "remote_model_calls_for_checks": 0,
+  "limits": [
+    "Recorded guide trace precedes final UI-only aggregate-source display fix",
+    "No independent human acceptance or incremental viewer benefit established",
+    "No prospective uptime guarantee"
+  ]
+}
