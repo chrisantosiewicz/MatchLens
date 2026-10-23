@@ -58,3 +58,27 @@ it('clears cached answers and rejects pending answers after an event correction'
   await act(async()=>{resolveAnswer({ok:true,json:async()=>({source_version:'v2',text:'Delayed old evidence',evidence_ids:[],generation_mode:'template'})} as Response);});
   expect(screen.queryByText('Delayed old evidence')).toBeNull();
 });
+
+
+it('shows the analyst answer while optional guide suggestions are still pending',async()=>{
+  let resolveGuide!: (r:unknown)=>void;
+  const fetcher=vi.fn((url:string)=>url.endsWith('/guidance')?new Promise(r=>{resolveGuide=r;}):Promise.resolve({ok:true,json:async()=>({source_version:'v1',text:'Analyst answer is ready.',evidence_ids:[],generation_mode:'template'})}));
+  vi.stubGlobal('fetch',fetcher);
+  render(<PlayerPanel detail={detail} sourceVersion="v1" clock={{period:1,elapsed_ms:3000}} matchId="demo" language="en" depth="casual" anchor={0} onMoment={()=>{}}/>);
+  fireEvent.click(screen.getByRole('button',{name:'Why does his passing matter?'}));
+  await screen.findByText('Analyst answer is ready.');
+  fireEvent.click(screen.getByRole('button',{name:'Attacking'}));
+  expect(screen.getByText('Analyst answer is ready.')).toBeTruthy();
+  expect(screen.getByRole('button',{name:'Choosing next steps…'})).toBeTruthy();
+  await act(async()=>resolveGuide({ok:true,json:async()=>({source_version:'v1',snapshot_id:'s',viewer_clock:{period:1,elapsed_ms:3000},branch:'attacking',generation_mode:'template',cards:[],clarification:false,model_calls:0,notice:'Local next steps'})}));
+  expect(screen.getByText('Analyst answer is ready.')).toBeTruthy();
+});
+
+it('exposes aggregate event sources when a factual answer has no sequence claims',async()=>{
+  vi.stubGlobal('fetch',vi.fn().mockResolvedValue({ok:true,json:async()=>({text:'One observed recovery.',evidence_ids:['recovery-1'],primary_evidence_ids:[],claims:[],generation_mode:'template'})}));
+  render(<PlayerPanel detail={detail} clock={{period:1,elapsed_ms:3000}} matchId="demo" language="en" depth="casual" anchor={0} onMoment={()=>{}} evidenceEvents={[{event_id:'recovery-1',period:1,elapsed_ms:1000,player_id:'north-6',recipient_id:null,team_id:'north',event_type:'recovery',outcome:'recorded',start:null,end:null,possession_id:'p1',attack_right:true}]}/>);
+  fireEvent.click(screen.getByRole('button',{name:'How involved has he been?'}));
+  await screen.findByText('One observed recovery.');
+  expect(screen.getByText(/Inspect supporting events \(1\)/)).toBeTruthy();
+  expect(screen.getByText(/0:01.*Mateo Silva.*recovery/)).toBeTruthy();
+});

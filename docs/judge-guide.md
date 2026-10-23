@@ -4,7 +4,9 @@ Status: see [STATUS.md](../STATUS.md), updated October22. This is a local protot
 
 ## October22 reassessment evidence
 
-Open [recorded AI evidence](https://matchlens-chris-demo-2026.azurewebsites.net/evidence/index.html): all12 v4 cases, template/model comparison, exact metric sources and an earlier failure replayed through the current guard. It makes no model calls. Current verification:60backend /23frontend tests, build, Ruff and packaging test pass. Raw run: evaluations/frozen-v4.json; second-AI review: evaluations/v4-ai-review.md; independent human acceptance remains pending. Public app stays in template mode.
+Start with the [recorded analyst + viewing guide](https://matchlens-chris-demo-2026.azurewebsites.net/evidence/guide.html), then try the three knowledge branches in the player panel. The page shows actual Foundry choices beside a fixed local ranking over the same catalog, plus input/output traces. Eight calls include one analyst and seven guide calls; broad clarification used zero calls. Valid selections do not establish better viewer understanding. Current checks: 124 backend / 30 frontend tests, Ruff and production build pass. See [guide details and source freezes](viewing-guide.md). Public app stays in template mode.
+
+The earlier [recorded AI evidence](https://matchlens-chris-demo-2026.azurewebsites.net/evidence/index.html) retains v4 and subsequent free-text trials, failures and guarded replay. The fair canonical comparison and checker probes are under [Football decisions & review](https://matchlens-chris-demo-2026.azurewebsites.net/review/). These are historical evaluated sources; they do not verify every later change. Independent human acceptance and observed viewer usefulness remain pending.
 
 ## Run the local build
 

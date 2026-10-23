@@ -241,6 +241,22 @@ def template_question(match_id: str, request: Question, match=None):
     spanish = request.language == "es"
     evidence = stats["evidence_ids"]
     intent = "unsupported"
+    from .guide import is_broad_question
+
+    if is_broad_question(request.question):
+        return {
+            "text": f"¿Qué aspecto de {player.name} quieres explorar? Elige ataque, defensa o juego neutral."
+            if spanish
+            else f"What would you like to understand about {player.name}? Choose attacking, defending or neutral play.",
+            "source_version": source_version(match),
+            "intent": "clarify",
+            "evidence_ids": [],
+            "generation_mode": "template",
+            "language": request.language,
+            "notice": "Local clarification · choose an interest",
+            "narrative_evidence": [],
+            "editorial_context": None,
+        }
     if any(
         word in q
         for word in [
@@ -322,6 +338,21 @@ def template_question(match_id: str, request: Question, match=None):
             if spanish
             else f"Recorded actions: {before['actions']} before and {after['actions']} after the selected moment. The after window may be incomplete; this does not establish causation."
         )
+    elif any(word in q for word in ["defen", "recover", "tackle", "recuper"]):
+        intent = "defending"
+        defensive = [
+            e
+            for e in visible(match.events, clock)
+            if e.player_id == player.id and e.event_type in {"recovery", "tackle"}
+        ]
+        recoveries = sum(e.event_type == "recovery" for e in defensive)
+        tackles = len(defensive) - recoveries
+        evidence = [e.event_id for e in defensive]
+        text = (
+            f"{player.name}: {recoveries} recuperaciones observadas y {tackles} entradas registradas. No mide coberturas, presión, éxito en entradas ni defensa sin balón."
+            if spanish
+            else f"{player.name} has {recoveries} observed recoveries and {tackles} recorded tackles at the selected time. These counts do not establish tackle success, pressure, cover or off-ball defending."
+        )
     elif any(word in q for word in ["pass", "passing", "pase", "pases"]):
         intent = "passing"
         text = (
@@ -368,7 +399,7 @@ def template_question(match_id: str, request: Question, match=None):
         evidence = []
     narrative = []
     editorial = None
-    if intent in {"passing", "change", "involvement"}:
+    if intent in {"passing", "change", "involvement", "defending"}:
         start = (
             max(0, min(request.anchor_ms, clock.elapsed_ms) - 600000)
             if intent == "change"
@@ -387,12 +418,20 @@ def template_question(match_id: str, request: Question, match=None):
             if intent != "change" or clock.elapsed_ms > request.anchor_ms
             else []
         )
+        if intent == "defending":
+            narrative = [
+                story
+                for story in narrative
+                if story["kind"]
+                in {"recovery_followed_by_attack", "turnover_then_opposition_shot"}
+            ]
         editorial = context_packet(match, player.id, clock, request.anchor_ms)[
             "editorial_context"
         ]
         summary = (
             ""
-            if intent == "change" and clock.elapsed_ms <= request.anchor_ms
+            if intent == "defending"
+            or (intent == "change" and clock.elapsed_ms <= request.anchor_ms)
             else editorial_summary(editorial, player.name, request.language)
         )
         if summary:
@@ -478,6 +517,8 @@ def question(match_id: str, request: Question):
     match = match_or_404(match_id)
     requested = template_question(match_id, request, match)
     interpretive = interpretation_requested(request, requested)
+    if requested["intent"] == "clarify":
+        return {**requested, "status": "clarification"}
     # The opt-in evidence chain preserves legacy evaluation policies unchanged.
     if os.getenv("MATCHLENS_AI_POLICY", "single") in {
         "evidence_chain",
@@ -648,6 +689,50 @@ def question(match_id: str, request: Question):
         if result["generation_mode"] == "model"
         else "Deterministic template · live AI unavailable",
     }
+
+
+class GuideQuestion(Question):
+    branch: Literal["attacking", "defending", "neutral"] = "neutral"
+    seen_ids: list[str] = Field(default_factory=list, max_length=12)
+    answer_conclusion_id: str | None = Field(default=None, max_length=500)
+    expected_source_version: str | None = Field(default=None, max_length=128)
+
+
+@app.post("/api/matches/{match_id}/guidance")
+def guidance(match_id: str, request: GuideQuestion):
+    from .guide import is_broad_question, run_guide
+
+    match = match_or_404(match_id)
+    player_or_404(match, request.player_id)
+    expected = source_version(match)
+    if request.expected_source_version and request.expected_source_version != expected:
+        raise HTTPException(409, "Match evidence changed; request new guidance")
+    packet = context_packet(
+        match,
+        request.player_id,
+        Clock(period=request.period, elapsed_ms=request.elapsed_ms),
+        request.anchor_ms,
+    )
+    try:
+        provider = (
+            None if is_broad_question(request.question) else configured_provider()
+        )
+    except RuntimeError:
+        provider = None
+    try:
+        result = run_guide(
+            match,
+            request.model_dump(),
+            packet,
+            provider,
+            acquire=model_budget().acquire,
+        )
+    finally:
+        if hasattr(provider, "close"):
+            provider.close()
+    if source_version(match_or_404(match_id)) != expected:
+        raise HTTPException(409, "Match corrected during guidance; refresh evidence")
+    return result
 
 
 @app.get("/api/matches/{match_id}/recap")

@@ -1,0 +1,12 @@
+{
+  "version": "viewing-guide-v1",
+  "model_calls": 8,
+  "guide_requests_exercising_model": 7,
+  "guide_valid_selections": 7,
+  "guide_median_latency_ms": 1355.72,
+  "input_tokens": 22924,
+  "output_tokens": 431,
+  "independent_human_review": null,
+  "incremental_viewer_benefit": null,
+  "qualification": "Operational developer-selected trial, not a quality or reliability rate. Changed ranking is not proof of improved ranking. Public app remains template mode."
+}

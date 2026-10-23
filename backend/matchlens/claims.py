@@ -118,6 +118,11 @@ def build_ledger(request, context, answer):
         # A recovery story is not a passing explanation, even if it contains later passes.
         if answer.get("intent") == "passing" and first["event_type"] != "pass":
             continue
+        if answer.get("intent") == "defending" and story["kind"] not in {
+            "recovery_followed_by_attack",
+            "turnover_then_opposition_shot",
+        }:
+            continue
         scope = {
             "kind": "recorded_sequence",
             "period": first["period"],

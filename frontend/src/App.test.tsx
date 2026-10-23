@@ -77,6 +77,28 @@ it('keeps the confirmed player panel mounted during a forward replay update', as
   } finally {vi.useRealTimers();}
 });
 
+it('keeps guidance pinned when replay advances before the selected comparison anchor',async()=>{
+  vi.stubGlobal('fetch',vi.fn((url:string,options?:RequestInit)=>{
+    if(url.endsWith('/guidance')){
+      const request=JSON.parse(options?.body as string);
+      return Promise.resolve({ok:true,json:async()=>({viewer_clock:{period:request.period,elapsed_ms:request.elapsed_ms},branch:'attacking',generation_mode:'template',cards:[{id:'concept',kind:'concept',title:'Pinned football guide',body:'A concept',viewer_clock:request,evidence_ids:[],event_revisions:{}}]})} as Response);
+    }
+    return localFetch(url);
+  }));
+  render(<App/>);
+  await screen.findByRole('heading',{name:'Mateo Silva'});
+  fireEvent.change(screen.getByRole('slider',{name:'Match clock'}),{target:{value:'10000'}});
+  await screen.findByRole('heading',{name:'Mateo Silva'});
+  fireEvent.click(screen.getByRole('button',{name:'Attacking'}));
+  await screen.findByRole('button',{name:'Pinned football guide'});
+  vi.useFakeTimers();
+  try{
+    fireEvent.click(screen.getByRole('button',{name:'Play replay'}));
+    await act(async()=>{await vi.advanceTimersByTimeAsync(1000);});
+    expect(screen.getByRole('button',{name:'Pinned football guide'})).toBeTruthy();
+  }finally{vi.useRealTimers();}
+});
+
 it('accepts a clock-stamped recap during forward playback and keeps it readable',async()=>{
   let resolveRecap!: (value:Response)=>void;
   vi.stubGlobal('fetch',vi.fn((url:string)=>url.includes('/recap?')?new Promise<Response>(r=>{resolveRecap=r;}):localFetch(url)));

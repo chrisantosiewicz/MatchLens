@@ -38,6 +38,7 @@ On macOS/Linux, use `backend/.venv/bin/python` instead of the Windows interprete
 5. Ask about passing, involvement, changes since the anchor, or the synthetic season baseline.
 6. Switch explanation depth and English/Spanish, seek back, or build a clock-limited recap.
 7. Use the expand icon for a presentation preview. This is not yet a published/synchronized OBS output.
+8. In **Your viewing guide**, choose **Attacking**, **Defending** or **Neutral**. Open concepts, inspect recorded sequences, compare player/team entries, or ask a focused follow-up at the displayed clock. Neutral covers circulation and general context; branches are interests, not detected phases. Guidance loads on request and never holds up an analyst answer.
 
 Use **Watch / Explore** to inspect the companion layout: Watch puts an illustrative synthetic scene above a compact two-team action map; Explore retains the analysis workspace and a small scene preview. This is **not actual encoded video or computer-vision recognition**. Milestone cards are computed from synthetic events, and numbered markers use roster IDs. See `docs/watch-companion.md` for boundaries and remaining video work.
 
@@ -60,6 +61,8 @@ backend/.venv/Scripts/python.exe -m matchlens.synthetic --output data
 ```
 
 ## Inspect recorded AI evidence
+
+[Inspect the recorded analyst + viewing-guide workflow](https://matchlens-chris-demo-2026.azurewebsites.net/evidence/guide.html): seven optional guide calls, one analyst call, English/Spanish and a zero-call clarification. Compare local and model rankings over the same action catalog. This demonstrates operation; incremental viewer usefulness has not been established. [Guide design and reproducible trial](docs/viewing-guide.md).
 
 [Open all frozen cases and source-event proof](https://matchlens-chris-demo-2026.azurewebsites.net/evidence/index.html). This is recorded model output, not live generation. Complete metric sources and actual model citations are shown separately. Independent human review is pending. Paused visible views check event corrections every15seconds without moving the clock.
 

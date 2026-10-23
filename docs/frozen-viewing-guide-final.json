@@ -1,0 +1,181 @@
+{
+  "version": "viewing-guide-v1",
+  "max_model_calls": 8,
+  "scope": "Developer-selected operational cases, not held-out semantic evaluation. Same eligible catalog for local and model ranking. One analyst-plus-guide pair, three branches, two languages, incomplete coverage and zero-call clarification.",
+  "source_hashes": {
+    "backend/matchlens/alerts.py": "d0d6425059e01aac82f6bc96356d90ae2c03c05b4f38708ef5d8c3f46854d8ae",
+    "backend/matchlens/analytics.py": "4847638d4b9df0dc4a4598edc17d814c23d8fd550f3785450688d74c442ce472",
+    "backend/matchlens/api.py": "2bc39bad4a7597510242cc625b8ba148d4da62daca9e85fa7bb37620ad2a70fb",
+    "backend/matchlens/canonical.py": "8b20615af2ca75abf0b5dfc4d78b502310da7379a688a883b8295a57c43b432b",
+    "backend/matchlens/claims.py": "755a055ff089fdc382c5b0238e6479db5059c438f4086913ac1090b8e6d6e977",
+    "backend/matchlens/editorial.py": "d6a71eb5bf16fa74cf6c156c56735813d7d6192c14126af09369b0f5599f21d0",
+    "backend/matchlens/evaluate.py": "5d4bf4a483036895f43dafe79fba67b5256612a64b3fe78bbba8e27d0cb7aaf9",
+    "backend/matchlens/evidence_chain.py": "0898647ec73ac6a9abcdbab171f0df2e94dd57143c6ea13b7d023391aeee0092",
+    "backend/matchlens/explainer.py": "2777f74094010509f1e1c3d16ae3b539802e29cc364d49092831f196c94de55d",
+    "backend/matchlens/guide.py": "e571d772364374bfb535957a1d2d7ec88a6002b352a3fb3191d296484d7ccd83",
+    "backend/matchlens/limits.py": "96a42b299dc095491db78f98cfa0ebf2f82818619d381cdb79f5128236f91c0b",
+    "backend/matchlens/models.py": "d8d3fec3377e9ef1d4f80ac321720026cf1a6338fb0a56b5d18b79c634d97aa0",
+    "backend/matchlens/moments.py": "461068db247e7c5a626b8d689ea26373608f10e0eeb62de80ec00f7569874a36",
+    "backend/matchlens/profiles.py": "4448b8aa25aa0bc8c40ab0038cc978cb83d244af37a5dc82e5deb92db76dd623",
+    "backend/matchlens/providers.py": "8745706a13b537a59faf8ddf73677006da11692541a9700210956643dfa102dd",
+    "backend/matchlens/serving.py": "39000f6291d5016a35404ed782dce81764907798be6ac621e79fe4be90c787af",
+    "backend/matchlens/store.py": "7eaa1def818511f652c82b3a889b301de7265be16b0b53e33c7ad51f6a73c8ef",
+    "backend/matchlens/stories.py": "b92ec44698430e0bb6f2fd0567da13e72c8e04274ab9b3b43d76fda729ae4fac",
+    "backend/matchlens/summaries.py": "8d8a63d419482249a0faaab1d932c8208441318c1e1f0af4496886963042c57a",
+    "backend/matchlens/synthetic.py": "f3263d351cc126026998be2526b9530a6399cec88d0fe6dc640283d708cc555d",
+    "backend/matchlens/workflow.py": "0345f2af7181171f08ebad4e3328d5c79a3fffbc68b13de82f193ae68dd54e13",
+    "backend/matchlens/__init__.py": "279dd36603544e97760d3019439e9f62f1e149e30b21066b7355d8f4cb3ab9e2",
+    "scripts/evaluate_guide.py": "f38fcb0928e0d5422a53748b6543b58762eeece04f96b3e23ced6e734f1642d7",
+    "scripts/evaluate_canonical.py": "683d8a61b58392730516638b145d6f223cd321c087633608a9dcc18d10991671",
+    "frontend/src/App.tsx": "22b78b448491d6b0c2b944fea49c4b118f344d9b2c8169743f66187dadb9ea48",
+    "frontend/src/contracts.ts": "8246d9e6947afda82da11257af9adc7884e499d6fd1955871bf15084bb817e30",
+    "frontend/src/components/ViewingGuide.tsx": "dd1ca8f9298a01410d2344dbd1d2183b87026eea94fcb1e4c38b822fafa67515",
+    "frontend/src/components/PlayerPanel.tsx": "4410a13412cffc52a1b5b75056c496af7ce646ade1bf8fecfb801cfa804b35f9"
+  },
+  "cases": [
+    {
+      "id": "attack-fan",
+      "seed": 7,
+      "scenario": "shift",
+      "primary_call": true,
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1500000,
+        "player_id": "north-6",
+        "question": "Why does his passing matter?",
+        "language": "en",
+        "depth": "casual",
+        "anchor_ms": 900000,
+        "branch": "attacking",
+        "seen_ids": [],
+        "answer_conclusion_id": null
+      }
+    },
+    {
+      "id": "attack-analyst",
+      "seed": 7,
+      "scenario": "shift",
+      "primary_call": false,
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1500000,
+        "player_id": "north-6",
+        "question": "Why does his passing matter?",
+        "language": "en",
+        "depth": "analyst",
+        "anchor_ms": 900000,
+        "branch": "attacking",
+        "seen_ids": [],
+        "answer_conclusion_id": null
+      }
+    },
+    {
+      "id": "defend-fan",
+      "seed": 5209,
+      "scenario": "shift",
+      "primary_call": false,
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1500000,
+        "player_id": "north-8",
+        "question": "Why do his recorded recoveries matter?",
+        "language": "en",
+        "depth": "casual",
+        "anchor_ms": 900000,
+        "branch": "defending",
+        "seen_ids": [],
+        "answer_conclusion_id": null
+      }
+    },
+    {
+      "id": "neutral-analyst",
+      "seed": 5227,
+      "scenario": "shift",
+      "primary_call": false,
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1500000,
+        "player_id": "harbor-6",
+        "question": "How involved has he been?",
+        "language": "en",
+        "depth": "analyst",
+        "anchor_ms": 900000,
+        "branch": "neutral",
+        "seen_ids": [],
+        "answer_conclusion_id": null
+      }
+    },
+    {
+      "id": "attack-es",
+      "seed": 5201,
+      "scenario": "shift",
+      "primary_call": false,
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1500000,
+        "player_id": "north-7",
+        "question": "¿Por qué importan sus pases?",
+        "language": "es",
+        "depth": "casual",
+        "anchor_ms": 900000,
+        "branch": "attacking",
+        "seen_ids": [],
+        "answer_conclusion_id": null
+      }
+    },
+    {
+      "id": "defend-es",
+      "seed": 5227,
+      "scenario": "shift",
+      "primary_call": false,
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1500000,
+        "player_id": "harbor-6",
+        "question": "¿Por qué importan sus recuperaciones registradas?",
+        "language": "es",
+        "depth": "casual",
+        "anchor_ms": 900000,
+        "branch": "defending",
+        "seen_ids": [],
+        "answer_conclusion_id": null
+      }
+    },
+    {
+      "id": "sparse",
+      "seed": 5209,
+      "scenario": "sparse",
+      "primary_call": false,
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1500000,
+        "player_id": "north-8",
+        "question": "Why do his recorded recoveries matter?",
+        "language": "en",
+        "depth": "casual",
+        "anchor_ms": 900000,
+        "branch": "defending",
+        "seen_ids": [],
+        "answer_conclusion_id": null
+      }
+    },
+    {
+      "id": "clarify",
+      "seed": 7,
+      "scenario": "shift",
+      "primary_call": false,
+      "request": {
+        "period": 2,
+        "elapsed_ms": 1500000,
+        "player_id": "north-6",
+        "question": "Is he playing well?",
+        "language": "en",
+        "depth": "casual",
+        "anchor_ms": 900000,
+        "branch": "neutral",
+        "seen_ids": [],
+        "answer_conclusion_id": null
+      }
+    }
+  ]
+}
