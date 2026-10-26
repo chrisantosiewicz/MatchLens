@@ -31,7 +31,8 @@ app = FastAPI(title="MatchLens", version="0.1.0")
 @lru_cache
 def fixtures():
     return {
-        m.id: m for m in [generate_match(7, s) for s in ("shift", "null", "sparse")]
+        m.id: m
+        for m in [generate_match(7, s) for s in ("shift", "null", "sparse", "corners")]
     }
 
 
@@ -59,7 +60,13 @@ def match_or_404(match_id):
 
 def source_version(match):
     revision_list = sorted((e.event_id, e.revision) for e in match.events)
-    return sha256(repr(revision_list).encode()).hexdigest()[:24]
+    source = repr(revision_list)
+    if match.position_frames:
+        source += "|positions|" + "|".join(
+            f.model_dump_json()
+            for f in sorted(match.position_frames, key=lambda f: f.frame_id)
+        )
+    return sha256(source.encode()).hexdigest()[:24]
 
 
 @app.post("/api/matches/{match_id}/events")
@@ -139,7 +146,13 @@ def matches():
     return [
         {"id": m.id, "teams": m.teams, "label": label, "synthetic": True}
         for m, label in zip(
-            fixtures().values(), ["Developing pattern", "Balanced match", "Sparse feed"]
+            fixtures().values(),
+            [
+                "Developing pattern",
+                "Balanced match",
+                "Sparse feed",
+                "Corners · simulated positions",
+            ],
         )
     ]
 
@@ -161,6 +174,7 @@ def state(
     events = visible(match.events, clock)
     return {
         "id": match.id,
+        "has_position_frames": bool(match.position_frames),
         "source_version": source_version(match),
         "teams": match.teams,
         "players": match.players,
@@ -220,6 +234,22 @@ def comparison(
         return {**result, "source_version": source_version(match)}
     except ValueError as exc:
         raise HTTPException(422, str(exc)) from exc
+
+
+@app.get("/api/matches/{match_id}/set-pieces")
+def set_pieces(
+    match_id: str,
+    period: int = Query(2, ge=1, le=2),
+    elapsed_ms: int = Query(1_200_000, ge=0, le=2_700_000),
+    language: Literal["en", "es"] = "en",
+):
+    from .set_pieces import corner_context
+
+    match = match_or_404(match_id)
+    return {
+        **corner_context(match, Clock(period=period, elapsed_ms=elapsed_ms), language),
+        "source_version": source_version(match),
+    }
 
 
 class Question(BaseModel):
@@ -515,6 +545,14 @@ def compatible_trace(requested, result):
 @app.post("/api/matches/{match_id}/questions")
 def question(match_id: str, request: Question):
     match = match_or_404(match_id)
+    from .set_pieces import corner_answer, is_corner_question
+
+    if is_corner_question(request.question):
+        player_or_404(match, request.player_id)
+        return {
+            **corner_answer(match, request.model_dump()),
+            "source_version": source_version(match),
+        }
     requested = template_question(match_id, request, match)
     interpretive = interpretation_requested(request, requested)
     if requested["intent"] == "clarify":

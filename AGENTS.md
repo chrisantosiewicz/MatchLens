@@ -16,3 +16,4 @@
 - Let deterministic editorial gates decide eligible claims; withhold unsupported conclusions rather than appending a disclaimer. Fan and analyst modes share the same evidence standard.
 - Treat action coordinates as ball-event locations. Geometric advancement does not establish a defensive line break, tempo intent, pressure, receiver error or nearby support.
 - Keep the optional viewing guide separate from match analysis: rank only available server-authored actions. Attacking, Defending and Neutral are viewer interests, not detected phases. Attribute concept references separately from match-event evidence; omit explored stories by stable identity.
+- Explicit synthetic position frames may support occupancy and endpoint movement only when complete, clock-aligned and revision-bound. Keep them separate from ball-event coordinates. Never infer intended targets, unmarked options, defensive reactions or continuous trajectories from sparse snapshots.

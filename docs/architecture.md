@@ -36,6 +36,8 @@ Primary routes are `GET /api/health`, `GET /api/matches`, `GET /api/matches/{id}
 
 ## Optional cloud boundary
 
+The corner extension adds optional explicit `position_frames` and `Event.set_piece` metadata in a separate fixture. A deterministic `/set-pieces` endpoint validates full active rosters and anchor revisions before counting simultaneous box occupancy. `SetPiecePanel` renders sparse snapshots independently of the action-event map and invalidates stale responses. Corner questions are local templates, not new model inference. See [corner-context.md](corner-context.md).
+
 The current match analyst uses `canonical_single`: one optional model selects a canonical, evidence-bound conclusion. A separate optional **viewing guide** ranks at most three IDs from a deterministic action catalog via `POST /api/matches/{id}/guidance`. The catalog supplies concepts, sequences, questions and exposure-aware comparisons; the guide cannot write match claims. Local ranking is available without Foundry. It is not a checker or a mandatory second call. Branches are viewer-selected interests. All requests pin clock/source; corrections invalidate publication and forward playback preserves the displayed snapshot. See [viewing-guide.md](viewing-guide.md) for source freezes, tests, recorded execution and unproven benefit.
 
 Foundry uses the Azure AI Projects/OpenAI-compatible SDK path with Azure identity. Backend-only settings name the project/deployment; credentials never belong in browser bundles. Default template operation makes no live model request. Single policy bypasses model calls for direct counts; specialist orchestration is an experimental comparison. Responses expose generation mode, and failures/rejections preserve useful deterministic output.

@@ -19,6 +19,29 @@ class Player(BaseModel):
     starter: bool = True
 
 
+class SetPiece(BaseModel):
+    id: str
+    kind: Literal["corner"] = "corner"
+    phase: Literal["setup", "delivery", "first_contact", "outcome"]
+
+
+class PlayerPosition(BaseModel):
+    player_id: str
+    point: Point
+
+
+class PositionFrame(BaseModel):
+    frame_id: str
+    revision: int = Field(default=1, ge=1)
+    simulated: Literal[True] = True
+    period: int = Field(ge=1, le=2)
+    elapsed_ms: int = Field(ge=0, le=3_600_000)
+    anchor_event_id: str
+    anchor_event_revision: int = Field(ge=1)
+    ball: Point
+    positions: list[PlayerPosition]
+
+
 class Event(BaseModel):
     match_id: str = "demo"
     event_id: str
@@ -38,6 +61,7 @@ class Event(BaseModel):
         "turnover",
         "substitution",
         "stoppage",
+        "touch",
     ]
     outcome: Literal["complete", "incomplete", "goal", "saved", "wide", "recorded"] = (
         "recorded"
@@ -47,6 +71,7 @@ class Event(BaseModel):
     possession_id: str
     # Explicit metadata makes direction independent of receipt time and team name.
     attack_right: bool = True
+    set_piece: SetPiece | None = None
 
 
 class MatchFixture(BaseModel):
@@ -57,6 +82,7 @@ class MatchFixture(BaseModel):
     events: list[Event]
     final_score: dict[str, int]
     feed_completeness: Literal["complete", "incomplete"] = "complete"
+    position_frames: list[PositionFrame] = Field(default_factory=list)
 
 
 class SeasonRecord(BaseModel):

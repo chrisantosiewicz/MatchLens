@@ -119,6 +119,16 @@ def build_recap(
         parts.append(
             f"Summary: {stats['progressive_passes']} progressive passes and {stats['recoveries']} recoveries in the available events. Off-ball contributions are not assessed."
         )
+    position_frame_ids = []
+    if match.position_frames:
+        from .set_pieces import corner_context
+
+        corners = corner_context(match, clock, language)["corners"]
+        if corners:
+            latest = corners[-1]
+            parts.append(("Último córner: " if es else "Latest corner: ") + latest["text"])
+            evidence.extend(latest["evidence_ids"])
+            position_frame_ids = latest["position_frame_ids"]
     return {
         "text": " ".join(parts),
         "selected_time": selected,
@@ -128,4 +138,5 @@ def build_recap(
         "stats": stats,
         "evidence_ids": list(dict.fromkeys(evidence)),
         "generation_mode": "template",
+        "position_frame_ids": position_frame_ids,
     }

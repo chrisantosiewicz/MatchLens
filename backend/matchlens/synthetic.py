@@ -49,6 +49,10 @@ def squad() -> list[Player]:
 
 
 def generate_match(seed: int = 7, scenario: str = "shift") -> MatchFixture:
+    if scenario == "corners":
+        from .corner_data import add_corner_scenarios
+
+        return add_corner_scenarios(generate_match(seed, "null"), seed)
     if scenario not in {"shift", "null", "sparse"}:
         raise ValueError("scenario must be shift, null or sparse")
     if scenario == "sparse":
@@ -309,7 +313,7 @@ def main():
     parser.add_argument("--output", type=Path, default=Path("data"))
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
-    for scenario in ("shift", "null", "sparse"):
+    for scenario in ("shift", "null", "sparse", "corners"):
         (args.output / f"{scenario}.json").write_text(
             generate_match(7, scenario).model_dump_json(indent=2), encoding="utf-8"
         )
@@ -319,7 +323,11 @@ def main():
     )
     (args.output / "manifest.json").write_text(
         json.dumps(
-            {"seed": 7, "synthetic": True, "scenarios": ["shift", "null", "sparse"]}
+            {
+                "seed": 7,
+                "synthetic": True,
+                "scenarios": ["shift", "null", "sparse", "corners"],
+            }
         ),
         encoding="utf-8",
     )

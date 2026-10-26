@@ -4,6 +4,8 @@
 
 **[Open the public demo](https://matchlens-chris-demo-2026.azurewebsites.net)** — Azure free-tier hosting, deterministic template mode.
 
+October 25: the new corner positional-context feature is built and verified locally. Its public rollout awaits refreshed Azure sign-in; the public demo currently serves the earlier guide build. See [current status](STATUS.md).
+
 An event-backed football analysis workspace for the Inside the Game hackathon. All clubs, players, matches and season profiles are fictional.
 
 ## Run locally (Windows PowerShell)
@@ -39,6 +41,7 @@ On macOS/Linux, use `backend/.venv/bin/python` instead of the Windows interprete
 6. Switch explanation depth and English/Spanish, seek back, or build a clock-limited recap.
 7. Use the expand icon for a presentation preview. This is not yet a published/synchronized OBS output.
 8. In **Your viewing guide**, choose **Attacking**, **Defending** or **Neutral**. Open concepts, inspect recorded sequences, compare player/team entries, or ask a focused follow-up at the displayed clock. Neutral covers circulation and general context; branches are interests, not detected phases. Guidance loads on request and never holds up an analyst answer.
+9. Choose **Corners · simulated positions** for a separate full-player snapshot view. Compare setup, delivery, first contact and outcome; count attackers/defenders in the box and inspect observed position changes. These are explicit synthetic keyframes, not positions inferred from the action map. [Corner evidence and limitations](docs/corner-context.md).
 
 Use **Watch / Explore** to inspect the companion layout: Watch puts an illustrative synthetic scene above a compact two-team action map; Explore retains the analysis workspace and a small scene preview. This is **not actual encoded video or computer-vision recognition**. Milestone cards are computed from synthetic events, and numbered markers use roster IDs. See `docs/watch-companion.md` for boundaries and remaining video work.
 
