@@ -303,3 +303,44 @@ def test_recap_includes_only_visible_corner_context_and_positional_sources():
     after = build_recap(match, "north-6", Clock(period=1, elapsed_ms=1204000), "en")
     assert "5 attackers" in after["text"] and after["position_frame_ids"]
     assert "20:11" not in after["text"]
+
+
+def test_ordinary_questions_and_guide_share_positional_source_identity(monkeypatch):
+    from fastapi.testclient import TestClient
+    from matchlens import api
+
+    monkeypatch.setenv("MATCHLENS_AI_MODE", "template")
+    monkeypatch.setenv("MATCHLENS_AI_POLICY", "canonical_single")
+    client = TestClient(api.app, raise_server_exceptions=False)
+    payload = {
+        "period": 2,
+        "elapsed_ms": 1570000,
+        "player_id": "north-6",
+        "anchor_ms": 900000,
+        "language": "en",
+    }
+    version = client.get("/api/matches/match-7-corners/revision").json()[
+        "source_version"
+    ]
+    for question in [
+        "Did his passing cause the goal?",
+        "Why does his passing matter?",
+        "How involved has he been?",
+    ]:
+        response = client.post(
+            "/api/matches/match-7-corners/questions",
+            json={**payload, "question": question},
+        )
+        assert response.status_code == 200, response.text
+        assert response.json()["source_version"] == version
+    guide = client.post(
+        "/api/matches/match-7-corners/guidance",
+        json={
+            **payload,
+            "question": "Why does his passing matter?",
+            "branch": "attacking",
+            "expected_source_version": version,
+        },
+    )
+    assert guide.status_code == 200
+    assert guide.json()["source_version"] == version and guide.json()["cards"]

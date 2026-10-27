@@ -1,6 +1,10 @@
-# MatchLens current status — October 25, 2026
+# MatchLens current status — October 27, 2026
 
 Authoritative current status; dated traces and build-ledger are historical records.
+
+## October 27 — final-day hardening and handoff
+
+Recording rehearsal exposed HTTP 500 for ordinary player questions on positional fixtures: API source identity included position frames while explanation context hashed events alone. Both now use one shared helper, preserving prior API hash bytes and position-correction sensitivity. A regression covers causal, passing and involvement questions plus viewing guidance; 140 backend tests and Ruff pass. A separate read-only code review found no consequential issues. A narrated 115.94-second 1080p edited browser UI demo has been rendered, decoded and sampled visually; it is not continuous native screen recording. Public upload, owner quality review and final competition submission remain pending. Azure redeployment remains explicitly on hold. No new remote model calls or independent viewer evaluations were performed. See [submission checklist](docs/submission-checklist.md).
 
 ## October 25 — corner positional context
 
@@ -15,9 +19,9 @@ Added a separate seeded corner scenario, four revision-bound all-player snapshot
 | Public demo | Azure LinuxFree, deterministic template mode; no paid public model calls. Final location deployment verified anonymously; see docs/hosting-location-final-verification.json. No prospective uptime guarantee. |
 | AI | Current controlled policy: one canonical selector, plus an optional viewing guide selecting available action IDs. Public uses templates. Historical free-text v8/v9 failures remain inspectable; no independent human acceptance or model-benefit claim. |
 | Evidence viewer | Latest main view separates current offline guarded replay from original recorded candidate prose; semantic concerns, original output, full facts/source IDs, reconstructed model input and earlier candidates remain inspectable. Not live AI. |
-| Verification |139 backend tests, 35 frontend tests, Ruff and production build pass locally for the corner extension. Public deployment verification is recorded separately. |
+| Verification |140 backend tests, 35 frontend tests, Ruff, production build and one packaging regression pass after the October27 source-identity fix; see docs/final-day-verification.md. Public deployment verification is historical. |
 | Synthetic data | Fictional teams/players/season profiles; heuristic20-seed sanity checks, no empirical calibration or real European rankings. Separate corner scenario includes explicit simulated player keyframes; no continuous tracking, video recognition or licensed footage. |
-| Submission | Owner registration confirmed. Rights/eligibility/category/final platform submission remain owner decisions. Existing YouTube edited screenshot video has weak quality; replacement/playback work deferred by owner. |
+| Submission | Owner registration confirmed. Rights/eligibility/category/final platform submission remain owner decisions. Replacement narrated local video rendered; owner quality review, accepted-host upload and public playback remain pending. |
 
 Current policy and applied feedback: docs/football-meaning-review.md. Live source freezes: docs/frozen-location-v8.json andv9.json; raw outputs in docs/evaluations. Additional guard replay has its own current source hashes and no remote calls. Inspect docs/evaluations/location-guard-replay.json. Do not describe structural acceptance as factual correctness or compare changing trial scopes as reliability rates.
 

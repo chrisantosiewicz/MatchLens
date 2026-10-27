@@ -57,7 +57,7 @@ MATCHLENS_AI_MODE=template
 START = """# Start here: MatchLens local judge handoff
 
 Read docs/judge-guide.md for setup, evidence and known limitations.
-docs/demo-script.md describes the captioned 105-second edited screenshot walkthrough.
+docs/demo-script.md describes the current narrated edited UI demonstration and its disclosures.
 docs/architecture.md explains the deterministic and optional model paths.
 
 All football data is fictional and synthetic. The Watch scene is illustrative,

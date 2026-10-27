@@ -2,12 +2,12 @@
 
 import re
 from decimal import Decimal
-from hashlib import sha256
 from time import perf_counter
 
 from .analytics import compare_windows, is_entry, is_progressive, player_stats
 from .editorial import editorial_packet
 from .models import Clock, Event, visible
+from .provenance import source_version
 from .stories import sequence_stories
 
 
@@ -169,9 +169,7 @@ def context_packet(match, player_id, clock, anchor_ms):
             ),
             4,
         ),
-        sha256(
-            repr(sorted((e.event_id, e.revision) for e in match.events)).encode()
-        ).hexdigest()[:24],
+        source_version(match),
     )
 
     def ids(value):

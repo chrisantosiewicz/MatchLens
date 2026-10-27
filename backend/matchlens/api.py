@@ -4,7 +4,6 @@ import os
 import secrets
 from collections import Counter
 from functools import lru_cache
-from hashlib import sha256
 from typing import Literal
 
 from fastapi import FastAPI, Header, HTTPException, Query
@@ -18,6 +17,7 @@ from .limits import model_budget
 from .models import Clock, Event, visible
 from .moments import key_moments
 from .profiles import profile
+from .provenance import source_version
 from .providers import configured_provider
 from .store import EventStore
 from .stories import render_story, sequence_stories
@@ -56,17 +56,6 @@ def match_or_404(match_id):
     return fixtures()[match_id].model_copy(
         update={"events": event_store().events_at(2, 3600000, match_id)}
     )
-
-
-def source_version(match):
-    revision_list = sorted((e.event_id, e.revision) for e in match.events)
-    source = repr(revision_list)
-    if match.position_frames:
-        source += "|positions|" + "|".join(
-            f.model_dump_json()
-            for f in sorted(match.position_frames, key=lambda f: f.frame_id)
-        )
-    return sha256(source.encode()).hexdigest()[:24]
 
 
 @app.post("/api/matches/{match_id}/events")

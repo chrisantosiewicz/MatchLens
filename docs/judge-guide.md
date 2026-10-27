@@ -1,8 +1,8 @@
 # MatchLens judge guide
 
-Status: see [STATUS.md](../STATUS.md), updated October22. This is a local prototype using fictional clubs, players, matches and season baselines. Start with the [public template demo](https://matchlens-chris-demo-2026.azurewebsites.net) or the reproducible local build. No Azure account is required for either.
+Status: see [STATUS.md](../STATUS.md), updated October27. This is a local prototype using fictional clubs, players, matches and season baselines. Start with the [public template demo](https://matchlens-chris-demo-2026.azurewebsites.net) or the reproducible local build. No Azure account is required for either.
 
-October 25 local extension: choose **Corners · simulated positions** to inspect complete synthetic player snapshots, occupancy, first contact and outcomes. See [corner-context.md](corner-context.md) and [local execution evidence](evaluations/corner-context-local.json). Local verification: 139 backend / 35 frontend tests, Ruff, production build and packaging test pass. Public rollout is pending Azure management sign-in, so the public link still serves the October 22 guide build until separately verified. Corner output is deterministic, not a new Foundry execution or independently validated tactical model.
+October 25 local extension: choose **Corners · simulated positions** to inspect complete synthetic player snapshots, occupancy, first contact and outcomes. See [corner-context.md](corner-context.md) and [local execution evidence](evaluations/corner-context-local.json). October 27 recording exposed a mismatched evidence identity in ordinary questions on positional matches; the shared revision helper and a regression test fix it. The backend now has 140 tests. Azure deployment remains on hold at the owner's request; the public link serves the older October 22 guide build. Corner output is deterministic, not a new Foundry execution or independently validated tactical model.
 
 ## October22 reassessment evidence
 
