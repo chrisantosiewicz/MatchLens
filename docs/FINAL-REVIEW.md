@@ -22,6 +22,8 @@ Deadline: October 27, 11:59 PM Pacific = **October 28, 1:59 AM Chicago**. Do not
 
 **Recommended category:** Best Use of Microsoft Foundry. Owner confirms the actual category selection.
 
+[Foundry category evidence](foundry-category-case.md) is prepared for judges. It is optional background for your review; the submission copy below already summarizes the recommended case.
+
 **Short description**
 
 MatchLens helps football viewers investigate the actions behind a match moment. Select a player, follow a recorded sequence, compare contributions and inspect the evidence at your chosen match clock. Deterministic statistics support grounded explanations, personalized exploration and English/Spanish recaps. An optional Microsoft Foundry analyst and viewing guide select supported interpretations and available next investigations. A useful local template experience remains available without cloud access. All matches, players, season profiles and positional snapshots are synthetic.

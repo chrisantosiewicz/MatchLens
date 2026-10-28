@@ -18,6 +18,8 @@ Statistics, claim eligibility and evidence IDs come from deterministic server lo
 
 ## Azure contribution
 
+Category-specific case and evidence: [Best Use of Microsoft Foundry Project](foundry-category-case.md).
+
 Microsoft Foundry supplied actual authenticated `gpt-4.1-mini` analyst and guide execution through a backend Azure AI Projects/OpenAI-compatible integration with Azure identity. The recorded guide trial contains eight model calls: one analyst and seven guide calls; all seven guide outputs passed catalog-selection validation. This establishes operational execution, not improved understanding or reliable football interpretation. The browser contains no model credentials and the public demo makes no paid model calls.
 
 An older template build was verified on Azure App Service's free tier. The latest corner extension runs locally; Azure redeployment is on hold at the owner's request. No new infrastructure, live sports feed, video recognition or real tracking is claimed.
