@@ -2,6 +2,8 @@
 
 Current implementation status: [STATUS.md](../STATUS.md). Submission copy: [submission-pitch.md](submission-pitch.md). Recording plan: [demo-script.md](demo-script.md).
 
+**Owner review at 11:30 PM: use [the final 30-minute review packet](FINAL-REVIEW.md).** The replacement video is [uploaded privately](https://youtu.be/9Jr04kSZD5w); owner playback started. Make it public only after owner approval, then verify signed-out access. The current source/test ZIP was published and its GitHub asset digest matches the local archive; the 237 extracted payload hashes and ordinary question/guide smoke checks passed. Dependencies were reused for extraction smoke, not installed from scratch.
+
 ## Verified evidence and boundaries
 
 - Local corner extension: complete 22-player synthetic frames, four phases, selected-clock occupancy and endpoint movement, English/Spanish answers and recaps. See [corner context](corner-context.md) and [local evidence](evaluations/corner-context-local.json).
@@ -13,8 +15,8 @@ Current implementation status: [STATUS.md](../STATUS.md). Submission copy: [subm
 
 ## Remaining submission actions
 
-1. Finish and review the replacement recording: actual working-software interaction, English explanation, readable source/mode labels and duration strictly below 120 seconds. Publish it to an allowed public video platform and test anonymous playback. A local MP4 is not the required public video URL.
-2. Build the final source handoff after all intended files are staged/tracked, inspect its manifest and contents, and test extraction/startup. Keep the private organizer key, credentials, local environment files and account/session artifacts out of the archive, repository, video and screenshots. Packaging checks do not replace a manual review of added evidence.
+1. Review the completed, privately uploaded replacement recording. Make the approved video public and test anonymous playback. A private video is not the required public video URL.
+2. Preserve the verified product handoff at commit 802f154 and its published package. Newer documentation-only commits do not change that evaluated product source. Keep the private organizer key, credentials, local environment files and account/session artifacts excluded from public materials.
 3. Verify the public GitHub URL and the exact delivered source revision. Recheck anonymous judge access to the older public demo; explicitly identify its version. Supply a working local test build and English setup instructions for the corner extension while deployment remains on hold. Confirm the selected delivery satisfies the organizer's access requirement through November 10.
 4. Owner confirms category (recommendation: **Best Use of Microsoft Foundry**, choice unconfirmed), eligibility, rights, asset provenance and code license. [Provenance](provenance.md) records that no project code license has been selected.
 5. Owner completes the final platform fields with reviewed description, source/demo/video links and Azure contribution. Confirm submission receipt. Registration alone is not final submission.

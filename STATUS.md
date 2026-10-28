@@ -4,6 +4,8 @@ Authoritative current status; dated traces and build-ledger are historical recor
 
 ## October 27 — final-day hardening and handoff
 
+Final owner review is consolidated in [FINAL-REVIEW.md](docs/FINAL-REVIEW.md), with a 30-minute route beginning 11:30 PM Chicago. The replacement video is uploaded privately to YouTube for owner review; its saved Private status and signed-in playback start were verified. Public publication, signed-out playback and final platform submission remain pending. No independent participants are available today, and owner feedback will remain editorial evidence only.
+
 Recording rehearsal exposed HTTP 500 for ordinary player questions on positional fixtures: API source identity included position frames while explanation context hashed events alone. Both now use one shared helper, preserving prior API hash bytes and position-correction sensitivity. A regression covers causal, passing and involvement questions plus viewing guidance; 140 backend tests and Ruff pass. A separate read-only code review found no consequential issues. A narrated 115.94-second 1080p edited browser UI demo has been rendered, decoded and sampled visually; it is not continuous native screen recording. Public upload, owner quality review and final competition submission remain pending. Azure redeployment remains explicitly on hold. No new remote model calls or independent viewer evaluations were performed. See [submission checklist](docs/submission-checklist.md).
 
 ## October 25 — corner positional context

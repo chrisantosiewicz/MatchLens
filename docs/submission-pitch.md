@@ -1,4 +1,6 @@
-# MatchLens submission copy — draft, October 27
+# MatchLens submission copy — October 27
+
+For the final recommended copy, exact links and bounded owner decisions, use [FINAL-REVIEW.md](FINAL-REVIEW.md). It replaces the earlier open-ended review workflow.
 
 Owner review and final submission are pending. Recommended category: **Best Use of Microsoft Foundry**; owner choice is unconfirmed.
 
@@ -27,6 +29,6 @@ All match data and position frames are synthetic. Sparse snapshots support occup
 - Source: [MatchLens public repository](https://github.com/chrisantosiewicz/MatchLens); confirm final delivered revision.
 - Existing public demo: [October 22 template guide build](https://matchlens-chris-demo-2026.azurewebsites.net); recheck access and identify its older version.
 - Latest local build: final reviewed source/test-build package and [English setup](judge-guide.md).
-- Video: **pending completion, public upload and anonymous playback verification**; use the replacement working-software recording, not a claim that the historical edited screenshots show continuous interaction.
+- Video: [replacement private owner review](https://youtu.be/9Jr04kSZD5w), uploaded and saved Private with owner playback started. Public publication and anonymous playback verification remain pending owner approval. It is an edited browser UI capture with narration, not continuous native screen recording.
 
 Keep private organizer keys and credentials out of submission copy and all public artifacts. Owner must confirm rights, eligibility, license, category and final submission receipt separately.

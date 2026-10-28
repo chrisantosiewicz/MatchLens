@@ -1,5 +1,7 @@
 # Owner football/editorial review — October 27
 
+Submission-night review is now limited to 30 minutes: use [FINAL-REVIEW.md](FINAL-REVIEW.md) instead. This longer worksheet is optional and must not delay submission.
+
 Status: prepared, no responses recorded. This is owner/editorial feedback, not independent review, a first-use study, or proof of Foundry benefit. Prior exposure and project involvement exclude the owner from independent participant totals.
 
 Estimated time: 10–15 minutes. Review the explanation before opening its supporting events, then inspect them. Do not make new model calls. The public app is the October22 template build; corners require the October27 local test package. Recorded AI evidence is historical.
